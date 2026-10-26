@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 4" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Parallel Processing</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 4</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Parallel Processing</span>
+        </div>
+        <p><a href="Spin4-Parameters.htm" title="Go back to Parameters, Calls, and Finite Loops" alt="Go back to Parameters, Calls, and Finite Loops"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin4-QR.htm" title="Go on to Spin Lesson 4 Quick Review" alt="Go on to Spin Lesson 4 Quick Review"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1><a name="kanchor232"></a>Parallel Processing</h1>
+        <h2>Spin Exercise 4-2: Running Output.spin in Two Cogs</h2>
+        <p class="PlainText"><a name="kanchor233"></a>In exercises 1 through 4 we've used just one cog to process the application; it toggles P16 only, then stops and toggles P17 only, then terminates.&#160; This is called “serial processing.” </p>
+        <p class="PlainText">Suppose, however, that we want to do things in parallel; simultaneously toggling pins 16 and 17, each at different rates and for different finite periods.&#160; Tasks like this can certainly be done with serial processing and clever programming but it is easier with parallel processing by having the Propeller activate two cogs.&#160; Look at the following example and edit your code to match.&#160; We added a variable block (<span class="keyword_in_text">VAR</span>) and made a slight change to the <span class="code_in_text">Main</span> method.</p>
+        <div class="propcode"><a href="../../../../Examples/Help/Spin Tutorial/Exercise 04-2/Output.spin"><img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" title="Open example in Propeller Tool" /></a><pre xml:space="preserve" class="spin_con1">{{Output.spin
+Toggle two pins, <span class="code_delete">one after another</span>        <![CDATA[ ]]><span class="code_add_mod">simultaneously</span>.}}
+
+</pre><pre xml:space="preserve" class="spin_var1"><span class="code_add_mod">VAR</span> 
+  <span class="code_add_mod">long  Stack[9]             'Stack space for new cog</span> 
+
+</pre><pre xml:space="preserve" class="spin_pub1">PUB Main
+  <span class="code_add_mod">cognew(</span>Toggle(16, 3_000_000, 10)<span class="code_add_mod">, @Stack)</span>     'Toggle P16 ten times, 1/4 s each
+  Toggle(17, 2_000_000, 20)                     'Toggle P17 twenty times, 1/6 s each
+
+</pre><pre xml:space="preserve" class="spin_pub2">PUB Toggle(Pin, Delay, Count)
+{{Toggle Pin, Count times with Delay clock cycles in between.}}
+
+  dira[Pin]~~                'Set I/O pin to output direction
+  repeat Count               'Repeat for Count iterations
+    !outa[Pin]               '  Toggle I/O Pin
+    waitcnt(Delay + cnt)     '  Wait for Delay cycles
+</pre><pre xml:space="preserve" class="spin_pub2">&#160;</pre>
+            <h3>The VAR Block </h3>
+        </div>
+        <p class="PlainText"><a name="kanchor234"></a>In the <span class="keyword_in_text">VAR</span> block we defined an array of longs, <span class="code_in_text">Stack</span>, which is 9 elements in length.&#160; This is used by the <span class="code_in_text">Main</span> method.</p>
+        <h3>The Main Method </h3>
+        <p class="PlainText"><a name="kanchor235"></a>We modified the <span class="code_in_text">Main</span> method’s first line such that its original code, the call to <span class="code_in_text">Toggle</span>, is encased in a <span class="keyword_in_text">COGNEW</span> command.&#160; The <span class="keyword_in_text">COGNEW</span> command starts a new cog to run either Spin or Propeller Assembly code.&#160; In this case, we entered <span class="code_in_text">Toggle(16, 3_000_000, 10)</span>, for <span class="code_in_text">COGNEW</span>’s first parameter, and <span class="code_in_text">@Stack</span> for its second parameter.&#160; This means <span class="keyword_in_text">COGNEW</span> will start a new cog to run the <span class="code_in_text">Toggle</span> method and will use the memory starting at the address of <span class="code_in_text">Stack</span> for run-time stack space.&#160; The <span class="keyword_in_text">@</span> is the Symbol Address operator; it returns the actual address of the variable following it.</p>
+        <p class="PlainText"><a name="kanchor236"></a>To run Spin code, the new cog needs some run-time workspace, called “stack space,” where it can store temporary things like return addresses, return values, intermediate expression values, etc.&#160; We chose to reserve 9 longs of space (36 bytes), and passed the address of that space as <span class="keyword_in_text">COGNEW</span>’s second parameter, <span class="code_in_text">@Stack</span>.&#160; How much stack space is needed?&#160; It varies depending on the Spin code being executed, but we’ll discuss those details later.&#160; For now, rest assured that 9 longs of space is enough for our <span class="code_in_text">Toggle</span> method.</p>
+        <p class="PlainText">Compile and download Output.spin.&#160; You should see that the LEDs on P16 and P17 now simultaneously blink at different rates, 5 times and 10 times, respectively.&#160; This is because we now have two cogs running simultaneously; one toggles P16 while the other toggles P17.</p>
+        <p class="PlainText">Here’s how it works:&#160; Cog 0 starts executing our application’s <span class="code_in_text">Main</span> method.&#160; The first line of <span class="code_in_text">Main</span> uses the <span class="code_in_text">COGNEW</span> command to activate a new cog (Cog 1) to run the <span class="code_in_text">Toggle</span> method with the parameters <span class="code_in_text">(16, 3_000_000, 10)</span> passed to it.&#160; While Cog 1 is starting up, Cog 0 continues on with the second line of the <span class="code_in_text">Main</span> method, the direct call to <span class="code_in_text">Toggle</span> with the parameters <span class="code_in_text">(17, 2_000_000, 20)</span> passed to it.&#160; Ultimately, Cog 0 is left executing <span class="code_in_text">Toggle</span> on P17 while Cog 1 executes <span class="code_in_text">Toggle</span> on P16, simultaneously.&#160; When their individual tasks have expired, they each terminate due to lack of code.&#160; Cog 1 terminates the moment it finishes <span class="code_in_text">Toggle</span>. Cog 0 finishes <span class="code_in_text">Toggle</span>, returns to <span class="code_in_text">Main</span> and then terminates.&#160; Cog 1 happens to terminate earlier than Cog 0 in this case.</p>
+        <p class="PlainText"><a name="kanchor237"></a>The Propeller loads the Spin Interpreter into Cog 0 to execute the application (the two leftmost arrows in the figure).&#160; Then the application requests a new cog to activate, via the <span class="keyword_in_text">COGNEW</span> command, which causes the Propeller to load the Spin Interpreter into the next available cog, Cog 1, to execute a smaller portion of Spin code from the application, the <span class="code_in_text">Toggle</span> method (the two rightmost arrows in the figure).&#160; Each cog executes its code completely independently of the other; true parallel processing.&#160; Note that towards the end of the application both cogs are executing the same piece of Spin code, the <span class="code_in_text">Toggle</span> method, but each is using its own workspace and its own values for <span class="code_in_text">Pin</span>, <span class="code_in_text">Delay</span> and <span class="code_in_text">Count</span>.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/SpinTutorialPictures/Run2cogs_219x265.png" style="width: 219;height: 265;" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Two Cogs Running Output Application and Toggle method.</p>
+            <p class="PictureDescription">Notice that the Spin Interpreter is loaded into each Cog’s RAM.&#160; The Spin Application, Output, resides in Main RAM interpreted by Cog 0 and it launches Cog 1 to run just the <span class="code_in_text">Toggle </span>method.</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p><a href="Spin4-Parameters.htm" title="Go back to Parameters, Calls, and Finite Loops" alt="Go back to Parameters, Calls, and Finite Loops"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin4-QR.htm" title="Go on to Spin Lesson 4 Quick Review" alt="Go on to Spin Lesson 4 Quick Review"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

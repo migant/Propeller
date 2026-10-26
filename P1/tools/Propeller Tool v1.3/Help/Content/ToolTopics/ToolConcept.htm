@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Using the Propeller Tool" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Concept</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="UsingPropTool.htm">Using the Propeller Tool</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Concept</span>
+        </div>
+        <h1>Propeller Tool Concept</h1>
+        <p class="PlainText">The engineering staff at Parallax has used many development environments over a period of more than 20 years.&#160; On many occasions we found ourselves thinking things like:</p>
+        <ul>
+            <li value="1">It sure would be nice if feature “x” were easier to find/invoke.</li>
+            <li value="2">Where are my project files and why are there so many of them?</li>
+            <li value="3">Can I legally install/recompile/maintain this on another computer, years from now?</li>
+            <li value="4">Isn’t there a less expensive solution?</li>
+        </ul>
+        <p class="PlainText">This experience has driven us to renew our determination to create simple, inexpensive tools for our products.&#160; </p>
+        <p class="PlainText">The Propeller Tool was designed with those ideas in mind to provide many useful functions while maintaining a simple, consistent development environment that encourages quick and easy development of Propeller chip firmware objects.</p>
+        <p class="PlainText">The Propeller Tool software consists of a single executable file, some on-line help files and Propeller library files, all stored in the same folder by the installer, typically: C:\Program&#160;Files\Parallax Inc\Propeller.&#160; The Propeller Tool’s executable file “Propeller.exe” can be copied and run from any folder on the computer; it does not rely on special system files other than what comes standard with the operating system.</p>
+        <p class="PlainText"><a name="kanchor92"></a>Each library file (files with a “.spin” extension) is a self-contained object, available for use by your Propeller Projects, with both source code and documentation built-in.&#160; These are really just text files, either ANSI- or Unicode-encoded, that may be edited in any text editor that supports the encoding type; even Notepad in Windows<sup>®</sup> 2000 (and above) supports both ANSI and Unicode-encoded text files.</p>
+        <p class="PlainText"><a name="kanchor93"></a>Did you notice we mentioned that an object’s documentation is “built-in” to the object file?&#160; We encourage writing the user documentation for an object right inside the object’s source file.&#160; This means fewer files to maintain and a higher likelihood that the documentation will stay in sync with the source code revision.&#160; To further enable this process, we’ve created:</p>
+        <p term="Comments;Source comments" />
+        <ul>
+            <li value="1">Two types of source comments, 1) code comments (for commenting portions of the source code), and 2) document comments (entered in code also, but intended for reading through the “documentation view” feature).</li>
+            <li value="2">A “documentation view” mode in the Propeller Tool that extracts an object’s documentation from its source code for viewing purposes.</li>
+            <li value="3">A special font, the Parallax font, which contains special characters for things like schematics, timing diagrams, and tables within the object’s documentation.</li>
+        </ul>
+        <p class="PlainText"><a name="kanchor94"></a>The Parallax font is a True Type<sup>®</sup> font built right into the Propeller Tool executable.&#160; It was designed in the same style as the font built into the Propeller chip’s ROM.&#160; Using the special characters of the font, the object’s documentation can include helpful diagrams for engineering purposes such as these:</p>
+        <div class="ImagePlusCaption">
+            <p class="PlainText">
+                <img src="../Resources/Images/PropellerToolPictures/ParallaxFontGraphics12.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Graphics Built with the Parallax Font</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText">After running the Propeller Tool at least once, this font becomes available for other programs on that computer as well so that you can see these special diagrams using other text editors, such as Notepad, or even within your email software, provided it supports Unicode-encoded text (a requirement of the special characters).</p>
+        <p class="PlainText">Every object you create for your project will also be stored in the same format as library files (with a “.spin” extension) but in the working directory of your choice.&#160; This is all designed to promote sharing and learning from existing objects, whether they were designed by us or by users of the Propeller products.</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

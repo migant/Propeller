@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="About the Hardware" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Package &amp; Pin Descriptions</title>
+        <link href="../Resources/TableStyles/ParallaxTable.css" rel="stylesheet" />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="AboutHardware.htm">About the Hardware</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Package &amp; Pin Descriptions</span>
+        </div>
+        <h1>Package &amp; Pin Descriptions</h1>
+        <p class="PlainText"><a name="kanchor2"></a>The Propeller chip is available in the package types shown here. Pin descriptions are given in the table below.</p>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <p>
+                        </p>
+                        <p style="text-align: center;">
+                            <img src="../Resources/Images/HardwarePics/40-pin_DIP2.png" />
+                        </p>
+                    </td>
+                    <td colspan="2">
+                        <p colspan="2" style="text-align: center;">
+                            <img src="../Resources/Images/HardwarePics/44-pin_out2.png" />
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">
+                        <img src="../Resources/Images/HardwarePics/DIP.png" />
+                    </td>
+                    <td style="text-align: center;">
+                        <img src="../Resources/Images/HardwarePics/LQFP.png" />
+                    </td>
+                    <td style="text-align: center;">
+                        <img src="../Resources/Images/HardwarePics/QFN.png" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="TableText" style="text-align: center;">P8X32A-D40 </p>
+                        <p class="TableText" style="text-align: center;">40-Pin DIP Package</p>
+                    </td>
+                    <td>
+                        <p class="TableText" style="text-align: center;">P8X32A-Q44  </p>
+                        <p class="TableText" style="text-align: center;">44-pin QFP Package</p>
+                    </td>
+                    <td>
+                        <p class="TableText" style="text-align: center;">P8X32A-M44 </p>
+                        <p class="TableText" style="text-align: center;">44-pin QFN Package</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="PlainText">&#160;</p>
+        <table style="caption-side: top;mc-table-style: url('../Resources/TableStyles/ParallaxTable.css');" class="TableStyle_ParallaxTable" cellspacing="0">
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th class="TableStyle_ParallaxTable_Head_0_0_ColSep" colspan="3">Pin Descriptions</th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;">
+                    <p class="TableText">Pin&#160;Name</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;">
+                    <p class="TableText">Direction</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="background-color: #cccccc;">
+                    <p class="TableText">Description</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor3"></a>P0 – P31</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">I/O</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText"><a name="kanchor4"></a>General purpose I/O Port A.&#160; Can source/sink 40 mA each at 3.3 VDC.&#160; Logic threshold is ≈ ½ VDD; 1.65 VDC @ 3.3 VDC.</p>
+                    <p class="TableText">&#160;</p>
+                    <div class="TableText">
+                        <p>I/0 pins P28–P31 have a special purpose upon power-up/reset but are general-purpose I/O afterwards:</p>
+                        <ul>
+                            <li value="1"><a name="kanchor5"></a>P28: I<sup>2</sup>C SCL connection to optional, external EEPROM.</li>
+                            <li value="2">P29- I<sup>2</sup>C SDA connection to optional, external EEPROM.</li>
+                            <li value="3"><a name="kanchor6"></a>P30: Serial Tx to host.</li>
+                            <li value="4">P31:Serial Rx from host.</li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">VDD</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">3.3 volt power (2.7 – 3.3 VDC).</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">VSS</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">Ground.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor7"></a>BOEn</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">I</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">Brown Out Enable (active low).&#160; Must be connected to either VDD or VSS.&#160; If low, RESn becomes a weak output (delivering VDD through 5 KΩ) for monitoring purposes but can still be driven low to cause reset.&#160; If high, RESn is CMOS input with Schmitt Trigger.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor8"></a>RESn</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">I/O</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">Reset (active low).&#160; When low, resets the Propeller chip: all cogs disabled and I/O pins floating.&#160; Propeller restarts 50 ms after RESn transitions from low to high.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor9"></a>XI</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">I</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">Crystal Input.&#160; Can be connected to output of crystal/oscillator pack (with XO left disconnected), or to one leg of crystal (with XO connected to other leg of crystal or resonator) depending on CLK Register settings.&#160; No external resistors or capacitors are required.</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor10"></a>XO</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">O</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">Crystal Output.&#160; Provides feedback for an external crystal, or may be left disconnected depending on CLK Register settings.&#160; No external resistors or capacitors are required.</p>
+                </td>
+            </tr>
+        </table>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

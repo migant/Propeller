@@ -1,0 +1,874 @@
+﻿/*<meta />*/
+
+/* To enclose pre blocks for spin and assy code */
+
+/* font-size and line-height must be in points (8-10-12-14-16)and must match */
+
+/* these pre.spin classes work with the Code2HTML.exe tool
+for formatting Propeller code */
+
+/* <style type="text/css"> */
+
+@font-face 
+{
+	font-family: Parallax;
+	src: url("Parallax.eot");
+	src: local("Parallax"), url( c:/Windows/Fonts/Parallax.ttf ) format("truetype");
+}
+
+@font-face 
+{
+	font-family: Parallax;
+	src: url("Parallax.ttf");
+}
+
+/* </style> */
+
+/*	font: Parallax; */
+
+/*	font-family: Parallax; */
+
+a img
+{
+	border: none;
+}
+
+p
+{
+	margin: 0%;
+	font-size: 100%;
+}
+
+p.PlainText
+{
+	margin-bottom: 1.12em;
+	font: verdana;
+	font-family: Verdana, Arial, sans-serif;
+	color: #666666;
+}
+
+p.PlainTextIndent
+{
+	margin-bottom: 4px;
+	margin-left: 40px;
+	font: verdana;
+	font-family: Verdana, Arial, sans-serif;
+	color: #666666;
+}
+
+a.Popup
+{
+	mc-popup-width: auto;
+	mc-popup-height: auto;
+	outline-color: none;
+	font: verdana;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: inherit;
+}
+
+div.propcode
+{
+	font-size: 12pt;
+	margin: 0px;
+	padding: 0px;
+	line-height: 12pt;
+}
+
+pre
+{
+	font: Parallax;
+	font-family: Parallax, monospace;
+	margin: 0px;
+	font-variant: normal;
+	font-size: 12pt;
+}
+
+pre.spin_con1
+{
+	background-color: #fcfaec;
+}
+
+pre.spin_con2
+{
+	background-color: #f7f4da;
+}
+
+pre.spin_var1
+{
+	background-color: #fcf4ec;
+}
+
+pre.spin_var2
+{
+	background-color: #f8ede2;
+}
+
+pre.spin_obj1
+{
+	background-color: #fcf1f1;
+}
+
+pre.spin_obj2
+{
+	background-color: #f8e2e2;
+}
+
+pre.spin_pub1
+{
+	background-color: #ecf4fc;
+}
+
+pre.spin_pub2
+{
+	background-color: #e2edf8;
+}
+
+pre.spin_pri1
+{
+	background-color: #ecfafc;
+}
+
+pre.spin_pri2
+{
+	background-color: #e2f5f8;
+}
+
+pre.spin_dat1
+{
+	background-color: #ecfcee;
+}
+
+pre.spin_dat2
+{
+	background-color: #e2f8e5;
+}
+
+h1
+{
+	font-weight: bold;
+	font-size: 140%;
+	font: verdana;
+	font-family: Verdana, Arial, sans-serif;
+	color: #002942;
+}
+
+h2
+{
+	font-family: Verdana, Arial, sans-serif;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-weight: bolder;
+	font-size: 110%;
+	color: #002942;
+}
+
+span.code_delete
+{
+	text-decoration: line-through;
+	font-style: normal;
+	font: Parallax;
+	font-family: Parallax, monospace;
+}
+
+span.code_add_mod
+{
+	background-color: #ffffff;
+	font-weight: bold;
+	font-style: normal;
+	font: Parallax;
+	font-family: Parallax, monospace;
+}
+
+span.code_in_text
+{
+	font: Parallax;
+	font-family: Parallax, monospace;
+	font-style: normal;
+	font-variant: normal;
+	font-size: 12pt;
+}
+
+h3
+{
+	font-family: Verdana, Arial, sans-serif;
+	margin-bottom: 5px;
+	margin-top: 10px;
+	font-size: 95%;
+	color: #002942;
+}
+
+h4
+{
+	font-family: Verdana, Arial, sans-serif;
+	margin-bottom: 5px;
+	margin-top: 10px;
+	font-weight: bolder;
+	font-size: 85%;
+	color: #002942;
+}
+
+span.keyword_in_text
+{
+	text-transform: uppercase;
+	font: Parallax;
+	font-family: Parallax, monospace;
+	font-weight: bolder;
+	font-variant: normal;
+	font-style: normal;
+	font-size: 12pt;
+}
+
+h6
+{
+	margin-top: 10px;
+	margin-bottom: 5px;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 70%;
+}
+
+html.HomePage
+{
+	mc-master-page: url('../MasterPages/HomePageMaster.flmsp');
+	background-color: #d9d9d9;
+	background-image: url('../Images/BulletsIconsLogos/PHC-222255-02.png');
+	background-repeat: no-repeat;
+}
+
+p.TOC1
+{
+	font-variant: normal;
+}
+
+span.ParallaxParagraphCharChar
+{
+	font-size: 16pt;
+	font-variant: normal;
+	font-style: normal;
+	font: Parallax;
+	font-family: Parallax, monospace;
+}
+
+a.Popup:visited
+{
+	color: #800080;
+}
+
+a.Popup:focus
+{
+	font: verdana;
+	font-family: Verdana, Arial, sans-serif;
+	color: #ff9900;
+}
+
+a:focus
+{
+	color: #ff9900;
+}
+
+a:visited
+{
+	color: #800080;
+	font-size: inherit;
+}
+
+a.Popup:hover
+{
+	color: #ff9900;
+}
+
+a:hover
+{
+	color: #ff9900;
+}
+
+MadCap|popup:focus
+{
+	color: #ff9900;
+}
+
+MadCap|popupBody
+{
+	color: #0474b7;
+	background-color: #d9d9d9;
+}
+
+MadCap|popupHead
+{
+	color: #0474B7;
+}
+
+MadCap|popup:hover
+{
+	color: #FF9900;
+}
+
+td
+{
+	font-family: sans-serif;
+	font-size: 100%;
+	color: #002942;
+}
+
+ul
+{
+	list-style: ul;
+	list-style-type: disc;
+	font: Verdana;
+	font-family: Verdana, Arial, sans-serif;
+	color: #666666;
+}
+
+li
+{
+	font: verdana;
+	font-family: Verdana, Arial, sans-serif;
+}
+
+ol
+{
+	list-style: ol;
+	font: verdana;
+	font-family: Verdana, Arial, sans-serif;
+	color: #666666;
+}
+
+MadCap|xref
+{
+	mc-format: '{paratext}';
+	font: inherit;
+	font-size: inherit;
+	color: #0474b7;
+}
+
+MadCap|dropDownHead
+{
+	font-family: Verdana, Arial, sans-serif;
+	font-weight: bolder;
+	padding-top: 3px;
+	font-size: 100%;
+}
+
+MadCap|dropDownHead.Indent
+{
+	font-family: Verdana, Arial, sans-serif;
+	font-weight: normal;
+	margin-left: 24px;
+	padding-bottom: 5px;
+}
+
+MadCap|dropDownBody.Indent
+{
+	margin-left: 10px;
+}
+
+MadCap|expandingHead.HelpMenu
+{
+	margin-left: 0px;
+	font-size: 100%;
+	font: verdana;
+	font-family: Verdana, Arial, sans-serif;
+}
+
+MadCap|expandingBody.HelpMenu
+{
+	margin-left: 15px;
+}
+
+MadCap|expanding.HelpMenu
+{
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 100%;
+	margin-left: 15px;
+}
+
+div.ImagePlusCaption
+{
+	clear: both;
+	float: none;
+	margin-top: 1em %;
+	margin-bottom: 1em %;
+}
+
+img.FloatCaptionLeft
+{
+	float: left;
+	margin-top: 0px;
+	padding-right: 15px;
+	border: none;
+}
+
+p.PictureCaptionNums
+{
+	mc-auto-number-format: 'Figure {n+}: ';
+	margin-top: 0;
+	margin-bottom: 7px;
+	padding-left: 0px;
+	color: #002942;
+	font: arial;
+	font-size: 90%;
+}
+
+p.clear
+{
+	margin: 0;
+	clear: both;
+	font-size: 1px;
+	padding: 0px;
+}
+
+p.PictureDescription
+{
+	font-style: italic;
+	margin-top: 0;
+	margin-bottom: 7px;
+	color: #002942;
+	padding-left: 0px;
+	font: arial;
+	font-size: 90%;
+}
+
+p.PictureCaptionNoNums
+{
+	margin-top: 0;
+	margin-bottom: 7px;
+	color: #002942;
+	font: arial;
+	font-size: 90%;
+}
+
+p.PictureCaptionNextStepNum
+{
+	mc-auto-number-format: 'Step {n+}: ';
+	margin-top: 0;
+	margin-bottom: 7px;
+	color: #002942;
+	font: arial;
+	font-size: 90%;
+}
+
+p.PictureCaptionStartStepNum
+{
+	mc-auto-number-format: 'Step {n=1}: ';
+	margin-top: 0;
+	margin-bottom: 7px;
+	color: #002942;
+	font: arial;
+	font-size: 90%;
+}
+
+li.Checklist
+{
+	list-style-image: url('../Images/BulletsIconsLogos/NewRedCheck.png');
+	font: inherit;
+}
+
+li.Hat16sq
+{
+	list-style-image: url('../Images/BulletsIconsLogos/Hat 16sq.bmp');
+}
+
+body
+{
+	mc-hyphenate: never;
+	font: verdana;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 90%;
+}
+
+.TableText
+{
+	font: Arial;
+	font-family: sans-serif;
+	font-size: 100%;
+}
+
+p.TableText
+{
+	font: Arial;
+	font-family: sans-serif;
+	font-size: 100%;
+}
+
+p.TableNoteNextNum
+{
+	mc-auto-number-format: 'Note {n+}: ';
+	color: #002942;
+	font: Arial;
+	font-family: sans-serif;
+	padding-bottom: 9px;
+	font-size: 90%;
+}
+
+p.TableNoteStartNum
+{
+	color: #002942;
+	font: Arial;
+	font-family: sans-serif;
+	padding-bottom: 9px;
+	font-size: 90%;
+	mc-auto-number-format: 'Note {n=1}: ';
+}
+
+ol.ForTableCell
+{
+	margin: 0;
+	margin-left: 12px;
+	padding-left: 12px;
+	font: arial;
+	font-family: sans-serif;
+	font-size: 100%;
+	color: #002942;
+}
+
+ol.ForTableNote
+{
+	font-size: 80%;
+	margin: 0;
+	margin-left: 12px;
+	padding-left: 12px;
+}
+
+.NudgeRight
+{
+	padding-left: 2px;
+}
+
+MadCap|breadcrumbsProxy
+{
+	font-family: sans-serif;
+	font-size: 80%;
+	font: Arial;
+	font-style: normal;
+	border-bottom-color: #ff9900;
+	color: #002942;
+}
+
+MadCap|pageFooter
+{
+	border-top: solid 1px;
+	border-top-color: #ff9900;
+	color: #002942;
+	font-family: sans-serif;
+	font-size: 6pt;
+}
+
+div.MasterFoot
+{
+	color: #002942;
+	font: Arial;
+	font-family: sans-serif;
+	text-align: left;
+	border-top: solid 1px #ff9900;
+	font-size: 60%;
+}
+
+html
+{
+	mc-master-page: url('../MasterPages/PropHelpMaster.flmsp');
+}
+
+div.Col4
+{
+	float: left;
+	padding-left: 1px;
+	padding-right: 2px;
+	padding: 2px;
+	width: 22%;
+	margin: 2px;
+	border: none 0px;
+	border-left-style: solid;
+	border-right: solid 1px #002942;
+	border-left: none 1px #002942;
+}
+
+html.TopicPopup
+{
+	mc-master-page: url('../MasterPages/TopicPopMaster.flmsp');
+}
+
+div.Col2
+{
+	float: left;
+	width: 49%;
+	margin-top: 5px;
+	line-height: 1.12em;
+}
+
+a.BDpopup
+{
+	mc-popup-height: 550px;
+	mc-popup-width: 850px;
+}
+
+html.MiniTocBtm
+{
+	mc-master-page: url('../MasterPages/MiniTOCbtm.flmsp');
+}
+
+MadCap|miniTocProxy.Btm
+{
+	border: none;
+	padding-left: 0px;
+	font-family: serif;
+	margin-bottom: 10px;
+	margin-top: 5px;
+	padding-top: 5px;
+}
+
+p.MiniTOC1
+{
+	font-family: Verdana, Arial, sans-serif;
+	font-weight: normal;
+	text-decoration: underline;
+	color: #0474B7;
+	font-size: 100%;
+}
+
+p.MiniTOC2
+{
+	font-size: 100%;
+	font-family: Verdana, Arial, sans-serif;
+	font-weight: normal;
+}
+
+p.MiniTOC3
+{
+	font-size: 100%;
+	font-family: Verdana, Arial, sans-serif;
+	font-weight: normal;
+}
+
+p.MiniTOC4
+{
+	font-size: 100%;
+	font-family: serif;
+	font-weight: normal;
+}
+
+div.GroupImgFL
+{
+	float: left;
+	margin-top: 0px;
+	padding-right: 15px;
+	border: none;
+}
+
+li.YF
+{
+	list-style-image: url('../Images/BulletsIconsLogos/YellowFolder.png');
+}
+
+li.BF
+{
+	list-style-image: url('../Images/BulletsIconsLogos/BlueFolder.png');
+	font-size: 100%;
+	font: inherit;
+}
+
+li.SF
+{
+	list-style-image: url('../Images/BulletsIconsLogos/StripeFolder.png');
+}
+
+li.WF
+{
+	list-style-image: url('../Images/BulletsIconsLogos/WhiteFolder.png');
+}
+
+img
+{
+	border: none;
+}
+
+span.TipSpan
+{
+	font-weight: bold;
+	color: #ff9900;
+	font-size: 100%;
+	font-variant: small-caps;
+	letter-spacing: 2px;
+	font: verdana;
+	font-family: Verdana, Arial, sans-serif;
+}
+
+p.Tip
+{
+	margin-bottom: 1.12em;
+	mc-auto-number-class: TipSpan;
+	background-color: #d9d9d9;
+	border-top: solid 1px #002942;
+	border-bottom: solid 1px #002942;
+	mc-auto-number-format: 'Tip:  ';
+	font: verdana;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 90%;
+}
+
+p.Caution
+{
+	margin-bottom: 1.12em;
+	mc-auto-number-class: TipSpan;
+	background-color: #d9d9d9;
+	border-top: solid 1px #002942;
+	border-bottom: solid 1px #002942;
+	mc-auto-number-format: 'Caution!  ';
+	color: #000000;
+	font: verdana;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 90%;
+}
+
+h5
+{
+	font-size: 75%;
+	font-family: Verdana, Arial, sans-serif;
+}
+
+div.background
+{
+	background-repeat: no-repeat;
+	background-image: url('../Images/BulletsIconsLogos/PHC-222255-02.png');
+}
+
+blockquote
+{
+	font-style: italic;
+}
+
+p.redline
+{
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 100%;
+	border-bottom: solid 1px #ff9900;
+	margin-left: 2px;
+	width: 98%;
+	margin: 0px;
+	padding-bottom: 15px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #ff9900;
+}
+
+div.MasterMiniTOC
+{
+	margin-bottom: 10px;
+	font-size: 100%;
+}
+
+p.eq
+{
+	font: Times New Roman;
+	font-size: 120%;
+	color: #002942;
+	margin-left: 20px;
+	font-family: serif;
+	font-style: italic;
+	margin-bottom: 1.5em;
+	margin-top: 1.12em;
+	line-height: normal;
+}
+
+span.ImpPlaintext
+{
+	font: verdana !important;
+	font-family: Verdana, Arial, sans-serif;
+	color: #666666 !important;
+}
+
+li.tabletext
+{
+	font: Arial;
+	font-family: sans-serif;
+	font-size: 100%;
+}
+
+MadCap|dropDownHotspot
+{
+	color: #0474b7;
+}
+
+MadCap|dropDownHotspot:focus
+{
+	color: #ff9900;
+}
+
+MadCap|dropDownHotspot:hover
+{
+	color: #ff9900;
+}
+
+a.BDpopup:focus
+{
+	
+}
+
+a.BDpopup:hover
+{
+	color: #ff9900;
+}
+
+a.BDpopup:link
+{
+	color: #0474b7;
+}
+
+a:link
+{
+	color: #0474b7;
+}
+
+MadCap|xref:focus
+{
+	color: #ff9900;
+}
+
+MadCap|xref:hover
+{
+	color: #ff9900;
+}
+
+MadCap|conceptLink:focus
+{
+	color: #ff9900;
+}
+
+MadCap|conceptLink:hover
+{
+	color: #ff9900;
+}
+
+MadCap|keywordLink:focus
+{
+	color: #ff9900;
+}
+
+MadCap|keywordLink:hover
+{
+	color: #ff9900;
+}
+
+MadCap|relatedTopics:focus
+{
+	color: #ff9900;
+}
+
+MadCap|relatedTopics:hover
+{
+	color: #ff9900;
+}
+
+MadCap|toggler:focus
+{
+	color: #ff9900;
+}
+
+MadCap|toggler:hover
+{
+	color: #ff9900;
+}
+
+p.HomePageCopyright
+{
+	color: #002942;
+	font-size: 60%;
+}

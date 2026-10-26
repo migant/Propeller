@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 9" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Work and Library Folders</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 9</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Work and Library Folders</span>
+        </div>
+        <p><a href="Spin9-Library.htm" title="Go back to A Library Object for TV" alt="Go back to A Library Object for TV"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin9-QR.htm" title="Go on to Spin Lesson 9 Quick Review" alt="Go on to Spin Lesson 9 Quick Review"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1><a name="kanchor287"></a>Work and Library Folders</h1>
+        <p class="PlainText">When our Display object is compiled, the Object View displays the structure shown below.&#160; This shows us that our Display object uses the Numbers and TV_Terminal objects and the TV_Terminal object uses the TV and Graphics objects.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/SpinTutorialPictures/Display Object View.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Object View of Display Application</p>
+            <p class="PictureDescription">Yellow folders indicate objects in the “work” folder.&#160; Blue folders indicate objects in the “library” folder.</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText">The folder icons in front of each object are different colors to indicate their individual folder locations.&#160; Objects with yellow folders are in the “work” folder while those with blue folders are in the “library” folder.&#160; From this display we can see that the Propeller Tool found the Numbers, TV_Terminal, TV and Graphics objects in the library folder and the Display object in the work folder.</p>
+        <p class="PlainText">Remember that we saved our Display object in the C:\Source folder?&#160; When an application is compiled, the folder that the top object file is stored within becomes known as the work folder.&#160; If that file refers to other objects, the work folder is the first place where the Propeller Tool looks for them.&#160; If the referenced object is not in the work folder, the library folder is searched next.&#160; If an object in the library folder refers to another object, the library folder is searched for that other object.&#160; An error occurs if referenced objects are not found in either the work folder or the library folder.&#160; </p>
+        <p class="PlainText">Due to this nature, it can be said that every application is composed entirely of files from as many as two folders; the work folder and/or the library folder.&#160; Keep this in mind while building your applications.</p>
+        <p class="PlainText">You can find out the location of each object, and the work and library folders, by pointing the mouse at each object in the Object View.&#160; In the figures below we see that Display is in C:\Source (the “work” folder) and Numbers is in C:\Program Files\Parallax Inc\Propeller Tool (the “library” folder). </p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/SpinTutorialPictures/Display Object View Hint.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Object View Hints for Display Application</p>
+            <p class="PictureDescription">The work and library folder paths can be seen in the hint messages</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p>
+            <img src="../../Resources/Images/SpinTutorialPictures/HintNums.png" style="width: 371px;height: 110px;" />
+        </p>
+        <p class="PictureDescription">&#160;</p>
+        <p><a href="Spin9-Library.htm" title="Go back to A Library Object for TV" alt="Go back to A Library Object for TV"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin9-QR.htm" title="Go on to Spin Lesson 9 Quick Review" alt="Go on to Spin Lesson 9 Quick Review"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <p class="clear">&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

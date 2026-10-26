@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 3" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Block Designators</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 3</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Block Designators</span>
+        </div>
+        <p><a href="Spin3-Constants.htm" title="Go back to Constants" alt="Go back to Constants"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin3-Comments.htm" title="Go on to Adding Comments" alt="Go on to Adding Comments"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1><a name="kanchor212"></a>Block Designators</h1>
+        <p class="PlainText">You may have noticed that the backgrounds of the <span class="keyword_in_text">CON</span> and <span class="keyword_in_text">PUB</span> blocks of code were colored differently when you entered them into the editor.&#160; This is the Propeller Tool’s way to indicate these are distinct blocks of code.</p>
+        <p class="PlainText">Spin code is organized in blocks that have distinct purposes.&#160; <span class="keyword_in_text">CON</span> and <span class="keyword_in_text">PUB</span> are block designators that indicate the start of a “constant block” and “public method block”, respectively.&#160; Every block designator must start in the first column of text (the leftmost edge of the edit pane) on a line.&#160; There are six types of blocks in the Spin language: <span class="keyword_in_text">CON</span>, <span class="keyword_in_text">VAR</span>, <span class="keyword_in_text">OBJ</span>, <span class="keyword_in_text">PUB</span>, <span class="keyword_in_text">PRI</span>, and <span class="keyword_in_text">DAT</span>.&#160; The following is a list of the block designators and their purpose:</p>
+        <ul>
+            <li value="1"><a name="kanchor213"></a><span class="MCExpanding"><a href="javascript:void(0);" class="MCExpandingHead_0" onclick="FMCExpand( this ); return false;"><span class="keyword_in_text">CON</span><span class="code_in_text"> —                  <![CDATA[ ]]></span>Global Constant Block.<img style="border: none;margin-left: 5px;" src="../../SkinSupport/ExpandingClosed.gif" MadCap:altsrc="../../SkinSupport/ExpandingOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/ExpandingOpen.gif' ); }" class="MCExpandingIcon" /></a><span class="MCExpandingBody" style="display: none;">&#160; Defines symbolic constants that can be used anywhere within the object (and in some cases outside the object) wherever numeric values are allowed.</span></span>
+            </li>
+            <li value="2"><span class="MCExpanding"><a href="javascript:void(0);" class="MCExpandingHead_0" onclick="FMCExpand( this ); return false;" name="kanchor214"><span class="code_in_text"><span class="keyword_in_text">VAR</span> <![CDATA[ ]]>—                  <![CDATA[ ]]></span>Global Variable Block.<img style="border: none;margin-left: 5px;" src="../../SkinSupport/ExpandingClosed.gif" MadCap:altsrc="../../SkinSupport/ExpandingOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/ExpandingOpen.gif' ); }" class="MCExpandingIcon" /></a><span class="MCExpandingBody" style="display: none;">&#160; Defines symbolic variables that can be used anywhere within the object wherever variables are allowed.</span></span>
+            </li>
+            <li value="3"><span class="MCExpanding"><a href="javascript:void(0);" class="MCExpandingHead_0" onclick="FMCExpand( this ); return false;" name="kanchor215"><span class="code_in_text"><span class="keyword_in_text">OBJ</span> — </span>Object Reference Block.<img style="border: none;margin-left: 5px;" src="../../SkinSupport/ExpandingClosed.gif" MadCap:altsrc="../../SkinSupport/ExpandingOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/ExpandingOpen.gif' ); }" class="MCExpandingIcon" /></a><span class="MCExpandingBody" style="display: none;">&#160; Defines symbolic references to other existing objects.&#160; These are used to access those objects and the methods and constants within them.</span></span>
+            </li>
+            <li value="4"><a name="kanchor216"></a><span class="MCExpanding"><a href="javascript:void(0);" class="MCExpandingHead_0" onclick="FMCExpand( this ); return false;"><span class="code_in_text"><span class="keyword_in_text">PUB</span> — </span>Public Method Block.<img style="border: none;margin-left: 5px;" src="../../SkinSupport/ExpandingClosed.gif" MadCap:altsrc="../../SkinSupport/ExpandingOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/ExpandingOpen.gif' ); }" class="MCExpandingIcon" /></a><span class="MCExpandingBody" style="display: none;">&#160; Public methods are code routines that are accessible both inside and outside the object.&#160; Public routines provide the interface to the object; the way methods outside of the object interact with the object.&#160; There must be at least one <span class="keyword_in_text">PUB</span> declaration in every object.</span></span>
+            </li>
+            <li value="5"><span class="MCExpanding"><a href="javascript:void(0);" class="MCExpandingHead_0" onclick="FMCExpand( this ); return false;" name="kanchor217"><span class="keyword_in_text">PRI<span class="code_in_text"> —                  <![CDATA[ ]]></span></span>Private Method Block.<img style="border: none;margin-left: 5px;" src="../../SkinSupport/ExpandingClosed.gif" MadCap:altsrc="../../SkinSupport/ExpandingOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/ExpandingOpen.gif' ); }" class="MCExpandingIcon" /></a><span class="MCExpandingBody" style="display: none;">&#160; Private methods are code routines that are accessible only inside the object.&#160; Since they are not visible from the outside, they provide a level of encapsulation to protect critical elements within the object and help maintain the integrity of the object’s purpose.</span></span>
+            </li>
+            <li value="6"><span class="MCExpanding"><a href="javascript:void(0);" class="MCExpandingHead_0" onclick="FMCExpand( this ); return false;" name="kanchor218"><span class="keyword_in_text">DAT</span><span class="code_in_text"> —                  <![CDATA[ ]]></span>Data Block.<img style="border: none;margin-left: 5px;" src="../../SkinSupport/ExpandingClosed.gif" MadCap:altsrc="../../SkinSupport/ExpandingOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/ExpandingOpen.gif' ); }" class="MCExpandingIcon" /></a><span class="MCExpandingBody" style="display: none;">&#160; Defines data tables, memory buffers, and Propeller Assembly code.&#160; The data block’s data can be assigned symbolic names and can be accessed via Spin code and assembly code.</span></span>
+            </li>
+        </ul>
+        <p class="PlainText">There can be multiple occurrences of each block type, arranged in any order desired, but there must be at least one <span class="keyword_in_text">PUB</span> block per object.&#160; Even though the number of blocks and their order is quite flexible, typically there is only one occurrence of <span class="keyword_in_text">CON</span>, <span class="keyword_in_text">VAR</span>, <span class="keyword_in_text">OBJ</span> and <span class="keyword_in_text">DAT</span> blocks, multiple occurrences of <span class="keyword_in_text">PUB</span> and <span class="keyword_in_text">PRI</span> blocks, and the suggested order for typical programs is the order they are given in the list above.&#160; </p>
+        <p class="PlainText"><a name="kanchor219"></a>The very first <span class="keyword_in_text">PUB</span> block in the very first object (the Top Object File where compilation starts from) automatically becomes the Propeller Application’s starting point; it is executed first when the application starts.&#160; No other public or private method is executed automatically, but rather they are executed only as determined by the natural flow of the application.</p>
+        <p class="PlainText">The Propeller Tool automatically colors the backgrounds of each block differently, even two consecutive occurrences of the same block type, in order to make it easy to identify the type, start, and end of each block.&#160; This in no way affects the actual source code itself, it is simply an indicator for on-screen use that is intended to solve a typical problem with source code; that is, as the code gets larger, it is harder to find a particular method quickly as you scroll up and down through the code unless you have some kind of separator between methods.&#160; The background color coding serves as an automatic separator that prevents you from having to waste time typing in text-based separators manually.</p>
+        <p><a href="Spin3-Constants.htm" title="Go back to Constants" alt="Go back to Constants"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin3-Comments.htm" title="Go on to Adding Comments" alt="Go on to Adding Comments"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

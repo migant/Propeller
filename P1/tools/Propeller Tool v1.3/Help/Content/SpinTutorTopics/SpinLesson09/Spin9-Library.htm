@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 9" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>A Library Object for TV</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 9</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">A Library Object for TV</span>
+        </div>
+        <p><a href="Spin9-Intro.htm" title="Go back to The Propeller Library" alt="Go back to The Propeller Library"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin9-WorkLib.htm" title="Go on to Work and Library Folders" alt="Go on to Work and Library Folders"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1><a name="kanchor282"></a>A Library Object for TV</h1>
+        <p class="PlainText">The Propeller Tool comes with a library of objects created by Parallax engineers.&#160; These objects perform many useful functions such as serial communication, floating-point math, number-to-string and string-to-number conversion, and TV display generation, using standard PC-style keyboards, mice and monitors, etc.</p>
+        <p class="PlainText">This lesson  uses two Propeller Library objects, Numbers and TV_Terminal, to convert numeric values to strings and display them on a TV.</p>
+        <ul>
+            <li class="Checklist" value="1">Connect your Propeller Demo Board or other Propeller programming platform to an NTSC television using an RCA&#160;jack. Refer to the <a href="../TutorSchem.htm">Propeller Tutorial Schematics</a> if your programming platform does not include an RCA-based TV&#160;connection.</li>
+        </ul>
+        <p class="PlainText"><a name="kanchor283"></a>The Propeller Object Library is simply a folder containing Propeller object files that are automatically created during the Propeller Tool software installation.&#160; You can get to the Propeller Library folder by selecting “Propeller Library” from the Recent Folders list.&#160; After selecting the Propeller Library, the Files List will display all the available objects.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/SpinTutorialPictures/Recent Folders - Propeller Library.png" style="width: 246px;height: 72px;" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Propeller Library Browsing</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <h2>Spin Exercise 9-1: Creating a Top Object "Display.spin"</h2>
+        <ul>
+            <li class="Checklist" value="1">Select “Propeller Library” from the Integrated Explorer’s Recent Folders list to quickly browse to the library folder. You should see files named Numbers and TV_Terminal, both of which will be used in this lesson.</li>
+            <li class="Checklist" value="2">Create a new file and enter the code below. The highlighted items are important for the discussion following the code.</li>
+        </ul>
+        <div class="propcode"><a href="../../../../Examples/Help/Spin Tutorial/Exercise 09-1/Display.spin"><img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" title="Open example in Propeller Tool" /></a><pre xml:space="preserve" class="spin_con1">{{ Display.spin }}
+
+</pre><pre xml:space="preserve" class="spin_con2">CON
+  _clkmode = xtal1 + pll16x
+  _xinfreq = 5_000_000
+
+</pre><pre xml:space="preserve" class="spin_obj1">OBJ
+  Num   :       "Numbers"
+  TV    :       "TV_Terminal"
+  
+</pre><pre xml:space="preserve" class="spin_pub1">PUB Main <span class="code_add_mod">| Temp</span>                    <![CDATA[ ]]></pre><pre xml:space="preserve" class="spin_pub1">  <span class="code_add_mod">Num.Init</span>                                    'Initialize Numbers   
+  TV.Start(12)                                'Start TV Terminal    
+                                                                              
+  Temp := 900 * 45 + 401                      'Evaluate expression  
+  <span class="code_add_mod">TV.Str</span>(<span class="code_add_mod">string(</span>"900 * 45 + 401 = "<span class="code_add_mod">)</span>)         'then display it and  
+  TV.Str(<span class="code_add_mod">Num.ToStr</span>(Temp, <span class="code_add_mod">Num#DDEC</span>))           'its result in decimal
+  <span class="code_add_mod">TV.Out(13)</span>                                                                  
+  TV.Str(string("In hexadecimal it's  = "))   'and in hexadecimal   
+  TV.Str(Num.ToStr(Temp, Num#IHEX))                                           
+  TV.Out(13)                                                                  
+  TV.Out(13)                                                                  
+                                                                              
+  TV.Str(string("Counting by fives:"))        'Now count by fives   
+  TV.Out(13)
+  repeat Temp from 5 to 30 step 5
+    TV.Str(Num.ToStr(Temp, Num#DEC))
+    if Temp &lt; 30
+      TV.Out(",")
+</pre>
+        </div>
+        <p class="PlainText">&#160;</p>
+        <ul>
+            <li class="Checklist" value="1">Save this object as “Display.spin” in a folder of your choice; for this example we’ll use the “xx” folder.</li>
+            <li class="Checklist" value="2">Compile and download this example. The TV&#160;display should show the following text:</li>
+        </ul>
+        <div class="propcode"><pre>900 * 45 + 401 = 40,901
+In hexadecimal it's&#160; = $9FC5
+Counting by fives:
+ 5, 10, 15, 20, 25, 30 
+&#160;</pre>
+        </div>
+        <p class="PlainText">Look at what we just achieved!&#160; Using just a few lines of our own code plus two existing library objects and three resistors (on the Propeller Demo Board) we converted numeric values to text strings and generated a TV-compatible signal to display that text in real time on a standard TV!&#160; In fact, while you are reading this, a cog is keeping busy constantly generating an NTSC signal at 60 frames per second that the TV can lock onto.</p>
+        <p class="PlainText">The TV_Terminal object provides a great display for debugging purposes.&#160; Since the Propeller has many processors and can run quite fast, a real-time display such as a TV monitor (CRT or LCD) used for debugging purposes goes a long way toward developing optimal source code.&#160; We recommend using this technique along with the usual debugging techniques to speed up development time.</p>
+        <p class="PlainText"><a name="kanchor284"></a>Let’s look at some important parts of our code now.&#160; The first new item in our code is the <span class="code_in_text">|</span>&#160;<span class="code_in_text">Temp</span> that appears in <span class="code_in_text">Main</span>’s declaration line.&#160; Don't be fooled, this may look like a return variable declaration, but it is not.&#160; The pipe symbol ‘<span class="code_in_text">|</span>’ indicates we are declaring local variables next.&#160; So, <span class="code_in_text">| Temp</span> declares that <span class="code_in_text">Temp</span> is a long-sized local variable for <span class="code_in_text">Main</span>.&#160; </p>
+        <p class="PlainText">Next we have two very important statements, <span class="code_in_text">Num.Init</span> and <span class="code_in_text">TV.Start(12)</span>.&#160; These two statements initialize the Numbers object and start the TV_Terminal object (on pins 12, 13 and 14), respectively.&#160; Each of these objects requires some kind of initialization before using it.&#160; Numbers requires that its <span class="code_in_text">Init</span> method is called to initialize some internal registers.&#160; TV_Terminal requires that its <span class="code_in_text">Start</span> method is called to configure the proper output pins and to start two more cogs to generate the display signals.&#160; Objects typically indicate these requirements in their documentation, but it is common that they include an <span class="code_in_text">Init</span> or a <span class="code_in_text">Start</span> method if they require some initial setup before use.</p>
+        <p class="PlainText">The next line performs some arithmetic and sets our local variable, <span class="code_in_text">Temp</span>, to the result.&#160; We'll use this result soon.</p>
+        <p class="PlainText"><a name="kanchor285"></a>The next three statements create the first line of text on the TV display:&#160; <span class="code_in_text">9</span>&#160;<span class="code_in_text">*</span>&#160;<span class="code_in_text">45</span>&#160;<span class="code_in_text">+</span>&#160;<span class="code_in_text">401</span>&#160;<span class="code_in_text">=</span> <![CDATA[ ]]><span class="code_in_text">40,901</span>.&#160; The <span class="code_in_text">TV.Str</span> method outputs a zero-terminated string to the display.&#160; Its parameter, <span class="code_in_text">string("900 * 45 + 401 = ")</span> is new to us.&#160; <span class="code_in_text">STRING</span><span class="code_in_text"></span><span class="code_in_text"></span> is a directive that creates a zero-terminated string of characters (multiple bytes of character data followed by a zero; sometimes called a z-string) and returns the address of that string.&#160; Most methods that deal with strings require just the address of the starting character and for the string to end with a byte equal to zero.&#160; <span class="code_in_text">TV.Str</span> method’s parameter requires exactly that, the address of a zero-terminated string.&#160; So the line <span class="code_in_text">TV.Str(string("900 * 45 + 401 = "))</span> causes the string “900 * 45 + 401 =<span class="code_in_text"></span>” to be displayed on the TV.</p>
+        <p class="PlainText"><a name="kanchor286"></a>The next statement, <span class="code_in_text">TV.Str(Num.ToStr(Temp, Num</span><span class="code_in_text">xx</span><span class="code_in_text">DDEC))</span> prints the “40,901” part of the line.&#160; The <span class="code_in_text">Num.ToStr</span> method converts the numeric value in <span class="code_in_text">Temp </span>into a string using delimited decimal format and returns the address of that string.&#160; <span class="code_in_text">Temp</span>, of course, holds the long-sized result of our earlier expression: 40901.&#160; The <span class="code_in_text">Num#DDEC</span> part is new to us, however.&#160; The <span class="code_in_text">#</span> symbol when used this way is an Object-Constant reference; it is used to reference a constant that was defined in another object.&#160; In this case, <span class="code_in_text">Num#DDEC</span> refers to the “format constant” <span class="code_in_text">DDEC</span> that is declared within the Numbers object.&#160; As defined by Numbers, <span class="code_in_text">DDEC</span> stands for Delimited Decimal and holds a value that indicates to the <span class="code_in_text">ToStr</span> method that it should format the number with a thousands-group delimiter; a comma in this case.&#160; So, <span class="code_in_text">ToStr</span> creates a z-string equal to “40,901” and returns the address of it.&#160; <span class="code_in_text">TV.Str</span> then outputs that string onto the display.&#160; Read the documentation in the Numbers object for more information about this and other format constants.</p>
+        <p class="PlainText"><span class="code_in_text">TV.Out(13)</span> outputs a single byte, 13, to the display.&#160; The 13 is the ASCII code for a carriage return (a non-visible character) and causes the TV_Terminal object to move to the next text line.&#160; We do this in preparation for the next string we'll print afterward.</p>
+        <p><a href="Spin9-Intro.htm" title="Go back to The Propeller Library" alt="Go back to The Propeller Library"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin9-WorkLib.htm" title="Go on to Work and Library Folders" alt="Go on to Work and Library Folders"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

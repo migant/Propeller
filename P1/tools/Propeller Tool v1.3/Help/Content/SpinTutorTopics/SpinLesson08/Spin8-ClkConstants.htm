@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 8" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Clock Constants</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 8</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Clock Constants</span>
+        </div>
+        <p><a href="Spin8-ClockSettings.htm" title="Go back to Clock Settings" alt="Go back to Clock Settings"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin8-ClkTiming.htm" title="Go on to Clock-Related Timing" alt="Go on to Clock-Related Timing"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1><a name="kanchor275"></a>Declaring Clock Settings Constants</h1>
+        <h2>Spin Exercise 8-1:  Blinker2.spin with Internal Slow Clock</h2>
+        <p class="PlainText"> Let's continue with our Blinker2 object.</p>
+        <ul>
+            <li class="Checklist" value="1">Change the <span class="keyword_in_text">CON</span> block as follows to set the clock mode to use the internal slow clock (only the <span class="keyword_in_text">CON</span> block is shown here).</li>
+        </ul>
+        <div class="propcode"><a href="../../../../Examples/Help/Spin Tutorial/Exercise 08-1/Blinker2.spin"><img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" title="Open example in Propeller Tool" /></a><pre class="spin_con1" xml:space="preserve">{{ Blinker2.spin }}
+&#160;
+CON
+&#160; <span class="code_add_mod">_CLKMODE = RCSLOW&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 'Set to internal slow clock</span></pre><pre class="spin_con1" xml:space="preserve">&#160; MAXLEDS&#160; = 6&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 'Number of LED objects to use
+&#160;</pre><pre class="spin_con1" xml:space="preserve"> &lt;remaining code unchanged&gt;
+&#160;</pre>
+        </div>
+        <p class="PlainText">&#160;</p>
+        <ul>
+            <li class="Checklist" value="1">Try compiling and downloading Blinker2 now.&#160; </li>
+        </ul>
+        <p class="PlainText">Once the Propeller finishes the download/boot-up process, it switches to the <span class="code_in_text">RCSLOW</span> clock mode and executes the application.&#160; Since the application is now running with a clock that is hundreds of times slower than before, the application will run much slower, taking more than 20 seconds for the fastest toggling pin, P20, to toggle off for the first time.</p>
+        <p class="PlainText">You can replace <span class="code_in_text">_CLKMODE = RCSLOW</span> with <span class="code_in_text">_CLKMODE = RCFAST</span> to have the application run with the internal fast clock (the default).</p>
+        <h2>Spin Exercise 8-2:  Blinker2.spin with External 5 MHz Clock</h2>
+        <p class="PlainText">If you’d like to use an external clock, there are many more options for <span class="keyword_in_text">_CLKMODE</span>.&#160; We’ll assume you’re using a 5 MHz external crystal, like the one that comes with the Propeller Demo Board.&#160; </p>
+        <ul>
+            <li class="Checklist" value="1">Modify your code's <span class="keyword_in_text">CON </span>section to match the following:</li>
+        </ul>
+        <div class="propcode"><a href="../../../../Examples/Help/Spin Tutorial/Exercise 08-2/Blinker2.spin"><img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" title="Open example in Propeller Tool" /></a><pre xml:space="preserve" class="spin_con1">{{ Blinker2.spin }}
+&#160;
+CON
+&#160; <span class="code_delete">_CLKMODE = RCSLOW&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 'Set to internal slow clock</span>&#160; </pre><pre xml:space="preserve" class="spin_con1">  <span class="code_add_mod">_CLKMODE = XTAL1&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 'Set to ext. low-speed crystal</span></pre><pre xml:space="preserve" class="spin_con1">&#160; <span class="code_add_mod">_XINFREQ = 5_000_000&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 'Frequency on XIN pin is 5 MHz</span></pre><pre xml:space="preserve" class="spin_con1">&#160; MAXLEDS&#160; = 6&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 'Number of LED objects to use
+&#160;
+&lt;remaining code unchanged&gt;
+&#160;</pre>
+        </div>
+        <p class="PlainText">&#160;</p>
+        <p class="PlainText">Here we set <span class="keyword_in_text">_CLKMODE</span> to <span class="keyword_in_text">XTAL1</span> which configures the clock mode for an external low-speed crystal and configures the Propeller internal oscillator gain circuitry to drive a 4 MHz to 16 MHz crystal.&#160; Besides the crystal itself (which should be connected to the XI and XO pins), no other external circuitry is required for this clock configuration.</p>
+        <p class="PlainText"><a name="kanchor276"></a>Whenever external crystals or clocks are used, either <span class="keyword_in_text">_XINFREQ</span> or <span class="keyword_in_text">_CLKFREQ</span> must be specified in addition to <span class="keyword_in_text">_CLKMODE</span>.&#160; <span class="keyword_in_text">_XINFREQ</span> specifies the frequency coming into the XI pin (Crystal Input pin).&#160; <span class="keyword_in_text">_CLKFREQ</span> specifies the System Clock frequency.&#160; The two are related by PLL settings which we’ll discuss later.&#160; </p>
+        <p class="PlainText"><a name="kanchor277"></a>In this example we specified an <span class="keyword_in_text">_XINFREQ</span> value of 5 million to indicate that the frequency on the XI pin is 5 MHz, since we have a 5 MHz crystal connected to XI and XO.&#160; Once that is specified, the <span class="keyword_in_text">_CLKFREQ</span> value is automatically calculated and set by the Propeller Tool.</p>
+        <p class="PlainText"><a name="kanchor278"></a>You could also have specified a <span class="keyword_in_text">_CLKFREQ</span> of 5 MHz (instead of <span class="keyword_in_text">_XINFREQ</span>) and the proper <span class="keyword_in_text">_XINFREQ</span> value would automatically be set by the Propeller Tool. However, it is more typical to specify the <span class="keyword_in_text">_XINFREQ</span> value since <span class="keyword_in_text">_CLKFREQ</span> is directly affected by PLL settings.&#160; In our example, both<span class="keyword_in_text"> _XINFREQ</span> and <span class="keyword_in_text">_CLKFREQ</span> end up with the same value, but a later example will show how they can typically differ.</p>
+        <ul>
+            <li class="Checklist" value="1">Compile and download Blinker2 now.</li>
+        </ul>
+        <p class="PlainText">You should see the LEDs toggle at slightly less than half the speed as it did in <a href="../SpinLesson07/Spin7-Processes.htm">Exercise 7-1</a>.&#160; Our settings specified an external 5 MHz crystal instead of the internal 12 MHz oscillator.</p>
+        <h2>Spin Exercise 8-3:  Blinker2.spin with External Clock + PLL</h2>
+        <p class="PlainText">So why would anyone want to use an external crystal that is slower than the internal clock?&#160; Two reasons: </p>
+        <ol>
+            <li value="1">For accuracy; the internal clock is not very accurate from chip to chip or across voltage variances but external crystals or clock/oscillators are typically very accurate.  </li>
+            <li value="2">The phase-locked loop (PLL) can only be used with external clock sources.</li>
+        </ol>
+        <ul>
+            <li class="Checklist" value="1">Try the following example:</li>
+        </ul>
+        <div class="propcode"><a href="../../../../Examples/Help/Spin Tutorial/Exercise 08-3/Blinker2.spin"><img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" title="Open example in Propeller Tool" /></a><pre xml:space="preserve" class="spin_con1">{{ Blinker2.spin }}
+&#160;
+CON
+&#160; _CLKMODE = XTAL1 + <span class="code_add_mod">PLL4X</span>&#160;&#160;&#160;&#160; 'Set to ext low-speed crystal<span class="code_add_mod">, 4x PLL</span></pre><pre class="spin_con1" xml:space="preserve">&#160; _XINFREQ = 5_000_000&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 'Frequency on XIN pin is 5 MHz
+&#160; MAXLEDS&#160; = 6&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 'Number of LED objects to use
+&#160;</pre><pre class="spin_con1" xml:space="preserve">&lt;remaining code unchanged&gt;
+&#160;</pre>
+        </div>
+        <p class="PlainText">&#160;</p>
+        <p class="PlainText">Here we changed the <span class="keyword_in_text">_CLKMODE</span> setting slightly by adding the <span class="code_in_text">+ PLL4X</span> value.&#160; This configures the clock mode to use the internal phase-locked loop (PLL) to wind up the XIN frequency by four times, resulting in a System Clock frequency of 5 MHz * 4 = 20 MHz.</p>
+        <ul>
+            <li class="Checklist" value="1">Try compiling and downloading Blinker2 with these settings.&#160; You should see the LEDs blink at a faster rate than you’ve seen before.</li>
+        </ul>
+        <p class="PlainText">NOTE: Since we specified <span class="keyword_in_text">_XINFREQ</span> here, <span class="keyword_in_text">_CLKFREQ</span> is automatically calculated to be 20 MHz.&#160; If we had specified a <span class="keyword_in_text">_CLKFREQ</span> value of 5 MHz instead, adding the <span class="keyword_in_text">PLL4X</span> setting would have calculated an <span class="keyword_in_text">_XINFREQ</span> value of 1.25 MHz, which doesn’t match our external crystal’s frequency.&#160; This is why it is more common to specify an XIN frequency (<span class="keyword_in_text">_XINFREQ</span>) rather than a clock frequency (<span class="keyword_in_text">_CLKFREQ</span>).</p>
+        <p class="PlainText">The Clock PLL circuit, when enabled, always winds up the frequency by 16 times, but you can select any of the 1x, 2x, …16x taps for the final System Clock frequency using the settings <span class="code_in_text">PLL1X</span>, <span class="code_in_text">PLL2X</span>, <span class="code_in_text">PLL4X</span>, <span class="code_in_text">PLL8X</span> and <span class="code_in_text">PLL16X</span>.</p>
+        <ul>
+            <li class="Checklist" value="1">Try changing <span class="keyword_in_text">_CLKMODE</span> from <span class="code_in_text">XTAL1 + PLL4x</span> to <span class="code_in_text">XTAL1 + PLL16x</span> and download again.&#160; </li>
+        </ul>
+        <p class="PlainText">That configures the System Clock to be 5 MHz * 16 = 80 MHz!&#160; Most of the LEDs blink so quickly that they appear to be solidly on.</p>
+        <p><a href="Spin8-ClockSettings.htm" title="Go back to Clock Settings" alt="Go back to Clock Settings"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin8-ClkTiming.htm" title="Go on to Clock-Related Timing" alt="Go on to Clock-Related Timing"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

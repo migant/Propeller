@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Questions and Answers" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>I/O Pins</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="QnaLocal.htm">Questions and Answers</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">I/O Pins (P8X32A)</span>
+        </div>
+        <h1>I/O Pins</h1>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1962869649_0" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How many pins does the Propeller have?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1962869649_0" style="display: none;">
+                <p class="PlainText">The Propeller P8X32A comes in 3 package types:</p>
+                <ul>
+                    <li value="1">40-Pin DIP</li>
+                    <li value="2">44-Pin LQFP</li>
+                    <li value="3">44-pin QFN</li>
+                </ul>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1962869649_1" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Do the 44-pin packages have more I/O&#160;pins than the 40-pin DIP?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1962869649_1" style="display: none;">
+                <p class="PlainText">No. All three Propeller P8X32A packages have 32 I/O&#160;pins. On the 44-pin packages, there are extra power and ground connections.      </p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1962869649_2" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is the default pin state on startup?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1962869649_2" style="display: none;">
+                <p class="PlainText">Upon startup or reset, all I/O&#160;pins default to input (high impedance), meaning each cog's DIRA register is initialized to zero. Each cog's OUTA register is initialized to zero as well, but this low (ground)&#160;state is not reflected on the pin until the pin is set to the output direction (via DIRA).</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1962869649_3" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Are there any special-purpose I/O pins?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1962869649_3" style="display: none;">
+                <p>I/0 pins P28–P31 have a special purpose upon power-up/reset but are general-purpose I/O afterwards:</p>
+                <ul>
+                    <li value="1"><a name="kanchor376"></a>P28: I<sup>2</sup>C SCL connection to optional, external EEPROM.</li>
+                    <li value="2">P29- I<sup>2</sup>C SDA connection to optional, external EEPROM.</li>
+                    <li value="3"><a name="kanchor377"></a>P30: Serial Tx to host.</li>
+                    <li value="4">P31:Serial Rx from host.</li>
+                </ul>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1962869649_4" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can any cog access any I/O pin? </a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1962869649_4" style="display: none;">
+                <p class="PlainText">After boot-up, any cog can access every pin at any time. There is no special relationship between a specific cog and a specific group of I/O pins.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1962869649_5" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How is cog contention for I/O pins handled?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1962869649_5" style="display: none;">
+                <p class="PlainText">Each cog has its own 32-bit I/O Direction Register (DIRA) and 32-bit I/O Output Register (OUTA) to influence the directions and output states of the Propeller chip’s corresponding 32 I/O pins.&#160; A cog's desired I/O directions and output states is communicated through the entire cog collective to ultimately become what is called "Pin Directions" and "Pin Outputs" in the upper right corner of the <a href="../HardwareTopics/BlockDiagP8X32A.htm" target="" title="" alt="" class="MCXref_0">P8X32A Block Diagram</a>.</p>
+                <p class="PlainText">The result of this I/O pin wiring configuration can easily be described in the following simple rules:</p>
+                <ol style="list-style-type: upper-alpha;">
+                    <li value="1">A pin is an input only if no active cog sets it to an output.</li>
+                    <li value="2">A pin outputs low only if all active cogs that set it to output also set it to low.</li>
+                    <li value="3">A pin outputs high if any active cog sets it to an output and also sets it high.</li>
+                </ol>
+                <p class="PlainText">For details and I/O sharing examples see <a href="../HardwareTopics/IOpins.htm" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">I/O Pins</a> <![CDATA[ ]]>.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1962869649_6" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is the I/O&#160;pin logic threshold and logic levels? </a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1962869649_6" style="display: none;">
+                <p class="PlainText">The P8X32A is a CMOS&#160;device, so the I/O&#160;pin logic threshold is approximately 1/2 Vdd. </p>
+                <ul>
+                    <li value="1">With the P8X32A running at 3.3 V, the I/O pin logic threshold is about 1.6 V.</li>
+                    <li value="2"> An input pin will interpret a voltage below 1.6 V as a logic level low, and will interpret a voltage above 1.6 V as a logic level high.</li>
+                    <li value="3"> An output pin will produce 0 V for low and 3.3 V for high.</li>
+                </ul>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1962869649_7" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Are there any analog I/O pins?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1962869649_7" style="display: none;">
+                <p class="PlainText">No, the Propeller P8X32A I/O&#160;pins are all tri-state digital pins, supporting output-high, output-low, and input states. However,  sigma-delta analog-to-digital and digital-to-analog conversion can be synthesized on any I/O&#160;pin through the use of any cog's <a href="QnaCounters.htm">Counter Modules</a>. </p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1962869649_8" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Do any Propeller I/O&#160;pins support Schmitt triggering?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1962869649_8" style="display: none;">
+                <p class="PlainText">No; however, one or more  I/O pins can be configured to handle Schmitt-triggered inputs with a few external resistors and one additional pin with programmed positive feedback. See <a href="http://www.parallaxsemiconductor.com/an015" target="_blank" title="Open web page in new window" alt="Open web page in new window">Application Note AN015</a>.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1962869649_9" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How much current can each I/O&#160;pin source or sink?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1962869649_9" style="display: none;">
+                <p class="PlainText">Any individual I/O pin can source or sink about 40 mA; however, care should be taken to ensure that the entire chip does not exceed 1 W of power dissipation. See the  <a href="../../../Propeller P8X32A Datasheet v1.4.pdf" target="_blank" title="Open PDF in new window" alt="Open PDF in new window">Propeller P8X32A Datasheet</a> for more information.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1962869649_10" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can I power devices from an I/O&#160;pin?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1962869649_10" style="display: none;">
+                <p class="PlainText">Yes, but be careful that the device's voltage requirements are within the Propeller's supply voltage, and the device's current draw doesn't exceed the I/O pin's source/sink current limit. </p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1962869649_11" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can I power devices from the Propeller Vdd pins?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1962869649_11" style="display: none;">
+                <p class="PlainText">No, the Propeller's Vdd pins are for supplying power to the chip: 2.7 to 3.6 VDC, 300 mA. However, the Propeller and an external device can be powered from the same source (approximately 3.3 VDC) as long as that power source is capable of handling the overall current draw. See the <a href="../../../Propeller P8X32A Datasheet v1.4.pdf" target="_blank" title="Open PDF in new window" alt="Open PDF in new window">Propeller P8X32A Datasheet</a> for more information.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 2" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Download to RAM vs. EEPROM</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 2</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Download to RAM vs. EEPROM</span>
+        </div>
+        <p><a href="Spin2-FirstObj.htm" title="Go back to Our First Object" alt="Go back to Our First Object"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin2-Exp.htm" title="Go on to Understanding the Object Code" alt="Go on to Understanding the Object Code"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1><a name="kanchor201"></a>Downloading to RAM vs. EEPROM</h1>
+        <p class="PlainText">Before we explain the code, let’s take a closer look at the downloading process.</p>
+        <h2>Temporary Application (RAM&#160;only)</h2>
+        <p class="PlainText">Since our code was downloaded to RAM only, power cycling or resetting the Propeller would cause RAM contents to be lost and the program to stop permanently.&#160; </p>
+        <p class="PlainText">
+            <img src="../../Resources/Images/SpinTutorialPictures/DownloadRAM.png" />
+        </p>
+        <ul>
+            <li class="Checklist" value="1">Try pressing the reset button.&#160; The LED should turn off and stay off.</li>
+        </ul>
+        <h2>Permanent Application (EEPROM)</h2>
+        <p class="PlainText">What if we don't want it turned off permanently, after reset or power-off?&#160; We could download to EEPROM instead of just RAM.&#160; </p>
+        <p class="PlainText">
+            <img src="../../Resources/Images/SpinTutorialPictures/DownloadEEPROM.png" />
+        </p>
+        <ul>
+            <li class="Checklist" value="1">Let’s download again, but this time press the F11 key (or select Run <span class="code_in_text">→ </span>Compile Current <span class="code_in_text">→</span> Load EEPROM from the menu) to compile and download our example program to EEPROM.&#160; </li>
+        </ul>
+        <p class="PlainText">As you may see from the above figure, the last step actually downloaded to RAM first, then the Propeller chip programmed its external EEPROM, then started running the application from RAM, blinking the LED on I/O pin 16.</p>
+        <p class="PlainText">You probably noticed that the “Propeller Communication” dialog stayed on the screen much longer than last time; EEPROMs take much longer to program than RAMs do.</p>
+        <ul>
+            <li class="Checklist" value="1">Try pressing and releasing the reset button now.&#160; A short time after releasing the reset button, the LED starts blinking.&#160; This is exactly what we wanted; a more permanent application in our Propeller chip.&#160; </li>
+        </ul>
+        <h2>Boot-Up Time</h2>
+        <p class="PlainText"><a name="kanchor202"></a>Upon waking up from reset, the Propeller chip performed the boot-up procedure. During that procedure, it determined it needed to boot up from the external EEPROM and then it took approximately 1½ seconds to completely copy the 32 Kbytes of content into its RAM and start running it.</p>
+        <p class="PlainText">Downloading only to RAM is convenient for development sessions because it is much faster.&#160; Downloading to both RAM and EEPROM to make the application more permanent is best done only when necessary because of the extra download time required.</p>
+        <p class="Caution" MadCap:autonum="Caution! &#160;"><span class="autonumber"><span class="TipSpan">Caution! &#160;</span></span><b></b>If you download to EEPROM one or more times then revise your program and download to RAM only, when manually reset, the Propeller will boot up with your old program.&#160; This may make sense now, but that result can be very confusing when you're not paying attention.&#160; If things don't work right after a reset occurs, suspect the program in EEPROM first.</p>
+        <p><a href="Spin2-FirstObj.htm" title="Go back to Our First Object" alt="Go back to Our First Object"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin2-Exp.htm" title="Go on to Understanding the Object Code" alt="Go on to Understanding the Object Code"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

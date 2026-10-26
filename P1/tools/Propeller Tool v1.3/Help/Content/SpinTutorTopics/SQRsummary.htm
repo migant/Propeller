@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Spin Tutorial Quick Review Summary</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs"> Quick Review Summary</span>
+        </div>
+        <h1>Spin Tutorial Quick Review Summary</h1>
+        <p class="PlainText">If you are just trying to verify something you learned in this Tutorial but don't remember just where it was, you can quickly browse through each lesson's Quick Review here:</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3867169221_0" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Lesson 1 Quick Review</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3867169221_0" style="display: none;">
+                <ul>
+                    <li value="1">The Propeller is programmed using two custom-designed languages: Spin (required) and Propeller Assembly (optional).<ul><li value="1">Spin is a high-level, object-based language interpreted at run time.</li><li value="2">Propeller Assembly is a low-level, optimized assembly language which is executed directly at run time.</li></ul></li>
+                    <li value="2">Objects are programs that:<ul><li value="1">are self-contained.</li><li value="2">perform a specific task.</li><li value="3">may be reused by many applications.</li></ul></li>
+                    <li value="3">Well-written objects from one developer can easily be used by other developers and applications.</li>
+                    <li value="4">A Propeller Object:<ul><li value="1">consists of two or more lines of Spin code and possibly Propeller Assembly code.</li><li value="2">is stored on the computer as a file with a “.spin” extension.</li><li value="3">may use one or more other objects to build a sophisticated application.</li></ul></li>
+                    <li value="5">Propeller Applications:<ul><li value="1">consist of one or more objects.</li><li value="2">are compiled binary streams containing executable code and data.</li><li value="3">are run by the Propeller chip in one or more cogs (processors) as directed by the application.</li></ul></li>
+                    <li value="6">The topmost object in a compiled application is called the “Top Object File.”</li>
+                </ul>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3867169221_1" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Lesson 2 Quick Review</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3867169221_1" style="display: none;">
+                <ul>
+                    <li value="1">Applications are downloaded to either Propeller RAM only or RAM and EEPROM.<ul><li value="1">Those in RAM will not survive power cycling or resetting the Propeller chip.</li><li value="2">Those in EEPROM are loaded into RAM on boot-up in approximately 1½ seconds.</li><li value="3">To download the current object to:<ul><li value="1">RAM only: press F10 or select Run <span class="code_in_text">→</span> Compile Current <span class="code_in_text">→</span> Load RAM + Run.</li><li value="2">RAM + EEPROM: press F11 or select Run <span class="code_in_text">→</span> Compile Current <span class="code_in_text">→</span> Load EEPROM + Run.</li></ul></li></ul></li>
+                    <li value="2">Spin language:<ul><li value="1">Method means “procedure” or “routine.”</li><li value="2"><span class="keyword_in_text">PUB</span> <![CDATA[ ]]><i>Symbol</i> declares a public method. "Symbol"&#160;must be a word that is unique to the object, and must not be a <a href="../TableTopics/ResWords.htm">reserved word</a>. Every object must contain at least one public (<span class="keyword_in_text">PUB</span>) method.&#160; </li><li value="3"><span class="keyword_in_text">DIRA</span> is the direction register for I/O pins 0-31.&#160; Each bit sets the corresponding I/O pin’s direction to input (0) or output (1).&#160; </li><li value="4"><span class="keyword_in_text">OUTA</span> is the output state register for I/O pins 0-31.&#160; Each bit sets the corresponding I/O pin’s output state to low (0) or high (1).&#160; </li><li value="5">Registers can use indexes, like [16], to access individual bits within them.</li><li value="6"><span class="keyword_in_text">~~</span> following a register/variable sets its bit(s) high.  </li><li value="7"><span class="keyword_in_text">!</span> preceding a value/register/variable sets its bit(s) opposite their current state.&#160; </li><li value="8"><span class="keyword_in_text">REPEAT</span> creates a loop structure.&#160; </li><li value="9"><span class="keyword_in_text">WAITCNT</span> creates a delay</li><li value="10">Indention at the start of lines:<ul><li value="1"> indicates they belong to the preceding structure; it is required for lines following conditional or loop commands (like <span class="keyword_in_text">REPEAT</span>). (Indenting is optional after block indicators, such as <span class="keyword_in_text">PUB</span>.)</li><li value="2">Ctrl+I toggles visible block-group “structure” indicators on and off.</li></ul></li></ul></li>
+                </ul>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3867169221_2" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Lesson 3 Quick Review</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3867169221_2" style="display: none;">
+                <ul>
+                    <li value="1">The Propeller has eight identical processors, called cogs.<ul><li value="1">Any number of cogs can be running or halted at any time as directed by the application.</li><li value="2">Each cog can run independent or cooperative tasks.</li><li value="3">At boot-up, Cog 0 runs the Spin Interpreter to execute the main memory-based Spin application.</li></ul></li>
+                    <li value="2">Spin language:<ul><li value="1">Organized in blocks that have distinct purposes.<ul><li value="1"><span class="keyword_in_text">CON </span><span class="code_in_text">- </span>Defines global constants</li><li value="2"><span class="keyword_in_text">VAR </span><span class="code_in_text">- </span>Defines global variables</li><li value="3"><span class="keyword_in_text">OBJ </span><span class="code_in_text">- </span>Defines object references</li><li value="4"><span class="keyword_in_text">PUB </span><span class="code_in_text">- </span>Defines a public method</li><li value="5"><span class="keyword_in_text">PRI </span><span class="code_in_text">- </span>Defines a private method</li><li value="6"><span class="keyword_in_text">DAT </span><span class="code_in_text">- </span>Defines data, buffers, and assembly code.</li></ul></li><li value="2">Block designators must be in column 1 of a line.</li><li value="3">Each block type can occur multiple times and can be arranged in any order.</li><li value="4">The very first <span class="keyword_in_text">PUB</span> block in the very first object is the Propeller Application’s starting point.</li><li value="5">Underscores “<span class="keyword_in_text">_</span>” in constants denote logical groupings, like thousands in decimal numbers.</li><li value="6">Types of comments:<ul><li value="1">Code comments; visible in source code only.&#160; Great for notes to developers regarding function of specific code.<ul><li value="1"><span class="keyword_in_text">'...&#160;&#160;–</span>Single-line; starts at apostrophe and continues to end of line</li><li value="2"><span class="keyword_in_text">{...}&#160;&#160;–</span>Multi-line; starts and ends with single curly braces</li></ul></li><li value="2">Document comments; visible in source code and documentation view.&#160; Great for object documentation.&#160; Can even include schematics, timing diagrams and other special symbols.<ul><li value="1"><span class="keyword_in_text">''...&#160;&#160;–</span>Single-line; starts at double-apostrophe and continues to end of line</li><li value="2"><span class="keyword_in_text">{{...}}&#160;–</span>Multi-line; starts and ends with double-curly braces</li></ul></li></ul></li></ul></li>
+                </ul>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3867169221_3" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Lesson 4 Quick Review</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3867169221_3" style="display: none;">
+                <ul>
+                    <li value="1">Spin language:<ul><li value="1">Methods:<ul><li value="1">To call methods in the same object, use simply use the method’s name.</li><li value="2">Methods automatically exit, returning to their caller, when they run out of code to execute.</li><li value="3">When an application’s first method exits, the application and the cog it is running in terminate.</li></ul></li><li value="2">Parameter Lists:<ul><li value="1">Methods declare parameters in the form: <i>method</i>(<i>param1</i>, <i>param2</i>, etc.) </li><li value="2">Parameters are long-sized, local variables that are accessible from within the method only.</li><li value="3">They can be modified within the method but any corresponding variables used in the call are left unaffected.</li></ul></li><li value="3"><span class="keyword_in_text">REPEAT</span> command:<ul><li value="1">Infinite loop: <span class="code_in_text">repeat</span></li><li value="2">Finite loop: <span class="code_in_text">repeat</span> <![CDATA[ ]]><i>expression</i> where expression evaluates to the desired number of loops to iterate through.</li></ul></li><li value="4">Arrays: <ul><li value="1">Arrays are defined with the form symbol [count] where symbol is the array’s symbolic name and count is the number of elements in the array.</li></ul></li><li value="5"><span class="keyword_in_text">COGNEW</span> command:<ul><li value="1">Activates another cog (processor) to run either Spin or Propeller Assembly code.</li><li value="2">Allows for true parallel processing.</li><li value="3">Requires an address to reserve run-time stack space for Spin code.</li></ul></li><li value="6">The Symbol Address operator (<span class="keyword_in_text">@</span>) returns the address of the variable following it.</li></ul></li>
+                </ul>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3867169221_4" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Lesson 5 Quick Review</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3867169221_4" style="display: none;">
+                <ul>
+                    <li value="1">Spin language:<ul><li value="1">Methods:<ul><li value="1">To call methods in another object, use object . method where object is the object’s symbolic name (given to it in the <span class="keyword_in_text">OBJ</span> block) and method is the method’s name within that other object. </li><li value="2">Public (<span class="keyword_in_text">PUB</span>) methods are an object’s interface; other objects call its public methods. </li></ul></li></ul></li>
+                    <li value="2">Object View<ul><li value="1">Illustrates the structure of the most recent successfully compiled application.&#160; </li><li value="2">Pointing the mouse at displayed objects displays hints about them.</li><li value="3">Left-clicking a displayed object either opens it up or makes it the active edit tab.</li><li value="4">Right-clicking a displayed object opens or switches to it in Documentation view.</li></ul></li>
+                    <li value="3">Compile Current – (F8 through F11) - compiles starting from the current object (active edit tab).</li>
+                    <li value="4">Compile Top – (Ctrl+F8 through Ctrl+F11) - compiles starting from the Top Object File.</li>
+                    <li value="5">Top Object File:<ul><li value="1">Appears with a bold name in the edit tab and File List.</li><li value="2">Can be designated by one of the following (and compiled via Compile Top operation):<ol><li value="1">Right-click object's edit tab and select “Top Object File,” or</li><li value="2">Right-click object in the File List and select “Top Object File,” or</li><li value="3">Choose File → Select Top Object File… menu and select object from browser, or</li><li value="4">Press Ctrl+T and select object from browser.</li></ol></li></ul></li>
+                    <li value="6">Objects don't have to be open to be compiled; they may be compiled as the result of another object’s compilation or as the result of a Compile Top operation.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3867169221_5" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Lesson 6 Quick Review</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3867169221_5" style="display: none;">
+                <ul>
+                    <li value="1">Objects:<ul><li value="1">Have no direct relationship with cogs.</li><li value="2">Should call interface methods “<span class="code_in_text">Start</span>” and “<span class="code_in_text">Stop</span>” if they affect other cogs.</li><li value="3">Should call interface method “<span class="code_in_text">Init</span>” if it needs initialization.</li></ul></li>
+                    <li value="2">Spin language:<ul><li value="1">Variables defined in <span class="keyword_in_text">VAR</span> blocks are global to the object so modifications by one method are visible by other methods.&#160; </li><li value="2">Booleans: <ul><li value="1"><span class="keyword_in_text">FALSE</span> = 0</li><li value="2"><span class="keyword_in_text">TRUE</span> = -1; any non-zero (≠0) value is True for Boolean comparisons.</li></ul></li><li value="3">Compound expressions can include intermediate assignments.</li><li value="4">Operators:<ul><li value="1">“Pre”/“Post” operators perform their duty before/after the variable’s value is used by the expression.</li><li value="2">Assignment ‘<span class="keyword_in_text">:=</span>’ is similar to equal ‘<span class="keyword_in_text">=</span>’ in other languages.&#160; It sets the symbol to the left of the operator equal to the value of the symbol or expression to the right of the operator.</li><li value="3">Post-Clear ‘<span class="keyword_in_text">~</span>’ clears the variable preceding it to zero (0).</li><li value="4">Pre-Decrement ‘<span class="keyword_in_text">-</span> <![CDATA[ ]]><span class="keyword_in_text">-</span>’ decrements the variable following it, giving the expression the result.</li><li value="5">Is Greater Than ‘<span class="keyword_in_text">&gt;</span>’ returns True if value on left-side is greater than that of right-side.</li><li value="6">Limit Minimum ‘<span class="keyword_in_text">#&gt;</span>’ returns the greater of either the value on its left or its right.</li></ul></li><li value="5">Methods: <ul><li value="1">Always return a long value (4 bytes) whether or not one is specified.</li><li value="2">Contain a built-in local variable, <span class="keyword_in_text">RESULT</span>, that holds its return value.</li><li value="3">Return values are declared by following the method’s name and parameters with a colon (<span class="keyword_in_text">:</span>) and a descriptive return value name. </li></ul></li><li value="6"><span class="keyword_in_text">COGNEW</span> returns the ID (0 to 7) of the cog started; -1 if none.</li><li value="7"><span class="keyword_in_text">COGSTOP</span> deactivates a cog by ID.</li><li value="8"><span class="keyword_in_text">IF</span> is a conditional structure that executes the indented block of code following it if the conditional statement is true.</li><li value="9"><span class="keyword_in_text">REPEAT</span>’s conditional, one-to-many form: <span class="keyword_in_text">REPEAT WHILE</span> <![CDATA[ ]]><i>Condition</i> executes at least once and continue while <i>Condition</i> is true.</li></ul></li>
+                    <li value="3">The Propeller Tool bolds matching parentheses pairs surrounding the cursor.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3867169221_6" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Lesson 7 Quick Review</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3867169221_6" style="display: none;">
+                <ul>
+                    <li value="1">Applications:<ul><li value="1">Use unique symbols, or elements of an array, for each distinct object in use.</li><li value="2">Use one copy of an object’s code and one or more copies of its global variables.</li></ul></li>
+                    <li value="2">Objects:<ul><li value="1">An object array may be created in <span class="keyword_in_text">OBJ</span> blocks similar to a variable array in <span class="keyword_in_text">VAR</span> blocks.</li><li value="2">An object’s lifetime is static, consuming a specific, static amount of memory regardless of whether or not it is active.&#160; This eliminates the possibility of fragmented memory during normal run-time use and ensures deterministic behavior in real-time systems.</li></ul></li>
+                    <li value="3">Spin language:<ul><li value="1"><span class="keyword_in_text">REPEAT</span> command: <ul><li value="1">Finite, counted loop: <span class="keyword_in_text">REPEAT</span> <![CDATA[ ]]><i>Variable </i><span class="keyword_in_text">FROM</span> <![CDATA[ ]]><i>Start </i><span class="keyword_in_text">TO</span> <![CDATA[ ]]><i>Finish </i>where Variable is the variable to use as the counter and Start and Finish indicate the range.</li><li value="2">The <span class="keyword_in_text">QUIT</span> command works inside <span class="keyword_in_text">REPEAT </span>loops only and causes the loop to terminate immediately.</li></ul></li><li value="2">I/O registers (<span class="code_in_text"><span class="keyword_in_text">DIR</span>x</span>, <span class="code_in_text"><span class="keyword_in_text">OUT</span>x</span>, and <span class="code_in_text"><span class="keyword_in_text">IN</span>x</span>) may use the form <i>reg</i>[<i>a..b</i>] to affect multiple contiguous pins; where reg is the register (<span class="code_in_text"><span class="keyword_in_text">DIR</span>x</span>, <span class="code_in_text"><span class="keyword_in_text">OUT</span>x</span>, or <span class="code_in_text"><span class="keyword_in_text">IN</span>x)</span> and <i>a</i> and <i>b</i> are I/O pin numbers.</li></ul></li>
+                    <li value="4">I/O pins are set to outputs only while a cog that set them that way remains active.</li>
+                    <li value="5">Compile and View Info: F8 key (or select Run → Compile Current → View Info).</li>
+                </ul>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3867169221_7" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Lesson 8 Quick Review</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3867169221_7" style="display: none;">
+                <ul>
+                    <li value="1">Clock:<ul><li value="1">The internal clock has two speeds, slow (≈ 20 kHz) and fast (≈ 12 MHz).&#160; </li><li value="2">To specify clock settings for an application, the top object file sets values for one or more special constants: <span class="keyword_in_text">_CLKMODE</span>, <span class="keyword_in_text">_CLKFREQ</span> and <span class="keyword_in_text">_XINFREQ</span>.</li><li value="3">Whenever external crystals or clocks are used, either <span class="keyword_in_text">_XINFREQ</span> or <span class="keyword_in_text">_CLKFREQ</span> must be specified in addition to <span class="keyword_in_text">_CLKMODE</span>.</li><li value="4"><span class="keyword_in_text">_CLKMODE</span> specifies the clock mode: internal/external, oscillator gain, PLL settings, etc.</li><li value="5"><span class="keyword_in_text">_XINFREQ</span> specifies the frequency coming into the XI pin (Crystal Input pin.</li><li value="6"><span class="keyword_in_text">_CLKFREQ</span> specifies the System Clock frequency.</li><li value="7">Use the internal clock for convenience where accuracy doesn’t matter.&#160; Use an external clock for accuracy or when the phase-locked loop (PLL) is needed.</li></ul></li>
+                    <li value="2">Timing:<ul><li value="1">Subordinate objects can’t rely on a specific, hard-coded time-base since applications which use them may change the clock frequency.</li><li value="2">Use the <span class="keyword_in_text">CLKFREQ</span> command to get the current System Clock frequency in Hertz for timing calculations.</li></ul></li>
+                </ul>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3867169221_8" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Lesson 9 Quick Review</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3867169221_8" style="display: none;">
+                <ul>
+                    <li value="1">Propeller Library:<ul><li value="1">Is a folder automatically created by the Propeller Tool installer.</li><li value="2">Contains Parallax-made Propeller objects that perform useful functions.</li><li value="3">The “Propeller Library” item in the Recent Folders list allows for quick access.</li></ul></li>
+                    <li value="2">Work and Library Folders:<ul><li value="1">The Object View’s folder icons indicate the object’s location.</li><li value="2">Objects with yellow folders are in the “work” folder.</li><li value="3">Objects with blue folders are in the “library” folder.</li><li value="4">Every application is composed entirely of files from as many as two folders; the work folder and/or the library folder.</li></ul></li>
+                </ul>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3867169221_9" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Lesson 10 Quick Review</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3867169221_9" style="display: none;">
+                <ul>
+                    <li value="1">Spin Language:<ul><li value="1">The pipe symbol ‘<span class="keyword_in_text">|</span>’ on method declaration lines declares a list of local variables for the method.</li><li value="2">The <span class="keyword_in_text">STRING</span> directive creates a zero-terminated string and returns its address.</li><li value="3">The <span class="keyword_in_text">#</span> symbol forms an Object-Constant reference used to access constants defined in other objects.</li><li value="4">The <span class="keyword_in_text">TRUNC</span> directive truncates floating-point constants to integers.</li></ul></li>
+                    <li value="2">Integers and Real Numbers: <ul><li value="1">Integers are directly supported both in constants and in run-time expressions.</li><li value="2">Real numbers, in floating-point format, are directly supported in constants and are indirectly supported at run time by special library objects.</li><li value="3">In many cases, expressions involving real numbers can be solved without using floating-point values and methods.</li></ul></li>
+                    <li value="3">The Status Bar displays compile information about the source item nearest to the cursor.&#160; This includes <span class="keyword_in_text">CON</span>/<span class="keyword_in_text">DAT</span> block symbol’s size/address and <span class="keyword_in_text">PUB</span>/<span class="keyword_in_text">PRI</span>/<span class="keyword_in_text">DAT</span> block’s size.</li>
+                </ul>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

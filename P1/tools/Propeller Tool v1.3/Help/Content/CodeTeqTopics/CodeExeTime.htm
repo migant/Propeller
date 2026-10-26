@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Coding Techniques" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Code Execution Time</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="CodeTechsHome.htm">Coding Techniques</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Code Execution Time</span>
+        </div>
+        <h1>Code Execution Time</h1>
+        <p class="PlainText">As you develop your programming skills on the Propeller, it's not uncommon to find yourself concerned about execution time of certain routines. Your knowledge of the Propeller and programming in general may lead you to try variations in code just to realize speed increases, but it can be a guessing game without solid feedback of actual execution time.</p>
+        <p class="PlainText">This topic will teach you some good techniques for calculating and measuring execution time that can be applied in many ways, from timing just a single line of code to timing entire sophisticated routines.</p>
+        <h2>How can the execution time of a portion of code be determined?</h2>
+        <p class="PlainText">This is quite easy for Propeller Assembly, but more elusive for Spin code.  There are three techniques for timing code with definitive results, each with its "ideal" application.</p>
+        <ol>
+            <li value="1">Counting and adding up determinant instruction times (Propeller Assembly only).</li>
+            <li value="2">Using the System Counter (Spin and Propeller Assembly).</li>
+            <li value="3">Toggling a pin and measuring the pulse-width (Spin or Propeller Assembly).</li>
+        </ol>
+        <p class="PlainText">For details, see the <a href="#" target="" title="" alt="" class="MCXref_0" xrefformat="{paratext}">Code Execution Time</a> article.</p>
+        <h2>Technique 1: Counting and Adding up Determinant Instruction Times</h2>
+        <p class="PlainText"><i>This applies only to Propeller Assembly.</i>  Since Propeller Assembly instructions are well-defined and most consume a fixed number of clock cycles, you can simply add up "clock cycles" as you look through the code.  This is the preferred technique for assembly programs, especially in applications where timing is critical.  Here's a small snippet from an example assembly routine that is serially transmitting a data byte:</p><pre xml:space="preserve" class="spin_dat1">                or      Data, #$100             '4
+                shl     Data, #1                '4
+                mov     BitCount, #10           '4
+TxLoop          shr     Data, #1        wc      '4
+                muxc    outa, Pin               '4
+                djnz    BitCount, #TxLoop       '4,8 (12:120+4)
+</pre>
+        <p>&#160;</p>
+        <p class="PlainText">To determine the execution time of this snippet of code, we looked up the instruction times (in the Propeller Quick Reference, for example) and wrote them in the code's comments.  As you can see, most Propeller Assembly instructions take 4 clock cycles.  However, the <span class="keyword_in_text">djnz</span> instruction takes 4 cycles if it jumps and 8 cycles if it doesn't– since it will often jump and rarely not jump, we noted that as "4, 8."</p>
+        <p class="PlainText">So, it's easy to see that the first three instructions will take 4 + 4 + 4 = 12 clock cycles to execute.  The last three instructions are a bit more complicated since they are in a loop, the <span class="code_in_text">TxLoop</span>. Most of the iterations of <span class="code_in_text">TxLoop</span> will take 12 cycles (4 + 4 + 4) to execute and the last iteration will take 4 additional cycles for the non-jump.  Since it will loop 10 times (as determined by <span class="code_in_text">BitCount</span> and the <span class="keyword_in_text">djnz</span> instruction), the total execution of the loop will be 10 × 12 + 4 = 124 cycles.  We noted the single-iteration and full-loop times as "(12:120+4)" at the end of the loop.</p>
+        <p class="PlainText">These cycle counts give us a straight forward way to determine actual execution time with respect to the clock speed in use.  If this code was running with a system clock speed of 80 MHz, then we know that each bit of data transmitted (via the <span class="keyword_in_text">muxc</span> instruction in the <span class="code_in_text">TxLoop</span>) will be 12 cycles ÷ 80 MHz = 150 ns in width since it takes 12 cycles to get from one execution of <span class="keyword_in_text">muxc</span> to another.  With overhead considered, the entire routine as shown will take 12 cycles (first 3 instructions) + 10 × 12 cycles (loop) + 4 cycles (leaving loop) = 136 cycles total, or 1.7 µs (136 cycles ÷ 80 MHz).</p>
+        <p>This can be verified with an oscilloscope.</p>
+        <h3>Why don't we document the execution time for Spin commands like we do for Propeller Assembly instructions?</h3>
+        <p>Propeller Assembly instructions are very deterministic in their timing since they are the lowest level of execution within the cogs. Since Spin commands are constructed from potentially dozens of Propeller Assembly instructions with many possible execution paths, they are inherently difficult to document as a fixed amount of execution time. Even a single, specific Spin command can take a different amount of time to execute depending on the how its parameters are defined and with the varying complexity of constants used. For instance, constant values are compressed by the Spin compiler into a roughly proportional number of bytes, which affects the command's resulting execution time. For this reason, it is important to use the next techniques for timing Spin code.</p>
+        <h2>Technique 2: Using the System Counter</h2>
+        <p class="PlainText"><i>This applies to both Spin and Propeller Assembly.</i>  The <a href="../HardwareTopics/SysCounter.htm" target="" title="" alt="" class="MCXref_0">System Counter</a> in the Propeller is an immensely helpful tool for timing.  We can use it to time portions of code by noting the System Counter value just before and just after the target code and calculating the difference.</p>
+        <h3>Developing Timing Code in Spin</h3>
+        <p class="PlainText">It's always best to remember the technique of doing this kind of timing, rather than trying to remember the actual code that performs it. If you remember the technique, you can always build the code in a few moments when you need it, and perform a quick "test" can determine its validity in the situation you're testing.</p>
+        <p class="PlainText">You may have realized by now that each "read" of the System Counter takes time also, so our result will naturally be off by some amount. That's true, so before relying on this timing method we'll first have to determine the amount of overhead it introduces.</p>
+        <p class="PlainText">For our overhead calculation, the concept is to take two System Counter readings (Time1 and Time2), one immediately after the other, and subtract the two readings to determine how many clock cycles it took just to record the to values.  You can then use an object like "Simple_Serial" or "Parallax Serial Terminal" to transmit the result as a decimal number to the computer screen.</p>
+        <p class="PlainText">Note that the difference between Time1 and Time2 can be calculated as Time2 - Time1, but by applying a little Algebra we can see that -Time1 + Time2 is an equivalent expression. Using this knowledge and applying some powerful Spin operators allows us to do it all using just one long variable.</p><pre class="spin_var1" xml:space="preserve">VAR 
+  long	Time		'Holds elapsed clock cycles</pre><pre class="spin_var1" xml:space="preserve">&#160;</pre><pre class="spin_pub1" xml:space="preserve">
+PUB Timing
+  Time := -cnt		'Read System Counter (Start)  
+  Time += cnt		'Read System Counter (End)</pre>
+        <p>&#160;</p>
+        <p class="PlainText">After the second "Time" line executes (above), <span class="code_in_text">Time</span> will be equal to the number of clock cycles it took just to perform these two reads of the System Counter.  As it turns out, it takes 544 clock cycles. </p>
+        <p class="PlainText">Keep in mind it's always important to test the overhead first, then account for it, rather than to always expect it to be 544. For example, the overhead will be different if <span class="code_in_text">Time</span> were defined outside of the first eight longs of either the object's global variables or the Timing method's local variables (which includes parameters and the automatic <span class="keyword_in_text">RESULT</span> variable). <a href="../QnaTopics/QnaVariables.htm#VariableAccessTime">Click here</a> for more information.</p>
+        <p class="PlainText">So, now that we've tested the overhead, we can modify the time checking code slightly to accommodate for it:</p><pre class="spin_pub1" xml:space="preserve">  Time := -cnt         'Read System Counter (Start)
+  Time += cnt - 544    'Read System Counter (End)</pre>
+        <p>&#160;</p>
+        <p class="PlainText">Now, the clock cycles that elapse between the two statements will be calculated as 0, and adding any additional statements in-between them will increase this value– a direct result of the time required by those additional statements. This is accurate as long as the clock cycles elapsed is less than 2<span style="vertical-align: super;font-size: 70%;">31</span>.</p>
+        <h3>Developing Timing Code in Propeller Assembly</h3>
+        <p class="PlainText">A similar technique can be used in Propeller Assembly as it was in Spin.  Start with the following:</p><pre class="spin_dat1" xml:space="preserve">AsmTiming         org 0         
+                  neg Time, cnt     'Read System Counter (Start)
+                  add Time, cnt     'Read System Counter (End)
+
+                  {more code here}
+
+Time              res       1       'Holds elapsed clock cycles</pre>
+        <p>&#160;</p>
+        <p class="PlainText">You'll find that the overhead is, not surprisingly, 4 clock cycles– so adjusting the time-checking code to accommodate for this leads to:</p><pre class="spin_dat1" xml:space="preserve">                  neg Time, cnt     'Read System Counter (Start)  
+                  add Time, cnt     'Read System Counter (End)
+                  sub Time,  #4     'Adjust for overhead</pre>
+        <p>&#160;</p>
+        <p class="PlainText">Now, the clock cycles elapsed between the first two statements will be calculated as 0, and adding any additional instructions in-between them will increase this value– a direct result of the time required by those additional instructions..</p>
+        <h3>Using it in Practice</h3>
+        <p class="PlainText">Now, for Spin code that you want to time: precede the target code with:</p><pre class="spin_pub1" xml:space="preserve">  Time := -cnt </pre>
+        <p>&#160;</p>
+        <p class="PlainText">...and follow the target code with:</p><pre class="spin_pub1" xml:space="preserve">  Time += cnt - 544</pre>
+        <p>&#160;</p>
+        <p class="PlainText">..and then serially transmit the result with your favorite communication object, and if desired, grab a calculator and divide the result (clock cycles) by your system clock speed (cycles per second) to determine the actual time elapsed.</p>
+        <p class="PlainText">For assembly code you want to time, follow a similar technique, except with:</p><pre class="spin_dat1" xml:space="preserve">  neg Time, cnt</pre>
+        <p>&#160;</p>
+        <p class="PlainText">...preceding the target code and</p><pre class="spin_dat1" xml:space="preserve">  add Time, cnt 
+  sub Time, #4</pre>
+        <p>&#160;</p>
+        <p class="PlainText">...following it.</p>
+        <h2>Technique 3: Toggling a pin and measuring the pulse-width</h2>
+        <p class="PlainText"><i>This applies to both Spin and Propeller Assembly.</i>  Using an oscilloscope to monitor a toggling I/O pin is occasionally the handiest way to time Spin or Propeller Assembly code.</p>
+        <h3>In Spin</h3>
+        <p class="PlainText">In Spin, place something like the following immediately before the target code:</p><pre xml:space="preserve" class="spin_pub1">  dira[0]~~             'Set I/O pin 0 to output  
+  !outa[0]              'Toggle pin 0
+</pre>
+        <p>&#160;</p>
+        <p class="PlainText">...and something like the following immediately after the target code:</p><pre xml:space="preserve" class="spin_pub1">  !outa[0]              'Toggle pin 0</pre>
+        <p>&#160;</p>
+        <h3>In Propeller Assembly</h3>
+        <p class="PlainText">In Propeller Assembly, place something like the following immediately before the target code:</p><pre class="spin_dat1" xml:space="preserve">   or  dira, #%1        'Set I/O pin 0 to output
+   xor outa, #%1        'Toggle pin 0</pre>
+        <p>&#160;</p>
+        <p class="PlainText">...and something like the following immediately after the target code:</p><pre class="spin_dat1" xml:space="preserve">   xor outa, #%1        'Toggle pin 0</pre>
+        <p>&#160;</p>
+        <p class="PlainText">In both cases (Spin and Propeller Assembly) keep in mind that the toggling statement itself (<span class="code_in_text">!outa[0]</span> or <span class="code_in_text">xor outa, #%1</span>) takes some time to execute.  You can determine the overhead, of course, by first testing the pulse-width generated by two such toggling statements adjacent to each other; just subtract that overhead from all further readings.</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

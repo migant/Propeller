@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 2" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Quick Review</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 2</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Quick Review </span>
+        </div>
+        <p><a href="Spin2-Exp.htm" title="Go back to Understanding the Object Code" alt="Go back to Understanding the Object Code"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="../SpinLesson03/Spin3-Intro.htm" title="Go on to Spin Lesson 3 Introduction" alt="Go on to Spin Lesson 3 Introduction"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1>Spin Lesson 2: Quick Review</h1>
+        <ul>
+            <li value="1">Applications are downloaded to either Propeller RAM only or RAM and EEPROM.<ul><li value="1">Those in RAM will not survive power cycling or resetting the Propeller chip.</li><li value="2">Those in EEPROM are loaded into RAM on boot-up in approximately 1½ seconds.</li><li value="3">To download the current object to:<ul><li value="1">RAM only: press F10 or select Run <span class="code_in_text">→</span> Compile Current <span class="code_in_text">→</span> Load RAM + Run.</li><li value="2">RAM + EEPROM: press F11 or select Run <span class="code_in_text">→</span> Compile Current <span class="code_in_text">→</span> Load EEPROM + Run.</li></ul></li></ul></li>
+            <li value="2">Spin language:<ul><li value="1">Method means “procedure” or “routine.”</li><li value="2"><span class="keyword_in_text">PUB</span> <![CDATA[ ]]><i>Symbol</i> declares a public method. "Symbol"&#160;must be a word that is unique to the object, and must not be a <a href="../../TableTopics/ResWords.htm">reserved word</a>. Every object must contain at least one public (<span class="keyword_in_text">PUB</span>) method.&#160; </li><li value="3"><span class="keyword_in_text">DIRA</span> is the direction register for I/O pins 0-31.&#160; Each bit sets the corresponding I/O pin’s direction to input (0) or output (1).&#160; </li><li value="4"><span class="keyword_in_text">OUTA</span> is the output state register for I/O pins 0-31.&#160; Each bit sets the corresponding I/O pin’s output state to low (0) or high (1).&#160; </li><li value="5">Registers can use indexes, like [16], to access individual bits within them.</li><li value="6"><span class="keyword_in_text">~~</span> following a register/variable sets its bit(s) high.  </li><li value="7"><span class="keyword_in_text">!</span> preceding a value/register/variable sets its bit(s) opposite their current state.&#160; </li><li value="8"><span class="keyword_in_text">REPEAT</span> creates a loop structure.&#160; </li><li value="9"><span class="keyword_in_text">WAITCNT</span> creates a delay</li><li value="10">Indention at the start of lines:<ul><li value="1"> indicates they belong to the preceding structure; it is required for lines following conditional or loop commands (like <span class="keyword_in_text">REPEAT</span>). (Indenting is optional after block indicators, such as <span class="keyword_in_text">PUB</span>.)</li><li value="2">Ctrl+I toggles visible block-group “structure” indicators on and off.</li></ul></li></ul></li>
+        </ul>
+        <p><a href="Spin2-Exp.htm" title="Go back to Understanding the Object Code" alt="Go back to Understanding the Object Code"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="../SpinLesson03/Spin3-Intro.htm" title="Go on to Spin Lesson 3 Introduction" alt="Go on to Spin Lesson 3 Introduction"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

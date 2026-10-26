@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Why the Propeller Works</title>
+        <link href="../Resources/TableStyles/ParallaxTable.css" rel="stylesheet" />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <h1>Why the Propeller Works</h1>
+        <h5>A Letter from the President, </h5>
+        <p class="PlainText">A few months after the release of the Propeller chip, one of our customers posted this message to the Propeller discussion forum:</p>
+        <blockquote>
+            <p class="PlainText">"Interesting that someone is brave enough to use a propeller chip in a professional application. This chip doesn't even have a datasheet, and it is very likely that it has never been tested against any of the usual standards for integrated circuits. I would not even think about using it for anything other than hobby projects."</p>
+        </blockquote>
+        <p class="PlainText">This concern is quite understandable, given that there was a lack of documentation. An official <a href="../../../Propeller P8X32A Datasheet v1.4.pdf" target="_blank" title="Open PDF in new window" alt="Open PDF in new window">Propeller P8X32A Datasheet</a> is now available.  The reality, though, is that the Propeller has received an inordinate amount of attention to its design, and it is quite robust. I will elaborate.</p>
+        <p class="PlainText">I am the person who designed, debugged,&#160;tuned, and tested&#160;the Propeller. This project took eight years of my time, plus two years of a layout engineer's time. An excruciating amount of attention went into every aspect of the Propeller's implementation and testing, and I allowed no compromises.</p>
+        <h2>Industry metrics</h2>
+        <p class="PlainText">As for industry-standard tests, we recently hired a company called Nano Measurements&#160;to perform their own environmental and ESD testing on the Propeller. Specifically, the following tests were conducted:</p>
+        <ul>
+            <li value="1">PPOT: Pressure pot, autoclave: 121ºC, 100% RH, 15 PSIG, 336 hours</li>
+            <li value="2">TMCL:&#160;Temperature cycle, air, standard ramp: -65 ºC to 150 ºC, 500 cycles</li>
+            <li value="3">PREC: Preconditioning (simulates soldering process): 30 ºC, 60% RH, 192 hours</li>
+            <li value="4">HTSL: High temperature storage life: 150 ºC, 1000 hours</li>
+            <li value="5">ESD HBM: ESD human body model: All pins tested up to ±8 kV (limit of tester)</li>
+        </ul>
+        <p class="PlainText">Here are the results: (lots of 77 devices ensure 3-sigma quality with one failure)</p>
+        <table style="caption-side: top;mc-table-style: url('../Resources/TableStyles/ParallaxTable.css');" class="TableStyle_ParallaxTable" cellspacing="0">
+            <col />
+            <col />
+            <col />
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;">
+                    <p class="TableText">Test</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;">
+                    <p class="TableText">Sample</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="background-color: #cccccc;">
+                    <p class="TableText">Results</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">PPOT</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">3 lots of 77 devices (PDIP, LQFP, QFN)</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">0 failures</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">TMCL</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">2 lots of 77 devices and&#160;1 lot of 76 (all)</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">0 failures</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">PREC</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">3 lots of 77 devices (PDIP, LQFP, QFN)</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">0 failures</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">HSTL</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">1 lot of 230 devices (PDIP, LQFP, QFN)</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">0 failures</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">ESD HBM</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">3 devices each of PDIP, LQFP, QFN</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">All I/O pins survived ±8 kV zap with VSS and VDD grounded,VSS-to-VDD zap failed at&#160;±3 kV or greater</p>
+                </td>
+            </tr>
+        </table>
+        <p>&#160;</p>
+        <p class="PlainText">So, there were no environmental failures, and no testable ESD failures on I/O pins, though the power supply pins failed at ± 3kV or greater, which is quite acceptable. All these environmental tests say almost nothing about the quality of the chip, but only that the plastic packaging was good. The ESD test starts to give some metric of the silicon quality, but says nothing of what is far more likely to be a problem -- design quality. There are no universal metrics for this, and it can only be understood by actually applying the device. </p>
+        <h2>About design quality:</h2>
+        <p class="PlainText">The Propeller was an entirely "full-custom" effort. Every polygon of&#160;the Propeller's&#160;mask artwork was made here at Parallax. We designed our own logic, RAMs, ROMs, PLLs, band-gap references, oscillators,&#160;and even&#160;ESD-hardened I/O pads.&#160;All these structures were first fabricated on test chips and then thoroughly evaluated, often resulting in design changes. This yielded an ideal set of known-good blocks, which could be confidently applied to the overall design. Then, the whole chip was fabricated and subsequently tested at&#160;many&#160;levels. This allowed us to fix any problems resulting from integration and to fine-tune the clocking systems that are key to the Propeller's low power consumption. The final chip, which is the only version we've ever sold, is the third iteration of this whole-chip process and has no known problems.</p>
+        <p class="PlainText">In order to perform all this testing and tuning, we built up our own lab that gave us the “hands” and “eyes” that we needed to work on our chip. First, we invested in a Micrion FIB (focused ion beam) machine that allowed us to perform microscopic surgery, so that we could check failure hypotheses and make experimental modifications. Think “wire cutters”, “soldering iron”, and “solder” for the sub-micrometer wiring inside the chip. The other big thing we acquired was a Schlumberger e-beam prober -- essentially a scanning electron microscope which can use its electron beam to measure voltages on those same tiny wires while the chip runs at full-speed. Think “7 GHz, non-loading, 10 nm-tip, contactless oscilloscope”. These machines are almost Star Trek in their technology, and they get you all the way down to where you need to be in order to see and fix problems. We were able to purchase these machines, used, for only 0.5% of what they cost new. The real investment, though, turned out to be the six months it took to get them running, and to learn how to use them. Now, we can even do our own maintenance on them, which is not trivial. All this was a huge adventure, in itself, but invaluable in getting the Propeller's silicon perfected.</p>
+        <p class="PlainText">The Propeller was given the kind of thorough design treatment that almost no other chips receive today. It used to be that every chip was full-custom, and all of its transistors and wiring were designed by hand, for the point of application. As semiconductor technology shrunk, though, the prevailing design methodology shifted away from this kind of specialization, toward generalization and abstraction, so that designs of greater complexity could be practically realized. The modern design methodology centers around hardware description languages, IP block reuse, and the automated placement and interconnection of potentially billions of gates. The end silicon result is invariably an incomprehensible rat’s nest of wiring, standard cells, and IP blocks, usually none of which were designed by the engineers applying them. This methodology is certainly a boon for very complex designs, but it has become the standard approach for designing almost any chip containing logic today. The differences between the old and new methodologies can be accurately characterized by a software analogy: Imagine a program written entirely in assembly language. It takes a long time to write, but it is fast, compact, and reliable by virtue of its directness. Now imagine a program written in some high-level language which leverages objects acquired from elsewhere. It is relatively easy to write, but compiles into something big and slow, and may have some undesirable characteristics that are out of your control. For chips, the old method means small dies, high speed, low power, and exacting performance, whereas the modern method tends to generate bigger dies, lower speed, more heat, and sometimes bugs from IP which you have no control over. I'm sure you get the idea.&#160;</p>
+        <h2>Most important:</h2>
+        <p class="PlainText">So, all I’ve said so far amounts to just this: Through an exceptional effort, we made the Propeller as electrically robust and efficient as we could. This, still, is not the core quality issue, but a supporting one. The core quality of the Propeller really resides in its architecture. The architecture is what took the first six years of development to iron out, and the architecture is what engages people. All the effort that went into the silicon implementation was to ensure that this core quality was ideally housed.</p>
+        <p class="PlainText">The story of the Propeller's architecture would be a book, in itself, but to get an idea of the plot, you can visit the Propeller discussion forum and witness the excitement of people doing things they never thought possible. They are finding the Propeller to be a great vehicle for invention and discovery, as well as the means to realize complex embedded systems that are not possible with any other chip. A few forum members have even said that the Propeller has drawn them back into software and electronics after long absences.</p>
+        <p class="PlainText">We have published a <a href="../../../Propeller P8X32A Datasheet v1.4.pdf" target="_blank" title="Open PDF in new window" alt="Open PDF in new window">Propeller P8X32A Datasheet</a>  with quite a bit of characterization data in it. It should give customers more confidence about using the chip, but for many it will mainly serve to validate what they already know from experience and readily attest to on the forum -- that the Propeller is tough, reliable, and low-power. It’s no illusion, and no accident.</p>
+        <p class="PlainText">We plan on a very long sales life for the Propeller and we have no intention of diluting the concept with many slight variants, for which you'd inevitably be getting end-of-life notices for after a few years. This is good news for customers, because they are the ones who&#160;are going to be making investments in programming that will, in sum, dwarf the energy that we spent developing the Propeller. We made a platform that is, hopefully, deserving of their coming efforts.</p>
+        <p>&#160;</p>
+        <p class="PlainText">Sincerely,</p>
+        <p class="PlainText">Chip Gracey<br />President<br />Parallax Inc.</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

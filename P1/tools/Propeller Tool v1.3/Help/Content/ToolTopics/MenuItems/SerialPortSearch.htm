@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Using the Propeller Tool|Menu Items" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Serial Port Search List Dialog</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../UsingPropTool.htm">Using the Propeller Tool</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Menus.htm">Menu Items</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Serial Port Search List Dialog</span>
+        </div>
+        <h1>Serial Port Search List Dialog</h1>
+        <p class="PlainText">This dialog indicates what serial ports will be scanned, and the order they will be accessed, whenever a Propeller chip identification or download process is started. Use this feature to fine tune the Propeller chip search to include or exclude certain serial ports.</p>
+        <p>
+            <img src="../../Resources/Images/PropellerToolPictures/SerPort.png" />
+        </p>
+        <p class="PlainText">&#160;</p>
+        <h2>Port List</h2>
+        <p class="PlainText"> The port list automatically updates whenever ports appear and disappear; such as USB-to-Serial ports.  This is an interactive control; use your mouse to view and modify the list as indicated below.</p>
+        <ul>
+            <li value="1">Port ID column: Indicates the serial port ID.</li>
+            <li value="2">Port Description column: Indicates the friendly name for the port, similar to that shown in the Windows Device Manager tool.</li>
+            <li value="3">Present column: 'Yes' if the serial port is currently present on the system, 'No' if not; this indicates a user rule is including a port in the search list that isn't currently present on the system.</li>
+        </ul>
+        <h3>Viewing and Modifying the List and Association Rules</h3>
+        <p class="PlainText">The list of serial ports is shown in the order in which they will be scanned during Propeller chip identification and/or download processes.  The ports to be scanned, and the order in which they are scanned, can be set through this interface, described below.</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_662515023_0" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Changing the Scan Order</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_662515023_0" style="display: none;">
+                <p class="PlainText">To change the order in which ports are scanned, left-click and drag port rows up and down.  In this example, we selected the COM12 row (the last row), left-clicked it and dragged it up to be between the COM1 and COM33 rows, resulting in a new scan order of COM1, then COM12, then COM33.</p>
+                <p class="PlainText">
+                    <img src="../../Resources/Images/PropellerToolPictures/SerPort12Move.png" />
+                </p>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_662515023_1" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Viewing the Inclusion/Exclusion status</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_662515023_1" style="display: none;">
+                <p class="PlainText">Ports may be included or excluded from the search list based on one or more user-defined rules.  To see what rule is applying to a particular port, point the mouse at the port's row and read the hint that appears.  The example shown here indicates that port COM12 is being "included by default," which means there is no rule explicitly including or excluding the port.</p>
+                <p class="PlainText">
+                    <img src="../../Resources/Images/PropellerToolPictures/SerPortInclHint.png" />
+                </p>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_662515023_2" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Excluding or Including a Port by ID</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_662515023_2" style="display: none;">
+                <p class="PlainText">To exclude or include a port by the port's ID, right-click the port's row and select the "Exclude/Include Port (COMxx)" item. In this example, we chose to exclude COM12.  </p>
+                <p>
+                    <img src="../../Resources/Images/PropellerToolPictures/SerPortShortcut.png" />
+                </p>
+                <p class="PlainText">After excluding it, the ports list will update as shown below. Notice that it appears ghosted and in italics to indicate it will not be scanned; it will be ignored during an identification and download process.  Also, hovering the mouse over it will display a hint saying, "Excluded by Port ID rule." </p>
+                <p>
+                    <img src="../../Resources/Images/PropellerToolPictures/SerPort12Excl.png" />
+                </p>
+                <p>&#160;</p>
+                <p class="Tip" MadCap:autonum="Tip: &#160;"><span class="autonumber"><span class="TipSpan">Tip: &#160;</span></span>You can remove this Port ID rule by right-clicking on the port's row and selecting the "Re-include/exclude port (COMxx)" item.</p>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_662515023_3" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Excluding or Including a Port by Description</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_662515023_3" style="display: none;">
+                <p class="PlainText">To exclude or include a port by its description, right-click the port's row and select the "Filter Port(s) by Description…" item.  This will open a new dialog that allows you to set the desired description rule. In this example, we set it to "Exclude" any ports matching "USB Serial Port" in their description.</p>
+                <p class="PlainText">
+                    <img src="../../Resources/Images/PropellerToolPictures/SerPortFiltern.png" />
+                </p>
+                <p class="PlainText"> <![CDATA[ ]]>After you click OK the ports list will update as shown below. Notice that COM33, the port whose description is "USB Serial Port" appears ghosted and in italics to indicate it will not be scanned; it will be ignored during an identification and download process.  Also, hoving the mouse over it will display a hint saying, "Excluded by Port Description rule."</p>
+                <p class="PlainText">
+                    <img src="../../Resources/Images/PropellerToolPictures/SerPortUSBExcl.png" />
+                </p>
+                <p class="Tip" MadCap:autonum="Tip: &#160;"><span class="autonumber"><span class="TipSpan">Tip: &#160;</span></span><b></b>You can edit or remove this Port Description rule by right-clicking on the port's row and selecting the "Edit port description rule…" or "Remove port description rule…" item.</p>
+                <p class="PlainText">
+                    <img src="../../Resources/Images/PropellerToolPictures/SerPortShortcut.png" />
+                </p>
+                <p class="Tip" MadCap:autonum="Tip: &#160;"><span class="autonumber"><span class="TipSpan">Tip: &#160;</span></span><span class="TipSpan"></span> The Filter Port(s) by Description dialog's port description field can be as general or as specific as necessary by using asterisk (*) characters as wild cards.  For example, to exclude all ports beginning with the word "USB,"  enter "USB *" in the field.  To exclude all ports with the word USB appearing anywhere within them, enter "*USB*" in the field.  The bottom of the dialog shows the number of "Matches Found;" the number of existing ports that the rule applies to.</p>
+                <p class="Tip" MadCap:autonum="Tip: &#160;"><span class="autonumber"><span class="TipSpan">Tip: &#160;</span></span>To exclude all ports except specific ports, right-click on any port row and select "Exclude all ports by default," then right click on any desired ports and select either "Include Port (COMxx)" or "Filter Port(s) by Description…" and enter the desired match string of ports to include.</p>
+            </div>
+        </div>
+        <h2>Buttons</h2>
+        <ul>
+            <li value="1">Restore Defaults: Press this button to remove all user-defined serial port rules and return the Propeller Tool to its default scanning sequence.</li>
+            <li value="2">Accept: Press this button to apply all modifications made to the serial port search list and corresponding rules.</li>
+            <li value="3">Cancel: Press this button to cancel all recent modifications made to the serial port search list and corresponding rules.</li>
+        </ul>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

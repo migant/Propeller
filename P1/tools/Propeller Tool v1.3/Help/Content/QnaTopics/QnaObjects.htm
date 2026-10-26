@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Questions and Answers" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title> Objects</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="QnaLocal.htm">Questions and Answers</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Objects</span>
+        </div>
+        <h1> Objects</h1>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2199871590_0" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is an Object?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2199871590_0" style="display: none;">
+                <p class="PlainText">An object is any file with a .spin extension that contains comments, data, and executable Spin code and serves as an encapsulation of that data and the methods to operate on it.  A Propeller Application is made up of one or more objects.  An object may be designed to achieve the goals of the whole application by itself, or it may only focus on a small portion, and be included by another object as part of a larger application. An application’s top object is where execution begins.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2199871590_1" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Spin is "Object-based" - so how is that different from "object-oriented" languages?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2199871590_1" style="display: none;">
+                <p class="PlainText">Spin embraces the modular programming paradigm of objects as "devices" that can be collected together in an application, each doing their part to achieve a larger goal.  This is similar in concept to that of object-oriented languages, however, aspects of inheritance and polymorphism, commonly considered to be integral parts of object-oriented languages, are not supported by Spin. For this reason, Spin is often called "object-based" rather than "object-oriented."</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2199871590_2" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How are Spin objects organized?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2199871590_2" style="display: none;">
+                <p class="PlainText">Spin objects are built from six special-purpose blocks: <span class="keyword_in_text">CON</span>, <span class="keyword_in_text">VAR</span>, <span class="keyword_in_text">OBJ</span>,   <![CDATA[ ]]><span class="keyword_in_text">PUB</span>, <span class="keyword_in_text">PRI</span>, and <span class="keyword_in_text">DAT</span>. <span class="keyword_in_text">CON</span>&#160;and <span class="keyword_in_text">VAR</span> are for declaring constants and variables, respectively. <span class="keyword_in_text">OBJ</span> is used  to declare what other objects will be used during this object's execution. <span class="keyword_in_text">PUB</span> and <span class="keyword_in_text">PRI</span>&#160;declare public and private methods, which contain the executable Spin instructions.   <![CDATA[ ]]><span class="keyword_in_text">DAT</span> blocks contain data and/or Propeller Assembly programs.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2199871590_3" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is a Top Object?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2199871590_3" style="display: none;">
+                <p class="PlainText">A top object is simply the first object in the Propeller Application; code execution begins at the first public method in the top object.  It is called the "top" object because it determines what "building block" objects are also included in the application "beneath" it.  The top object also configures initial global settings for the application, such as the clock speed, and is usually the object that "lives" for the entire length of time the application is running.  Every Propeller Application has one, and only one, top object. </p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2199871590_4" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is a Building Block Object?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2199871590_4" style="display: none;">
+                <p class="PlainText">Most objects are building block objects; they are simply the objects meant for use by other objects.  An application's top object often requires one or more building block objects, each of which may themselves require one or more building block objects.</p>
+                <p class="PlainText">Building block objects are designed to perform a specific task, such as retrieving data from a sensor, performing complex math calculations, or sending information to a display. Such building block objects are usually not complete applications on their own, nor are they designed for only one particular application, but are meant to be re-usable in any application that needs the specific task performed. </p>
+                <p class="PlainText">A building block object has public methods that serve as the interface though which other objects interact with it.  By convention, building block objects that require configuration, or that need to start and stop cogs as a result of their use, typically have an <span class="code_in_text">Init</span>, and/or <span class="code_in_text">Start</span> and <span class="code_in_text">Stop</span> methods for this purpose.  Note that a building block object can also be a top object, but most are not written for this purpose.</p>
+                <p class="PlainText">By convention, building block objects that do not to launch (and later terminate) another cog <u>do not</u> include Start and Stop methods.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2199871590_5" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Are there any conventions for writing objects?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2199871590_5" style="display: none;">
+                <p class="PlainText">Method names and the purposes they serve are entirely the choice of the developer, but following certain conventions is recommended for methods that serve the roles of object configuration (Init) and cog management (Start and Stop).</p>
+                <p class="PlainText">These conventions  serve a familiar "getting started" purpose to new users of the object.</p>
+                <p class="PlainText">By convention, developers name a method "Start" when it serves as the <i>cog launch manager</i> of a building block object. An object with a Start method should also have a Stop method, and occasionally an Init method as well.</p>
+                <p class="PlainText">Similarly, developers name a method "Stop" when it serves as the <i>cog termination manager</i> of a building block object. An object with a Stop method should also have a Start method, and occasionally an Init method as well.</p>
+                <p class="PlainText">Example Start and Stop Methods:</p><pre xml:space="preserve" class="spin_var1">VAR
+  byte   Cog                        'Cog (ID+1) that is started by this object
+
+</pre><pre xml:space="preserve" class="spin_pub1">PUB Start({ParamaterList}): Success
+{Launch another cog for parallel processing}
+  Stop
+  Success := (Cog := cognew({SpinMethodOrAsmAddr}, {StackAddrOrPARValue}) + 1) &gt; 0
+
+</pre><pre xml:space="preserve" class="spin_pub2">PUB Stop
+{Terminate managed cog, if any}
+  if Cog
+    cogstop(Cog~ -1)
+</pre>
+                <p>&#160;</p>
+                <p class="PlainText">In this example, the <span class="code_in_text">Start</span> method calls <span class="code_in_text">Stop</span> to terminate any previously started cog (in case <span class="code_in_text">Start</span> gets called multiple times) and then launches a new cog with <span class="keyword_in_text">COGNEW</span>. It stores the Cog ID returned by <span class="keyword_in_text">COGNEW</span>, plus 1, into the <span class="code_in_text">Cog</span> variable to record the cog-launch status and simplify decision logic in <span class="code_in_text">Stop</span>. It uses a comparison operation (<span class="code_in_text">&gt; 0</span>) to set the <span class="code_in_text">Success</span> result variable to <span class="keyword_in_text">True</span> if a cog was started; <span class="keyword_in_text">False</span> otherwise.</p>
+                <p class="PlainText">The <span class="code_in_text">Stop</span> method checks if the <span class="code_in_text">Cog</span> variable is <span class="keyword_in_text">True</span> (any non-zero value), and if so, terminates the cog that this object had started. The expression <span class="code_in_text">Cog~ -1</span> first subtracts 1 from <span class="code_in_text">Cog</span> (delivering to <span class="keyword_in_text">COGSTOP</span> the exact ID&#160;of the cog that was launched) then clears <span class="code_in_text">Cog</span> to 0 (<span class="keyword_in_text">False</span>) so successive calls to <span class="code_in_text">Stop</span> don't inadvertently terminate innocent cogs.</p>
+                <p class="PlainText">By convention, developers name a method "Stop" when it serves as the <i>cog termination manager</i> of a building block object. An object with a Stop method should also have a Start method, and occasionally an Init method as well.</p>
+                <p class="PlainText">By convention developers name a method "Init" (short for "initial" or "initialization") when it serves as the configuration method of a building block object. An object with an Init method may or may not also include Start and Stop methods.</p>
+                <p class="PlainText">Often developers will name the first method of a top object "Main" because it serves as the <i>application starting point</i> and the highest-level coordinator of application function.</p>
+                <p class="PlainText">Main is not a reserved word in Spin; special status is given only to the first public method in the top object of a Propeller Application.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2199871590_6" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Do all building block objects need Init, Start, and Stop methods?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2199871590_6" style="display: none;">
+                <p class="PlainText">No. By convention, building block objects that do not need configuration <u>do not</u> include an Init method, and those that do not need to launch (and later terminate) another cog <u>do not</u> include Start and Stop methods.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2199871590_7" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />The Propeller has eight cogs, so does that mean I&#160;can only use eight objects in an application?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2199871590_7" style="display: none;">
+                <p class="PlainText">No. There is no direct relationship between objects and cogs.  Applications are limited by the size of the Propeller chip’s     <![CDATA[ ]]><a href="../HardwareTopics/MainMem.htm#MainRam" target="" title="" alt="" MadCap:excludeAction="unbind" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" class="MCXref_0">Main RAM</a>, which is 32 KB (kilobytes) and not by the number of object files that make up the application.  An application may consist of a single object, or many objects, as long as the total size of the application is less than 32 KB.  An application, whether made from one object or many objects, may execute with one, two, or up to eight cogs depending only on the collective objects' "requests" to launch cogs.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2199871590_8" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How does starting and stopping cogs relate to objects?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2199871590_8" style="display: none;">
+                <p class="PlainText">Objects describe how to get tasks done and cogs perform those tasks. Since an object encapsulates all the knowledge necessary to achieve the given task, it is up to the object to decide when and how many other cogs should perform the task. In this way, objects are the natural manager of their own cogs, starting and stopping one or more other cogs as necessary for the given task. </p>
+                <p class="PlainText">It is possible for any cog to start and stop any other cog, but in practice it is not done outside of the logical object except in extreme cases.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2199871590_9" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can one object use multiple instances of another object?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2199871590_9" style="display: none;">
+                <p class="PlainText">Yes. In an object's <span class="keyword_in_text">OBJ</span> block, the declaration of a subobject can use array syntax to specify multiple instances of that object, like the following:</p><pre class="spin_obj1" xml:space="preserve">OBJ</pre><pre class="spin_obj1" xml:space="preserve">  Ind[2]  :  "Inductor"</pre>
+                <p>&#160;</p>
+                <p class="PlainText">Here, the Inductor object's nickname, <span class="code_in_text">Ind</span>, is specified as being an array of 2 such objects and can later be accessed as <span class="code_in_text">Ind[0]</span> and <span class="code_in_text">Ind[1]</span>. </p>
+                <p class="PlainText">In this case, at compile time the application image is built with two copies of Inductor's <span class="keyword_in_text">VAR</span> and <span class="keyword_in_text">OBJ</span>&#160;blocks  so that each instance (<span class="code_in_text">Ind[0]</span> and <span class="code_in_text">Ind[1]</span>) has its own global variable memory and subobjects. However, each instance uses the same code and data; <span class="keyword_in_text">PUB</span>, <span class="keyword_in_text">PRI</span>, and <span class="keyword_in_text">DAT</span> blocks.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2199871590_10" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How are instances of Propeller objects "created" and "destroyed"?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2199871590_10" style="display: none;">
+                <p>Object instance creation and destruction requires the allocation and release of memory. In a Propeller Application, all object instances are statically defined at compile time and never destroyed at runtime, producing a static allocation of memory. This is advantageous in a real-time system because it keeps execution timing consistent, whereas dynamic creation and destruction of objects at runtime leads to indeterminate situations like the occasional need for memory garbage collection.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 10" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Whole and Real Numbers</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 10</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Whole and Real Numbers</span>
+        </div>
+        <p><a href="Spin10-Intro.htm" title="Go back to Numbers and Strings" alt="Go back to Numbers and Strings"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin10-FloatingPoint.htm" title="Go on to Floating-Point Math" alt="Go on to Floating-Point Math"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1><a name="kanchor288"></a>Whole and Real Numbers</h1>
+        <p class="PlainText"><a name="kanchor289"></a>The Propeller is a 32-bit device and can naturally handle whole numbers as signed integers (-2,147,483,648 to 2,147,483,647) both in constants or in run-time math expressions.&#160; However, for real numbers (those with both integer and fraction components) the compiler supports floating-point format (single-precision, IEEE-754 compliant) for constants, and there are library objects that allow for run-time floating-point math operations.</p>
+        <h2><a name="kanchor290"></a>Pseudo-Real Numbers&#160;</h2>
+        <p class="PlainText">For handling real numbers, there are many possible techniques.&#160; One technique is to use integer math in a way that accommodates your real values as well as the run-time expressions involved.&#160; We call this pseudo-real numbers.</p>
+        <p class="PlainText">Having 32-bit integers built in to the Propeller provides us with a lot of “elbow room” for calculations.&#160; For example, perhaps we have an equation to multiply and divide values that have 2-digit fractions, like the following:</p>
+        <p class="PlainText">A = B * C / D</p>
+        <p class="PlainText">For our example, let’s use A = 7.6 * 38.75 / 12.5 which evaluates to 23.56.</p>
+        <p class="PlainText">To solve this at run time, we can adjust all the equation’s values upward by 2 digits to make them all integers, perform the math and then treat the rightmost 2 digits of the result as being the fractional portion.&#160; Multiplying each value by 100 achieves this.&#160; Here’s the algebraic proof:</p>
+        <p class="PlainText">A = (B* 100) * (C * 100) / (D * 100)</p>
+        <p class="PlainText">A = (7.6 * 100) * (38.75 * 100) / (12.5 * 100) </p>
+        <p class="PlainText">A = 760 * 3875 / 1250</p>
+        <p class="PlainText">A = 2356</p>
+        <p class="PlainText">Since we multiplied all the original values by 100, we know that the final value is really 2356&#160;/&#160;100&#160;=&#160;23.56, but for most purposes we can keep it in integer form knowing that the rightmost two digits are really to the right of the decimal point.</p>
+        <p class="PlainText">The above solution works as long as each of the original values and each of the intermediate results never exceed the signed integer boundaries: -2,147,483,648 to 2,147,483,647.</p>
+        <p class="PlainText">The example presented next includes code that uses both the pseudo-real number technique as well as floating-point numbers.</p>
+        <h2>Floating-Point Numbers</h2>
+        <p class="PlainText">In many cases, expressions involving real numbers can be solved without using floating-point values and methods, such as with the pseudo-real number technique.&#160; Since solutions like the one above tend to execute much faster and consume less memory, it is recommended that you think carefully about whether or not you really need floating-point support before you actually use it.&#160; If you can afford the extra execution time and memory usage, floating-point support may be the best solution.&#160; </p>
+        <p class="PlainText">The Propeller Tool supports floating-point constants directly.&#160; The Propeller chip supports floating-point run-time expressions through the use of objects; ie: at run time the Spin Interpreter can only directly process integer-based expressions.</p>
+        <p><a href="Spin10-Intro.htm" title="Go back to Numbers and Strings" alt="Go back to Numbers and Strings"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin10-FloatingPoint.htm" title="Go on to Floating-Point Math" alt="Go on to Floating-Point Math"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

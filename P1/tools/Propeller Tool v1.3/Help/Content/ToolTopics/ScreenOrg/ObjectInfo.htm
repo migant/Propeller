@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Using the Propeller Tool|Tour the Workspace" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Object Info</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../UsingPropTool.htm">Using the Propeller Tool</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="../TourWorkspace.htm">Tour the Workspace</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Object Info</span>
+        </div>
+        <h1 name="_Ref125273149">Object Info</h1>
+        <p class="PlainText"><a name="kanchor113"></a>The Object Info form displays details about the project you just compiled successfully using the Compile Current/Top <span class="code_in_text">→</span> View Info… function.&#160; At the top is an Info Object View very similar to that of the Integrated Explorer’s Object View (see <a href="ScreenOrg.htm" target="" title="" alt="" class="MCXref_0">Screen Organization</a>).&#160; Below the Info Object View are two panels with summary information. </p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/ObjectInfo.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">The Object Info Form </p>
+            <p class="PictureDescription">The form is divided into the Info Object View, The RAM Usage Panel, and the Clock Panel.</p>
+            <p class="PictureDescription">This example shows details about the “ABC Product” project compilation.</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <h3>Info Object View</h3>
+        <p class="PlainText"><a name="kanchor114"></a>The Info Object View works exactly like the Object View with a few exceptions:</p>
+        <ul>
+            <li value="1">Clicking on an object within the Info Object View updates the Object Info display with information pertaining to that object.</li>
+            <li value="2">Double-clicking on an object within the Info Object View opens that object in the Edit pane.</li>
+            <li value="3">Data files are not selectable in the Info Object View.</li>
+        </ul>
+        <h3>RAM Usage Panel</h3>
+        <p class="PlainText"><a name="kanchor115"></a>The RAM Usage panel displays statistics about RAM allocation by the object currently selected in the Info Object View.&#160; The horizontal bar gives a summary view of the entire RAM with its color legend and numerical details below it.&#160; The example above shows that the ABC Product object consumes 524 longs (2096 bytes) for program space and 12 longs (48 bytes) for variable space, leaving over 7k longs (over 30k bytes) free.&#160; </p>
+        <h3>Clock Panel</h3>
+        <p class="PlainText"><a name="kanchor116"></a>The clock panel, under the RAM Usage panel, displays the clock/oscillator settings of the object currently selected in the Info Object View.&#160; This example shows that the ABC Product object configured the clock for <span class="keyword_in_text">RCFAST</span>, approximately 12 MHz and no XIN frequency.</p>
+        <h2><a name="kanchor117"></a>Hex View</h2>
+        <p class="PlainText">The Show/Hide Hex button shows or hides the detailed object hex view, as shown below.&#160;  The Hex View shows the actual compiled object data, in hexadecimal, that are loaded into the Propeller chip’s RAM/EEPROM upon download.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/Object-Info-w-Hex.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums"> Hex View open showing the hex values of the ABC Product compilation.</p>
+            <p class="PictureDescription">The buttons under the hex display allow for downloading and saving of the currently displayed hex data.</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText"><a name="kanchor118"></a>The first two buttons under the hex display, Load RAM and Load EEPROM, perform the same function as the similarly named menu items under the Compile Current/Top menu.&#160; It’s important to note that they use the current object (the one selected in the Info Object View) as the source to download.&#160; In other words, you can actually select a sub-object from the project and download just that; a practical procedure only if that object were designed to run completely on its own.</p>
+        <p class="PlainText"><a name="kanchor119"></a>The last three buttons, Open File, Save Binary File, and Save EEPROM File, either open a file or save a file to disk.&#160; The Open File button opens a previously saved Binary or EEPROM file into the Object Info window.&#160; The “save” buttons save the hex data from the currently selected object to a file on disk.&#160; Save Binary File saves only the portion actually used by the object; the program data, but not variable or stack/free space.&#160; Save EEPROM File saves the entire EEPROM image, including variable and stack/free space.&#160; Use Save EEPROM File if you wish to have a file that you can load into an EEPROM programmer for production purposes.</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

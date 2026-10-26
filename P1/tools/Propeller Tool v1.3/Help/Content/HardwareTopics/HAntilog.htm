@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="About the Hardware" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Anti-log Table</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="AboutHardware.htm">About the Hardware</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Anti-log Table</span>
+        </div>
+        <h1>Anti-log Table</h1>
+        <p class="PlainText">The anti-log table ($D000-$DFFF in <a href="MainMem.htm" target="" title="" alt="" class="MCXref_0">Main Memory</a>)&#160;contains data used to convert base-2 exponents into unsigned numbers. There is also a <a href="HLog.htm" target="" title="" alt="" class="MCXref_0">Log Table </a> and a <a href="HSine.htm" target="" title="" alt="" class="MCXref_0">Sine Table</a>.</p>
+        <h2>How Log and Anti-Log Tables can be Useful</h2>
+        <p class="PlainText">The log and anti-log tables are useful for converting values between their number form and exponent form. When numbers are encoded into exponent form, simple math operations take on more complex effects. For example ‘add’ and ‘subtract’ become ‘multiply’ and ‘divide,’ ‘shift-left’ becomes ‘square’ and ‘shift-right’ becomes ‘square-root,’ and ‘divide by 3’ will produce ‘cube root.’ Once the exponent is converted back to a number, the result will be apparent. This process is imperfect, but quite fast.
+</p>
+        <p class="PlainText">For applications where many multiplies and divides must be performed in the absence of many additions and subtractions, exponential encoding can greatly speed things up. Exponential encoding is also useful for compressing numbers into fewer bits – sacrificing resolution at higher magnitude. In many applications, such as audio synthesis, the nature of signals is logarithmic in both frequency and magnitude. Processing such data in exponent form is quite natural and efficient, as it lends a ‘linear’ simplicity to what is actually logarithmic.
+The code examples given below use each tables’ samples verbatim. Higher resolution could be achieved by linearly interpolating between table samples, since the slope change is very slight from sample to sample. The cost, though, would be larger code and lower execution speed.</p>
+        <h2>Anti-Log Table Example</h2>
+        <p class="PlainText">The anti-log table is comprised of 2,048 unsigned words which are each the lower 16-bits of a 17-bit mantissa (the 17<sup>th</sup> bit is implied and must be set separately). To use this table, shift the top 11 bits of the exponent fraction (bits 15..5) into bits 11..1 and isolate. Add $D000 for the anti-log table base. Read the word at that location into the result – this is the mantissa. Next, shift the mantissa left to bits 30..15 and set bit 31 – the missing 17<sup>th</sup> bit of the mantissa. The last step is to shift the result right by 31 minus the exponent integer in bits 20..16. The exponent is now converted to an unsigned number.</p>
+        <div class="propcode"><pre xml:space="preserve" class="spin_dat1">DAT
+
+' Convert exponent to number
+'
+' on entry: exp holds 21-bit exponent with 5 integer bits and 16 fraction bits
+' on exit:  num holds 32-bit unsigned value
+'
+expnum          mov     num,exp             'get exponent into number
+                shr     num,#15-11          'justify exponent fraction as word offset
+                and     num,table_mask      'isolate table offset bits
+                or      num,table_antilog   'add anti-log table address
+                rdword  num,num             'read mantissa word into number
+                shl     num,#15             'shift mantissa into bits 30..15
+                or      num,num0            'set top bit (17th bit of mantissa)
+                shr     exp,#20-4           'shift exponent integer into bits 4..0
+                xor     exp,#$1F            'inverse bits to get shift count
+                shr     num,exp             'shift number into final position
+
+expnum_ret      ret                         '47..62 clocks
+                                            '(variance is due to HUB sync on RDWORD)
+
+num0            long    $80000000           '17th bit of the mantissa
+table_mask      long    $0FFE               'table offset mask
+table_antilog   long    $C000               'anti-log table base
+
+exp             long    0                   'input
+num             long    0                   'output
+</pre>
+        </div>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

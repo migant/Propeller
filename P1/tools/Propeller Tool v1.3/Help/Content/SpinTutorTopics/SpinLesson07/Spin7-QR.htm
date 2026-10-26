@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 7" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Quick Review</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 7</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Quick Review</span>
+        </div>
+        <p><a href="Spin7-ObjLife.htm" title="Go back to Object Lifetime" alt="Go back to Object Lifetime"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="../SpinLesson08/Spin8-Intro.htm" title="Go on to Spin Lesson 8 Introduction" alt="Go on to Spin Lesson 8 Introduction"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1>Spin Lesson 7: Quick Review</h1>
+        <ul>
+            <li value="1">Applications:<ul><li value="1">Use unique symbols, or elements of an array, for each distinct object in use.</li><li value="2">Use one copy of an object’s code and one or more copies of its global variables.</li></ul></li>
+            <li value="2">Objects:<ul><li value="1">An object array may be created in <span class="keyword_in_text">OBJ</span> blocks similar to a variable array in <span class="keyword_in_text">VAR</span> blocks.</li><li value="2">An object’s lifetime is static, consuming a specific, static amount of memory regardless of whether or not it is active.&#160; This eliminates the possibility of fragmented memory during normal run-time use and ensures deterministic behavior in real-time systems.</li></ul></li>
+            <li value="3">Spin language:<ul><li value="1"><span class="keyword_in_text">REPEAT</span> command: <ul><li value="1">Finite, counted loop: <span class="keyword_in_text">REPEAT</span> <![CDATA[ ]]><i>Variable </i><span class="keyword_in_text">FROM</span> <![CDATA[ ]]><i>Start </i><span class="keyword_in_text">TO</span> <![CDATA[ ]]><i>Finish </i>where Variable is the variable to use as the counter and Start and Finish indicate the range.</li><li value="2">The <span class="keyword_in_text">QUIT</span> command works inside <span class="keyword_in_text">REPEAT </span>loops only and causes the loop to terminate immediately.</li></ul></li><li value="2">I/O registers (<span class="code_in_text"><span class="keyword_in_text">DIR</span>x</span>, <span class="code_in_text"><span class="keyword_in_text">OUT</span>x</span>, and <span class="code_in_text"><span class="keyword_in_text">IN</span>x</span>) may use the form <i>reg</i>[<i>a..b</i>] to affect multiple contiguous pins; where reg is the register (<span class="code_in_text"><span class="keyword_in_text">DIR</span>x</span>, <span class="code_in_text"><span class="keyword_in_text">OUT</span>x</span>, or <span class="code_in_text"><span class="keyword_in_text">IN</span>x)</span> and <i>a</i> and <i>b</i> are I/O pin numbers.</li></ul></li>
+            <li value="4">I/O pins are set to outputs only while a cog that set them that way remains active.</li>
+            <li value="5">Compile and View Info: F8 key (or select Run → Compile Current → View Info).</li>
+        </ul>
+        <p><a href="Spin7-ObjLife.htm" title="Go back to Object Lifetime" alt="Go back to Object Lifetime"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="../SpinLesson08/Spin8-Intro.htm" title="Go on to Spin Lesson 8 Introduction" alt="Go on to Spin Lesson 8 Introduction"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

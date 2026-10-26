@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 8" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Clock-Related Timing </title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 8</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Clock-Related Timing</span>
+        </div>
+        <p><a href="Spin8-ClkConstants.htm" title="Go back to Declaring Clock Settings Constants" alt="Go back to Declaring Clock Settings Constants"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin8-QR.htm" title="Go on to Spin Lesson 8 Quick Review" alt="Go on to Spin Lesson 8 Quick Review"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1><a name="kanchor279"></a>Clock-Related Timing </h1>
+        <h2>Exercise 8-4: Making Output.spin Adaptable to Different Clock Frequencies</h2>
+        <p class="PlainText"><a name="kanchor280"></a>The last exercise may have made you aware of something; our Output object is easily affected by the clock frequency.&#160; It relies on a specific, hard-coded time-base but subordinate objects (those that are not the top object) should never do that because they cannot predict what the clock frequency will be for the many applications they may be used for.&#160; Additionally, the Propeller application can change the System Clock frequency a number of times throughout its run time.&#160; </p>
+        <p class="PlainText">Suppose that we really intended to make an Output object that toggles pins at a specific rate that is essentially clock independent.&#160; This means that it must respond dynamically to the System Clock frequency.&#160; </p>
+        <ul>
+            <li class="Checklist" value="1">Below is the modified code; make sure to edit your code to match.</li>
+        </ul>
+        <div class="propcode"><a href="../../../../Examples/Help/Spin Tutorial/Exercise 08-4/Output.spin"><img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" title="Open example in Propeller Tool" /></a><pre xml:space="preserve" class="spin_con1">{{ Output.spin }}
+
+</pre><pre xml:space="preserve" class="spin_var1">VAR
+  long  Stack[9]                       'Stack space for new cog
+  byte  Cog                            'Hold ID of cog in use, if any
+
+
+</pre><pre xml:space="preserve" class="spin_pub1">PUB Start(Pin, Delay<span class="code_add_mod">MS</span>, Count): Success
+{{Start new blinking process in new cog; return True if successful.}}
+
+  Stop
+  Success := (Cog := cognew(Toggle(Pin, Delay<span class="code_add_mod">MS</span>, Count), @Stack) + 1)
+
+
+</pre><pre xml:space="preserve" class="spin_pub2">PUB Stop
+{{Stop toggling process, if any.}}
+
+  if Cog
+    cogstop(Cog~ - 1)
+
+
+</pre><pre xml:space="preserve" class="spin_pub1">PUB Active: YesNo
+{{Return TRUE if process is active, FALSE otherwise.}}
+
+  YesNo := Cog &gt; 0
+
+
+</pre><pre xml:space="preserve" class="spin_pub2">PUB Toggle(Pin, Delay<span class="code_add_mod">MS</span>, Count)
+{{Toggle Pin, Count times with Delay<span class="code_add_mod">MS milliseconds<span class="code_delete"> clock cycles</span></span></pre><pre xml:space="preserve" class="spin_pub2">in between.  If Count = 0, toggle Pin forever.}}
+
+  dira[Pin]~~                                'Set I/O pin to output direction 
+  repeat                                     'Repeat the following
+    !outa[Pin]                               '  Toggle I/O Pin
+    waitcnt(<span class="code_add_mod">clkfreq / 1000 *</span> Delay<span class="code_add_mod">MS</span> + cnt)  '  Wait for DelayMS cycles    
+  while Count := --Count #&gt; -1               'While not 0 (make min -1)…
+  Cog~                                       'Clear Cog ID variable
+</pre>
+        </div>
+        <p class="PlainText">&#160;</p>
+        <p class="PlainText"><a name="kanchor281"></a>We modified the <span class="code_in_text">Start</span> and <span class="code_in_text">Toggle</span> methods by changing the <span class="code_in_text">Delay</span> parameter to <span class="code_in_text">DelayMS</span>, meaning “delay in units of milliseconds.”&#160; Then we modified the <span class="code_in_text">waitcnt</span>… statement such that instead of waiting a fixed number of clock cycles, it calculates the number of clock cycles that there are in <span class="code_in_text">DelayMS</span> milliseconds of time.&#160; <span class="keyword_in_text">CLKFREQ</span><span class="code_in_text"></span><span class="code_in_text"></span> is a command that returns the current System Clock frequency in Hertz (cycles per second).&#160; Its value is set by the Propeller Tool at compile time and also by the <span class="keyword_in_text">CLKSET</span><span class="code_in_text"></span><span class="code_in_text"></span> command at run time.&#160; There are 1,000 milliseconds per second and <span class="keyword_in_text">CLKFREQ</span> is the number of clock cycles per second, so <span class="code_in_text">clkfreq / 1000 * DelayMS</span> is the number of clock cycles in <span class="code_in_text">DelayMS</span> milliseconds of time.&#160;</p>
+        <p class="PlainText">With this modification, regardless of the application’s start-up frequency, or how often the application changes the frequency during run time, the Output object will recalculate the proper delay each time through its loop.</p>
+        <p class="PlainText">Now, of course, we need to modify our Blinker2 object to adjust the <span class="code_in_text">DelayMS</span> parameters appropriately.&#160; </p>
+        <ul>
+            <li class="Checklist" value="1">Enter the code modifications shown below.&#160; Note that we entered the <span class="keyword_in_text">_CLKMODE</span> and <span class="keyword_in_text">_XINFREQ</span> settings just as we had left them from the last exercise.</li>
+        </ul>
+        <div class="propcode"><a href="../../../../Examples/Help/Spin Tutorial/Exercise 08-4/Blinker2.spin"><img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" title="Open example in Propeller Tool" /></a><pre xml:space="preserve" class="spin_con1">{{ Blinker2.spin }}
+
+</pre><pre xml:space="preserve" class="spin_con2">CON
+  _<span class="code_add_mod">CLKMODE = XTAL1 + PLL4X     'Set to ext low-speed crystal, 4x PLL</span></pre><pre xml:space="preserve" class="spin_con2">  <span class="code_add_mod">_XINFREQ = 5_000_000         'Frequency on XIN pin is 5 MHz</span></pre><pre xml:space="preserve" class="spin_con2">  MAXLEDS = 6                  'Number of LED objects to use
+
+
+</pre><pre xml:space="preserve" class="spin_obj1">OBJ
+  LED[MAXLEDS] : "Output"
+
+
+</pre><pre xml:space="preserve" class="spin_pub1">PUB Main
+{Toggle pins at different rates, simultaneously}
+
+  dira[16..23]~~                                 'Set pins to outputs
+  LED[NextObject].Start(16, <span class="code_add_mod">250</span>,   0)            'Blink LEDs
+  LED[NextObject].Start(17, <span class="code_add_mod">500</span>,   0)
+  LED[NextObject].Start(18,  <span class="code_add_mod">50</span>, 300)
+  LED[NextObject].Start(19, <span class="code_add_mod">500</span>,  40)
+  LED[NextObject].Start(20,  <span class="code_add_mod">29</span>, 300)
+  LED[NextObject].Start(21, <span class="code_add_mod">104</span>, 250)
+  LED[NextObject].Start(22,  <span class="code_add_mod">63</span>, 200)            '&lt;-Postponed
+  LED[NextObject].Start(23,  <span class="code_add_mod">33</span>, 160)            '&lt;-Postponed
+  LED[0].Start(20, <span class="code_add_mod">1000</span>, 0)                      'Restart object 0
+  repeat                                         'Loop endlessly
+
+</pre><pre xml:space="preserve" class="spin_pub2">PUB NextObject : Index
+{Scan LED objects and return index of next available LED object.
+ Scanning continues until one is available.}
+
+  repeat
+    repeat Index from 0 to MAXLEDS-1
+      if not LED[Index].Active
+        quit
+  while Index == MAXLEDS
+</pre>
+        </div>
+        <p>&#160;</p>
+        <p class="PlainText">In <span class="code_in_text">Main</span>, we adjusted the second parameter of the all the calls to <span class="code_in_text">Start</span> from “delay in clock cycles” to “delay in milliseconds.”&#160; </p>
+        <ul>
+            <li class="Checklist" value="1">Compile and download the Blinker2 object now.&#160; Notice that the rate at which each LED blinks is the same as it was when we used the internal fast clock.&#160; </li>
+            <li class="Checklist" value="2">Try increasing the clock speed by changing <span class="keyword_in_text">_CLKMODE</span> from <span class="code_in_text">XTAL1 + PLL4X</span> to <span class="code_in_text">XTAL1 + PLL16X</span>.&#160; You should not see any change in the blink rates even though we just multiplied the clock frequency by four!</li>
+        </ul>
+        <p class="PlainText">Keep in mind that the accuracy of the internal clock on your particular Propeller chip can play a big role in the way this example looks, especially when using the <span class="keyword_in_text">RCSLOW</span> mode.</p>
+        <p class="PlainText">There are two techniques for using the <span class="keyword_in_text">WAITCNT</span> command but we only demonstrated one of them.&#160; </p>
+        <p><a href="Spin8-ClkConstants.htm" title="Go back to Declaring Clock Settings Constants" alt="Go back to Declaring Clock Settings Constants"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin8-QR.htm" title="Go on to Spin Lesson 8 Quick Review" alt="Go on to Spin Lesson 8 Quick Review"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

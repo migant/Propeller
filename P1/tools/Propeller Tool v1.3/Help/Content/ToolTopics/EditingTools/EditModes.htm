@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Using the Propeller Tool|Editing Tools" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Edit Modes</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../UsingPropTool.htm">Using the Propeller Tool</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="EditingTools.htm">Editing Tools</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Edit Modes</span>
+        </div>
+        <h1><a name="kanchor184"></a>Edit Modes</h1>
+        <p class="PlainText"><a name="kanchor185"></a>There are three edit modes provided by the Editor pane: 1) Insert (default), 2) Align (available for “.spin” objects only), and 3) Overwrite.&#160; You cycle through the modes by using the Insert key.&#160; The current mode is reflected by both the caret shape and by panel three of the status bar.</p>
+        <p>
+            <img src="../../Resources/Images/PropellerToolPictures/EditMode1_251x118.png" style="width: 251;height: 118;" class="FloatCaptionLeft" />
+        </p>
+        <p class="PictureCaptionNoNums">Insert Edit Mode</p>
+        <p class="PictureDescription">Caret is the standard blinking, vertical bar and the status bar shows “Insert.”</p>
+        <p class="clear">&#160;</p>
+        <p class="clear">&#160;</p>
+        <p class="clear">&#160;</p>
+        <p class="clear">&#160;</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/EditMode2_253x119.png" style="width: 253;height: 119;" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Align Edit Mode</p>
+            <p class="PictureDescription">Caret is a blinking underline and the status bar shows “Align.”</p>
+            <p class="clear">&#160;</p>
+            <p class="clear">&#160;</p>
+            <p class="clear">&#160;</p>
+            <p class="clear">&#160;</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/EditMode3_250x120.png" style="width: 250;height: 120;" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Overwrite Edit Mode</p>
+            <p class="PictureDescription">Caret is a blinking, solid block and the status bar shows “Overwrite.”</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <h2><a name="Insert"></a>Insert and Overwrite Modes</h2>
+        <p class="PlainText"><a name="kanchor186"></a>The Insert and Overwrite modes are similar to that of many other text editors.&#160; These are the only two modes available to edit tabs containing files other than Propeller “.spin” objects, such as “.txt” files.</p>
+        <h2>Align Mode</h2>
+        <p class="PlainText"><a name="kanchor187"></a>The Align mode is a special version of the Insert mode designed specifically for maintaining source code.&#160; To understand Align mode, we first need to consider common programming techniques. There are two very common practices used when writing modern source code: 1) indention of code and 2) alignment of comments to the right of code.&#160; It is also common for source code to be viewed and edited using more than one editor application.&#160; Historically, programmers have used either tabs or spaces for indention and alignment purposes, both of which prove problematic.&#160; Tab characters cause alignment issues because some editors use different sized tab settings than others.&#160; Both tab and space characters cause alignment issues because future edits cause right-side comments to shift out of alignment.&#160; Here are some examples:</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/Align-1_504x146.png" style="width: 504;height: 146;" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums"> Original Code</p>
+            <p class="PictureDescription">If the original code used tab characters to align the comments, changing <span class="code_in_text">Delay</span> to <span class="code_in_text">BtnDelay</span> will cause a comment to shift right if the altered text crosses a tab boundary.</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="clear">&#160;</p>
+        <p class="clear">&#160;</p>
+        <p class="clear">&#160;</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/Align-2_501x146.png" style="width: 501;height: 146;" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Tab Aligned </p>
+            <p class="PictureDescription">If the original code had been made with tab characters to align the comments, changing <span class="code_in_text">Delay</span> to <span class="code_in_text">BtnDelay</span> <![CDATA[ ]]>results in the second comment suddenly being pushed out by another tab width.</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="clear">&#160;</p>
+        <p class="clear">&#160;</p>
+        <p class="clear">&#160;</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/Align-3_504x146.png" style="width: 504;height: 146;" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Space Aligned</p>
+            <p class="PictureDescription">If the original code had been made with space characters to align the comments, and a standard Insert edit mode is used, changing “Delay” to “BtnDelay” results in the second and fifth comments being pushed out by 3 spaces.</p>
+            <p class="clear">&#160;</p>
+            <p class="clear">&#160;</p>
+            <p class="clear">&#160;</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText">For Spin code, the Propeller Tool solves this problem first by disallowing tab characters (Tab key presses emit the proper number of space characters), and second by providing the Align edit mode.&#160; While in the Align mode, characters inserted into a line affect neighboring characters but not characters separated by more than one space.&#160; The result is that comments and other items separated by more than one space maintain their intended alignment for as long as possible.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/Align-4_504x146.png" style="width: 504;height: 146;" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Effects of the Align Edit Mode </p>
+            <p class="PictureDescription">Using the Align edit mode, changing <span class="code_in_text">Delay</span> to <span class="code_in_text">BtnDelay</span> leaves all the comments in their original, aligned, location.&#160; No manual re-aligning of comments is necessary in this case.</p>
+            <p class="clear">&#160;</p>
+            <p class="clear">&#160;</p>
+            <p class="clear">&#160;</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText">Since the Align mode maintains existing alignments as much as possible, much less time is wasted realigning elements due to future edits by the programmer.&#160; Additionally, since spaces are used instead of tab characters, the code maintains the same look and feel in any editor that displays it with a mono-spaced font.</p>
+        <p class="PlainText">The Align mode isn’t perfect for all situations, however.&#160; We recommend you use Insert mode for most code writing and briefly switch to Align mode to maintain existing code where alignment is a concern.&#160; The Insert key rotates the mode through Insert <span class="code_in_text">→</span> Align <span class="code_in_text">→</span> Overwrite and back to Insert again.&#160; The Ctrl+Insert key shortcut toggles only between Insert and Align modes. A little practice with the Align and Insert modes will help you program more time-efficiently.</p>
+        <p class="PlainText">Note that non-Spin source (without a .spin extension) does not allow the Align mode.&#160; This is because, for non-Spin source, the Propeller Tool is designed to maintain any existing tab characters and to insert tab characters when the Tab key is pressed in order to maintain the original intent of the file, which may be a tab-delimited data source for a Spin program or other use where tab characters are desired.</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

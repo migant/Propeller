@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 3" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Constants</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 3</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Constants</span>
+        </div>
+        <p><a href="Spin3-Cogs.htm" title="Go back to Cogs (Processors)" alt="Go back to Cogs (Processors)"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin3-Blocks.htm" title="Go on to Block Designators" alt="Go on to Block Designators"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1><a name="kanchor210"></a>Constants</h1>
+        <h2>Spin Exercise 3-1: Adding constants to Output.spin</h2>
+        <p class="PlainText">Let’s enhance our program a little.&#160; Suppose we want to make it easy to change the I/O pin and the length of the delay used.&#160; As it is written currently, we'd have to find and change the pin number in two places and the delay in yet another place.&#160; We can make it better by defining those items in a separate place that is easy to find and edit.&#160; </p>
+        <ul>
+            <li class="Checklist" value="1">Look at the following example and edit your code to match (we highlighted every new or modified element).</li>
+        </ul>
+        <div class="propcode"><a href="../../../../Examples/Help/Spin Tutorial/Exercise 03-1/Output.spin"><img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" title="Open example in Propeller Tool" /></a><pre xml:space="preserve" class="spin_con2">&#160;</pre><pre xml:space="preserve" class="spin_con2"><span class="code_add_mod">CON</span>
+            </pre><pre xml:space="preserve" class="spin_con2"><span class="code_add_mod"></span>  <span class="code_add_mod">Pin   = 16</span>                           
+  <span class="code_add_mod">Delay = 3_000_000</span>
+
+</pre><pre xml:space="preserve" class="spin_pub1">PUB Toggle
+  dira[<span class="code_add_mod">Pin</span>]~~
+  repeat
+    !outa[<span class="code_add_mod">Pin</span>]
+    waitcnt(<span class="code_add_mod">Delay</span> + cnt)
+    
+</pre>
+        </div>
+        <p class="PlainText">&#160;</p>
+        <p class="PlainText"><a name="kanchor211"></a>The new <span class="keyword_in_text">CON </span>block at the top of the code defines global constants for the object.&#160; In it, we created two symbols, <span class="code_in_text">Pin</span> and <span class="code_in_text">Delay</span>, and assigned the constant values 16 and 3,000,000 to them, respectively.&#160; We can now use the symbols <span class="code_in_text">Pin </span>and <span class="code_in_text">Delay </span>elsewhere in the code to represent our constant values 16 and 3,000,000.&#160; Notice that we used underscores ( <span class="keyword_in_text">_</span> ) to separate the “thousands” groups in the number 3,000,000?&#160; Commas are not allowed there but underscores are allowed anywhere inside of constant values; this makes large numbers more readable.</p>
+        <p class="PlainText">In the <span class="code_in_text">Toggle</span> method, we replaced both occurrences of 16 with the symbol <span class="code_in_text">Pin</span>, and replaced the <span class="code_in_text">3_000_000</span> with the symbol <span class="code_in_text">Delay</span>.&#160; When compiled, the Propeller Tool will use the constant values in place of their respective symbols.&#160; This makes it easy, later on, to change the pin number or delay at will since we only have to change it up at the top of code in a place that is easy to find and understand.</p>
+        <p class="PlainText">Try changing the <span class="code_in_text">Delay</span> constant from 3,000,000 to 500,000 and download again; the LED should now flicker at a rate of 12 blinks per second (24 toggles per second).&#160; You can also change the <span class="code_in_text">Pin</span> constant from 16 to 17 and download again to see a different LED blink.&#160; NOTE: you can try 18 through 23 as well, but on the Propeller Demo Board they are connected in pairs with resistors for the VGA driver circuit, so two LEDs will blink at once.</p>
+        <p><a href="Spin3-Cogs.htm" title="Go back to Cogs (Processors)" alt="Go back to Cogs (Processors)"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin3-Blocks.htm" title="Go on to Block Designators" alt="Go on to Block Designators"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

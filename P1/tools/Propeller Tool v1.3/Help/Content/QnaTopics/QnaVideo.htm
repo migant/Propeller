@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Questions and Answers" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Video Generation</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="QnaLocal.htm">Questions and Answers</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Video Generation</span>
+        </div>
+        <h1>Video Generation</h1>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2570084280_0" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can the Propeller chip really generate video signals?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2570084280_0" style="display: none;">
+                <p class="PlainText">Yes. Each of the Propeller chip's 8 cogs has its own video generator hardware that transmits 32-bit chunks of video image data at a configurable rate. Since each cog operates independently, up to eight video signals could be generated simultaneously. </p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2570084280_1" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What kinds of video signals can the Propeller chip generate?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2570084280_1" style="display: none;">
+                <p class="PlainText">The P8X32A supports VGA for RGB devices, and NTSC or PAL composite video modes, with the signal formats defined in code. The composite video modes also support signal broadcasting with optional aural sub-carrier.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2570084280_2" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What color resolutions are supported by the video generator?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2570084280_2" style="display: none;">
+                <p class="PlainText">There are two color mode options: </p>
+                <ul>
+                    <li value="1">Two-color mode: pixel data is 32x1 bits and only colors 0 and 1 are used</li>
+                    <li value="2">Four-color mode: pixel data is 16x2 bits and colors 0 through 3 are used</li>
+                </ul>
+                <p class="PlainText">Colors are specified per group of pixels. So while a group of pixels may be limited to 2 or 4 colors, it is possible to have more than 2 or 4 colors per horizontal line (containing multiple pixel groups) or screen depending on the video driver.</p>
+                <p class="PlainText">In VGA mode, up to 8 bits per pixel may be used.  This is typically configured as 2 bits each red, green, and blue (for 64 possible colors) and 1 bit each for horizontal and vertical sync.</p>
+                <p class="PlainText">TV mode is capable of 6 shades of grey and 16 hues for a total of 102 possible colors.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2570084280_3" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What display resolutions are supported?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2570084280_3" style="display: none;">
+                <p class="PlainText">Video resolution and frequency is flexible and is defined by the object that generates it; the limiting factors are application speed (clock speed) and available memory.</p>
+                <p class="PlainText">Objects with various display modes exist for signaling standards and resolutions like NTSC (243 or 486 lines), PAL (286 or 572 lines), VGA (512x384, 1024x768, 1280x1024, and 1600x1200). New video objects and variations of existing video objects can be found on the Propeller Object Exchange: <a href="http://obex.parallax.com/" target="_blank" title="Visit the Propeller Object Exchange in a new window." alt="Visit the Propeller Object Exchange in a new window.">http://obex.parallax.com</a>.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2570084280_4" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How is the Video Generator controlled?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2570084280_4" style="display: none;">
+                <p class="PlainText">The Video Generator hardware is configured by  the Video Configuration Register (<span class="keyword_in_text">VCFG</span>) and the Video Scale Register (<span class="keyword_in_text">VSCL</span>). In addition, Counter A of the cog must be set to PLL&#160;Internal mode and configured to deliver the right timing for the Video Generator. After configuration, the <span class="keyword_in_text">WAITVID</span> instruction is used to feed data to the Video Generator.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2570084280_5" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How many I/O pins are required and which I/O pins must be used?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2570084280_5" style="display: none;">
+                <p class="PlainText">Composite mode uses 3 contiguous I/O pins (4 pins for separate chroma or the aural sub-carrier in broadcast mode), while VGA mode uses up to 8 contiguous I/O pins.</p>
+                <p class="PlainText">Black &amp;&#160;White TV&#160;text drivers are also available which use a single pin.</p>
+                <p class="PlainText">The actual pins used depend on the setting of the VGroup and VPins fields of the Video Configuration Register (VCFG). The options available include the use of all eight pins (VGA), or just the lower or upper four pins (composite), of the groups P7..P0, P15..P8, P23..P16, or P31..P24.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 5" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>The Top Object File</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 5</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">The Top Object File</span>
+        </div>
+        <p><a href="Spin5-ObjView.htm" title="Go back to The Object View" alt="Go back to The Object View"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin5-QR.htm" title="Go on to Spin Lesson 5 Quick Review" alt="Go on to Spin Lesson 5 Quick Review"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1><a name="kanchor241"></a>The Top Object File</h1>
+        <p class="PlainText">The object at the top of the Object View is always the “Top Object File” for that particular compilation.&#160; That means the compilation started from Blinker1, in this case.&#160; When we compile by using the F10 or F11 shortcut keys, or their corresponding menus, the Propeller Tool starts the compile operation using whatever edit tab is active at that moment.&#160; The active edit tab is the one that is highlighted differently than the rest.&#160; </p>
+        <p class="PlainText">If we had accidentally clicked on the Output object’s tab first and then compiled with F10 or F11 the compile would have started from that object instead.&#160; This would not have resulted in the application we desired and the Object View would have shown only one object, Output, in its structure.&#160; This is all because the compile functions we've been using are the “Compile Current” options; meaning they compile from the currently active object, or edit tab.</p>
+        <p class="PlainText"><a name="kanchor242"></a>There are other compile functions that can help us. Select the Run menu and look at the options.&#160; You should see a “Compile Current” and “Compile Top” flyout menu.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/SpinTutorialPictures/Compile Current Menu.png" style="width: 289px;height: 92px;" class="FloatCaptionLeft" />
+            </p>
+            <p class="clear">&#160;</p>
+        </div>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/SpinTutorialPictures/Compile Top Menu.png" style="width: 310px;height: 109px;" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Compile Current Menu (top) and Compile Top Menu (bottom)</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText">Each menu, Compile Current and Compile Top, has the same sub-options but they start their compilation from different places.&#160; Compile Current starts from the active edit tab and Compile Top starts from the designated Top Object File.&#160; </p>
+        <p class="PlainText"><a name="kanchor243"></a>You can tell the Propeller Tool which object to treat as the “designated Top Object File” at any time.&#160; You do this by any one of the following methods:</p>
+        <ul>
+            <li value="1">Right-click the desired object’s edit tab and select “Top Object File,” or</li>
+            <li value="2">Right-click the desired object from the File List (in the Integrated Explorer) and select “Top Object File,” or</li>
+            <li value="3">Choose the File → Select Top Object File… menu option and select the desired file from the browse window, or</li>
+            <li value="4">Press Ctrl+T and select the desired file from the browse window.</li>
+        </ul>
+        <p class="PlainText"><a name="kanchor244"></a>We used option #1 to select Blinker1 as the Top Object File, in the figure below.&#160; Note that afterwards, the Blinker1 tab’s text is bold.&#160; The file the Propeller Tool knows as the Top Object File always appears in bold.&#160; </p>
+        <p class="PlainText">Now, if we use one of the Compile Top options, such as Ctrl+F10 or Ctrl+F11, regardless of which edit tab is active, the Propeller Tool will compile starting from the Top Object File.&#160; For example, in the figure below, the Output object is the active edit tab.&#160; If we press Ctrl+F10, the application will be compiled starting with the Blinker1 object, however.&#160; If we had pressed F10 instead, the Output object would have been compiled.</p>
+        <p class="PlainText">Each of the <a href="../../ToolTopics/ShortcutKeys/ShorcutKeyHome.htm" target="" title="" alt="" class="MCXref_0">Shortcut Keys</a> for the Compile Current options, F8, F9, F10, etc., has a similar variation for the Compile Top options, Ctrl+F8, Ctrl+F9, Ctrl+10, etc.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/SpinTutorialPictures/Blinker1TopA.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionStartStepNum" MadCap:autonum="Step 1: "><span class="autonumber"><span>Step 1: </span></span> Right-click the desired edit tab, and choose Top Object File.&#160;&#160; </p>
+        </div>
+        <p class="clear">&#160;</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/SpinTutorialPictures/Blinker1TopB.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNextStepNum" MadCap:autonum="Step 2: "><span class="autonumber"><span>Step 2: </span></span>The Top Object File’s name will show in bold on its Edit Tab.</p>
+            <p class="clear">&#160;</p>
+            <h2>Which Objects Were Compiled?</h2>
+        </div>
+        <p class="PlainText">If there’s ever a question of which object files were compiled in the last successful compile operation, use the mouse to explore the resulting application’s structure in the Object View.</p>
+        <p class="PlainText">It’s important to keep track of which file you've designated as the Top Object File and what compile option you chose; Current vs. Top.&#160; Only one file can be designated as the Top Object File at a time and the Propeller Tool remembers that file even between sessions.</p>
+        <p class="PlainText">Also, keep in mind that an object doesn't really need to be open in the Propeller Tool just to be compiled.&#160; If an object you compiled references another object, that object will be compiled whether or not it is currently open.&#160; Even the Top Object File can be compiled without it being open.&#160; For example, pressing Ctrl+F10 will compile the last designated Top Object File regardless of whether or not it even belongs to the current application you are working on.</p>
+        <p><a href="Spin5-ObjView.htm" title="Go back to The Object View" alt="Go back to The Object View"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin5-QR.htm" title="Go on to Spin Lesson 5 Quick Review" alt="Go on to Spin Lesson 5 Quick Review"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

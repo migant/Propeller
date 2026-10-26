@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Questions and Answers" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Locks</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="QnaLocal.htm">Questions and Answers</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Locks</span>
+        </div>
+        <h1>Locks</h1>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1321138131_0" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What are locks (semaphores)?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1321138131_0" style="display: none;">
+                <p class="PlainText"><a href="../HardwareTopics/Locks.htm" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Locks</a> ("lock bits" or semaphores) serve as a mechanism that provides for multiprocessor synchronization of a developer-defined mutually-exclusive resource. The Propeller has eight lock bits that can each be read and written atomically; read and written as a single operation that no other cog can interfere with. This allows them to be used as flags to prevent interference between cooperative parallel processes who are sharing a sensitive resource, such as main memory.</p>
+                <p class="PlainText"> Proper use requires all the related code to use locks cooperatively.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1321138131_1" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />If the cogs share main memory, how are memory collisions prevented?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1321138131_1" style="display: none;">
+                <p class="PlainText">A memory collision occurs when two or more cogs operate on a block of memory at the same time in a way that causes conflict between them.</p>
+                <p class="PlainText">A cog has exclusive access to its own <a href="../HardwareTopics/Cogs.htm#Cog" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Cog RAM</a>, so no memory collision between cogs can occur there.  However, all cogs share <a href="../HardwareTopics/MainMem.htm#MainRam" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Main RAM</a>; care must be taken to avoid collisions there.</p>
+                <p class="PlainText">A cog can read or write a byte, word, or long from Main RAM as an atomic operation—a single operation that no other cog can interfere with.  In contrast, cogs can unknowingly interfere with each other's successive atomic operations (multiple reads or writes of bytes, words, or longs from Main RAM) since their respective operations are naturally interleaved when accessing a mutually-exclusive resource.</p>
+                <p class="PlainText">This situation can cause problems if two or more cogs simultaneously perform multiple opposing operations on the same logical block of memory.  For example, two cogs may be tasked to cooperate on data contained in a block of memory 10 bytes in length.  If one cog starts writing to the 10 bytes while another is reading, timing variations in their respective program loops can easily cause the "reading" cog to read a mixture of both new byte-sized data and old byte-sized data.</p>
+                <p class="PlainText">To prevent such misreads or miswrites, the cogs must coordinate their efforts through an agreed-upon synchronization mechanism.  This mechanism serves as a "flag" to signal when a cog is performing a non-atomic operation on a mutually-exclusive resource.  All cogs involved with that resource must check and set the "flag" before proceeding, and must clear the flag to indicate when they are done.</p>
+                <p class="PlainText">In many situations where memory is involved, a simple solution is to designate a byte, word, or long within the memory block to serve as this synchronization flag, but since that memory-based flag can not be read and written within the same atomic operation (it requires a read operation followed by a write operation) it may not work flawlessly for all situations.  For this reason, a dedicated synchronization mechanism exists, called <a href="../HardwareTopics/Locks.htm" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Locks</a>, or semaphores.</p>
+                <p class="PlainText">The Propeller has 8 global lock bits which can be read and written simultaneously, as a single operation.  When used properly, the lock bits can facilitate synchronization between cogs for any purpose desired; not just for Main RAM usage.  The lock bits are managed through four commands: <span class="keyword_in_text">LOCKNEW</span>, <span class="keyword_in_text">LOCKSET, LOCKCLR</span>, and <span class="keyword_in_text">LOCKRET</span>.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1321138131_2" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Are locks tied to a specific cog or block of memory?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1321138131_2" style="display: none;">
+                <p class="PlainText">No. The Propeller chip's <a href="../HardwareTopics/Locks.htm" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Locks</a> (semaphores, or "lock bits") are free for use by any cog at any time and for any reason. They are not tied to any cog or any resource, such as memory, and serve as an atomic mechanism that provides for multiprocessor synchronization of a developer-defined mutually-exclusive resource. Proper use requires all the related code to use locks cooperatively.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1321138131_3" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What do the LOCKNEW and LOCKRET&#160;commands do?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1321138131_3" style="display: none;">
+                <p class="PlainText">These instructions  provide an object the ability to request a unique lock ID bit; one that is not in-use by another part of the application. Without <span class="keyword_in_text">LOCKNEW</span> and <span class="keyword_in_text">LOCKRET</span> (and objects that faithfully used them) each object would have to use a static bit ID from the global semaphore resource which could unintentionally collide with the bit ID some other object happened to use within the same application.</p>
+                <p class="PlainText"><span class="keyword_in_text">LOCKNEW</span> is similar in concept to using <span class="keyword_in_text">COGNEW</span> rather than <span class="keyword_in_text">COGINIT</span>; it requests a lowest-numbered, unused resource. <span class="keyword_in_text">LOCKRET</span> is similar in concept to using <span class="keyword_in_text">COGSTOP</span>; it returns a used resource back to a pool for later use by the next requestor.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1321138131_4" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Are locks released when a cog is terminated?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1321138131_4" style="display: none;">
+                <p class="PlainText">No, it is required that the code use a <span class="keyword_in_text">LOCKRET</span> command on any semaphore "lock bit" to release it back to the pool of available semaphores.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

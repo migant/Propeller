@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Questions and Answers" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Propeller Assembly Language</title>
+        <link href="../Resources/TableStyles/ParallaxTable.css" rel="stylesheet" />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="QnaLocal.htm">Questions and Answers</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Propeller Assembly Language</span>
+        </div>
+        <h1>Propeller Assembly Language</h1>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_491083350_0" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is Propeller Assembly?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_491083350_0" style="display: none;">
+                <p class="PlainText">Propeller Assembly is the low-level 32-bit instruction set designed specifically for the Propeller chip. Though most of this language's instructions will be familiar to experienced assembly programmers, there are many that are specific to the Propeller's multicore architecture and a few features are unique to the language. </p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_491083350_1" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is noteworthy about Propeller Assembly?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_491083350_1" style="display: none;">
+                <p class="PlainText">Propeller Assembly includes instructions specific to its multicore architecture, including those for cog/hub interaction, lock bits (semaphores) for managing shared memory blocks, and cog counter and video generator hardware. </p>
+                <p class="PlainText">Propeller Assembly has additional features worth noting:</p>
+                <ul>
+                    <li value="1"><span class="keyword_in_text">IF_x</span> (Conditions): every Propeller Assembly instruction has an optional "condition" field that dynamically determines whether or not it executes  at run time based on current <span class="keyword_in_text">C</span> and <span class="keyword_in_text">Z</span> flag states. This feature simplifies critical timing routines; enabling multi-decision code to execute along the same path, taking the same amount of time, regardless of the decision.</li>
+                    <li value="2"><span class="keyword_in_text">WC</span>, <span class="keyword_in_text">WZ</span>, <span class="keyword_in_text">NR</span>,&#160;<span class="keyword_in_text">WR</span>: every Propeller Assembly instruction has an optional "effect" field that enables the writing or no writing of the <span class="keyword_in_text">C</span> and <span class="keyword_in_text">Z</span> flags or destination register upon instruction execution.  This combined with <span class="keyword_in_text">IF_X</span> <![CDATA[ ]]>enables single-path, multi-decision code that is easy to time with certainty. </li>
+                    <li value="3"><span class="keyword_in_text">JMPRET</span>: a mechanism to "call" other routines and eventually return to the instruction that follows the <span class="keyword_in_text">JMPRET</span> without the use of a call stack. This allows for efficient use of memory and implementation of simple task-switching within a cog.</li>
+                </ul>
+                <p><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../TableTopics/AsmOpCodesPopup.htm" onclick="FMCPopup( event, this ); return false;" MadCap:width="auto" MadCap:height="auto" class="MCPopupSpot_Popup_0" alt="Open in popup window" title="Open in popup window">See the complete Assembly Opcode Table</a></span>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_491083350_2" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Where does Assembly code live and where does it get processed?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_491083350_2" style="display: none;">
+                <p class="PlainText">Propeller Assembly code exists in the Propeller Application image that is stored in <a href="../HardwareTopics/MainMem.htm#MainRam" target="" title="" alt="" MadCap:excludeAction="unbind" class="MCXref_0">Main RAM</a> during runtime, but it is executed by copying it to <a href="../HardwareTopics/Cogs.htm#Cog" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Cog RAM</a> and processing it directly from there.</p>
+                <p class="PlainText">For the initial startup, the Propeller chip runs its <a href="../HardwareTopics/BootUp.htm" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Boot Up Procedure</a> and the <a href="../HardwareTopics/BootLoader.htm#SpinInterpreter" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Spin&#160;Interpreter</a> (stored in Main ROM) is copied to Cog 0’s RAM.  This Spin Interpreter fetches chunks of the application code, called tokens, from the Main RAM and executes it.  </p>
+                <p class="PlainText">When that code is a <span class="keyword_in_text">COGNEW</span>(<i>AsmAddress</i>…) or <span class="keyword_in_text">COGINIT</span>(<i>AsmAddress</i>…) command, the Propeller starts the designated cog to load its Cog RAM with 496 consecutive longs of data from Main RAM, starting at the <i>AsmAddress</i> location. (This overwrites any code or data that may have been in the target cog's RAM).  The cog then executes the assembly code directly from its Cog RAM, beginning at address 0.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_491083350_3" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How do I indicate the end of Assembly code?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_491083350_3" style="display: none;">
+                <p class="PlainText">Most assembly programs consist of infinite loops that don’t need any end-of-code indicator.  In the rare case where you need to make an assembly program terminate at the end of its operation, you need to instruct it to shut down the cog that is running it. You can do this with the Propeller Assembly <span class="keyword_in_text">COGID</span> and <span class="keyword_in_text">COGSTOP</span> instructions.  It may look something like this (assuming <span class="code_in_text">MyID</span> is an available register):</p>
+                <div class="propcode"><pre xml:space="preserve" class="spin_dat1">        cogid    MyID    'get the ID&#160;of the cog I'm running in	
+        cogstop  MyID    'use the ID&#160;to terminate myself</pre>
+                </div>
+                <p>&#160;</p>
+                <p class="PlainText">If you do not do this, you may run into strange behavior, and here’s why: When an Assembly routine is launched, the cog fills its RAM with 496 longs from main memory, beginning at the <i>AsmAddress</i> specified in the <span class="keyword_in_text">COGNEW</span> or <span class="keyword_in_text">COGINIT</span> command.  If your routine is less than 496 longs, the cog will also be loading whatever is in adjacent memory, which could be data, variables, or even another Assembly program from the same <span class="keyword_in_text">DAT</span> block. If your Assembly program is not an endless loop, and it does not terminate by identifying its cog and shutting itself down, the cog will continue to try and execute whatever follows the logical end of code.  This usually results in undesirable, and sometimes unpredictable, behavior.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_491083350_4" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What happens when execution reaches the end of a Propeller Assembly program?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_491083350_4" style="display: none;">
+                <p class="PlainText">Unlike with Spin, the compiler has no way to tell where the end of a Propeller Assembly program is, so it is up to the developer to end it appropriately. </p>
+                <p class="PlainText">If execution reaches the end of Propeller Assembly, and there is no code there to cause either cog termination or endless looping, the cog will continue execution past the end of code and into the next registers. What follows code is typically variables and data, and following that is unknown data that just happened to follow the assembly in the application image- either way, the cog will try to execute it and that will likely cause bad behavior that may be unpredictable.</p>
+                <p class="PlainText">Always end your Propeller Assembly programs with either an unconditional jump (to loop the program endlessly)...</p>
+                <div class="propcode"><pre class="spin_dat1" xml:space="preserve">DAT  
+&#160;&#160;{Assembly code here}
+&#160;&#160;...
+  jmp #&lt;main_loop_label&gt;                  'Continue back at main asm loop </pre>
+                </div>
+                <p>&#160;</p>
+                <p class="PlainText">... or with an unconditional jump to itself (a tight endless loop)...</p>
+                <div class="propcode"><pre class="spin_dat1" xml:space="preserve">DAT
+   {Assembly code here}
+&#160;&#160;&#160;...
+&#160;&#160;&#160;jmp #$                                  'Jump to here, endlessly    <![CDATA[ ]]></pre>
+                </div>
+                <p>&#160;</p>
+                <p class="PlainText">... or with a <span class="keyword_in_text">COGID</span>/<span class="keyword_in_text">COGSTOP</span> pair of instructions to terminate the cog:</p><pre class="spin_dat1" xml:space="preserve">DAT
+&#160;&#160;&#160;{Assembly code here}
+&#160;&#160;&#160;...
+   cogid ID                                'Get our cog ID    <![CDATA[ ]]>
+&#160;&#160;&#160;cogstop ID                              'Terminate ourself
+ID    long    0                            'Holds Cog ID</pre>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_491083350_5" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What's the difference between calling code and launching code?
+</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_491083350_5" style="display: none;">
+                <p class="PlainText">Calling a piece of code (a spin method or assembly label) executes that code within the current cog.  Launching code (a spin method or assembly program) executes that code in a different cog; to execute code in parallel.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_491083350_6" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can Spin call Propeller Assembly code?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_491083350_6" style="display: none;">
+                <p class="PlainText"> No, it can launch Propeller Assembly, but can not call it directly since it wouldn't be practical to do so. By design, Spin and Propeller Assembly code execute in separate cogs, so just like coordinating between two or more cogs, Spin and Propeller Assembly code can communicate with each other via shared memory, if necessary.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_491083350_7" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can Propeller Assembly call Spin code?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_491083350_7" style="display: none;">
+                <p class="PlainText"> No, and it wouldn't be practical to do so. By design, Propeller Assembly and Spin code execute in separate cogs, so just like coordinating between two or more cogs, Propeller Assembly and Spin code can communicate with each other via shared memory, if necessary. </p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_491083350_8" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can Propeller Assembly start a new cog?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_491083350_8" style="display: none;">
+                <p class="PlainText">Yes, using the assembly version of <span class="keyword_in_text">COGINIT</span> and specifying a <a href="../HardwareTopics/MainMem.htm#MainRam" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Main RAM</a> target address of the code to launch.  You can optionally specify a target cog by ID, or use the lowest-numbered available cog by default.  The most practical and recommended way to start a cog is through Spin, however.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_491083350_9" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How long does it take to start a cog?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_491083350_9" style="display: none;">
+                <p class="PlainText">It depends on the type of code that is starting the cog and what type of code it is launching into the cog.  By nature of design, the most common case is running Spin code that launches other Spin or Assembly code.</p>
+                <table style="caption-side: top;mc-table-style: url('../Resources/TableStyles/ParallaxTable.css');" class="TableStyle_ParallaxTable" cellspacing="0">
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th class="TableStyle_ParallaxTable_Head_0_0_ColSep" colspan="4"><a name="kanchor379"></a>Cog Start Time</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;text-align: center;">
+                            <p class="TableText">Running Code</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;text-align: center;">
+                            <p class="TableText">Launching Code</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;text-align: center;">
+                            <p class="TableText">Clock Cycles<sup>1</sup></p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="background-color: #cccccc;text-align: center;">
+                            <p class="TableText">Time @ 80 MHz </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">Spin</td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">Spin</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">24,992<sup>2</sup></p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                            <p class="TableText">≈ 300 µs</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">Spin</td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">Assembly</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">8,918<sup>2</sup></p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                            <p class="TableText">≈ 100 µs</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">Assembly</td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">Spin</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">8,400 <sup>3</sup></p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">≈ 100 µs</td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">Assembly</td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p>Assembly</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">8,196<sup>4</sup></p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">≈ 100 µs</td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" colspan="4">
+                            <p colspan="4" class="TableNoteNextNum" MadCap:autonum="Note 1: "><span class="autonumber"><span>Note 1: </span></span>Includes <span class="code_add_mod">COGNEW</span>/<span class="code_add_mod">COGINIT</span>&#160;overhead.</p>
+                            <p colspan="4" class="TableNoteNextNum" MadCap:autonum="Note 2: "><span class="autonumber"><span>Note 2: </span></span>Minimum cycles in Spin; increases with inclusion of parameters and complexity of expressions and constant values.</p>
+                            <p colspan="4" class="TableNoteNextNum" MadCap:autonum="Note 3: "><span class="autonumber"><span>Note 3: </span></span>This is an estimate; launching Spin from Assembly can be tedious and is not recommended.</p>
+                            <p colspan="4" class="TableNoteNextNum" MadCap:autonum="Note 4: "><span class="autonumber"><span>Note 4: </span></span>Minimum cycles in Assembly; increases by up to 29 cycles for hub sync of both calling cog and new cog (to execute <span class="code_add_mod">COGINIT</span> and read first long of code from Main RAM).</p>
+                        </td>
+                    </tr>
+                </table>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_491083350_10" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How can Propeller Assembly access a Spin object's global variables, DAT symbols, or other shared memory?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_491083350_10" style="display: none;">
+                <p class="PlainText">The first step is to pass the address of the desired memory (global variable, <span class="keyword_in_text">DAT</span> symbol, or otherwise) to the Propeller Assembly program. Usually this is achieved by placing the address in the <i>Parameter</i> part of the <span class="keyword_in_text">COGNEW</span>/<span class="keyword_in_text">COGINIT</span> command that launches the assembly cog. Then the assembly program moves the address (which is in the <span class="keyword_in_text">PAR</span> register) to another register for reference and possible indexing, and uses the read/write main memory instructions (<span class="keyword_in_text">RDBYTE</span>, <span class="keyword_in_text">RDWORD</span>, <span class="keyword_in_text">RDLONG</span>, <span class="keyword_in_text">WRBYTE</span>, <span class="keyword_in_text">WRWORD</span>, <span class="keyword_in_text">WRLONG</span>) to access the shared memory.</p>
+                <p class="PlainText">Any changes to the shared memory by either the Spin object or the Propeller Assembly program is immediately viewable by the other.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_491083350_11" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Do DAT block symbols exist in Main RAM or in Cog RAM?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_491083350_11" style="display: none;">
+                <p class="PlainText"><span class="keyword_in_text">DAT</span> block symbols exist in Main RAM but also in Cog RAM if they are launched with Propeller Assembly.</p>
+                <p class="PlainText">The <span class="keyword_in_text">DAT</span> block itself is stored in the application image in Main RAM. Spin-based references to <span class="keyword_in_text">DAT</span> symbols are accessing the corresponding location and data in Main RAM.</p>
+                <p class="PlainText">When a cog is launched with assembly code, any <span class="keyword_in_text">DAT</span> symbols within 496 longs after the launch point are copied into Cog RAM. Unlike with Spin code, Propeller Assembly code that references those symbols is not accessing the corresponding location and data in Main RAM, but rather it is accessing the corresponding Cog RAM instead; its local copy. In addition, those symbolic references are always to longs of Cog RAM memory, regardless of how the symbol was actually declared.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_491083350_12" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How are symbols in the DAT block treated in relation to Spin and Propeller Assembly?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_491083350_12" style="display: none;">
+                <p class="PlainText">The <span class="keyword_in_text">DAT</span> block's primary purpose is to hold fixed data and Propeller Assembly code for the application. Symbolic declarations can be included and used to reference this data and code.</p>
+                <p class="PlainText">There's nothing preventing the contents of <span class="keyword_in_text">DAT</span> from being modified at runtime, however, which naturally leads to its use to hold symbols as "special" variables. Their special attributes relate to how they are stored in the application and how they are treated by Spin and when launching Propeller Assembly code.</p>
+                <p class="PlainText"><span class="keyword_in_text">DAT</span> blocks are stored in the application image in Main RAM. Just like code (<span class="keyword_in_text">PUB</span> and <span class="keyword_in_text">PRI</span>), there is only one instance of each <span class="keyword_in_text">DAT</span> block, regardless of how many instances of the containing object there are. This means that Spin-based references to <span class="keyword_in_text">DAT</span> symbols are accessing the corresponding location and data in Main RAM, and it's the same regardless of which instance of that object is making the reference. This is handy to share memory between multiple instances of an object.</p>
+                <p class="PlainText">When a cog is launched with assembly code, any <span class="keyword_in_text">DAT</span> symbols within 496 longs after the launch point are copied into Cog RAM. Unlike with Spin code, Propeller Assembly code that references those symbols is not accessing the corresponding location and data in Main RAM, but rather it is accessing the corresponding Cog RAM instead; its local copy. In addition, those symbolic references are always to longs of Cog RAM memory, regardless of how the symbol was actually declared. In Propeller Assembly, no Main RAM&#160;references can be made by simply using the declared symbolic name; instead, the address of that symbol must be passed from the Spin object and used along with instructions like <span class="keyword_in_text">RDLONG</span> and <span class="keyword_in_text">WRLONG</span>.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_491083350_13" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How do I&#160;determine the execution time of a portion of code?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_491083350_13" style="display: none;">
+                <p class="PlainText">This is quite easy for Propeller Assembly, but more elusive for Spin code.  There are three techniques for timing code with definitive results, each with its "ideal" application.</p>
+                <ol>
+                    <li value="1">Counting and adding up determinant instruction times (Propeller Assembly only).</li>
+                    <li value="2">Using the System Counter (Spin and Propeller Assembly).</li>
+                    <li value="3">Toggling a pin and measuring the pulse-width (Spin or Propeller Assembly).</li>
+                </ol>
+                <p class="PlainText">For details, see the <a href="../CodeTeqTopics/CodeExeTime.htm" target="" title="" alt="" class="MCXref_0">Code Execution Time</a> article.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_491083350_14" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Does Propeller Assembly use a call stack?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_491083350_14" style="display: none;">
+                <p>No, but it does provide an alternative.</p>
+                <p>&#160;</p>
+                <p class="PlainText">Propeller Assembly language does not implement a call stack since doing so would unnecessarily consume valuable memory and impose undue limitations on applications.  Instead, Propeller Assembly provides a different mechanism through the <span class="keyword_in_text">JMPRET</span> instruction (and also <span class="keyword_in_text">CALL</span>, <span class="keyword_in_text">JMP</span>, and <span class="keyword_in_text">RET</span>) to maintain nested call history.  This method requires more developer influence but allows the memory to be used more efficiently (optimizing for the specific application) and has a distinct advantage allowing the implementation of simple task-switching code in real-time systems using <span class="keyword_in_text">JMPRET</span>.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

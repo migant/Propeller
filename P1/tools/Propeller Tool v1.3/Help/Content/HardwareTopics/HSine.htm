@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="About the Hardware" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Sine Table</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="AboutHardware.htm">About the Hardware</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Sine Table</span>
+        </div>
+        <h1><a name="kanchor90"></a>Sine Table</h1>
+        <p class="PlainText">The sine table resides in locations $E000 - $F001 in <a href="MainMem.htm" target="" title="" alt="" class="MCXref_0">Main Memory</a>. It can  be used for calculations related to angular phenomena. There is also a <a href="HLog.htm" target="" title="" alt="" class="MCXref_0">Log Table </a> and an <a href="HAntilog.htm" target="" title="" alt="" class="MCXref_0">Anti-log Table</a>. </p>
+        <p class="PlainText">The sine table provides 2,049 unsigned 16-bit sine samples spanning from 0° to 90°, inclusively (0.0439° resolution).&#160; Sine values for all other quadrants covering &gt; 90° to &lt; 360° can be calculated from simple transformations on this single-quadrant sine table. </p>
+        <p class="PlainText">A&#160;small amount of assembly code can mirror and flip the sine table samples to create a full-cycle sine/cosine lookup routing which has a 13-bit angle resolution and a 17-bit sample resolution. As with the log and anti-log tables, linear interpolation could be applied to the sine table to achieve higher resolution.</p>
+        <div class="propcode"><pre xml:space="preserve" class="spin_dat1">DAT
+
+' Get sine/cosine
+'
+'      quadrant:  1             2             3             4
+'         angle:  $0000..$07FF  $0800..$0FFF  $1000..$17FF  $1800..$1FFF
+'   table index:  $0000..$07FF  $0800..$0001  $0000..$07FF  $0800..$0001
+'        mirror:  +offset       -offset       +offset       -offset
+'          flip:  +sample       +sample       -sample       -sample
+'
+' on entry: sin[12..0] holds angle (0° to just under 360°)
+' on exit:  sin holds signed value ranging from $0000FFFF ('1') to 
+' $FFFF0001 ('-1')
+'
+getcos          add     sin,sin_90          'for cosine, add 90°
+getsin          test    sin,sin_90      wc  'get quadrant 2|4 into c
+                test    sin_sin_180     wz  'get quadrant 3|4 into nz
+                negc    sin,sin             'if quadrant 2|4, negate offset
+                or      sin,sin_table       'or in sin table address &gt;&gt; 1
+                shl     sin,#1              'shift left to get final word address
+                rdword  sin,sin             'read word sample from $E000 to $F000
+                negnz   sin,sin                 'if quadrant 3|4, negate sample
+getsin_ret
+getcos_ret      ret                         '39..54 clocks
+                                            '(variance due to HUB sync on RDWORD)
+
+
+sin_90          long    $0800   
+sin_180         long    $1000
+sin_table       long    $E000 &gt;&gt; 1          'sine table base shifted right
+
+sin             long    0
+</pre>
+        </div>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

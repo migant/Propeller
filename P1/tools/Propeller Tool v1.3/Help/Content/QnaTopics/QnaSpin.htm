@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Questions and Answers" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Spin&#160;Language</title>
+        <link href="../Resources/TableStyles/ParallaxTable.css" rel="stylesheet" />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="QnaLocal.htm">Questions and Answers</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Spin&#160;Language</span>
+        </div>
+        <h1>Spin&#160;Language</h1>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3221673218_0" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is Spin - Why did Parallax make a unique language?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3221673218_0" style="display: none;">
+                <p class="PlainText">Spin is the high-level object-based language Parallax designed specifically for the Propeller chip. Spin provides control of the Propeller's multicore hardware and encourages the principles of the Propeller's real-time application design in ways that were not represented by existing languages.  Spin was inspired by portions of C, Delphi, and Python, and a host of problem/solution scenarios explored by its designers. </p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3221673218_1" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Spin is "Object-based." So how is that different from "Object-oriented" languages?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3221673218_1" style="display: none;">
+                <p class="PlainText">Spin embraces the modular programming paradigm of objects as "devices" that can be collected together in an application, each doing their part to achieve a larger goal.  This is similar in concept to that of object-oriented languages, however, aspects of inheritance and polymorphism, commonly considered to be integral parts of object-oriented languages, are not supported by Spin. For this reason, Spin is often called "object-based" rather than "object-oriented."</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3221673218_2" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How are Spin objects structured?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3221673218_2" style="display: none;">
+                <p class="PlainText">Spin objects are built from six special-purpose blocks: <span class="keyword_in_text">CON</span>, <span class="keyword_in_text">VAR</span>, <span class="keyword_in_text">OBJ</span>,    <![CDATA[ ]]><span class="keyword_in_text">PUB</span>, <span class="keyword_in_text">PRI</span>, and <span class="keyword_in_text">DAT</span>. <span class="keyword_in_text">CON</span>&#160;and <span class="keyword_in_text">VAR</span> are for declaring constants and variables, respectively. <span class="keyword_in_text">OBJ</span> is used  to declare what other objects will be used during this object's execution. <span class="keyword_in_text">PUB</span> and <span class="keyword_in_text">PRI</span>&#160;declare public and private methods, which contain the executable Spin instructions.    <![CDATA[ ]]><span class="keyword_in_text">DAT</span> blocks contain data and/or Propeller Assembly programs.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3221673218_3" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Where does Spin code live and how does it get processed?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3221673218_3" style="display: none;">
+                <p class="PlainText">Spin code exists only in the Propeller Application image that is stored in the <a href="../HardwareTopics/MainMem.htm#MainRam" target="" title="" alt="" MadCap:excludeAction="unbind" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" class="MCXref_0">Main RAM</a> during runtime.  To execute Spin code, a cog must first be loaded with the <a href="../HardwareTopics/BootLoader.htm#SpinInterpreter" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Spin&#160;Interpreter</a> (a Propeller Assembly program that is built into the <a href="../HardwareTopics/MainMem.htm#MainRom" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Main ROM</a>). Execution of the Spin Interpreter (in <a href="../HardwareTopics/Cogs.htm#Cog" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Cog RAM</a>) results in the statement-by-statement execution of Spin code (from Main RAM). 
+</p>
+                <p class="PlainText">For the initial startup, the Propeller chip runs its <a href="../HardwareTopics/BootUp.htm" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Boot Up Procedure</a> and the <a href="../HardwareTopics/BootLoader.htm#SpinInterpreter" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Spin&#160;Interpreter</a> (stored in Main ROM) is copied to Cog 0’s RAM.  This Spin Interpreter fetches chunks of the application code, called tokens, from the Main RAM and executes it.  </p>
+                <p class="PlainText">Spin execution begins with the first method in the application's Top Object.  Cog 0 fetches one or more tokens, executes the related code, then gets more tokens and continues. Whenever the application launches a new cog with <span class="keyword_in_text">COGNEW</span>(<i>SpinMethod</i>…) or <span class="keyword_in_text">COGINIT</span>(<i>SpinMethod</i>…),  that new cog also gets a copy of the Spin Interpreter in its own Cog RAM.  The new cog then starts fetching and executing tokens from the application in Main RAM too, starting at the point indicated by the <i>SpinMethod</i> argument.  So, at any given time, there can be up to eight cogs using their own copies of the Spin Interpreter to fetch and execute tokens from the application.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3221673218_4" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Which Spin method is the initial entry point of my application?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3221673218_4" style="display: none;">
+                <p class="PlainText">An application's initial entry point (the code in which execution begins) is always the very first public method in the top object. It doesn't matter what that method is called, but developers often call it "main."</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3221673218_5" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What's the difference between calling code and launching code?
+</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3221673218_5" style="display: none;">
+                <p class="PlainText">Calling a piece of code (a spin method or assembly label) executes that code within the current cog.  Launching code (a spin method or assembly program) executes that code in a different cog; to execute code in parallel.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3221673218_6" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can Spin call Propeller Assembly code?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3221673218_6" style="display: none;">
+                <p class="PlainText"> No, it can launch Propeller Assembly, but can not call it directly since it wouldn't be practical to do so. By design, Spin and Propeller Assembly code execute in separate cogs, so just like coordinating between two or more cogs, Spin and Propeller Assembly code can communicate with each other via shared memory, if necessary.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3221673218_7" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can Propeller Assembly call Spin code?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3221673218_7" style="display: none;">
+                <p class="PlainText"> No, and it wouldn't be practical to do so. By design, Propeller Assembly and Spin code execute in separate cogs, so just like coordinating between two or more cogs, Propeller Assembly and Spin code can communicate with each other via shared memory, if necessary. </p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3221673218_8" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can Spin start a new cog?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3221673218_8" style="display: none;">
+                <p class="PlainText">Yes, using the <span class="keyword_in_text">COGNEW</span> or <span class="keyword_in_text">COGINIT</span> command. This is the most practical and recommended way to start a cog.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3221673218_9" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How long does it take to start a cog?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3221673218_9" style="display: none;">
+                <p class="PlainText">It depends on the type of code that is starting the cog and what type of code it is launching into the cog.  By nature of design, the most common case is running Spin code that launches other Spin or Assembly code.</p>
+                <table style="caption-side: top;mc-table-style: url('../Resources/TableStyles/ParallaxTable.css');" class="TableStyle_ParallaxTable" cellspacing="0">
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th class="TableStyle_ParallaxTable_Head_0_0_ColSep" colspan="4"><a name="kanchor378"></a>Cog Start Time</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;text-align: center;">
+                            <p class="TableText">Running Code</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;text-align: center;">
+                            <p class="TableText">Launching Code</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;text-align: center;">
+                            <p class="TableText">Clock Cycles<sup>1</sup></p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="background-color: #cccccc;text-align: center;">
+                            <p class="TableText">Time @ 80 MHz </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">Spin</td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">Spin</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">24,992<sup>2</sup></p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                            <p class="TableText">≈ 300 µs</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">Spin</td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">Assembly</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">8,918<sup>2</sup></p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                            <p class="TableText">≈ 100 µs</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">Assembly</td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">Spin</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">8,400 <sup>3</sup></p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">≈ 100 µs</td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">Assembly</td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p>Assembly</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">8,196<sup>4</sup></p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">≈ 100 µs</td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" colspan="4">
+                            <p colspan="4" class="TableNoteNextNum" MadCap:autonum="Note 1: "><span class="autonumber"><span>Note 1: </span></span>Includes <span class="code_add_mod">COGNEW</span>/<span class="code_add_mod">COGINIT</span>&#160;overhead.</p>
+                            <p colspan="4" class="TableNoteNextNum" MadCap:autonum="Note 2: "><span class="autonumber"><span>Note 2: </span></span>Minimum cycles in Spin; increases with inclusion of parameters and complexity of expressions and constant values.</p>
+                            <p colspan="4" class="TableNoteNextNum" MadCap:autonum="Note 3: "><span class="autonumber"><span>Note 3: </span></span>This is an estimate; launching Spin from Assembly can be tedious and is not recommended.</p>
+                            <p colspan="4" class="TableNoteNextNum" MadCap:autonum="Note 4: "><span class="autonumber"><span>Note 4: </span></span>Minimum cycles in Assembly; increases by up to 29 cycles for hub sync of both calling cog and new cog (to execute <span class="code_add_mod">COGINIT</span> and read first long of code from Main RAM).</p>
+                        </td>
+                    </tr>
+                </table>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3221673218_10" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How do I&#160;determine the execution time of a portion of code?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3221673218_10" style="display: none;">
+                <p class="PlainText">This is quite easy for Propeller Assembly, but more elusive for Spin code.  There are three techniques for timing code with definitive results, each with its "ideal" application.</p>
+                <ol>
+                    <li value="1">Counting and adding up determinant instruction times (Propeller Assembly only).</li>
+                    <li value="2">Using the System Counter (Spin and Propeller Assembly).</li>
+                    <li value="3">Toggling a pin and measuring the pulse-width (Spin or Propeller Assembly).</li>
+                </ol>
+                <p class="PlainText">For details, see the <a href="../CodeTeqTopics/CodeExeTime.htm" target="" title="" alt="" class="MCXref_0">Code Execution Time</a> article.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3221673218_11" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Does Spin use a call stack?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3221673218_11" style="display: none;">
+                <p>Yes, Spin uses a different call stack for each Spin-based process. </p>
+                <p>&#160;</p>
+                <p class="PlainText">The Spin Interpreter implements a call stack to facilitate Spin method calling, parameter passing, and expression evaluation.  The Propeller Application's stack is located in <a href="../HardwareTopics/MainMem.htm#MainRam" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Main RAM</a> immediately following the application's global variable memory.  It expands and collapses as needed; growing towards higher addresses and shrinking towards lower addresses.  Spin methods that are manually launched into other cogs store their stack starting at the <i>StackPointer </i>address given by the <span class="keyword_in_text">COGNEW</span> or <span class="keyword_in_text">COGINIT</span> command that launched them.  Their stacks expand and contract in the same manner as with the Propeller Application stack.  In both cases, the capacity of the stack (method nesting-depth, parameter list length, and expression complexity) is limited only by the amount of free memory available (for the application) or memory provided (by the developer).</p>
+                <p class="PlainText">To determine the amount of space required by your object, see <a href="../CodeTeqTopics/StackSpace.htm" target="" title="" alt="" class="MCXref_0">Stack Space</a>.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

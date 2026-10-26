@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Using the Propeller Tool|Menu Items|Preferences Dialog" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Preferences - Operation Tab</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../UsingPropTool.htm">Using the Propeller Tool</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Menus.htm">Menu Items</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="Prefs.htm">Preferences Dialog</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Operation Tab</span>
+        </div>
+        <map id="map1" name="map1">
+            <area shape="rectangle" coords="11,33,82,59" title="Go to Appearance Tab" alt="Go to Appearance Tab" href="AppearTab.htm" />
+            <area shape="rectangle" coords="147,32,228,61" href="FilesFoldersTab.htm" title="Go to Files &amp; Folders Tab" alt="Go to Files &amp; Folders Tab" />
+            <area shape="rectangle" coords="25,71,415,225" title="Go down to Tab Stops section" alt="Go down to Tab Stops section" href="#Tab" target="_self" />
+            <area shape="rectangle" coords="25,229,414,326" title="Go down to Port Management Section" alt="Go down to Port Management Section" href="#Port" target="_self" />
+        </map>
+        <h1>Preferences - Operation Tab</h1>
+        <p class="PlainText">The Preferences dialog allows you to view and set persistent features of the Propeller Tool software.  Settings are arranged by category into tabs and group boxes. </p>
+        <p class="PlainText">The Operation tab contains settings that affect functional aspects of the editor and communication with the Propeller chip.</p>
+        <p class="PlainText">
+            <img src="../../Resources/Images/PropellerToolPictures/OperTab.png" style="width: 441px;height: 630px;" usemap="#map1" />
+        </p>
+        <h2><a name="Tab"></a>Tab Stops</h2>
+        <p class="PlainText">
+            <img src="../../Resources/Images/PropellerToolPictures/PrefTabs.png" />
+        </p>
+        <p class="PlainText">The Tab Stops group indicates tab stop positions for different portions of source code.  Each Spin block (<span class="keyword_in_text">CON</span>, <span class="keyword_in_text">VAR</span>, <span class="keyword_in_text">OBJ</span>, etc.) has its own tab stop settings indicated by the corresponding field.  Enter tab stop positions as a comma-delimited list from lowest to highest.</p>
+        <p class="PlainText">The offset between the last two positions of a tab stop list is repeated endlessly after the final indicated position.  For example, there are implied tab stops at positions 104, 128, 152, etc. since the last two indicated positions are 24 characters apart (80 - 56 = 24); 80 + 24 = 104, 104 + 24 = 128, etc.</p>
+        <h2><a name="Port"></a>Port Management</h2>
+        <p>
+            <img src="../../Resources/Images/PropellerToolPictures/PrefsPortMg.png" />
+        </p>
+        <p class="PlainText">The Port Management group contains settings for Propeller chip communication.</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2100099199_0" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Propeller Reset Signal</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2100099199_0" style="display: none;">
+                <p class="PlainText">By default, the DTR line of the serial port signal is used to reset the Propeller chip (required for downloading and identification).  However, some USB-to-Serial adapters may not have a DTR line.  In such a case, adjust this setting to use the RTS line, or both DTR and RTS, instead.</p>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2100099199_1" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Serial Port Search</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2100099199_1" style="display: none;">
+                <p class="PlainText">The default setting (AUTO) causes the Propeller Tool to scan all available serial ports when trying to identify or download to a Propeller chip.  To force the Propeller Tool to only scan a specific port, make sure that port is working properly (or is connected if it is a USB-to-Serial adapter), and select it from the drop-down list.  For more advanced options, click on the Edit Ports… button.</p>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2100099199_2" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Edit Ports… button</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2100099199_2" style="display: none;">
+                <p class="PlainText">For advanced serial port management options, click on the Edit Ports… button to open the <a href="SerialPortSearch.htm" target="" title="" alt="" class="MCXref_0">Serial Port Search List Dialog</a>.</p>
+            </div>
+        </div>
+        <h2>Restore Button</h2>
+        <p class="PlainText">A Restore button appears on every preference tab. Pressing the Restore button  resets all the settings of that tab to their defaults without affecting those of other tabs.</p>
+        <h2>Accept Button</h2>
+        <p class="PlainText">Pressing the Accept button makes all changes on all preference tabs official and active in the Propeller Tool.  </p>
+        <h2>Cancel Button</h2>
+        <p class="PlainText">Pressing the Cancel button returns all changed settings, on all preference tabs, back to their original state; the state they were in when the Preferences dialog was opened.</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

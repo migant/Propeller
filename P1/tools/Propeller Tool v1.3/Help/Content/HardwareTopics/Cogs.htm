@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="About the Hardware" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Cogs (Processors) </title>
+        <link href="../Resources/TableStyles/ParallaxTable.css" rel="stylesheet" />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="AboutHardware.htm">About the Hardware</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Cogs (processors)</span>
+        </div>
+        <h1><a name="kanchor38"></a>Cogs (Processors) </h1>
+        <p class="PlainText">The Propeller contains eight (8) processors, called cogs, numbered 0 to 7.&#160; Each cog contains the same components (See the <span class="MCPopup"><a href="javascript:void(0);" MadCap:src="BD1full.htm" onclick="FMCPopup( event, this ); return false;" MadCap:width="850px" MadCap:height="550px" class="MCPopupSpot" alt="Open Block Diagram in new window" title="Open Block Diagram in new window">Block Diagram</a></span>): a Processor block, local 2 KB RAM configured as 512 longs (512 x 32 bits), two Counter Modules with PLLs, a Video Generator, I/O Output Register, I/O Direction Register, and other registers not shown in the table below.&#160;  Each cog is designed exactly the same and can run tasks independently from the others.&#160; </p>
+        <p class="PlainText">All eight cogs are driven from the same clock source, the <a href="SysClock.htm" target="" title="" alt="" class="MCXref_0">System Clock</a>, so they each maintain the same time reference and all active cogs execute instructions simultaneously.&#160;  They also all have access to the same <a href="SharedRes.htm" target="" title="" alt="" class="MCXref_0">Shared Resources</a>, like <a href="IOpins.htm" target="" title="" alt="" class="MCXref_0">I/O Pins</a>, <a href="MainMem.htm#MainRam" target="" title="" alt="" class="MCXref_0">Main RAM</a>, and the <a href="SysCounter.htm" target="" title="" alt="" class="MCXref_0">System Counter</a>.&#160;</p>
+        <p class="PlainText">Cogs can be started and stopped at run time and can be programmed to perform tasks simultaneously, either independently or with coordination from other cogs through Main RAM.&#160; Regardless of the nature of their use, the Propeller application designer has full control over how and when each cog is employed; there is no compiler-driven or operating system-driven splitting of tasks between multiple cogs.&#160; This empowers the developer to deliver absolutely deterministic timing, power consumption, and response to the embedded application.</p>
+        <h2><a name="Cog"></a>Cog RAM</h2>
+        <p class="PlainText"><a name="kanchor39"></a>Each cog has its own RAM, called Cog RAM, which contains 512 registers of 32 bits each.&#160; Most Cog RAM is all general purpose RAM except for the last 16 registers, which are special purpose registers.&#160; Most of the Cog RAM is used for holding the Spin Interpreter when executing Spin code, or for executable code, data, and  variables when executing Propeller Assembly. The last 16 locations serve as interfaces to the System Counter, I/O pins, and local cog peripherals. Cog RAM is long-addressable only.</p>
+        <p class="PlainText"><a name="kanchor40"></a>When a cog is booted up, locations 0 ($000) through 495 ($1EF) are loaded sequentially from Main RAM / ROM and its special purpose locations, 496 ($1F0) through 511 ($1FF) are cleared to zero.&#160; After loading, the cog begins executing instructions, starting at location 0 of Cog RAM.&#160; It will continue to execute code until it is stopped or rebooted by either itself or another cog, or a reset occurs.</p>
+        <h2>Special Purpose Registers</h2>
+        <p class="PlainText">Each Special Purpose Register may be accessed via: </p>
+        <ul>
+            <li value="1">its physical register address (Propeller Assembly),</li>
+            <li value="2">its predefined name (Spin or Propeller Assembly), or</li>
+            <li value="3">the register array variable (<span class="keyword_in_text">SPR</span>) with an index of 0 to 15 (Spin).</li>
+        </ul>
+        <p class="PlainText">The following are examples in Propeller Assembly:</p>
+        <div class="propcode"><pre xml:space="preserve">MOV     $1F4, #$FF            'Set OUTA 7:0 high
+MOV     OUTA, #$FF            'Same as above
+</pre>
+        </div>
+        <p class="PlainText">&#160;</p>
+        <p class="PlainText">The following are examples in Spin:</p>
+        <div class="propcode"><pre xml:space="preserve">SPR[$4] := $FF                'Set OUTA 7:0 high
+OUTA := $FF                   'Same as above
+</pre>
+        </div>
+        <p class="PlainText">&#160;</p>
+        <table style="caption-side: top;mc-table-style: url('../Resources/TableStyles/ParallaxTable.css');" class="TableStyle_ParallaxTable" cellspacing="0">
+            <col>
+            </col>
+            <col>
+            </col>
+            <col>
+            </col>
+            <col>
+            </col>
+            <col>
+            </col>
+            <thead>
+                <tr>
+                    <th class="TableStyle_ParallaxTable_Head_0_0_ColSep" colspan="5">Cog RAM Special Purpose Registers</th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;font-weight: bold;">
+                    <p class="TableText"><a name="kanchor41"></a><a name="kanchor42"></a><b>Cog RAM Map</b>
+                    </p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;font-weight: bold;">
+                    <p class="TableText"><b>Address</b>
+                    </p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;font-weight: bold;">
+                    <p class="TableText"><b>Name</b>
+                    </p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;font-weight: bold;">
+                    <p class="TableText"><b>Type</b>
+                    </p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="background-color: #cccccc;font-weight: bold;">
+                    <p class="TableText"><b>Description</b>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="16" class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="PlainText">
+                    </p>
+                    <p class="PlainText">
+                    </p>
+                    <p>
+                        <img src="../Resources/Images/HardwarePics/CogRAM.png">
+                        </img>
+                    </p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">$1F0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor43"></a><span class="keyword_in_text">PAR</span>
+                    </p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor44"></a>Read-Only<sup>1</sup></p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText"><a name="kanchor45"></a>Boot Parameter</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">$1F1</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor46"></a><span class="keyword_in_text">CNT</span>
+                    </p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Read-Only<sup>1</sup></p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor47"></a>System Counter</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">$1F2</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor48"></a><span class="keyword_in_text">INA</span>
+                    </p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Read-Only<sup>1</sup> <![CDATA[ ]]></p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor49"></a>Input States for P31–P0</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">$1F3</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><span class="keyword_in_text">INB</span><sup> 3</sup>
+                    </p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Read-Only<sup>1</sup></p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Input States for P63–P32</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">$1F4</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor50"></a><span class="keyword_in_text">OUTA</span>
+                    </p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Read/Write</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor51"></a>Output States for P31–P0</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">$1F5</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><span class="keyword_in_text">OUTB</span><sup> 3</sup>
+                    </p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Read/Write</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Output States for P63–P32</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">$1F6</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor52"></a><span class="keyword_in_text">DIRA</span>
+                    </p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Read/Write</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor53"></a>Direction States for P31–P0</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">$1F7</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><span class="keyword_in_text">DIRB</span> <![CDATA[ ]]><sup>3</sup></p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Read/Write</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Direction States for P63–P32</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">$1F8</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor54"></a><span class="keyword_in_text">CTRA</span>
+                    </p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Read/Write</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor55"></a>Counter A Control</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">$1F9</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><span class="keyword_in_text">CTRB</span> <![CDATA[ ]]></p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Read/Write</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Counter B Control</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">$1FA</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor56"></a><span class="keyword_in_text">FRQA</span>
+                    </p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Read/Write</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor57"></a>Counter A Frequency</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">$1FB</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><span class="keyword_in_text">FRQB</span> <![CDATA[ ]]></p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Read/Write</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Counter B Frequency</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">$1FC</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor58"></a><span class="keyword_in_text">PHSA</span>
+                    </p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Read/Write<sup>2</sup></p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor59"></a>Counter A Phase</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">$1FD</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><span class="keyword_in_text">PHSB</span> <![CDATA[ ]]></p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Read/Write<sup>2</sup></p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Counter B Phase</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">$1FE</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor60"></a><span class="keyword_in_text">VCFG</span> <![CDATA[ ]]></p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Read/Write</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Video Configuration</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">$1FF</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor61"></a><span class="keyword_in_text">VSCL</span>
+                    </p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Read/Write</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText"><a name="kanchor62"></a>Video Scale</p>
+                </td>
+            </tr>
+            <tfoot>
+                <tr>
+                    <td class="TableStyle_ParallaxTable_Foot_0_0_RowSep_ColSep" colspan="5">
+                        <ol class="ForTableNote">
+                            <li value="1">For Propeller Assembly, only accessible as a source register (i.e., <span class="code_in_text">mov </span><i>dest</i>, <i>source</i>).&#160; </li>
+                            <li value="2">For Propeller Assembly, only readable as a source register (i.e., <span class="code_in_text">mov </span><i>dest</i>, <i>source</i>); read modify-write not possible as a destination register.</li>
+                            <li value="3">Reserved for future use.</li>
+                        </ol>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

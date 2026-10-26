@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 6" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Building Better Methods</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 6</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Building Better Methods</span>
+        </div>
+        <p><a href="Spin6-CogsObj.htm" title="Go back to Objects vs. Cogs" alt="Go back to Objects vs. Cogs"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin6-QR.htm" title="Go on to Spin Lesson 6 Quick Review" alt="Go on to Spin Lesson 6 Quick Review"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1>Adding Methods for Better Control</h1>
+        <h2>Spin Exercise 6-1: "Stop" and "Active" Methods for Output.spin</h2>
+        <p class="PlainText">Let’s add some significant enhancements to our Output object.&#160; Currently the <span class="code_in_text">Toggle</span> method can be called to toggle a pin serially, or the <span class="code_in_text">Start</span> method can be called to launch the <span class="code_in_text">Toggle</span> method as a separate process, to run in parallel.&#160; But we haven't provided a way to stop that process once it is going or even a way to determine if it’s running in the first place.&#160; Also, it would be nice to have the option of toggling the pin endlessly, in addition to the finite count feature we already have.&#160; </p>
+        <p class="PlainText">Let’s add a <span class="code_in_text">Stop</span> method to stop the active process and an <span class="code_in_text">Active</span> method to test whether a parallel process is currently running.&#160; In addition, we'll enhance our <span class="code_in_text">Toggle</span> method as described above.&#160; </p>
+        <p class="PlainText"><a name="kanchor245"></a>For objects like this one, it is a common and recommended convention to use the name “<span class="code_in_text">Start</span>” for a method that activates a new cog and the name “<span class="code_in_text">Stop</span>” for a method that deactivates a cog previously started by that object.&#160; This way, while scanning an object in summary or documentation view, other developers can more quickly understand how to use your object; when they see <span class="code_in_text">Start</span> and <span class="code_in_text">Stop</span> they can infer that the object activates/deactivates another cog.&#160; For objects that don't activate another cog but still need some kind of initialization, it is recommended to use the name “<span class="code_in_text">Init</span>” for the key method.</p>
+        <p class="PlainText">This code is loaded with clever changes; be prepared, it will take a lot to explain it but the knowledge you'll gain is well worth it.</p>
+        <ul>
+            <li class="Checklist" value="1">Here’s the code; modify yours to match:</li>
+        </ul>
+        <div class="propcode"><a href="../../../../Examples/Help/Spin Tutorial/Exercise 06-1/Output.spin"><img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" title="Open example in Propeller Tool" /></a><pre xml:space="preserve" class="spin_con1">{{ Output.spin }}
+
+</pre><pre xml:space="preserve" class="spin_var1">VAR
+  long  Stack[9]                      'Stack space for new cog
+  <span class="code_add_mod">byte  Cog                           'Hold ID of cog in use, if any</span> 
+
+
+</pre><pre xml:space="preserve" class="spin_pub1">PUB Start(Pin, Delay, Count)<span class="code_add_mod">: Success</span></pre><pre xml:space="preserve" class="spin_pub1">{{Start new blinking process in new cog; return TRUE if successful}}
+
+  <span class="code_add_mod">Stop</span>                            <![CDATA[ ]]></pre><pre xml:space="preserve" class="spin_pub1">  <span class="code_add_mod">Success := (Cog :=</span> cognew(Toggle(Pin, Delay, Count), @Stack) <span class="code_add_mod">+ 1)</span> 
+
+
+</pre><pre xml:space="preserve" class="spin_pub2"><span class="code_add_mod">PUB Stop</span>                            <![CDATA[ ]]></pre><pre xml:space="preserve" class="spin_pub2"><span class="code_add_mod">{{Stop toggling process, if any.}}</span>                            <![CDATA[ ]]></pre><pre xml:space="preserve" class="spin_pub2">&#160;</pre><pre xml:space="preserve" class="spin_pub2">  <span class="code_add_mod">if Cog</span>                            <![CDATA[ ]]></pre><pre xml:space="preserve" class="spin_pub2">    <span class="code_add_mod">cogstop(Cog~ - 1)</span> 
+
+
+</pre><pre xml:space="preserve" class="spin_pub1"><span class="code_add_mod">PUB Active: YesNo</span>                            <![CDATA[ ]]></pre><pre xml:space="preserve" class="spin_pub1"><span class="code_add_mod">{{Return TRUE if process is active, FALSE otherwise.}}</span>                            <![CDATA[ ]]></pre><pre xml:space="preserve" class="spin_pub1">  </pre><pre xml:space="preserve" class="spin_pub1">  <span class="code_add_mod">YesNo := Cog &gt; 0</span></pre><pre xml:space="preserve" class="spin_pub1">&#160;</pre><pre xml:space="preserve" class="spin_pub1">&#160;</pre><pre xml:space="preserve" class="spin_pub2">PUB Toggle(Pin, Delay, Count)
+{{Toggle Pin, Count times with Delay clock cycles in between.
+  <span class="code_add_mod">If Count = 0, toggle Pin forever.}}</span>                            <![CDATA[ ]]></pre><pre xml:space="preserve" class="spin_pub2">  </pre><pre xml:space="preserve" class="spin_pub2">  dira[Pin]~~                          'Set I/O pin to output…
+  <span class="code_delete">repeat Count                         'Repeat for Count iterations</span> 
+  repeat                               'Repeat <span class="code_add_mod">the following</span>                            <![CDATA[ ]]></pre><pre xml:space="preserve" class="spin_pub2">    !outa[Pin]                         '  Toggle I/O Pin
+    waitcnt(Delay + cnt)               '  Wait for Delay cycles
+  <span class="code_add_mod">while Count := --Count #&gt; -1         'While not 0 (make min -1)</span></pre><pre xml:space="preserve" class="spin_pub2">  <span class="code_add_mod">Cog~                                 'Clear Cog ID variable
+</span></pre><pre xml:space="preserve" class="spin_pub2">&#160;</pre>
+        </div>
+        <p class="PlainText">&#160;</p>
+        <ul>
+            <li class="Checklist" value="1">Now, click on the headings below and read about each section of our modified object.</li>
+        </ul>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3290751955_0" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />The VAR Block </a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3290751955_0" style="display: none;">
+                <p class="PlainText">In the <span class="keyword_in_text">VAR</span> block we've added a byte-sized variable, <span class="code_in_text">Cog</span>.&#160; This will be used to keep track of the ID of the cog started by the <span class="code_in_text">Start</span> method, if any.&#160; Both <span class="code_in_text">Stack</span> and <span class="code_in_text">Cog</span> variables are global to the object; they can be used within any <span class="keyword_in_text">PUB</span> or <span class="keyword_in_text">PRI</span> block in the Output object.&#160; If they are modified by one method, other methods will see the new value when they are referenced.</p>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3290751955_1" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />The Start Method</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3290751955_1" style="display: none;">
+                <p class="PlainText">For the <span class="code_in_text">Start</span> method, we've decided it may be nice to know if it was successful or not.&#160; Since there are a limited number of cogs in the Propeller, the <span class="code_in_text">Start</span> method may not be able to activate another cog every time it is called.&#160; For this reason, we'll make it return a Boolean (<span class="keyword_in_text">TRUE</span> or <span class="keyword_in_text">FALSE</span>) value as an indication of its outcome; the “<span class="code_in_text">: Success</span>” in its declaration indicates it will return this value we chose to call <span class="code_in_text">Success</span>.&#160; Each <span class="keyword_in_text">PUB</span> and <span class="keyword_in_text">PRI</span> method always returns a long value (4 bytes) whether or not it is specified to have one.&#160; When a method is designed to return a meaningful value, it is always good practice to declare a return value as we have done here.&#160; Our <span class="code_in_text">Success</span> symbol becomes an alias for the method’s built-in <span class="keyword_in_text">RESULT </span>variable, so we can assign either <span class="code_in_text">Success</span> or <span class="keyword_in_text">RESULT</span> a value to have that value returned upon exit.</p>
+                <p class="PlainText">The body of the <span class="code_in_text">Start</span> method now does two things: first it stops any existing process and then it starts a new process.&#160; It calls the <span class="code_in_text">Stop</span> method first just in case <span class="code_in_text">Start</span> has been called multiple times without first calling <span class="code_in_text">Stop</span> from outside the object.&#160; Without that, a new cog would start up and overwrite another cog’s workspace variables, such as <span class="code_in_text">Stack</span>.&#160; </p>
+                <p class="PlainText"><a name="kanchor246"></a>The next line is similar to our original but may seem a bit overwhelming because it is a compound expression.&#160; We'll dissect it a piece at a time from the inside out.&#160; The <span class="keyword_in_text">COGNEW</span> portion of the line is exactly as it was before: <span class="code_in_text">cognew(Toggle(Pin, Delay, Count), @Stack)</span>.&#160; It activates another cog to run the <span class="code_in_text">Toggle</span> method.&#160; What you may not have known is that <span class="keyword_in_text">COGNEW</span> always returns the ID of the cog it started; 0 to 7, or -1 if no cog was available to start.&#160; In the prior version of the Output object, we simply ignored the return value.&#160; This time, however, we use <span class="keyword_in_text">COGNEW</span>’s return value in this expression and assign the result to a variable: <span class="code_in_text">Cog := cognew(Toggle(Pin, Delay, Count), @Stack) + 1</span>.&#160; This expression says to execute <span class="keyword_in_text">COGNEW</span>, take its returned value and add it to 1, then assign that result to the variable named <span class="code_in_text">Cog</span>.&#160; The ‘<span class="code_in_text">:=</span>’is the assignment operator; similar to the equal sign ‘<span class="code_in_text">=</span>’ in other languages.</p>
+                <p class="PlainText">We’ll use the <span class="code_in_text">Cog</span> variable to remember the ID of the cog we started so we can later stop it if necessary.&#160; We’ll explain why we added 1 to it in a moment.</p>
+                <p class="PlainText">We’re not done with that line yet.&#160; To the left of the <span class="code_in_text">Cog :=</span> … part is the <span class="code_in_text">Success :=</span> assignment statement.&#160; So after the new cog’s ID is returned, added to 1 and stored in <span class="code_in_text">Cog</span>, that final value is also stored in the <span class="code_in_text">Success</span> variable.&#160; Remember how <span class="code_in_text">Success</span> is supposed to be our <span class="code_in_text">Start</span> method’s Boolean return value?&#160; A Boolean result of <span class="keyword_in_text">FALSE</span> is actually the numerical value 0 and <span class="keyword_in_text">TRUE</span> is -1, but Boolean comparisons treat zero (0) as <span class="keyword_in_text">FALSE</span> and any non-zero value (≠0) as <span class="keyword_in_text">TRUE</span>.&#160; This is very convenient and is the reason we added 1 to <span class="keyword_in_text">COGNEW</span>’s return value; the range -1 to 7 becomes 0 to 8, and 0 (<span class="keyword_in_text">FALSE</span>) means no cog was started while 1 to 8 (<span class="keyword_in_text">TRUE</span>) means a cog was started. </p>
+                <p class="PlainText">So, in that single line of code we launched a new cog (hopefully), passed it the reference to the <span class="code_in_text">Toggle</span> routine and stack space to use, stored the newly activated cog ID plus 1 in the variable <span class="code_in_text">Cog</span> and used that final result to set <span class="code_in_text">Start</span>’s return value, the <span class="code_in_text">Success</span> variable!&#160; This line demonstrates one of the most powerful features of the Spin language: compound expressions with assignable intermediate results.</p>
+                <p class="PlainText"><a name="kanchor247"></a>The outer parentheses encasing the <span class="code_in_text">Cog :=</span>… part are not required but we added them to help separate the two different variable assignments; <span class="code_in_text">Cog</span> is assigned first then that result is assigned to <span class="code_in_text">Success</span>.&#160; To assist you in studying complex expressions such as this one, the Propeller Tool temporarily bolds the matching pairs of parentheses that surround the current cursor position.&#160; Place the cursor in various positions on the line to see the effect.&#160; The figure below illustrates this; the star shows the cursor position, arrows show the bolded parentheses, and the shaded area is what is contained within those parentheses.</p>
+                <div class="ImagePlusCaption">
+                    <div class="GroupImgFL">
+                        <p>
+                            <img src="../../Resources/Images/SpinTutorialPictures/Parens1.png" style="width: 525px;height: 54px;" />
+                        </p>
+                        <p>&#160;</p>
+                        <p>
+                            <img src="../../Resources/Images/SpinTutorialPictures/Parens2.png" />
+                        </p>
+                        <p>&#160;</p>
+                        <p>
+                            <img src="../../Resources/Images/SpinTutorialPictures/Parens3.png" style="width: 524px;height: 54px;" />
+                        </p>
+                    </div>
+                    <p class="PictureCaptionNoNums">Matching Parentheses Bolded</p>
+                    <p class="PictureDescription">Matching parentheses are temporarily displayed in bold for the expression group the cursor is currently within. Use this feature to study complex expressions.</p>
+                    <p class="clear">&#160;</p>
+                </div>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3290751955_2" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />The Stop Method</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3290751955_2" style="display: none;">
+                <p class="PlainText">Our <span class="code_in_text">Stop</span> method needs to stop the cog that was started by <span class="code_in_text">Start</span>.&#160; The <span class="code_in_text">if Cog</span> statement is a conditional structure meaning “if the Cog variable is <span class="keyword_in_text">TRUE</span> execute the following indented block. ”&#160; Remember, <span class="code_in_text">Cog</span> was set to 0 if no cog was started, and set to 1 through 8 if a cog was started.&#160; Since 0 means <span class="keyword_in_text">FALSE</span> and non-0 means <span class="keyword_in_text">TRUE</span>, the <span class="keyword_in_text">IF</span> statement is true only if we actually started a cog.</p>
+                <p class="PlainText"><a name="kanchor248"></a>The <span class="keyword_in_text">COGSTOP</span> statement is indented below the <span class="code_in_text">IF</span> statement so it is executed only when the <span class="code_in_text">IF</span> statement is true.&#160; The <span class="keyword_in_text">COGSTOP</span> command deactivates the cog whose ID is indicated by its parameter: <span class="code_in_text">Cog~ - 1</span>.&#160; This is another tricky but powerful expression in Spin.&#160; Remember the Post-Set operator, <span class="code_in_text">~~</span>, from earlier exercises?&#160; Well, a single <span class="code_in_text">~</span> following a variable is the Post-Clear operator; it clears the variable preceding it to zero (0).&#160; These are called “post” operators because they perform their duty “after” the variable’s original value is used by the expression that it is involved in.&#160; So <span class="code_in_text">Cog~ - 1</span> takes the value of <span class="code_in_text">Cog</span>, subtracts 1, gives that value to the <span class="keyword_in_text">COGSTOP</span> command, then clears <span class="code_in_text">Cog</span> to zero (0).&#160; In effect, the <span class="code_in_text">cogstop(Cog~</span>&#160;<span class="code_in_text">&#8209;</span>&#160;<span class="code_in_text">1)</span> statement stops the cog whose ID is <span class="code_in_text">Cog-1</span>, then clears the <span class="code_in_text">Cog</span> variable to 0 so future references to <span class="code_in_text">Cog</span> reflect that there is no additional cog running.</p>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3290751955_3" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />The Active Method</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3290751955_3" style="display: none;">
+                <p class="PlainText">The <span class="code_in_text">Active</span> method is simple, it sets its return value, <span class="code_in_text">YesNo</span>, to <span class="keyword_in_text">TRUE</span> if <span class="code_in_text">Cog</span> is greater than 0, <span class="keyword_in_text">FALSE</span> otherwise.&#160; The <span class="code_in_text">&gt;</span> symbol is the Is Greater Than operator.&#160; Note that we could also have just set <span class="code_in_text">YesNo</span> equal to <span class="code_in_text">Cog</span> since zero is considered to be <span class="keyword_in_text">FALSE</span> and non-zero is considered to be <span class="code_in_text">TRUE</span>; that would have the additional advantage of being a true/false return value as well as the actual ID of the cog in use by this object.</p>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3290751955_4" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />The Toggle Method</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3290751955_4" style="display: none;">
+                <p class="PlainText">We made a couple of minor but significant enhancements to the <span class="code_in_text">Toggle</span> method.&#160; First, let’s look at the last line, <span class="code_in_text">Cog~</span>.&#160; Remember that if <span class="code_in_text">Start</span> is called, it runs the <span class="code_in_text">Toggle</span> method in another cog and stores the ID of that cog in the <span class="code_in_text">Cog</span> variable.&#160; When <span class="code_in_text">Toggle</span> terminates, that cog terminates as well, but the <span class="code_in_text">Cog</span> variable would be left holding the ID of that cog, fooling the <span class="code_in_text">Active</span> and <span class="code_in_text">Start</span> methods into thinking its cog was still active.&#160; We put <span class="code_in_text">Cog~</span> at the end of <span class="code_in_text">Toggle</span> to clear the <span class="code_in_text">Cog</span> variable to zero (0) to maintain the code’s integrity.</p>
+                <p class="PlainText">Remember we said we’d like to change <span class="code_in_text">Toggle</span> to allow for an infinite loop as well as a finite loop?&#160; Our next change achieves that in a clever way.&#160; The <span class="code_in_text">Count</span> parameter is the number of times to toggle the pin.&#160; That means it doesn’t make sense to set <span class="code_in_text">Count</span> equal to 0… who would want to toggle a pin zero times?&#160; So, we’ll make 0 an exception case that means “toggle the pin infinitely.”</p>
+                <p class="PlainText"><a name="kanchor249"></a>We changed the loop from <span class="code_in_text">repeat Count</span> to <span class="code_in_text">repeat..while</span>.&#160; The <span class="code_in_text">while</span> is at the end of the loop, three lines below <span class="code_in_text">repeat</span>.&#160; This is another form of <span class="keyword_in_text">REPEAT</span> loop structure called a “conditional one-to-many loop.”&#160; It executes the statement block within it at least once, and iterates again and again as long as the “while” condition is true.&#160; In this case it repeats while<span class="code_in_text"> Count := --Count #&gt; -1 </span>is <span class="code_in_text">TRUE</span> (ie: non-zero).&#160; This condition is another compound expression.&#160; The double-minus, ‘<span class="code_in_text">--</span>‘ preceding <span class="code_in_text">Count</span> is the <a name="kanchor250"></a>Pre-Decrement operator; it decrements <span class="code_in_text">Count</span> by 1 before its value is used by the expression.&#160; The <span class="code_in_text">#&gt;</span> is the <a name="kanchor251"></a>Limit Minimum operator; it takes the value on its left and returns either that value, or the number on its right, whichever is greater.&#160; So each time this expression is evaluated, <span class="code_in_text">Count</span> is decremented by 1, that result is limited to -1 or higher, and that final result is assigned back into <span class="code_in_text">Count</span>.&#160; This has a clever effect that we’ll explain next.</p>
+                <p class="PlainText">If <span class="code_in_text">Toggle </span>was called with <span class="code_in_text">Count</span> set to 2, the loop would execute two times, just like we want.&#160; After the first iteration, the <span class="code_in_text">while Count := --Count </span><span class="code_in_text">#&gt;</span><span class="code_in_text"> -1</span> would decrement <span class="code_in_text">Count</span>, making it 1, then would limit it to -1 or higher (still 1) and store that value in <span class="code_in_text">Count</span>.&#160; Since the result, 1, is non-zero (<span class="code_in_text">TRUE</span>) the loop would execute again.&#160; After the second iteration, the <span class="code_in_text">WHILE </span>statement would decrement <span class="code_in_text">Count</span>, making it 0, would limit that to -1 or higher (still 0) and store that in <span class="code_in_text">Count</span>.&#160; Since 0 is <span class="code_in_text">FALSE</span>, the <span class="code_in_text">WHILE </span>condition terminates the loop.</p>
+                <p class="PlainText">That works for all normal <span class="code_in_text">Count </span>values, but what about when <span class="code_in_text">Toggle </span>is called with a <span class="code_in_text">Count </span>of 0?&#160; After the first iteration, the <span class="code_in_text">while Count := --Count </span><span class="code_in_text">#&gt;</span><span class="code_in_text"> -1 </span>would decrement <span class="code_in_text">Count</span>, making it -1, then would limit it to -1 or higher (still -1) and store that value in <span class="code_in_text">Count</span>.&#160; Since the result, -1, is non-zero (<span class="keyword_in_text">TRUE</span>) the loop would execute again.&#160; After the second iteration, the <span class="keyword_in_text">WHILE </span>statement decrements <span class="code_in_text">Count</span>, making it -2, limits that to -1 or higher (it is changed to -1) and stores that in <span class="code_in_text">Count</span>.&#160; Once again, since the result, -1, is non-zero (<span class="keyword_in_text">TRUE</span>) the loop would execute again.&#160; </p>
+                <p class="PlainText">So, if <span class="code_in_text">Count</span> started out as 0, the loop iterates endlessly!&#160; If <span class="code_in_text">Count</span> started out as greater than 0, it loops only that number of times!</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <p><a href="Spin6-CogsObj.htm" title="Go back to Objects vs. Cogs" alt="Go back to Objects vs. Cogs"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin6-QR.htm" title="Go on to Spin Lesson 6 Quick Review" alt="Go on to Spin Lesson 6 Quick Review"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

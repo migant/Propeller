@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 2" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Understanding the Object</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 2</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Understanding the Object</span>
+        </div>
+        <p><a href="Spin2-Download.htm" title="Go back to Downloading to RAM vs EEPROM" alt="Go back to Downloading to RAM vs EEPROM"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin2-QR.htm" title="Go on to Spin Lesson 2 Quick Review" alt="Go on to Spin Lesson 2 Quick Review"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1>Understanding the Object Code</h1>
+        <h2>Spin Exercise 2-2: an Explanation of Output.spin</h2>
+        <p class="PlainText">Now for an explanation of the source code: </p>
+        <div class="propcode"><a href="../../../../Examples/Help/Spin Tutorial/Exercise 02-1/Output.spin"><img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" title="Open example in Propeller Tool" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" /></a><pre xml:space="preserve" class="spin_pub1">PUB Toggle
+  dira[16]~~
+  repeat
+    !outa[16]
+    waitcnt(3_000_000 + cnt)
+</pre>
+        </div>
+        <p class="PlainText">&#160;</p>
+        <p class="PlainText"><a name="kanchor203"></a>The first line, <span class="code_in_text">PUB Toggle</span>, declares that we're creating a “public” method called “<span class="code_in_text">Toggle</span>.”&#160; A method is the object-oriented term for “procedure” or “routine.”&#160; We chose the name <span class="code_in_text">Toggle </span>simply because it is descriptive of what the method does and we knew it is a unique symbol; it must be a unique symbol and not a reserved word.&#160; We'll describe the term <span class="keyword_in_text">PUB</span>, “public,” in more detail later, but it’s important to note that every object must contain at least one public (<span class="keyword_in_text">PUB</span>) method.</p>
+        <p class="PlainText">The rest of the code is logically part of the <span class="code_in_text">Toggle</span> method.&#160; We indented each line by two spaces from the <span class="keyword_in_text">PUB</span>'s column to make that more clear; this indenting isn’t required but is a good habit for clarity.</p>
+        <p class="PlainText"><a name="kanchor204"></a>The first line of the <span class="code_in_text">Toggle</span> method (second line of our example), <span class="code_in_text">dira[16]~~</span>, sets the direction of I/O pin 16 to output.&#160; The <span class="keyword_in_text">DIRA</span> symbol is the direction register for I/O pins P0 through P31; clearing or setting bits within it changes the corresponding I/O pin’s direction to input or output.&#160; </p>
+        <p class="PlainText">The <span class="code_in_text">[16]</span> following <span class="code_in_text">dira</span> indicates we want to access only the direction register’s bit 16; the one that corresponds to I/O pin 16.&#160; Finally, the <span class="code_in_text">~~</span> is the Post-Set operator that causes direction register bit 16 to be set to high (1); which makes I/O pin 16’s direction an output.&#160; The Post-Set operator is a shorthand way of saying something like <span class="code_in_text">dira[16] := 1</span> which may look familiar to you from other languages. </p>
+        <p class="PlainText">The next line, <span class="code_in_text">repeat</span>, creates a loop consisting of the two lines of code below it. This <span class="keyword_in_text">REPEAT</span> loop runs infinitely, toggling P16, waiting ¼ second, toggling P16, waiting ¼ second, etc.</p>
+        <p class="PlainText"><a name="kanchor205"></a>The next line, <span class="code_in_text">!outa[16]</span>, toggles the state of I/O pin 16 between high (VDD) and low (VSS).&#160; The <span class="keyword_in_text">OUTA</span> symbol is the output state register for I/O pins P0 through P31.&#160; The <span class="code_in_text">[16]</span> in !<span class="code_in_text">outa[16]</span>&#160; indicates we want to access only the output register’s bit 16, the one that corresponds to I/O pin 16.&#160; The <span class="code_in_text">!</span> at the start of this statement is the Bitwise Not operator; it toggles the state of all bits specified to its right (the bit corresponding to I/O pin 16 in this case).</p>
+        <p class="PlainText"><a name="kanchor206"></a>The last line, <span class="code_in_text">waitcnt(3_000_000 + cnt)</span>, causes a delay of 3 million clock cycles. <span class="keyword_in_text"><span class="keyword_in_text">WAITCN</span>T</span> means “Wait for System Counter.” The <span class="code_in_text">cnt</span> symbol is the System Counter register; <span class="keyword_in_text">CNT</span><span class="code_in_text"></span> returns the current value of the System Counter, so this line means “wait for System Counter to equal 3 million plus its current value.” In this code example, we didn't specify any clock settings for the Propeller chip, so by default it runs with its internal fast clock (about 12 MHz) meaning a delay of 3 million clock cycles is about ¼ second. </p>
+        <p class="PlainText"><a name="kanchor207"></a>Remember how we said to pay close attention to each line’s indenting?&#160; Here is where indenting is required: the Spin language uses levels of indention on lines following conditional or loop commands (<span class="keyword_in_text">IF</span>, <span class="keyword_in_text">CASE</span>, <span class="keyword_in_text">REPEAT</span>, etc.) to determine which lines belong to that structure.&#160; In this case, since the two lines following <span class="code_in_text">repeat</span> are indented to the right by at least one space beyond <span class="code_in_text">repeat</span>’s column, those two lines are considered to be a part of the <span class="code_in_text">repeat</span> loop.&#160; If you have trouble recognizing these structural groupings, the Propeller Tool can make them more visible on-screen through the <a href="../../ToolTopics/EditingTools/BlockGroupIndi.htm" target="" title="" alt="" class="MCXref_0">Block-Group Indicators</a> feature.&#160; Use Ctrl+I to toggle this feature on or off.&#160; Here’s our example code with these indicators visible.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/SpinTutorialPictures/BlockGroupTutor_222x85.png" style="width: 222;height: 85;" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Block-Group Indicators</p>
+            <p class="PictureDescription">Ctrl+I toggles them on and off.</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText">&#160;</p>
+        <p class="PlainText">If you haven't saved this example object yet, you may do so by pressing Ctrl+S (or selecting File <span class="code_in_text">→</span> Save from the menu).&#160; You may save it in a folder of your choosing but make sure to save it with the filename “Output.spin” since some exercises in later lessons rely on it.</p>
+        <p><a href="Spin2-Download.htm" title="Go back to Downloading to RAM vs EEPROM" alt="Go back to Downloading to RAM vs EEPROM"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin2-QR.htm" title="Go to Spin Lesson 2 Quick Review" alt="Go to Spin Lesson 2 Quick Review"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

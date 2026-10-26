@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Questions and Answers" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>About the Propeller P8X32A</title>
+        <link href="../Resources/TableStyles/ParallaxTable.css" rel="stylesheet" />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="QnaLocal.htm">Questions and Answers</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">About the Propeller P8X32A</span>
+        </div>
+        <h1>About the Propeller P8X32A</h1>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3149794268_0" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is the Propeller P8X32A?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3149794268_0" style="display: none;">
+                <p class="PlainText">The Propeller P8X32A is a multicore microcontroller that excels at parallel processing. It contains eight processors, or cores, (called cogs) which can operate simultaneously at your will. Using the Propeller is like employing a team of up to eight workers for a project; the team members can work in parallel on given tasks and coordinate as needed to achieve a common goal. Being truly flexible and efficient, they can share, shuffle, and dedicate to duties, quietly wait for events, start and stop, and direct each other as needed.</p>
+                <p class="PlainText">Cogs have exclusive access to their own internal memory and unimpeded access to the System Clock and all 32 I/O pins. Each cog tracks I/O pin states with its own input register and influences pin outputs using its own output and direction registers; the collective of cogs determines an I/O pin's ultimate direction and state.</p>
+                <p class="PlainText">Cogs share access to main memory in a round-robin fashion through a central hub. Among other things, main memory is used in this fashion for coordination between cogs. </p>
+                <p class="PlainText">In addition, each cog contains hardware to assist with certain high-speed, repetitive tasks such as signal detection and video generation.</p>
+                <p class="PlainText">See the <span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HardwareTopics/BD1full.htm" onclick="FMCPopup( event, this ); return false;" MadCap:width="auto" MadCap:height="auto" class="MCPopupSpot_Popup_0" alt="Open in new window" title="Open in new window">P8X32A Block Diagram</a></span> for a functional view of the Propeller.</p>
+                <p class="PlainText">Many years of thought and effort went into designing the Propeller to solve the problems plaguing modern embedded system designers. Every aspect of the Propeller was meticulously crafted using elemental concepts and building blocks. Read <a href="../HomeTopics/WhyWorks.htm" target="" title="" alt="" class="MCXref_0">Why the Propeller Works</a> by designer and Parallax company President, Chip Gracey, for some insight on the thought process and design quality of the Propeller. </p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3149794268_1" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is a cog?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3149794268_1" style="display: none;">
+                <p class="PlainText">In the Propeller chip, a cog is a processor; the Propeller P8X32A has eight of them.  </p>
+                <p class="PlainText">Each cog is identical (except for their unique numerical IDs) and runs independently, so it is possible to have eight different processes executing simultaneously. Each cog has its own internal memory, its own configurable counter module hardware, its own video generation hardware, access to all the <a href="../HardwareTopics/IOpins.htm" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">I/O Pins</a> and the <a href="../HardwareTopics/SysClock.htm" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">System Clock</a>, and shared access to main memory (RAM and ROM). The cogs can communicate with each other through <a href="../HardwareTopics/MainMem.htm" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Main Memory</a>, can synchronize with each other through the System Clock and Locks (Semaphores), and can even silently monitor each other through the I/O Pins if necessary.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3149794268_2" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is a Propeller Application?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3149794268_2" style="display: none;">
+                <p class="PlainText">A Propeller Application is a compiled set of one or more objects that is downloaded to a Propeller chip to  create an intelligent embedded system. Each object is designed to handle a particular task well; the collective of these objects forms a more advanced system.</p>
+                <p class="PlainText">The Propeller Application's first object, called the top object, determines the nature of the overall application by specifying any additional objects, called building block objects, and providing management code to coordinate all efforts at a high level.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3149794268_3" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What programming languages does the Propeller use?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3149794268_3" style="display: none;">
+                <p class="PlainText">The Propeller has two native programming languages: Spin and Propeller Assembly. They can be used together, or Spin can be used by itself.</p>
+                <p class="PlainText">Spin is the high-level object-based language Parallax designed specifically for the Propeller chip. Spin provides control of the Propeller's multicore hardware and encourages the principles of the Propeller's real-time application design in ways that were not represented by existing languages.  Spin was inspired by portions of C, Delphi, and Python, and a host of problem/solution scenarios explored by its designers. </p>
+                <p class="PlainText">Propeller Assembly is the low-level 32-bit instruction set designed specifically for the Propeller chip. Though most of this language's instructions will be familiar to experienced assembly programmers, there are many that are specific to the Propeller's multicore architecture and a few features are unique to the language. </p>
+                <p class="PlainText">There are also other development environments available from third parties, such as PropBasic, Catalina C, ICC, and 12Blocks (graphical).</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3149794268_4" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is an Object?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3149794268_4" style="display: none;">
+                <p class="PlainText">An object is any file with a .spin extension that contains comments, data, and executable Spin code and serves as an encapsulation of that data and the methods to operate on it.  A Propeller Application is made up of one or more objects.  An object may be designed to achieve the goals of the whole application by itself, or it may only focus on a small portion, and be included by another object as part of a larger application. An application’s top object is where execution begins.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3149794268_5" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is a Method?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3149794268_5" style="display: none;">
+                <p class="PlainText">A method is similar to a subroutine in other languages. A method is a section of source code that accepts parameters as input, performs a specific function, and then returns a result value. Methods in Spin are declared with <span class="keyword_in_text">PUB</span>, for public methods, and <span class="keyword_in_text">PRI</span>, for private methods. There must be at least one public method in every Spin object.  Propeller Application execution begins with the first public method in the application’s top object.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3149794268_6" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What about memory collisions?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3149794268_6" style="display: none;">
+                <p class="PlainText">A memory collision occurs when two or more cogs operate on a block of memory at the same time in a way that causes conflict between them.</p>
+                <p class="PlainText">A cog has exclusive access to its own <a href="../HardwareTopics/Cogs.htm#Cog" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Cog RAM</a>, so no memory collision between cogs can occur there.  However, all cogs share <a href="../HardwareTopics/MainMem.htm#MainRam" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Main RAM</a>; care must be taken to avoid collisions there.</p>
+                <p class="PlainText">A cog can read or write a byte, word, or long from Main RAM as an atomic operation—a single operation that no other cog can interfere with.  In contrast, cogs can unknowingly interfere with each other's successive atomic operations (multiple reads or writes of bytes, words, or longs from Main RAM) since their respective operations are naturally interleaved when accessing a mutually-exclusive resource.</p>
+                <p class="PlainText">This situation can cause problems if two or more cogs simultaneously perform multiple opposing operations on the same logical block of memory.  For example, two cogs may be tasked to cooperate on data contained in a block of memory 10 bytes in length.  If one cog starts writing to the 10 bytes while another is reading, timing variations in their respective program loops can easily cause the "reading" cog to read a mixture of both new byte-sized data and old byte-sized data.</p>
+                <p class="PlainText">To prevent such misreads or miswrites, the cogs must coordinate their efforts through an agreed-upon synchronization mechanism.  This mechanism serves as a "flag" to signal when a cog is performing a non-atomic operation on a mutually-exclusive resource.  All cogs involved with that resource must check and set the "flag" before proceeding, and must clear the flag to indicate when they are done.</p>
+                <p class="PlainText">In many situations where memory is involved, a simple solution is to designate a byte, word, or long within the memory block to serve as this synchronization flag, but since that memory-based flag can not be read and written within the same atomic operation (it requires a read operation followed by a write operation) it may not work flawlessly for all situations.  For this reason, a dedicated synchronization mechanism exists, called <a href="../HardwareTopics/Locks.htm" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Locks</a>, or semaphores.</p>
+                <p class="PlainText">The Propeller has 8 global lock bits which can be read and written simultaneously, as a single operation.  When used properly, the lock bits can facilitate synchronization between cogs for any purpose desired; not just for Main RAM usage.  The lock bits are managed through four commands: <span class="keyword_in_text">LOCKNEW</span>, <span class="keyword_in_text">LOCKSET, LOCKCLR</span>, and <span class="keyword_in_text">LOCKRET</span>.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3149794268_7" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How many parallel processes can the Propeller chip handle at once?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3149794268_7" style="display: none;">
+                <p class="PlainText">The Propeller can have up to eight cogs executing processes at any time. This does not limit your application to eight objects, eight Spin methods, or eight assembly routines– just eight cogs executing code at the same time. Some processes may need to perform continuously, like the main program loop, or code that is parsing a constant stream of data. Other processes may only need to occur once in a while; when they are done, the cog’s resources can be freed up for another process.</p>
+                <p class="PlainText">Each cog also has two counter modules that can each handle a separate high-speed repetitive process in 32 different operation modes, monitoring or controlling up to two I/O pins each. Once the counter modules are configured, the cog may continue executing code while the counter modules operate simultaneously.</p>
+                <p class="PlainText">So, theoretically, the Propeller chip can be running a maximum of 24 simultaneous processes; 16 counter operations and 8 sophisticated, programmatic processes.</p>
+                <p class="PlainText">In Propeller Assembly, it is also possible to use the <span class="keyword_in_text">JMPRET</span> instruction to achieve simple multi-tasking in a cog.  This logically adds processes to the system, though they are executed sequentially, rather than in parallel.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3149794268_8" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Does the Propeller support interrupts?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3149794268_8" style="display: none;">
+                <p class="PlainText">The Propeller chip does not support traditional interrupts for two reasons:</p>
+                <ol>
+                    <li value="1">Interrupts were invented as a way to handle multiple events with a system's only processor, without wasting valuable time in polling loops.</li>
+                    <li value="2">Interrupt-based systems often burden developers with complicated programming issues that extend development time and inhibit real-time response.</li>
+                </ol>
+                <p class="PlainText">Rather than provide traditional interrupts, the Propeller solves both of these issues by way of its parallel-processing design and the inclusion of dedicated "wait" hardware.</p>
+                <ol>
+                    <li value="1">Instead of using a single processor to multi task, you can use multiple processors each with a single task– they can "sleep" until their moment arrives.</li>
+                    <li value="2">Instead of struggling to solve multiple issues with a single complicated routine, you can solve individual issues with dedicated routines– and run them concurrently in one application.</li>
+                </ol>
+                <p class="PlainText">The Propeller's wait commands put the affected cog into a very low-power state where no further instructions are executed by that cog until the specific event occurs.  This makes dedicating processors to specific tasks very efficient and practical.  It also means that the Propeller can process multiple asynchronous events with dependable response times, completely unaffected by coincidental occurrences that would cause single-processor, interrupt-driven devices to fail.</p>
+                <p class="PlainText">The wait commands are: <span class="keyword_in_text">WAITPEQ</span>, <span class="keyword_in_text">WAITPNE</span>, <span class="keyword_in_text">WAITCNT</span>, and <span class="keyword_in_text">WAITVID</span>.  They wait for activity from the <a href="../HardwareTopics/IOpins.htm" target="" title="" alt="" class="MCXref_0">I/O Pins</a>, <a href="../HardwareTopics/SysCounter.htm" target="" title="" alt="" class="MCXref_0">System Counter</a>, or Video Generator.</p>
+                <table style="caption-side: top;mc-table-style: url('../Resources/TableStyles/ParallaxTable.css');" class="TableStyle_ParallaxTable" cellspacing="0">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th class="TableStyle_ParallaxTable_Head_0_0_ColSep" colspan="2"><a name="kanchor371"></a>WAIT Instruction Effect</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;text-align: center;">
+                            <p class="TableText">WAIT Instruction</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="background-color: #cccccc;text-align: center;">
+                            <p>Pauses cog execution until...</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="Keyword_In_Text">WAITCNT</span>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                            <p class="TableText">System Counter = Target Value</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="Keyword_In_Text">WAITPEQ</span>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                            <p class="TableText">I/O AND'ed with Mask = State</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="Keyword_In_Text">WAITPNE</span>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                            <p class="TableText">I/O AND'ed with Mask &lt;&gt; State</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="Keyword_In_Text">WAITVID</span>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                            <p>Video Generator Ready</p>
+                        </td>
+                    </tr>
+                </table><a name="kanchor372"></a>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

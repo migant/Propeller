@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Questions and Answers" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Propeller Applications</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="QnaLocal.htm">Questions and Answers</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Propeller Applications</span>
+        </div>
+        <h1>Propeller Applications</h1>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1778038269_0" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is a Propeller Application?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1778038269_0" style="display: none;">
+                <p class="PlainText">A Propeller Application is a compiled set of one or more objects that is downloaded to a Propeller chip to  create an intelligent embedded system. Each object is designed to handle a particular task well; the collective of these objects forms a more advanced system.</p>
+                <p class="PlainText">The Propeller Application's first object, called the top object, determines the nature of the overall application by specifying any additional objects, called building block objects, and providing management code to coordinate all efforts at a high level.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1778038269_1" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What languages can a Propeller Application be written in?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1778038269_1" style="display: none;">
+                <p>In its purest form, a Propeller Application is written in one or both of the Propeller's native programming languages: Spin and Propeller Assembly. They can be used together, or Spin can be used by itself. This documentation is written with respect to using Spin and Propeller Assembly.</p>
+                <p>&#160;</p>
+                <p class="PlainText">Spin is the high-level object-based language Parallax designed specifically for the Propeller chip. Spin provides control of the Propeller's multicore hardware and encourages the principles of the Propeller's real-time application design in ways that were not represented by existing languages.  Spin was inspired by portions of C, Delphi, and Python, and a host of problem/solution scenarios explored by its designers. </p>
+                <p class="PlainText">Propeller Assembly is the low-level 32-bit instruction set designed specifically for the Propeller chip. Though most of this language's instructions will be familiar to experienced assembly programmers, there are many that are specific to the Propeller's multicore architecture and a few features are unique to the language. </p>
+                <p class="PlainText">There are also other development environments available from third parties, such as PropBasic, Catalina C, ICC, and 12Blocks (graphical).</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1778038269_2" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Where does my application code exist and run on the Propeller chip?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1778038269_2" style="display: none;">
+                <p class="PlainText">The Propeller Application image resides in the Propeller's         <![CDATA[ ]]><a href="../HardwareTopics/MainMem.htm#MainRam" target="" title="" alt="" MadCap:excludeAction="unbind" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" class="MCXref_0">Main RAM</a>, not in <a href="../HardwareTopics/Cogs.htm#Cog" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Cog RAM</a>.  Spin code (in Main RAM) is executed by the Spin Interpreter; an assembly language program running in Cog RAM that fetches and executes chunks of code from the <span class="keyword_in_text">PUB</span> and <span class="keyword_in_text">PRI</span> blocks of the application from Main RAM.  However, Propeller Assembly code is loaded from Main RAM (the application image) into Cog RAM and executed directly, which is why it is so much faster than Spin code.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1778038269_3" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What determines the initial entry point for the Propeller Application?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1778038269_3" style="display: none;">
+                <p class="PlainText">An application's initial entry point (the code in which execution begins) is always the very first public method in the top object. It doesn't matter what that method is called, but developers often call it "main."</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1778038269_4" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is a Top Object?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1778038269_4" style="display: none;">
+                <p class="PlainText">A top object is simply the first object in the Propeller Application; code execution begins at the first public method in the top object.  It is called the "top" object because it determines what "building block" objects are also included in the application "beneath" it.  The top object also configures initial global settings for the application, such as the clock speed, and is usually the object that "lives" for the entire length of time the application is running.  Every Propeller Application has one, and only one, top object. </p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1778038269_5" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />The Propeller has eight cogs, so are Propeller Applications limited to a maximum of eight object files?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1778038269_5" style="display: none;">
+                <p class="PlainText">No. There is no direct relationship between objects and cogs.  Applications are limited by the size of the Propeller chip’s     <![CDATA[ ]]><a href="../HardwareTopics/MainMem.htm#MainRam" target="" title="" alt="" MadCap:excludeAction="unbind" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" class="MCXref_0">Main RAM</a>, which is 32 KB (kilobytes) and not by the number of object files that make up the application.  An application may consist of a single object, or many objects, as long as the total size of the application is less than 32 KB.  An application, whether made from one object or many objects, may execute with one, two, or up to eight cogs depending only on the collective objects' "requests" to launch cogs.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

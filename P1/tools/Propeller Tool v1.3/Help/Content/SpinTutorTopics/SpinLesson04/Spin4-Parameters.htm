@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 4" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title> Parameters, Calls, and Finite Loops</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 4</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Parameters, Calls, and Finite Loops</span>
+        </div>
+        <p><a href="Spin4-Intro.htm" title="Go back to Building Methods" alt="Go back to Building Methods"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin4-Parallel.htm" title="Go on to Parallel Processing" alt="Go on to Parallel Processing"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1><a name="kanchor228"></a> Parameters, Calls, and Finite Loops</h1>
+        <h2>Spin Exercise 4-1: Enhancing Output.spin's Toggle Method</h2>
+        <p class="PlainText">Our current object from Exercise 3 is interesting, but still isn't very flexible; after all, the <span class="code_in_text">Toggle</span> method only works with a specific pin and delay.&#160; Let’s make the <span class="code_in_text">Toggle</span> method more flexible and also give it the ability to toggle a specific, finite number of times.&#160; Look at the following example and edit your code to match.&#160; We've crossed out the elements that should be removed, and highlighted every new element.</p>
+        <p class="PlainText">(Remember, you can click the <img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" /> icon to open the example program in the Propeller Tool.)</p>
+        <div class="propcode"><a href="../../../../Examples/Help/Spin Tutorial/Exercise 04-1/Output.spin"><img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" title="Open example in Propeller Tool" /></a><pre xml:space="preserve" class="spin_con1">{{Output.spin
+
+<span class="code_delete">Toggles Pin with Delay clock cycles of high/low time.}}</span>                    <![CDATA[ ]]></pre><pre xml:space="preserve" class="spin_con1"><span class="code_add_mod">Toggles two pins, one after another.}}</span>
+
+</pre><pre xml:space="preserve" class="spin_con2"><span class="code_delete">CON
+  Pin   = 16                 { I/O pin to toggle on/off }
+  Delay = 3_000_000          { On/Off Delay, in clock cycles}</span>
+            </pre><pre xml:space="preserve" class="spin_con2">&#160;</pre><pre xml:space="preserve" class="spin_pub1"><span class="code_add_mod">PUB Main</span>
+            </pre><pre xml:space="preserve" class="spin_pub1">  <span class="code_add_mod">Toggle(16, 3_000_000, 10)  'Toggle P16 ten times, 1/4 s each</span><br /></pre><pre xml:space="preserve" class="spin_pub1">&#160;</pre><pre xml:space="preserve" class="spin_pub1">  <span class="code_add_mod">Toggle(17, 2_000_000, 20)  'Toggle P17 twenty times, 1/6 s each</span></pre><pre xml:space="preserve" class="spin_pub1">&#160;</pre><pre xml:space="preserve" class="spin_pub2">PUB Toggle<span class="code_add_mod">(Pin, Delay, Count)</span></pre><pre xml:space="preserve" class="spin_pub2"><span class="code_delete">''Toggle Pin forever
+{Toggles I/O pin given by Pin and waits Delay system clock cycles
+in between each toggle.}</span>
+            </pre><pre xml:space="preserve" class="spin_pub2"><span class="code_add_mod">{{Toggle Pin, Count times with Delay clock cycles in between.}}</span>
+            </pre><pre xml:space="preserve" class="spin_pub2">dira[Pin]~~                  'Set I/O pin to output direction
+  repeat <span class="code_add_mod">Count</span>               <span class="code_add_mod">'Repeat for Count iterations</span></pre><pre xml:space="preserve" class="spin_pub2">    !outa[Pin]                 '  Toggle I/O Pin
+    waitcnt(Delay + cnt)     '  Wait for Delay cycles
+</pre><pre xml:space="preserve" class="spin_pub2">&#160;</pre>
+        </div>
+        <p>&#160;</p>
+        <p class="PlainText">In this example we removed the constant (<span class="keyword_in_text">CON</span>) block, added a new method called <span class="code_in_text">Main</span>, and made some minor modifications to the <span class="code_in_text">Toggle</span> method.&#160; The <span class="code_in_text">Toggle </span>method still performs the actual pin-toggling action, but the <span class="code_in_text">Main </span>method tells it when and how to do so.</p>
+        <p class="PlainText">Compile and download this application to see the results.&#160; The LED on pin 16 should blink five times (10 toggles) with 1/4th second durations and intervals, then it will stop and the LED on pin 17 will blink ten times (20 toggles) at 1/6th second durations and intervals.</p>
+        <h3>The Toggle Method </h3>
+        <p class="PlainText"><a name="kanchor229"></a>Let’s look closely at the <span class="code_in_text">Toggle</span> method first.&#160; In its declaration, we added <span class="code_in_text">(Pin, Delay, Count)</span> immediately to the right of its name.&#160; This creates a “parameter list” for our <span class="code_in_text">Toggle</span> method consisting of three parameters, <span class="code_in_text">Pin</span>, <span class="code_in_text">Delay</span> and <span class="code_in_text">Count</span>.&#160; A parameter list is one or more symbols that must be filled with values when the method is called; more on that in a moment.&#160; Each parameter symbol is a long-sized (4-byte) variable that is local to the method; they are all accessible within the method but not outside of the method.&#160; Parameter variables can be modified within the method but those modifications do not affect anything outside the method.</p>
+        <p class="PlainText">Now, our <span class="code_in_text">Toggle</span> method can be called by other methods and given unique values to use as its <span class="code_in_text">Pin</span>, <span class="code_in_text">Delay</span> and <span class="code_in_text">Count</span> symbols; it is more flexible since we can adjust its operational parameters.</p>
+        <p class="PlainText"><a name="kanchor230"></a>Inside of <span class="code_in_text">Toggle</span>, nothing changed except the <span class="keyword_in_text">REPEAT</span> command, which is now <span class="code_in_text">repeat</span>&#160;<span class="code_in_text">Count</span>.&#160; Remember, in our previous examples the <span class="keyword_in_text">REPEAT</span> loop was an infinite loop; it never stopped.&#160; Well, if you immediately follow <span class="keyword_in_text">REPEAT</span> with an expression, it becomes a finite loop that iterates the number of times indicated by the expression.&#160; In this case our <span class="keyword_in_text">REPEAT</span> loop will execute <span class="code_in_text">Count</span> times, then it will stop, and any lines of code below the end of the loop will begin to execute.</p>
+        <h3>The Main Method&#160; </h3>
+        <p class="PlainText"><a name="kanchor231"></a>Now look at the <span class="code_in_text">Main</span> method.&#160; <span class="code_in_text">Main</span>’s first line, <span class="code_in_text">Toggle(16, 3_000_000, 10</span>), is a method call; it causes the <span class="code_in_text">Toggle</span> method to execute using 16 for its <span class="code_in_text">Pin</span> parameter, 3 million for its <span class="code_in_text">Delay</span> parameter, and 10 for its <span class="code_in_text">Count</span> parameter.&#160; The following line looks similar, <span class="code_in_text">Toggle(17, 2_000_000, 20)</span>, but it calls the <span class="code_in_text">Toggle</span> method with different values: 17 for <span class="code_in_text">Pin</span>, 2 million for <span class="code_in_text">Delay</span>, and 20 for <span class="code_in_text">Count</span>.</p>
+        <p class="PlainText">Notice that we put the <span class="code_in_text">Main</span> method above <span class="code_in_text">Toggle</span>?&#160; Remember that the first public method in the first object is automatically executed when the application is started by the Propeller.&#160; We are only using one object in this case, so <span class="code_in_text">Main</span> is automatically executed after we download this application.</p>
+        <p class="PlainText">When <span class="code_in_text">Main</span>’s first line, <span class="code_in_text">Toggle(16, 3_000_000, 10)</span>, is executed, the <span class="code_in_text">Toggle</span> method is called and it executes its function: blinking the LED on pin 16 five times with a delay of 1/4th second in between.&#160; Then, because <span class="code_in_text">Toggle</span> has no more code to execute after the loop, it returns to the caller, <span class="code_in_text">Main</span>, and execution continues at the next line of <span class="code_in_text">Main</span>: <span class="code_in_text">Toggle(17, 2_000_000, 20)</span>.&#160; When that line executes, the <span class="code_in_text">Toggle</span> method is called, and it blinks the LED on pin 17 ten times with a delay of 1/6th second in between.&#160; Finally, the <span class="code_in_text">Toggle</span> method returns to <span class="code_in_text">Main</span> again, but <span class="code_in_text">Main</span> has no more code to execute so it exits and the application terminates; the cog stops and the Propeller goes into a low-power mode until the next reset or power cycle.</p>
+        <p class="PlainText">Don’t be confused by the look of the code. The two methods, <span class="code_in_text">Main</span> and <span class="code_in_text">Toggle</span>, are shown one right after another, but they are treated as distinct routines starting at their <span class="keyword_in_text">PUB</span> block declarations and ending at the next block declaration or the end of the source code, whichever comes first.&#160; In other words, the Propeller knows that the <span class="code_in_text">Toggle</span> method is not a part of the <span class="code_in_text">Main</span> method’s executable code.</p>
+        <p class="PlainText">Also note we’ve still used just one cog in our example, and the entire application is executed serially: first blink P16, then stop, blink P17, then stop.&#160; We’ll begin to use multiple cogs in the next exercise.</p>
+        <p><a href="Spin4-Intro.htm" title="Go back to Building Methods" alt="Go back to Building Methods"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin4-Parallel.htm" title="Go on to Parallel Processing" alt="Go on to Parallel Processing"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

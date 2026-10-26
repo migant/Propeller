@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849">
+    <head>
+    </head>
+    <body>
+        <MadCap:breadcrumbsProxy />
+        <MadCap:bodyProxy />
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+                <p MadCap:conditions="PropellerHelpConditionTags.PropellerHidden"><a href="http://www.parallax.com/propeller/qna" title="Go to Classic Web View system home page" alt="Go to Classic Web View system home page" MadCap:conditions="PropellerHelpConditionTags.PropellerHidden">Go to Classic View homepage</a>
+                </p>
+                <p MadCap:conditions="PropellerHelpConditionTags.PropellerHidden"><a href="http://www.parallax.com/portals/0/propellerqna/Mobile" title="Go to Mobile View system main menu" alt="Go to Mobile View system main menu" MadCap:conditions="PropellerHelpConditionTags.PropellerHidden">Switch to Mobile View system</a>
+                </p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <MadCap:snippetBlock src="../Snippets/HelpVersion.flsnp" />
+            </div>
+        </div>
+        <script type="text/javascript">
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		</script>
+    </body>
+</html>

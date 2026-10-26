@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="About the Hardware" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Main Memory</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="AboutHardware.htm">About the Hardware</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Main Memory</span>
+        </div>
+        <h1><a name="kanchor83"></a>Main Memory</h1>
+        <p class="PlainText">The Main Memory is a block of 64 K bytes (16 K longs) that is accessible by all cogs as one of the mutually exclusive <a href="SharedRes.htm" target="" title="" alt="" class="MCXref_0">Shared Resources</a> <![CDATA[ ]]>accessible through the <a href="Hub.htm" target="" title="" alt="" class="MCXref_0">Hub</a>.&#160; It consists of 32 KB of RAM and 32 KB of ROM.&#160; &#160;&#160; </p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../Resources/Images/HardwarePics/MainMem.png" title="Propeller 1 Main Memory Map" alt="Propeller 1 Main Memory Map" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Main Memory Map </p>
+        </div>
+        <p class="clear">&#160;</p>
+        <h2><a name="kanchor84"></a><a name="MainRam"></a>Main RAM</h2>
+        <p class="PlainText">The first half of Main Memory is all RAM.&#160; This space is used for your program, data, variables and stack(s); otherwise known as your Propeller Application.</p>
+        <p class="PlainText">When a program is loaded into the chip, either from a host or from an external EEPROM, this entire memory space is written. The first 16 locations, $0000 – $000F, hold initialization data used by the <a href="BootLoader.htm" target="" title="" alt="" class="MCXref_0">Boot Loader &amp; Spin Interpreter</a>.&#160; Your program’s executable code and data will begin at $0010 and extend for some number of longs. The area after your executable code, extending to $7FFF, is used as variable and stack space. Main RAM is byte, word, and long addressable. Words and longs are stored in little endian format with least significant byte first.</p>
+        <p class="PlainText"><a name="kanchor85"></a>There are two values stored in the initialization area that might be of interest to your program: a long at $0000 contains the initial master clock frequency, in Hertz, and a byte following it at $0004 contains the initial value written into the <a href="CLKRegister.htm" target="" title="" alt="" class="MCXref_0">CLK Register</a>.&#160; These two values can be read/written using their physical addresses (<span class="keyword_in_text"><span class="code_in_text" style="font-weight: normal;">LONG[$0]</span> <![CDATA[ ]]></span>and <span class="code_in_text">BYTE[$4]</span>) and can be read by using their predefined names (<span class="keyword_in_text">CLKFREQ</span> and <span class="keyword_in_text">CLKMODE</span>).&#160; If you change the CLK register without using the <span class="keyword_in_text">CLOCKSET</span> command, you will also need to update these two locations so that objects which reference them will have current information.</p>
+        <h2><a name="kanchor86"></a><a name="MainRom"></a>Main ROM</h2>
+        <p class="PlainText">The second half of Main Memory is all ROM.&#160; This space is used for:</p>
+        <ul>
+            <li value="1"><a href="HCharDefs.htm" target="" title="" alt="" class="MCXref_0">Character Definitions</a>
+            </li>
+            <li value="2"><a href="HLog.htm" target="" title="" alt="" class="MCXref_0">Log Table </a>
+            </li>
+            <li value="3"><a href="HAntilog.htm" target="" title="" alt="" class="MCXref_0">Anti-log Table</a> <![CDATA[ ]]></li>
+            <li value="4"><a href="HSine.htm" target="" title="" alt="" class="MCXref_0">Sine Table</a> <![CDATA[ ]]></li>
+            <li value="5"><a href="BootLoader.htm" target="" title="" alt="" class="MCXref_0">Boot Loader &amp; Spin Interpreter</a>
+            </li>
+        </ul>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

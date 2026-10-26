@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Using the Propeller Tool|Tour the Workspace" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Object View</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../UsingPropTool.htm">Using the Propeller Tool</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="../TourWorkspace.htm">Tour the Workspace</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Object View</span>
+        </div>
+        <h1>Object View</h1>
+        <p class="PlainText"><a name="kanchor120"></a>The Object View displays a hierarchical view of the project you most recently compiled successfully.&#160; There are two Object Views in the Propeller Tool: 1) The Object View at the top of the Integrated Explorer in the main application’s window (see <a href="ScreenOrg.htm" target="" title="" alt="" class="MCXref_0">Screen Organization</a>), and 2) The Object Info View in the upper left of the Object Info form (see&#160;<a href="ObjectInfo.htm" target="" title="" alt="" class="MCXref_0">Object Info</a>). Both of these Object Views function in a similar fashion.</p>
+        <p class="PlainText">The Object View provides visual feedback on the structure of the most recent successful compilation as well as information for each object within the compiled project.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/Object View.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Example Object View display showing the structure of the ABC Product compilation</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText">In the figure above, the Object View indicates the structure of the ABC Product application.&#160; In this example, the ABC Product object is the “top object file” (see Tutorial XX) and it uses the Numbers, Rotary Encoder and Controller objects.&#160; Additionally, the Controller object uses the TV object.</p>
+        <p class="PlainText">The object names shown are their actual file names without the extension.&#160; The name includes their file extension only if they are data files, and it is shown in italics as well. The icons to the left of each object name indicate the folder that the object exists in.&#160; This list shows the four possibilities:&#160; </p>
+        <p term="Work folder" />
+        <ul>
+            <li class="YF" value="1"><span class="MCExpanding"><a href="javascript:void(0);" class="MCExpandingHead_0" onclick="FMCExpand( this ); return false;">Yellow:Object is within the Work Folder.<img style="border: none;margin-left: 5px;" src="../../SkinSupport/ExpandingClosed.gif" MadCap:altsrc="../../SkinSupport/ExpandingOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/ExpandingOpen.gif' ); }" class="MCExpandingIcon" /></a><span class="MCExpandingBody" style="display: none;"> The Work Folder is the folder where the top object file exists.&#160; Every project has one, and only one, work folder.</span></span>
+            </li>
+            <li class="BF" value="2"><span class="MCExpanding"><a href="javascript:void(0);" class="MCExpandingHead_0" onclick="FMCExpand( this ); return false;">Blue : Object is within the Library Folder.<img style="border: none;margin-left: 5px;" src="../../SkinSupport/ExpandingClosed.gif" MadCap:altsrc="../../SkinSupport/ExpandingOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/ExpandingOpen.gif' ); }" class="MCExpandingIcon" /></a><span class="MCExpandingBody" style="display: none;"> The Library Folder is where the Propeller Tool’s library objects exist, such as those that came with the Propeller Tool software.&#160; The Library Folder is always the folder that the Propeller Tool executable started from, and every object (file with .spin extension) within it is considered to be a library object.</span></span>
+            </li>
+            <li class="SF" value="3"><span class="MCExpanding"><a href="javascript:void(0);" class="MCExpandingHead_0" onclick="FMCExpand( this ); return false;">Striped: Object is in Work Folder but another object with the same name is also being used from the Library Folder.<img style="border: none;margin-left: 5px;" src="../../SkinSupport/ExpandingClosed.gif" MadCap:altsrc="../../SkinSupport/ExpandingOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/ExpandingOpen.gif' ); }" class="MCExpandingIcon" /></a><span class="MCExpandingBody" style="display: none;"> Objects with striped icons indicate that an object from the work folder and an object from the library folder each refer to a sub-object of the same name and that sub object happens to exist in both the work and library folders.&#160; This same-named object may be: 1) an exact copy of the same object, 2) two versions of the same object, or 3) two completely different objects that just happen to have the same name.&#160; Regardless of the situation, it is recommended that you resolve this potential problem as soon as possible since it may lead to problems later on, such as not being able to use the Archive feature.</span></span>
+            </li>
+            <li class="WF" value="4"><span class="MCExpanding"><a href="javascript:void(0);" class="MCExpandingHead_0" onclick="FMCExpand( this ); return false;">Hollow: Object is not in any folder because it has never been saved.<img style="border: none;margin-left: 5px;" src="../../SkinSupport/ExpandingClosed.gif" MadCap:altsrc="../../SkinSupport/ExpandingOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/ExpandingOpen.gif' ); }" class="MCExpandingIcon" /></a><span class="MCExpandingBody" style="display: none;"> Objects with hollow icons indicate that the object was created in the editor and has never been saved to any folder on the hard drive.&#160; This situation, like the one mentioned above, is not an immediate problem but can lead to future problems if it is not addressed soon.</span></span>
+            </li>
+        </ul>
+        <p class="PlainText">Using the mouse to point at and select objects can provide additional information as well.&#160; Clicking on an object within the Object View opens that object into the Editor pane.&#160; Left-clicking opens that object in Full Source view, right-clicking opens it in Documentation view and double-clicking opens it, and all its sub-objects, in Full Source view.&#160; If the object was already open, the Editor pane simply makes the related edit tab active and switches to the appropriate view; Full Source for a left-click or double-click, or Documentation for a right-click.</p>
+        <h2>Mouse-over Hints</h2>
+        <p class="PlainText"><a name="kanchor121"></a>Hovering the mouse over an object in the Object View displays a hint with additional information for that object.&#160; </p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/HintABC.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Hints for the ABC Product file</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText">The hint for the ABC Product file indicates: </p>
+        <ol class="PlainText">
+            <li value="1">The ABC Product object is the top object file of the project. </li>
+            <li value="2">It exists in the work folder. </li>
+            <li value="3">Its path and file name are: C:\Source\ABC Product.spin.</li>
+            <li value="4">From this information you can also infer that the work folder for this project is C:\Source.</li>
+        </ol>
+        <p class="PictureCaptionNoNums">&#160;</p>
+        <p class="clear">&#160;</p>
+        <p class="clear">&#160;</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/Object View - Hint Numbers.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Hints for the Numbers file</p>
+            <p class="clear">&#160;</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText">The hint for the Numbers file indicates: </p>
+        <ol>
+            <li value="1">it’s an object file (i.e.: a sub object, rather than the top object);</li>
+            <li value="2">it’s in the library folder; </li>
+            <li value="3">it’s at the path and file name C:\Program&#160;Files\Parallax&#160;Inc\Propeller\Numbers.spin.&#160; </li>
+            <li value="4">From this information you can also infer that the library folder for this project is C:\Program&#160;Files\Parallax&#160;Inc\Propeller.</li>
+        </ol>
+        <p class="PlainText">It’s a good idea to review the hints in the Object View occasionally since they may also contain additional helpful information, such as warnings about conflicts and optimization results.</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

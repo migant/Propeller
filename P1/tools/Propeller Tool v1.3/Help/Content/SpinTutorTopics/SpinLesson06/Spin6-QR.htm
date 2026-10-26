@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 6" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Quick Review</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 6</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Quick Review</span>
+        </div>
+        <p><a href="Spin6-BetterControl.htm" title="Go back to Adding Methods for Better Control" alt="Go back to Adding Methods for Better Control"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="../SpinLesson07/Spin7-Intro.htm" title="Go on to Spin Lesson 7 Introduction" alt="Go on to Spin Lesson 7 Introduction"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1>Spin Lesson 6: Quick Review</h1>
+        <ul>
+            <li value="1">Objects:<ul><li value="1">Have no direct relationship with cogs.</li><li value="2">Should call interface methods “<span class="code_in_text">Start</span>” and “<span class="code_in_text">Stop</span>” if they affect other cogs.</li><li value="3">Should call interface method “<span class="code_in_text">Init</span>” if it needs initialization.</li></ul></li>
+            <li value="2">Spin language:<ul><li value="1">Variables defined in <span class="keyword_in_text">VAR</span> blocks are global to the object so modifications by one method are visible by other methods.&#160; </li><li value="2">Booleans: <ul><li value="1"><span class="keyword_in_text">FALSE</span> = 0</li><li value="2"><span class="keyword_in_text">TRUE</span> = -1; any non-zero (≠0) value is True for Boolean comparisons.</li></ul></li><li value="3">Compound expressions can include intermediate assignments.</li><li value="4">Operators:<ul><li value="1">“Pre”/“Post” operators perform their duty before/after the variable’s value is used by the expression.</li><li value="2">Assignment ‘<span class="keyword_in_text">:=</span>’ is similar to equal ‘<span class="keyword_in_text">=</span>’ in other languages.&#160; It sets the symbol to the left of the operator equal to the value of the symbol or expression to the right of the operator.</li><li value="3">Post-Clear ‘<span class="keyword_in_text">~</span>’ clears the variable preceding it to zero (0).</li><li value="4">Pre-Decrement ‘<span class="keyword_in_text">-</span> <![CDATA[ ]]><span class="keyword_in_text">-</span>’ decrements the variable following it, giving the expression the result.</li><li value="5">Is Greater Than ‘<span class="keyword_in_text">&gt;</span>’ returns True if value on left-side is greater than that of right-side.</li><li value="6">Limit Minimum ‘<span class="keyword_in_text">#&gt;</span>’ returns the greater of either the value on its left or its right.</li></ul></li><li value="5">Methods: <ul><li value="1">Always return a long value (4 bytes) whether or not one is specified.</li><li value="2">Contain a built-in local variable, <span class="keyword_in_text">RESULT</span>, that holds its return value.</li><li value="3">Return values are declared by following the method’s name and parameters with a colon (<span class="keyword_in_text">:</span>) and a descriptive return value name. </li></ul></li><li value="6"><span class="keyword_in_text">COGNEW</span> returns the ID (0 to 7) of the cog started; -1 if none.</li><li value="7"><span class="keyword_in_text">COGSTOP</span> deactivates a cog by ID.</li><li value="8"><span class="keyword_in_text">IF</span> is a conditional structure that executes the indented block of code following it if the conditional statement is true.</li><li value="9"><span class="keyword_in_text">REPEAT</span>’s conditional, one-to-many form: <span class="keyword_in_text">REPEAT WHILE</span> <![CDATA[ ]]><i>Condition</i> executes at least once and continue while <i>Condition</i> is true.</li></ul></li>
+            <li value="3">The Propeller Tool bolds matching parentheses pairs surrounding the cursor.</li>
+        </ul>
+        <p><a href="Spin6-BetterControl.htm" title="Go back to Adding Methods for Better Control" alt="Go back to Adding Methods for Better Control"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="../SpinLesson07/Spin7-Intro.htm" title="Go on to Spin Lesson 7 Introduction" alt="Go on to Spin Lesson 7 Introduction"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

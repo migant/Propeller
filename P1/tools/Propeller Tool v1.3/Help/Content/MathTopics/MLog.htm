@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Math Resources" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Log Table</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="MathResc.htm">Math Resources</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Log Table</span>
+        </div>
+        <h1>Log Table</h1>
+        <p class="PlainText">The log table (($C000-$CFFF in <a href="../HardwareTopics/MainMem.htm" target="" title="" alt="" class="MCXref_0">Main Memory</a>) contains data used to convert unsigned numbers into base-2 exponents. There is also an <a href="MAntilog.htm" target="" title="" alt="" class="MCXref_0">Anti-Log Table</a> and a <a href="MSine.htm" target="" title="" alt="" class="MCXref_0">Sine Table</a> <![CDATA[ ]]>.</p>
+        <h2>How Log and Anti-Log Tables can be Useful</h2>
+        <p class="PlainText">The log and anti-log tables are useful for converting values between their number form and exponent form. When numbers are encoded into exponent form, simple math operations take on more complex effects. For example ‘add’ and ‘subtract’ become ‘multiply’ and ‘divide,’ ‘shift-left’ becomes ‘square’ and ‘shift-right’ becomes ‘square-root,’ and ‘divide by 3’ will produce ‘cube root.’ Once the exponent is converted back to a number, the result will be apparent. This process is imperfect, but quite fast.
+</p>
+        <p class="PlainText">For applications where many multiplies and divides must be performed in the absence of many additions and subtractions, exponential encoding can greatly speed things up. Exponential encoding is also useful for compressing numbers into fewer bits – sacrificing resolution at higher magnitude. In many applications, such as audio synthesis, the nature of signals is logarithmic in both frequency and magnitude. Processing such data in exponent form is quite natural and efficient, as it lends a ‘linear’ simplicity to what is actually logarithmic.
+The code examples given below use each tables’ samples verbatim. Higher resolution could be achieved by linearly interpolating between table samples, since the slope change is very slight from sample to sample. The cost, though, would be larger code and lower execution speed.</p>
+        <h2>Log Table Example</h2>
+        <p class="PlainText">The log table is comprised of 2,048 unsigned words which make up the base-2 fractional exponents of numbers. To use this table, you must first determine the integer portion of the exponent of the number you are converting. This is simply the leading bit position. For $60000000 this would be 30 ($1E). This integer portion will always fit within 5 bits. Isolate these 5 bits into the result so that they occupy bit positions 20..16. In our case of $60000000, we would now have a partial result of $001E0000. Next, top-justify and isolate the first 11 bits below the leading bit into positions 11..1. This would be $0800 for our example. Add $C000 for the log table base and you now have the actual word address of the fractional exponent. By reading the word at $C800, we get the value $95C0. Adding this into the partial result yields $001E95C0 – that's $60000000 in exponent form. Note that bits 20..16 make up the integer portion of the exponent, while bits 15..0 make up the fractional portion, with bit 15 being the ½, bit 14 being the ¼, and so on, down to bit 0. The exponent can now be manipulated by adding, subtracting, and shifting. Always insure that your math operations will never drive the exponent below 0 or cause it to overflow bit 20. Otherwise, it may not convert back to a number correctly.
+</p>
+        <p class="PlainText">Here is a routine that will convert an unsigned number into its base-2 exponent using the log table:</p>
+        <div class="propcode"><pre xml:space="preserve" class="spin_dat1">DAT
+
+' Convert number to exponent
+'
+' on entry: num holds 32-bit unsigned value
+' on exit:  exp holds 21-bit exponent with 5 integer bits and 16 fractional bits
+'
+numexp          mov     exp,#0              'clear exponent
+
+                test    num,num4        wz  'get integer portion of exponent
+                muxnz   exp,exp4            'while top-justifying number
+    if_z        shl     num,#16
+                test    num,num3        wz
+                muxnz   exp,exp3
+    if_z        shl     num,#8
+                test    num,num2        wz
+                muxnz   exp,exp2
+    if_z        shl     num,#4
+                test    num,num1        wz
+                muxnz   exp,exp1
+    if_z        shl     num,#2
+                test    num,num0        wz
+                muxnz   exp,exp0
+    if_z        shl     num,#1
+
+                shr     num,#30-11          'justify sub-leading bits as word offset
+                and     num,table_mask      'isolate table offset bits
+                add     num,table_log       'add log table address
+                rdword  num,num             'read fractional portion of exponent
+                or      exp,num             'combine fractional &amp; integer portions
+
+numexp_ret      ret                         '91..106 clocks
+                                            '(variance due to HUB sync on RDWORD)
+
+num4            long    $FFFF0000
+num3            long    $FF000000
+num2            long    $F0000000
+num1            long    $C0000000
+num0            long    $80000000
+exp4            long    $00100000
+exp3            long    $00080000
+exp2            long    $00040000
+exp1            long    $00020000
+exp0            long    $00010000
+table_mask      long    $0FFE               'table offset mask
+table_log       long    $C000               'log table base
+
+num             long    0                   'input
+exp             long    0                   'output
+</pre>
+        </div>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="5" MadCap:lastHeight="188" MadCap:lastWidth="794">
+    <head>
+    </head>
+    <body>
+        <MadCap:breadcrumbsProxy />
+        <MadCap:bodyProxy />
+        <div class="MasterMiniTOC">
+            <MadCap:miniTocProxy class="Btm" style="mc-toc-depth: 1;" />
+        </div>
+        <div class="MasterFoot">
+            <MadCap:snippetBlock src="../Snippets/HelpVersion.flsnp" />
+        </div>
+        <p>&#160;</p>
+    </body>
+</html>

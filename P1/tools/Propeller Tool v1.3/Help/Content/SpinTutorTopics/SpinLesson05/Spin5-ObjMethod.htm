@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 5" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Building Block Objects</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 5</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Building Block Objects</span>
+        </div>
+        <p><a href="Spin5-Intro.htm" title="Go back to Using Objects Together" alt="Go back to Using Objects Together"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin5-ObjView.htm" title="The Object View" alt="The Object View"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1>Building Block Objects</h1>
+        <p class="PlainText">Now let’s explore the power of objects.&#160; All of the preceding exercises created an application that contained only one object; the Output.spin object is the entire application.&#160; This is typical of how new objects begin their development.&#160; </p>
+        <p class="PlainText">Suppose that the motivation behind all this work was really to create a "building block" object that other developers could use to easily toggle one or more I/O pins. That's what we'll do next.</p>
+        <h2>Spin Exercise 5-1: Using Output.spin with Blinker1.spin</h2>
+        <p class="PlainText">It's time to make our Output object easily interface with other objects.&#160; </p>
+        <ul>
+            <li class="Checklist" value="1">Edit your code to look like the following:</li>
+        </ul>
+        <h4>Example Object: Output.spin</h4>
+        <div class="propcode"><a href="../../../../Examples/Help/Spin Tutorial/Exercise 05-1/Output.spin"><img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" title="Open example in Propeller Tool" /></a><pre xml:space="preserve" class="spin_con1">&#160;</pre><pre xml:space="preserve" class="spin_con1">{{ Output.spin <span class="code_add_mod">}}</span>                         <![CDATA[ ]]></pre><pre xml:space="preserve" class="spin_con1"><span class="code_delete">Toggle two pins, simultaneously.}}</span>
+
+</pre><pre xml:space="preserve" class="spin_var1">VAR
+  long  Stack[9]             'Stack space for new cog
+
+</pre><pre xml:space="preserve" class="spin_pub1"><span class="code_delete">PUB Main
+  cognew(Toggle(16, 3_000_000, 10), @Stack)     'Toggle P16 ten times, 1/4 s each
+  Toggle(17, 2_000_000, 20)                     'Toggle P17 twenty times, 1/6 s each</span>
+
+</pre><pre xml:space="preserve" class="spin_pub2"><span class="code_add_mod">PUB Start(Pin, Delay, Count)</span>                         <![CDATA[ ]]></pre><pre xml:space="preserve" class="spin_pub2"><span class="code_add_mod">{{Start new toggling process in a new cog.}}</span>
+            </pre><pre xml:space="preserve" class="spin_pub2">                         <![CDATA[ ]]></pre><pre xml:space="preserve" class="spin_pub2">  <span class="code_add_mod">cognew(Toggle(Pin, Delay, Count), @Stack)</span> 
+
+</pre><pre xml:space="preserve" class="spin_pub1">PUB Toggle(Pin, Delay, Count)
+{{Toggle Pin, Count times with Delay clock cycles in between.}}
+
+  dira[Pin]~~                'Set I/O pin to output direction
+  repeat Count               'Repeat for Count iterations
+    !outa[Pin]               '  Toggle I/O Pin
+    waitcnt(Delay + cnt)     '  Wait for Delay cycles
+</pre><pre xml:space="preserve" class="spin_pub1">&#160;</pre>
+            <h3>The Start Method </h3>
+        </div>
+        <p class="PlainText">Here we replaced the <span class="code_in_text">Main</span> method with a <span class="code_in_text">Start</span> method.&#160; The <span class="code_in_text">Start</span> method activates another cog to run the <span class="code_in_text">Toggle</span> method independently and passes along the <span class="code_in_text">Pin</span>, <span class="code_in_text">Delay</span>, and <span class="code_in_text">Count</span> parameters.</p>
+        <p class="PlainText"><a name="kanchor238"></a>The interface to an object is made up of its public (<span class="keyword_in_text">PUB</span>) methods, so our Output object now has two interface components, the <span class="code_in_text">Start</span> method and the <span class="code_in_text">Toggle</span> method.&#160; </p>
+        <p class="PlainText">Now our Output object can be used by other objects to toggle any pin at any rate for any number of times they want.&#160; They can also choose to do this serially, by calling Output’s <span class="code_in_text">Toggle</span> method, or in parallel with other tasks, by calling Output’s <span class="code_in_text">Start</span> method.</p>
+        <p class="PlainText">Let’s create another object that uses Output.spin.&#160; </p>
+        <ul>
+            <li class="Checklist" value="1">To create a new object, select File → New from the menu and a new edit tab will appear.&#160; </li>
+            <li class="Checklist" value="2">In this new edit page, enter the following code.&#160; Pay attention to the bold items, as we will discuss them soon.</li>
+        </ul>
+        <h4>Example Object: Blinker1.spin</h4>
+        <div class="propcode"><a href="../../../../Examples/Help/Spin Tutorial/Exercise 05-1/Blinker1.spin"><img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" title="Open example in Propeller Tool" /></a><pre xml:space="preserve" class="spin_con1">{{ Blinker1.spin }}
+
+</pre><pre xml:space="preserve" class="spin_obj1"><span class="code_add_mod">OBJ</span>                         <![CDATA[ ]]></pre><pre xml:space="preserve" class="spin_obj1">  <span class="code_add_mod">LED : "Output"</span>  
+
+</pre><pre xml:space="preserve" class="spin_pub1">PUB Main
+{Toggle pins at different rates, simultaneously}
+  <span class="code_add_mod">LED.Start</span>(16, 3_000_000, 10)
+  <span class="code_add_mod">LED.Toggle</span>(17, 2_000_000, 20)
+</pre><pre xml:space="preserve" class="spin_pub1">&#160;</pre>
+        </div>
+        <ul>
+            <li class="Checklist" value="1">Save this new object as "Blinker1.spin" in the same folder as you saved Output.spin.&#160; </li>
+            <li class="Checklist" value="2">Now, with Blinker1’s edit tab active, press F10 to compile and download.&#160; </li>
+        </ul>
+        <p class="PlainText">The LEDs should have blinked in the same way they did in <a href="../SpinLesson04/Spin4-Parallel.htm">Exercise 4-2</a>, but a different technique was used by the code; Blinker1 used our Output object and simply called Output’s <span class="code_in_text">Start</span> and <span class="code_in_text">Toggle </span>methods.</p>
+        <p class="PlainText">Here’s how it worked.&#160; In Blinker1 we have an object block (<span class="keyword_in_text">OBJ</span>) and a public method (<span class="keyword_in_text">PUB</span>).&#160; The object block’s <span class="code_in_text">LED</span>&#160;<span class="code_in_text">:</span>&#160;<span class="code_in_text">"Output"</span> line declares that we're going to use another object called Output and that we’ll refer to it as <span class="code_in_text">LED</span> within this Blinker1 object.</p>
+        <h2><a name="kanchor239"></a>The Object-Method Reference</h2>
+        <p class="PlainText">In the public method, <span class="code_in_text">Main</span>, we have two method calls.&#160; Remember how we learned in <a href="../SpinLesson04/Spin4-Parameters.htm">Exercise 4-1</a> that one method can call another just by referencing its name?&#160; That works for methods that are in the same object, but now we need to call a method that is in another object.&#160; To do this, we use the form <i>object . method</i> where <i>object</i> is the symbolic name we gave the object in the <span class="keyword_in_text">OBJ</span> block (<span class="code_in_text">LED</span> in this case) and <i>method</i> is the name of that object’s method.&#160; This is called an Object-Method reference.&#160; Blinker1.spin refers to the Output object as <span class="code_in_text">LED</span>, so <span class="code_in_text">LED.Start</span> calls Output’s <span class="code_in_text">Start</span> method, and<span class="code_in_text"> LED.Toggle</span> calls Output.spin’s <span class="code_in_text">Toggle</span> method.</p>
+        <p class="PlainText">When Blinker1 is compiled, since it references Output, the two objects get compiled into one application.&#160; This structure is also shown in the Object View, which we'll learn about next.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/Compile_548x249.png" style="width: 548;height: 249;" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Blinker1 Hierarchy and Blinker1 Application</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p><a href="Spin5-Intro.htm" title="Go back to Using Objects Together" alt="Go back to Using Objects Together"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin5-ObjView.htm" title="The Object View" alt="The Object View"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <p class="clear">&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="About the Hardware" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Hub</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="AboutHardware.htm">About the Hardware</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Hub</span>
+        </div>
+        <h1><a name="kanchor63"></a>Hub</h1>
+        <p class="PlainText"><a name="kanchor64"></a>To maintain system integrity, mutually exclusive resources must not be accessed by more than one cog at a time.&#160; The Hub maintains this integrity by controlling access to mutually exclusive resources, giving each cog a turn to access them in a “round robin” fashion from Cog 0 through Cog 7 and back to Cog 0 again.&#160; The Hub, and the bus it controls, runs at half the  <a href="SysClock.htm" target="" title="" alt="" class="MCXref_0">System Clock</a> rate.&#160; This means that the Hub gives a cog access to mutually exclusive resources once every 16 System Clock cycles.&#160; Hub instructions, the Propeller Assembly instructions that access mutually exclusive <a href="SharedRes.htm" target="" title="" alt="" class="MCXref_0">Shared Resources</a>, require 8 cycles to execute but they first need to be synchronized to the start of the hub access window.&#160; It takes up to 15 cycles (16 minus 1, if we just missed it) to synchronize to the hub access window plus 8 cycles to execute the hub instruction, so hub instructions take from 8 to 23 cycles to complete.&#160; </p>
+        <p class="PlainText">The diagrams below show examples where Cog 0 has a hub instruction to execute.&#160; The top diagram shows the best-case scenario; the hub instruction was ready right at the start of that cog’s access window.&#160; The hub instruction executes immediately (8 cycles) leaving an additional 8 cycles for other instructions before the next hub access window arrives.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../Resources/Images/HardwarePics/BestCase.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Cog-Hub Interaction – Best Case Scenario</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText">In the worst-case scenario below, the hub instruction was ready on the cycle right after the start of Cog 0’s access window - it just barely missed it.&#160; The cog waits until the next hub access window (15 cycles later) then the hub instruction executes (8 cycles) for a total of 23 cycles for that hub instruction.&#160; Again, there are 8 additional cycles after the hub instruction for other instructions to execute before the next hub access window arrives.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../Resources/Images/HardwarePics/WorstCase.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Cog-Hub Interaction – Worst Case Scenario</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText">To get the most efficiency out of Propeller Assembly routines that have to frequently access mutually exclusive resources, it can be beneficial to interleave non-hub instructions with hub instructions to lessen the number of cycles waiting for the next hub access window.&#160; Since most Propeller Assembly instructions take 4 clock cycles, two such instructions can be executed in between otherwise contiguous hub instructions.</p>
+        <p class="PlainText">Keep in mind that a particular cog’s hub instructions do not, in any way, interfere with other cogs’ instructions because of the Hub mechanism.&#160; Cog 1, for example, may start a hub instruction during System Clock cycle 2, in both of these examples, possibly overlapping its execution with that of Cog 0 without any ill effects.&#160; Meanwhile, all other cogs can continue executing non-hub instructions, or awaiting their individual hub access windows regardless of what the others are doing.</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

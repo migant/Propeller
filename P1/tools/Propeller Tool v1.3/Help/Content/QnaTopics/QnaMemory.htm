@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Questions and Answers" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Memory</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="QnaLocal.htm">Questions and Answers</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Memory</span>
+        </div>
+        <h1>Memory</h1>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2079198694_0" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How is memory organized on the Propeller?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2079198694_0" style="display: none;">
+                <p class="PlainText">The Propeller chip has two kinds of memory: </p>
+                <ol>
+                    <li value="1">Main Memory, consisting of byte, word, and long-addressable RAM and ROM. It is shared by all cogs and is located in the Hub.</li>
+                    <li value="2"> Cog Memory, consisting of long-addressable RAM. Each cog has its own and it is not accessible by other cogs.</li>
+                </ol>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2079198694_1" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is Main Memory?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2079198694_1" style="display: none;">
+                <p class="PlainText">Main Memory is located in the Hub and is accessible to each cog, one at a time, in a round-robin fashion. It is divided into two equal sections: Main RAM and Main ROM.</p>
+                <p class="PlainText">Main RAM is 32 KB, organized as 8192 32-bit longs. It holds your program, data, global variables, and stack space, which collectively make up your Propeller Application. Main RAM is byte, word, or long addressable and each location is usually referred to as an "address."</p>
+                <p class="PlainText">The 32 KB Main ROM holds read-only system resources: the Boot Loader and Spin Interpreter, character definitions, and log, antilog, and sine tables. </p>
+                <p class="PlainText">
+                    <img src="../Resources/Images/HardwarePics/MainMem.png" />
+                </p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2079198694_2" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is Cog RAM?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2079198694_2" style="display: none;">
+                <p class="PlainText">Cog RAM is a block of 512 longs (32-bits) of read/write memory inside the cog itself; it is used to hold Propeller Assembly programs and related data for exclusive use by that cog.</p>
+                <p class="PlainText"> Cog RAM is divided into two sections: general purpose registers and special purpose registers. Each location within Cog RAM&#160;is long-addressable only and is usually referred to as a "register." </p>
+                <p class="PlainText">General purpose registers make up the first 496 longs (32-bits each) of Cog RAM. To execute Propeller Assembly code, the general purpose registers are first loaded with code and data from main memory, then execution starts at register 0. When executing Spin code, this portion of Cog RAM is first loaded with a copy of the Spin Interpreter. </p>
+                <p class="PlainText">Special purpose registers live in the last 16 longs of Cog RAM. The first four of them are read-only and return the values of the boot parameter, system counter, and input states for the I/O pins. The remaining 12 registers facilitate output state, pin direction, and interaction with the cog's counter modules, and video generator hardware.</p>
+                <p class="PlainText">
+                    <img src="../Resources/Images/HardwarePics/CogRAM.png" />
+                </p>
+                <p class="PlainText"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HardwareTopics/CogRAMfull.htm" onclick="FMCPopup( event, this ); return false;" MadCap:width="auto" MadCap:height="auto" class="MCPopupSpot_Popup_0" alt="Open in new window" title="Open in new window">See the Cog RAM Special Purpose Registers</a></span>
+                </p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2079198694_3" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Does the Propeller use a call stack?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2079198694_3" style="display: none;">
+                <p class="PlainText">Yes (in Spin) and No (in Propeller Assembly).</p>
+                <p class="PlainText">The Spin Interpreter implements a call stack to facilitate Spin method calling, parameter passing, and expression evaluation.  The Propeller Application's stack is located in <a href="../HardwareTopics/MainMem.htm#MainRam" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Main RAM</a> immediately following the application's global variable memory.  It expands and collapses as needed; growing towards higher addresses and shrinking towards lower addresses.  Spin methods that are manually launched into other cogs store their stack starting at the <i>StackPointer </i>address given by the <span class="keyword_in_text">COGNEW</span> or <span class="keyword_in_text">COGINIT</span> command that launched them.  Their stacks expand and contract in the same manner as with the Propeller Application stack.  In both cases, the capacity of the stack (method nesting-depth, parameter list length, and expression complexity) is limited only by the amount of free memory available (for the application) or memory provided (by the developer).</p>
+                <p class="PlainText">Propeller Assembly language does not implement a call stack since doing so would unnecessarily consume valuable memory and impose undue limitations on applications.  Instead, Propeller Assembly provides a different mechanism through the <span class="keyword_in_text">JMPRET</span> instruction (and also <span class="keyword_in_text">CALL</span>, <span class="keyword_in_text">JMP</span>, and <span class="keyword_in_text">RET</span>) to maintain nested call history.  This method requires more developer influence but allows the memory to be used more efficiently (optimizing for the specific application) and has a distinct advantage allowing the implementation of simple task-switching code in real-time systems using <span class="keyword_in_text">JMPRET</span>.</p>
+                <p class="PlainText">To determine the amount of space required by your object, see <a href="../CodeTeqTopics/StackSpace.htm" target="" title="" alt="" class="MCXref_0">Stack Space</a>.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2079198694_4" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What about memory collisions?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2079198694_4" style="display: none;">
+                <p class="PlainText">A memory collision occurs when two or more cogs operate on a block of memory at the same time in a way that causes conflict between them.</p>
+                <p class="PlainText">A cog has exclusive access to its own <a href="../HardwareTopics/Cogs.htm#Cog" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Cog RAM</a>, so no memory collision between cogs can occur there.  However, all cogs share <a href="../HardwareTopics/MainMem.htm#MainRam" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Main RAM</a>; care must be taken to avoid collisions there.</p>
+                <p class="PlainText">A cog can read or write a byte, word, or long from Main RAM as an atomic operation—a single operation that no other cog can interfere with.  In contrast, cogs can unknowingly interfere with each other's successive atomic operations (multiple reads or writes of bytes, words, or longs from Main RAM) since their respective operations are naturally interleaved when accessing a mutually-exclusive resource.</p>
+                <p class="PlainText">This situation can cause problems if two or more cogs simultaneously perform multiple opposing operations on the same logical block of memory.  For example, two cogs may be tasked to cooperate on data contained in a block of memory 10 bytes in length.  If one cog starts writing to the 10 bytes while another is reading, timing variations in their respective program loops can easily cause the "reading" cog to read a mixture of both new byte-sized data and old byte-sized data.</p>
+                <p class="PlainText">To prevent such misreads or miswrites, the cogs must coordinate their efforts through an agreed-upon synchronization mechanism.  This mechanism serves as a "flag" to signal when a cog is performing a non-atomic operation on a mutually-exclusive resource.  All cogs involved with that resource must check and set the "flag" before proceeding, and must clear the flag to indicate when they are done.</p>
+                <p class="PlainText">In many situations where memory is involved, a simple solution is to designate a byte, word, or long within the memory block to serve as this synchronization flag, but since that memory-based flag can not be read and written within the same atomic operation (it requires a read operation followed by a write operation) it may not work flawlessly for all situations.  For this reason, a dedicated synchronization mechanism exists, called <a href="../HardwareTopics/Locks.htm" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Locks</a>, or semaphores.</p>
+                <p class="PlainText">The Propeller has 8 global lock bits which can be read and written simultaneously, as a single operation.  When used properly, the lock bits can facilitate synchronization between cogs for any purpose desired; not just for Main RAM usage.  The lock bits are managed through four commands: <span class="keyword_in_text">LOCKNEW</span>, <span class="keyword_in_text">LOCKSET, LOCKCLR</span>, and <span class="keyword_in_text">LOCKRET</span>.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2079198694_5" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Do DAT block symbols exist in Main RAM or in Cog RAM?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2079198694_5" style="display: none;">
+                <p class="PlainText"><span class="keyword_in_text">DAT</span> block symbols exist in Main RAM but also in Cog RAM if they are launched with Propeller Assembly.</p>
+                <p class="PlainText">The <span class="keyword_in_text">DAT</span> block itself is stored in the application image in Main RAM. Spin-based references to <span class="keyword_in_text">DAT</span> symbols are accessing the corresponding location and data in Main RAM.</p>
+                <p class="PlainText">When a cog is launched with assembly code, any <span class="keyword_in_text">DAT</span> symbols within 496 longs after the launch point are copied into Cog RAM. Unlike with Spin code, Propeller Assembly code that references those symbols is not accessing the corresponding location and data in Main RAM, but rather it is accessing the corresponding Cog RAM instead; its local copy. In addition, those symbolic references are always to longs of Cog RAM memory, regardless of how the symbol was actually declared.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2079198694_6" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How are symbols in the DAT block treated in relation to Spin and Propeller Assembly?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2079198694_6" style="display: none;">
+                <p class="PlainText">The <span class="keyword_in_text">DAT</span> block's primary purpose is to hold fixed data and Propeller Assembly code for the application. Symbolic declarations can be included and used to reference this data and code.</p>
+                <p class="PlainText">There's nothing preventing the contents of <span class="keyword_in_text">DAT</span> from being modified at runtime, however, which naturally leads to its use to hold symbols as "special" variables. Their special attributes relate to how they are stored in the application and how they are treated by Spin and when launching Propeller Assembly code.</p>
+                <p class="PlainText"><span class="keyword_in_text">DAT</span> blocks are stored in the application image in Main RAM. Just like code (<span class="keyword_in_text">PUB</span> and <span class="keyword_in_text">PRI</span>), there is only one instance of each <span class="keyword_in_text">DAT</span> block, regardless of how many instances of the containing object there are. This means that Spin-based references to <span class="keyword_in_text">DAT</span> symbols are accessing the corresponding location and data in Main RAM, and it's the same regardless of which instance of that object is making the reference. This is handy to share memory between multiple instances of an object.</p>
+                <p class="PlainText">When a cog is launched with assembly code, any <span class="keyword_in_text">DAT</span> symbols within 496 longs after the launch point are copied into Cog RAM. Unlike with Spin code, Propeller Assembly code that references those symbols is not accessing the corresponding location and data in Main RAM, but rather it is accessing the corresponding Cog RAM instead; its local copy. In addition, those symbolic references are always to longs of Cog RAM memory, regardless of how the symbol was actually declared. In Propeller Assembly, no Main RAM&#160;references can be made by simply using the declared symbolic name; instead, the address of that symbol must be passed from the Spin object and used along with instructions like <span class="keyword_in_text">RDLONG</span> and <span class="keyword_in_text">WRLONG</span>.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

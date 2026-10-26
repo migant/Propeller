@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 1" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Propeller Objects</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 1</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Propeller Objects</span>
+        </div>
+        <p><a href="Spin1-Langs.htm" title="Go back to Propeller Languages" alt="Go back to Propeller Languages"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin1-QR.htm" title="Go on to Spin Lesson 1 Quick Review" alt="Go on to Spin Lesson 1 Quick Review"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1><a name="kanchor194"></a>Propeller Objects</h1>
+        <p class="PlainText">The Propeller chip’s Spin language is object-based and serves as the foundation for every Propeller Application.&#160; </p>
+        <h2>What is an Object?</h2>
+        <p class="PlainText">Objects are just programs written in a way that: </p>
+        <ol>
+            <li value="1">Creates a self-contained entity</li>
+            <li value="2">Performs a specific task</li>
+            <li value="3">My be reused by many applications&#160; </li>
+        </ol>
+        <p class="PlainText">For example, the Keyboard object and Mouse object each come with the Propeller Tool software.&#160; The Keyboard object is a program that interfaces the Propeller chip to a standard PC-style keyboard.&#160; Similarly, the Mouse object interfaces to a standard computer mouse.&#160; Both of these objects are self-contained programs with carefully designed interfaces that allow other objects, and developers, to use them easily.</p>
+        <p class="PlainText">By using existing objects, sophisticated applications can be built very quickly.&#160; For instance, an application can include both the Keyboard and Mouse objects, and with just a few additional lines of code, a standard user interface is realized.&#160; Since the objects are self-contained and provide a concise software interface, application developers don't necessarily need to know exactly how an object achieves its task just to be able to use it.&#160; In a similar way, a driver of a car doesn't necessarily know how the engine works, but as long as that driver understands the interface (the ignition key, gas pedal, brakes, etc.) he or she can make the car accelerate and decelerate.</p>
+        <p class="PlainText">Well-written objects can be created by one developer and easily used by many different applications from many different developers.</p>
+        <h2><a name="kanchor195"></a>Objects and Applications</h2>
+        <p class="PlainText">A Propeller Object consists of Spin code and, optionally, Propeller Assembly code.&#160; We’ll simply call these “objects” from now on.</p>
+        <p class="PlainText"><a name="kanchor196"></a>Objects are stored on your computer as files with “.spin” extensions, therefore you should always think of each Spin file as an object.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/SpinTutorialPictures/Object.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Propeller Object</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/SpinTutorialPictures/Objects.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Object Files consist of Spin, and possibly Propeller Assembly, and are stored as “.spin” files on your computer’s hard drive.</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText">&#160;</p>
+        <p class="PlainText"><a name="kanchor197"></a>Each object can be thought of as a “building block” for an application.&#160; An object may optionally utilize one or more other objects in order to build a more sophisticated application.&#160; This is loosely called “referencing” or “including” another object.&#160; When an object references other objects it forms a hierarchy where it is the object at the top.&#160; The topmost object is referred to as the “Top Object File” and is the starting point for compiling a Propeller Application.&#160; </p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/SpinTutorialPictures/ObjHier.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Object Hierarchy</p>
+            <p class="PictureDescription">When compiled, the Graphics Demo object is the “Top Object File” that references the other three objects shown below it.</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText"><a name="kanchor198"></a>In the above figure, the Graphics Demo object references three other objects: TV, Graphics, and Mouse.&#160; If the Graphics Demo object is compiled by the user, it is considered the Top Object File and the other three objects are loaded and compiled with it resulting in a finished program called a Propeller Application, or “application” for short.</p>
+        <p class="PlainText">Applications are formed from one or more objects, and must include a Top Object.&#160; The Propeller Tool converts the objects into a specially compiled binary stream that consists of executable code and data and can be run by the Propeller chip.</p>
+        <p class="PlainText">When downloaded, the application is stored in the Propeller chip’s Main RAM and optionally into an external EEPROM.&#160; At run time, the application is executed by one or more of the Propeller chip’s processors, called <a href="../../HardwareTopics/Cogs.htm">cogs</a>, as directed by the application itself.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/SpinTutorialPictures/Download_438x507.png" style="width: 438;height: 507;" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Downloading</p>
+            <p class="PictureDescription">Applications consisting of one or more objects are downloaded to the Propeller chip’s RAM, and optionally, its external EEPROM.</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p><a href="Spin1-Langs.htm" title="Go back to Propeller Languages" alt="Go back to Propeller Languages"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin1-QR.htm" title="Go on to Spin Lesson 1 Quick Review" alt="Go on to Spin Lesson 1 Quick Review"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

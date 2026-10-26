@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 10" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Floating-Point Math </title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 10</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Floating-Point Math</span>
+        </div>
+        <p><a href="Spin10-Numbers.htm" title="Go back to Whole and Real Numbers" alt="Go back to Whole and Real Numbers"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin10-Context.htm" title="Go on to Context-Sensitive Compile Info" alt="Go on to Context-Sensitive Compile Info"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1>Floating-Point Math </h1>
+        <h2>Spin Exercise 10-1: RealNumbers.spin</h2>
+        <p class="PlainText">This next example object demonstrates using integer constants (<span class="code_in_text">iB</span>, <span class="code_in_text">iC</span>, and <span class="code_in_text">iD</span>) that are pre-translated to pseudo-real numbers, floating-point constants (<span class="code_in_text">B</span>, <span class="code_in_text">C</span>, and <span class="code_in_text">D</span>) used in their native form by the FloatMath and FloatString library objects, and also those same floating-point constants translated to pseudo-real numbers at compile time.</p>
+        <ul>
+            <li class="Checklist" value="1">Enter the example object RealNumbers.spin</li>
+        </ul>
+        <div class="propcode"><a href="../../../../Examples/Help/Spin Tutorial/Exercise 10-1/RealNumbers.spin"><img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" title="Open example in Propeller Tool" /></a><pre xml:space="preserve" class="spin_con1">{{ RealNumbers.spin}}
+
+</pre><pre xml:space="preserve" class="spin_con2">CON
+  _clkmode = xtal1 + pll16x
+  _xinfreq = 5_000_000
+
+  iB    =  760                  'Integer constants
+  iC    = 3875
+  iD    = 1250
+  
+  B     =  7.6                  'Floating-point constants
+  C     = 38.75
+  D     = 12.5
+
+  K     = 100.0                 'Real-to-Pseudo-Real multiplier
+
+</pre><pre xml:space="preserve" class="spin_obj1">OBJ
+  Term  :       "TV_Terminal"
+  F     :       "FloatMath"
+  FS    :       "FloatString"
+
+</pre><pre xml:space="preserve" class="spin_pub1">PUB Math         
+  Term.Start(12)
+
+  {Integer constants (real numbers * 100) to do fast integer math}
+  Term.Str(string("Pseudo-Real Number Result: "))
+  Term.Dec(iB*iC/iD)
+
+  {Floating-point constants using FloatMath and FloatString objects}
+  Term.Out(13)
+  Term.Str(string("Floating-Point Number Result: "))
+  Term.Str(FS.FloatToString(F.FDiv(F.FMul(B, C), D)))
+
+  {Floating-point constants translated to pseudo-real for fast math}
+  Term.Out(13)
+  Term.Str(string("Another Pseudo-Real Number Result: "))
+  Term.Dec(trunc(B*K)*trunc(C*K)/trunc(D*K))
+</pre>
+        </div>
+        <p class="PlainText">&#160;</p>
+        <ul>
+            <li class="Checklist" value="1">Compile and download RealNumbers.spin.&#160; It will display the following on a TV display:</li>
+        </ul>
+        <div class="propcode"><pre xml:space="preserve">	Pseudo-Real Number Result: 2356</pre><pre xml:space="preserve">	Floating-Point Number Result: 23.56</pre><pre xml:space="preserve">	Another Pseudo-Real Number Result: 2356</pre>
+        </div>
+        <p class="PlainText">&#160;</p>
+        <p class="PlainText">The pseudo-real results, of course, each represent the value 23.56 but the entire value is shifted upwards by two digits to maintain integer math compatibility.&#160; With some additional code we could output it as 23.56 for display purposes.</p>
+        <p class="PlainText">The constants <span class="code_in_text">iB</span>, <span class="code_in_text">iC</span>, and <span class="code_in_text">iD</span> are standard integer constants as we’ve seen before, but their values are really pseudo-real numbers representing the values in our example equation.</p>
+        <p class="PlainText">The constants <span class="code_in_text">B</span>, <span class="code_in_text">C</span>, <span class="code_in_text">D</span>, and <span class="code_in_text">K</span>, are floating-point constants (real numbers).&#160; The compiler automatically recognizes them as such and stores them in 32-bit single-precision floating-point format.&#160; They can be used in other compile-time floating-point expressions directly but at run time they should only be used with floating-point methods such as those found in the FloatMath and FloatString objects.</p>
+        <p class="PlainText">The statement <span class="code_in_text">Term.Dec(iB*iC/iD)</span> uses the pre-translated pseudo-real constants as suggested by the Pseudo-Real Numbers technique, above.&#160; This is evaluated about 1.6 times faster than with the floating-point technique and takes much less code space.</p>
+        <p class="PlainText">The statement <span class="code_in_text">Term.Str(FS.FloatToString(F.FDiv(F.FMul(B, C), D)))</span> calls FloatMath’s <span class="code_in_text">FMul</span> method to multiply the floating-point values <span class="code_in_text">B</span> and <span class="code_in_text">C</span>, then calls FloatMath’s <span class="code_in_text">FDiv</span> method to divide that result by the floating-point value <span class="code_in_text">D</span>, translates the result to a string using FloatString’s <span class="code_in_text">FloatToString</span> method and displays that on the TV.</p>
+        <p class="PlainText">The statement <span class="code_in_text">Term.Dec(trunc(B*K)*trunc(C*K)/trunc(D*K))</span> uses compile-time expressions inside of <span class="keyword_in_text">TRUNC</span> directives to shift the floating-point constants <span class="code_in_text">B</span>, <span class="code_in_text">C</span>, and <span class="code_in_text">D</span> upwards by two digits and truncate the values to integers.&#160; The resulting expression is equivalent to that of the first pseudo-real number equation <span class="code_in_text">Term.Dec(iB*iC/iD) </span>but has the added benefit of allowing its component values to be defined in floating-point terms.</p>
+        <p class="PlainText"><a name="kanchor291"></a>The <span class="keyword_in_text">TRUNC</span><span class="code_in_text"></span><span class="code_in_text"></span> directive truncates fully resolved floating-point expressions to their integer form at compile time.&#160; It is required here since floating-point constant values can not be used directly by run-time expressions.</p>
+        <p><a href="Spin10-Numbers.htm" title="Go back to Whole and Real Numbers" alt="Go back to Whole and Real Numbers"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin10-Context.htm" title="Go on to Context-Sensitive Compile Info" alt="Go on to Context-Sensitive Compile Info"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

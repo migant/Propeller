@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 3" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Adding Comments</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 3</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Adding Comments</span>
+        </div>
+        <p><a href="Spin3-Blocks.htm" title="Go back to Block Designators" alt="Go back to Block Designators"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin3-QR.htm" title="Go on to Spin Lesson 3 Quick Review" alt="Go on to Spin Lesson 3 Quick Review"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1><a name="kanchor220"></a>Adding Comments</h1>
+        <h2>Spin Exercise 3-2: Adding comments to Output.spin</h2>
+        <p class="PlainText">Our Output object is better now, but it still could be more readable.&#160; How about adding some comments to the code to make it easier for other readers to understand?&#160; The next example functions the same as before, but with a number of comments (human-readable, non-executable text) above and to the right of our existing code.</p>
+        <p class="PlainText"><a name="kanchor221"></a>These comments should help people figure out what it does.&#160; There are four types of comments supported by the Propeller Tool (all of which are shown in this example):</p>
+        <ul>
+            <li value="1"><a name="kanchor222"></a><span class="keyword_in_text">'</span>…<span class="code_in_text"> -</span> Single-line code comment (apostrophe).</li>
+            <li value="2"><a name="kanchor223"></a><span class="keyword_in_text">''</span>…<span class="code_in_text"> -</span> Single-line document comment (two apostrophes, <u>not</u> a quotation mark).</li>
+            <li value="3"><a name="kanchor224"></a><span class="keyword_in_text">{</span>…<span class="keyword_in_text">}</span>&#160; <span class="code_in_text">-</span> Multi-line code comment (curly braces).</li>
+            <li value="4"><a name="kanchor225"></a><span class="keyword_in_text">{{</span>…<span class="code_in_text"><span class="keyword_in_text">}}</span> -</span> Multi-line document comment (two curly braces).</li>
+        </ul>
+        <div class="propcode"><a href="../../../../Examples/Help/Spin Tutorial/Exercise 03-2/Output.spin"><img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" title="Open example in Propeller Tool" /></a><pre xml:space="preserve" class="spin_con1">&#160;</pre><pre xml:space="preserve" class="spin_con1"><span class="code_add_mod">{{Output.spin</span>
+            </pre><pre xml:space="preserve" class="spin_con1">Toggles Pin with Delay clock cycles of high/low time.}}
+
+</pre><pre xml:space="preserve" class="spin_con2">CON
+  Pin   = 16                 <span class="code_add_mod">{ I/O pin to toggle on/off }</span></pre><pre xml:space="preserve" class="spin_con2">  Delay = 3_000_000          <span class="code_add_mod">{ On/Off Delay, in clock cycles}</span>
+
+</pre><pre xml:space="preserve" class="spin_pub1">PUB Toggle</pre><pre xml:space="preserve" class="spin_pub1"><span class="code_add_mod">''Toggle Pin forever</span>
+            </pre><pre xml:space="preserve" class="spin_pub1"><span class="code_add_mod">{Toggles I/O pin given by Pin and waits Delay system clock cycles </span><span class="code_add_mod">in between each toggle.}</span>
+            </pre><pre xml:space="preserve" class="spin_pub1">&#160;</pre><pre xml:space="preserve" class="spin_pub1">dira[Pin]~~                  <span class="code_add_mod">'Set I/O pin to output direction</span></pre><pre xml:space="preserve" class="spin_pub1">  repeat                     <span class="code_add_mod">'Repeat following endlessly</span></pre><pre xml:space="preserve" class="spin_pub1">  !outa[Pin]                 <span class="code_add_mod">'  Toggle I/O Pin</span></pre><pre xml:space="preserve" class="spin_pub1">  waitcnt(Delay + cnt)       <span class="code_add_mod">'  Wait for Delay cycles</span>
+</pre><pre xml:space="preserve" class="spin_pub1">&#160;</pre>
+        </div>
+        <p class="PlainText">&#160;</p>
+        <p class="PlainText">Single line comments begin with at least one apostrophe ( <span class="keyword_in_text">'</span> ) and continue until the end of the line.&#160; Executable code can be to the left of a single-line comment but not to the right of it since that would make it “commented out.”&#160; The “<span class="code_in_text">'</span>Set I/O pin…” and “<span class="code_in_text">'</span>Repeat following…” comments are examples of single-line comments.</p>
+        <p class="PlainText">Multi-line comments begin with at least one open curly brace ( <span class="keyword_in_text">{</span> ) and end with at least one close curly brace ( <span class="code_in_text">}</span> ).&#160; Unlike single-line comments, executable code can be to the left and the right of multi-line comments.&#160; Multi-line comments can actually be entirely on one line, or can span across multiple lines.&#160; The “<span class="code_in_text">{On/Off Delay...}</span>” and “<span class="code_in_text">{Toggles I/O pin given...}</span>” comments are both examples of a multi-line comments.</p>
+        <p class="PlainText">If a comment begins with just one apostrophe ( <span class="keyword_in_text">'</span> ) or one open curly brace ( <span class="keyword_in_text">{</span> ), it is a “code” comment.&#160; This is a comment meant to be read by code developers while reviewing the source code itself.</p>
+        <p class="PlainText">If a comment begins with either two apostrophes ( <span class="keyword_in_text">''</span> ) or two open curly braces ( <span class="keyword_in_text">{{</span> ), with no spaces in between, it is a “document” comment.&#160; This is a special type of comment that is visible within the code, but can also be extracted by the Propeller Tool into a document formatted for easier reading, containing no executable code.</p>
+        <p class="PlainText"><a name="kanchor226"></a>The Propeller Tool’s editor has a Documentation view mode.&#160; With the above code entered into the editor, if the Documentation view mode is selected, the code is compiled and the document comments are shown along with some statistics about the compiled code.&#160; The following is what this looks like:</p>
+        <div class="propcode"><pre>Output.spin
+&#160;
+Toggles Pin with Delay clock cycles of high/low time.&#160; 
+Object "Output" Interface:
+&#160;
+PUB&#160; Toggle
+&#160;
+Program:&#160;&#160;&#160;&#160;&#160;&#160; 8 Longs
+Variable:&#160;&#160;&#160;&#160;&#160; 0 Longs
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 
+<span style="text-decoration: overline;">PUB&#160; Toggle</span>
+&#160;
+Toggle Pin forever
+&#160;</pre>
+        </div>
+        <p class="PlainText"><a name="kanchor227"></a>If you compare this to our code you should recognize all the text that came directly from our document comments.&#160; The section “<span class="code_in_text">Object "Output" Interface:</span>” is created automatically by the Propeller Tool; it lists all the public methods (just <span class="code_in_text">PUB Toggle</span> in this case) and shows that the program size is 8 longs (32 bytes) and no variables were used.&#160; Following that, it lists all the public methods again, with an overbar above each method, and the document comments that belong with them. This section shows the public <span class="code_in_text">Toggle </span>method and our last document comment, “<span class="code_in_text">Toggle Pin forever</span>” indicating what the <span class="code_in_text">Toggle </span>method does.</p>
+        <p class="PlainText">Adding document comments to your code allows you to create just one file that contains both source code and documentation for an object.&#160; This is extremely convenient for developers since they can easily switch to Documentation view to learn how to use an object they are unfamiliar with.&#160; To support this further, the Propeller Tool’s Parallax font has many special characters for including schematics, timing diagrams, and mathematical symbols right in the objects that they relate to; for details see the <a href="../../ToolTopics/EditingTools/CharChart.htm" target="" title="" alt="" class="MCXref_0">Character Chart</a></p>
+        <p><a href="Spin3-Blocks.htm" title="Go back to Block Designators" alt="Go back to Block Designators"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin3-QR.htm" title="Go on to Spin Lesson 3 Quick Review" alt="Go on to Spin Lesson 3 Quick Review"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

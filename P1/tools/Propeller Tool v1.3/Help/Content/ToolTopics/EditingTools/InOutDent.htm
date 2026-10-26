@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Using the Propeller Tool|Editing Tools" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Indenting and Outdenting</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../UsingPropTool.htm">Using the Propeller Tool</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="EditingTools.htm">Editing Tools</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Indenting and Outdenting</span>
+        </div>
+        <h1><a name="kanchor188"></a>Indenting and Outdenting</h1>
+        <p class="PlainText">A common programming practice is to indent blocks of code that are either in loops or are conditionally executed in order to make that code easier to read.&#160; The act of doing this is called “indenting.”&#160; We’ll call the opposite action, shifting code to the left, “outdenting.”&#160; The Spin language requires this kind of formatting to indicate which lines are within loops or conditional blocks.&#160; The Propeller Tool allows for indenting and outdenting of single lines and multiple lines to make this easier to accomplish while creating or maintaining code.</p>
+        <h2><a name="kanchor189"></a>Single Lines</h2>
+        <p class="PlainText">For Spin code, the Propeller Tool uses a set of fixed tab positions that you can change under the <a href="../MenuItems/OperTab.htm" target="" title="" alt="" class="MCXref_0">Preferences - Operation Tab</a> in the                        <![CDATA[ ]]><a href="../MenuItems/Prefs.htm" target="" title="" alt="" class="MCXref_0">Preferences Dialog</a>.&#160; Each Spin block (<span class="keyword_in_text">CON</span>, <span class="keyword_in_text">VAR</span>, <span class="keyword_in_text">OBJ</span>, <span class="keyword_in_text">PUB</span>, <span class="keyword_in_text">PRI</span>, and <span class="keyword_in_text">DAT</span>) has its own Fixed Tab settings. The Tab key moves the cursor to the next tab position (to the right) and Shift + Tab moves the cursor to the previous tab position (to the left).&#160; Additionally, the Backspace key moves to the previous tab position depending on the text around it; more on this later. The default tab settings for the <span class="keyword_in_text">PUB</span> and <span class="keyword_in_text">PRI</span> blocks include tab positions for every two characters near the start of the line to support common code indentions.&#160; </p>
+        <h3>Using the Tab Key when Entering Code</h3>
+        <p class="PlainText">The example below shows a public method, <span class="code_in_text">FSqr</span>, containing lines at various levels of indention, each two characters apart.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/Fixed-Tabs-1.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Fixed Tab Default Setting for <span class="keyword_in_text">PUB </span>and <span class="keyword_in_text">PRI </span>Blocks</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText">Using the Tab key, this code could have quickly been entered with the following sequence on the keyboard:</p>
+        <ol>
+            <li class="PlainText" value="1">Type: “<span class="code_in_text">PUB FSqr</span>” &lt;Enter&gt;</li>
+            <li class="PlainText" value="2">Type: &lt;Tab&gt; “<span class="code_in_text">repeat 31</span>” &lt;Enter&gt;</li>
+            <li class="PlainText" value="3">Type: &lt;Tab&gt; “<span class="code_in_text">result |= root</span>” &lt;Enter&gt;, etc.</li>
+        </ol>
+        <p class="PlainText">Note that the Enter key automatically aligns the cursor to the level of indention currently in use; this means the Tab key needs to be pressed only once to indent to the next level.</p>
+        <h3>Indenting Existing Lines</h3>
+        <p class="PlainText">If there are characters to the right of the cursor when the Tab key is pressed, they are shifted to the right as well.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/Fixed-Tabs-2.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Indenting a single line.</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <h3>Outdenting Existing Lines</h3>
+        <p class="PlainText">If the cursor is immediately to the left of the first character on a line, both the Shift + Tab and the Backspace keys cause the cursor and the text to be shifted left to the previous tab position; i.e.: outdenting.&#160; If, however, the cursor is not immediately to the left of the first character on a line, Backspace acts normally (deleting the previous character) and Shift + Tab moves only the cursor to the previous tab position.&#160;</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/Fixed-Tabs-3.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Outdenting a single line.</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText"> <![CDATA[ ]]></p>
+        <h2><a name="kanchor190"></a>Multiple Lines</h2>
+        <p class="PlainText">In addition to affecting single lines, multiple lines of code can be indented or outdented to fixed tab positions easily. You can do this with entire lines of code, or with specific blocks of text on adjacent lines, such as a set of code comments.</p>
+        <h3>Indent/Outdent Entire Lines with Stream Selection </h3>
+        <p class="PlainText">Suppose we wanted to take the first four lines of this example and encase them in a “<span class="code_in_text">repeat 31</span>” loop; to repeat those lines 31 times.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/Fixed-Tabs-4a.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Sample Code Block. We want to make the first four lines repeat 31 times. </p>
+            <p class="clear">&#160;</p>
+        </div>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/Fixed-Tabs-4b.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionStartStepNum" MadCap:autonum="Step 1: "><span class="autonumber"><span>Step 1: </span></span>Insert the instruction <span class="code_in_text">repeat 31</span> above the block.</p>
+            <p class="PictureCaptionNoNums">&#160;</p>
+            <p class="PictureCaptionNextStepNum" MadCap:autonum="Step 2: "><span class="autonumber"><span>Step 2: </span></span>With a mouse, select the four lines to indent. </p>
+            <p class="clear">&#160;</p>
+        </div>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/Fixed-Tabs-4c.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNextStepNum" MadCap:autonum="Step 3: "><span class="autonumber"><span>Step 3: </span></span>Press the Tab key to indent the selected lines. </p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText">Note that the four lines we had selected in the second step are now indented to the next fixed tab position (two spaces to the right of the start of the “repeat”) and the selection changed to a single column surrounding the first characters of the lines.&#160; The selection changed to indicate that we performed a multi-line indention action.&#160; Pressing the Tab key again will indent that group of lines further and pressing Shift + Tab will outdent that group of lines.</p>
+        <p class="PlainText">Any contiguous group of lines can be indented or outdented in this fashion.&#160; The selection itself doesn't have to include the entire line either; it only needs to include at least one character of more than one line to work.&#160; This type of selection is called a “stream” selection.</p>
+        <h3>Indent/Outdent Portions of Text with Block Selection </h3>
+        <p class="PlainText">The second type of selection, a “block” selection (see <a href="EditModes.htm#Insert" target="" title="" alt="" class="MCXref_0">Insert and Overwrite Modes</a>), can also be used to indent or outdent portions of lines.&#160; The picture below shows our example with comments to the right of the lines:</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/Fixed-Tabs-5a.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Sample Code Block with Comments to the Right</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/Fixed-Tabs-5b.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionStartStepNum" MadCap:autonum="Step 1: "><span class="autonumber"><span>Step 1: </span></span>Block-select the comment lines (Alt + Left Mouse Button and Drag). </p>
+            <p class="clear">&#160;</p>
+        </div>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/Fixed-Tabs-5c.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNextStepNum" MadCap:autonum="Step 2: "><span class="autonumber"><span>Step 2: </span></span>Press the Tab key to indent the comments, or Shift+Tab to outent them.</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText">At this point, the Tab or Shift+Tab will move the selected text to the next fixed tab position, at least up to any characters the block may bump into.</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

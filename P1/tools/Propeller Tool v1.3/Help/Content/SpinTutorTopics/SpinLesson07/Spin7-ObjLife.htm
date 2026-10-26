@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 7" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Object Lifetime</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 7</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Object Lifetime</span>
+        </div>
+        <p class="PlainText"><a href="Spin7-ObjInfoWindow.htm" title="Go back to Object Info Window" alt="Go back to Object Info Window"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin7-QR.htm" title="Go on to Spin Lesson 7 Quick Review" alt="Go on to Spin Lesson 7 Quick Review"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1><a name="kanchor258"></a>Object Lifetime</h1>
+        <p class="PlainText"><a name="kanchor259"></a>When applications are compiled a binary image of the executable code is created.&#160; That binary image is what is actually downloaded into the Propeller and is usually what we are referring to when we say “application” or “Propeller Application.”</p>
+        <p class="PlainText">The compiled code for each object used by an application is included within that binary image along with variable space for each instance of each of those objects.</p>
+        <p class="PlainText">During run time, the application may use any object for any amount of time; some may be used always and others only on occasion but all are consuming a static amount of memory for their code and variables.&#160; </p>
+        <p class="PlainText">For developers accustomed to programming with objects on a computer, this is an important concept to understand.&#160; On the Propeller an object’s lifetime is static; whether or not it is actively in use at the time, it always requires a specific amount of memory in the application’s binary image.&#160; On desktop/laptop computers, objects require a dynamic amount of memory because they are “created” and “destroyed” during the run-time process as is needed.&#160; On the Propeller, the objects are “created” at compile time and are never “created” or “destroyed” at run time because the act of doing so would fragment memory and cause indeterministic behavior in real-time embedded systems.</p>
+        <p class="PlainText">This means that every instance of an object that is, or may be, required must be declared at compile time in the <span class="keyword_in_text">OBJ</span> block, just as we did  with the array of Output objects in this lesson.</p>
+        <p><a href="Spin7-ObjInfoWindow.htm" title="Go back to Object Info Window" alt="Go back to Object Info Window"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin7-QR.htm" title="Go on to Spin Lesson 7 Quick Review" alt="Go on to Spin Lesson 7 Quick Review"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

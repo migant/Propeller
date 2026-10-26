@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 7" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Launching Parallel Processes</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 7</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Launching Parallel Processes</span>
+        </div>
+        <p><a href="Spin7-Intro.htm" title="Go back to Many Objects, Many Cogs" alt="Go back to Many Objects, Many Cogs"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin7-ObjInfoWindow.htm" title="Go on to Object Info Window" alt="Go on to Object Info Window"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1>Launching Multiple Parallel Processes</h1>
+        <h2>Spin Exercise 7-1: Blinker2.spin </h2>
+        <p class="PlainText">Now let’s make a new object that takes advantage of the enhancements to Output to use many cogs for many parallel processes.&#160; </p>
+        <ul>
+            <li class="Checklist" value="1">Enter the code for  Object: Blinker2.spin.</li>
+        </ul>
+        <div class="propcode"><a href="../../../../Examples/Help/Spin Tutorial/Exercise 07-1/Blinker2.spin"><img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" title="Open example in Propeller Tool" /></a><pre xml:space="preserve" class="spin_con1">{{ Blinker2.spin }}
+
+</pre><pre xml:space="preserve" class="spin_con2">CON
+  MAXLEDS = 6                'Number of LED objects to use
+
+</pre><pre xml:space="preserve" class="spin_obj1">OBJ
+  LED[MAXLEDS] : "Output"
+
+
+</pre><pre xml:space="preserve" class="spin_pub1">PUB Main
+{Toggle pins at different rates, simultaneously}
+
+  dira[16..23]~~                                 'Set pins to outputs
+  LED[NextObject].Start(16, 3_000_000,   0)      'Blink LEDs
+  LED[NextObject].Start(17, 2_000_000,   0)
+  LED[NextObject].Start(18,   600_000, 300)
+  LED[NextObject].Start(19, 6_000_000,  40)
+  LED[NextObject].Start(20,   350_000, 300)
+  LED[NextObject].Start(21, 1_250_000, 250)
+  LED[NextObject].Start(22,   750_000, 200)      '&lt;-Postponed 
+  LED[NextObject].Start(23,   400_000, 160)      '&lt;-Postponed
+  LED[0].Start(20, 12_000_000, 0)                'Restart object 0
+  repeat                                         'Loop endlessly
+
+
+</pre><pre xml:space="preserve" class="spin_pub2">PUB NextObject : Index
+{Scan LED objects and return index of next available LED object.
+ Scanning continues until one is available.}
+
+  repeat
+    repeat Index from 0 to MAXLEDS-1
+      if not LED[Index].Active
+        quit
+  while Index == MAXLEDS
+</pre>
+        </div>
+        <p class="PlainText">&#160;</p>
+        <ul>
+            <li class="Checklist" value="1">Compile and download Blinker2.&#160; </li>
+        </ul>
+        <p class="PlainText">You should see six LEDs start blinking with different, independent, rates and periods.&#160; Look carefully, after about 8 seconds P20 will stop blinking and P22 will start.&#160; A few seconds later, P18 will stop and P23 will start, then P16 will stop and P20 will start again, but at a different rate.&#160; Eventually, all but P17 and P20 will cease.&#160; Can you figure out why it behaves this way?&#160; We’ll explain it below.</p>
+        <ul>
+            <li class="Checklist" value="1">Click on each heading for an explanation of each section in the object.</li>
+        </ul>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3042075405_0" onclick="FMCDropDown( this ); return false;" name="kanchor252"><img style="border: none;margin-right: 5px;" src="../../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />The OBJ Block</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3042075405_0" style="display: none;">
+                <p class="PlainText">In the object block we defined an array of Output objects, called <span class="code_in_text">LED</span>, with six elements (<span class="code_in_text">MAXLEDS</span>= 6).&#160; This is so we can have six simultaneous processes running, each operating independently.</p>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3042075405_1" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />The Main Method</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3042075405_1" style="display: none;">
+                <p class="PlainText">The first line of <span class="code_in_text">Main</span>, <span class="code_in_text">dira[16..23]~~</span>, sets I/O pins 16 through 23 to outputs.&#160; The I/O registers, <span class="keyword_in_text">DIRA</span>, <span class="keyword_in_text">OUTA</span>, and <span class="keyword_in_text">INA</span>, can use this form to affect multiple contiguous pins.&#160; We are setting this group of I/O pins to outputs only to prevent confusing results due to the Propeller Demo Board’s resistors between the I/O pairs in 18 to 23.&#160; If a cog is the only one making a particular pin an output, upon shutting down that pin becomes an input again which allows the resistor between it and its neighbor to affect the LED on it.&#160; We’ll keep this application’s cog active so results are clear.</p>
+                <p class="PlainText">The next nine lines, <span class="code_in_text">LED[</span>…, call the Output object’s <span class="code_in_text">Start</span> method to activate a new cog and toggle different I/O pins at different rates.&#160; The lines in the form <span class="code_in_text">LED[NextObject].Start</span>…, call the <span class="code_in_text">NextObject</span> method to get an index value for the array.&#160; We’ll explain the <span class="code_in_text">NextObject</span> method in more detail soon, but simply put, it returns the index of the next available Output object in the <span class="code_in_text">LED</span> array (i.e. the index of the first idle object) and pauses until one is available.</p>
+                <p class="PlainText">We only have six Output objects defined for the <span class="code_in_text">LED</span> array, so the first six calls to <span class="code_in_text">Start</span> are going to execute quickly, each one accessing <span class="code_in_text">LED</span> indexes 0 through 5 and activating a total of 6 additional cogs.&#160; The first two have a <span class="code_in_text">Count</span> parameter of 0, so they will toggle infinitely; the last four will terminate after the given number of toggles is performed.</p>
+                <p class="PlainText">The seventh line, <span class="code_in_text">LED[NextObject].Start(22, 750_000, 200)</span> will first call <span class="code_in_text">NextObject</span> to get the index of the next available object, but since all six objects are busy toggling pins, <span class="code_in_text">NextObject</span> will wait and won’t return to <span class="code_in_text">Main</span> until it finds that an object has finished.&#160; As it turns out, the object at index 4 (I/O pin 20) finishes its task first and shuts down.&#160; The <span class="code_in_text">NextObject</span> method then returns the number 4, allowing that object’s <span class="code_in_text">Start</span> method to execute, which will re-launch another cog to toggle pin 22.&#160; A similar process happens with the eighth line, <span class="code_in_text">LED[NextObject].Start(23, 400_000, 160)</span>; all objects are busy so <span class="code_in_text">NextObject</span> postpones further operation until one becomes available, index 2 in this case.</p>
+                <p class="PlainText">Immediately after the eighth line is executed, the ninth line executes, <span class="code_in_text">LED[0].Start(20, 12_000_000, 0)</span>.&#160; This statement is unlike the previous in that it doesn’t call <span class="code_in_text">NextObject</span>, but rather it uses a fixed index of 0.&#160; This means the <span class="code_in_text">LED</span> object at index 0, which is busy toggling I/O pin 16 endlessly, suddenly has its <span class="code_in_text">Start</span> method called again. This causes the cog that is toggling P16 to immediately stop and start again but with P20 instead.</p>
+                <p class="PlainText">The final line, <span class="code_in_text">repeat</span>, is only there to keep the application’s cog alive.&#160; It creates an endless loop that executes no additional code since there is nothing indented underneath it.&#160; If the application cog stopped, the I/O pins it directed to be outputs may switch back to inputs, causing strange-looking results due to the resistors between some pairs of LEDs on the Propeller Demo Board.&#160; If you are not using the Propeller Demo Board, the first line and last line of <span class="code_in_text">Main</span> are not necessary.</p>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3042075405_2" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />The NextObject Method</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3042075405_2" style="display: none;">
+                <p class="PlainText">We have six <span class="code_in_text">LED</span> objects in this code and any number of them can be processing in parallel at any time.&#160; The point of the <span class="code_in_text">NextObject</span> method is to tell us which one is available and to postpone future operations until one is available.&#160; To do this, it scans through all six <span class="code_in_text">LED</span> objects looking for the first one that is not running as a parallel process and returns the <span class="code_in_text">LED</span>-based index of that object.&#160; If all are currently running, it continues scanning until one becomes available.&#160; <span class="code_in_text">NextObject</span> uses our Output object’s <span class="code_in_text">Active</span> method to assist with this.</p>
+                <p class="PlainText">There are two nested <span class="keyword_in_text">REPEAT </span>loops.&#160; The outer loop, <span class="code_in_text">repeat..while</span>&#160;<span class="code_in_text">Index</span>&#160;<span class="code_in_text">==</span>&#160;<span class="code_in_text">MAXLEDS</span> iterates as long as <span class="code_in_text">Index</span> equals <span class="code_in_text">MAXLEDS</span>, 6 in this case.&#160; We learned how this type of <span class="keyword_in_text">REPEAT </span>loop works in the previous exercise.</p>
+                <p class="PlainText"><a name="kanchor253"></a>The inner <span class="keyword_in_text">REPEAT </span>loop, <span class="code_in_text">repeat Index from 0 to MAXLEDS-1</span>, is new to us, however.&#160; It is called a “counted loop” and repeats the indented block below it but for each iteration it sets the variable <span class="code_in_text">Index</span> to a new value.&#160; <span class="code_in_text">Index</span> is set to 0 for the first iteration, 1 for the second, etc., until the last iteration where <span class="code_in_text">Index</span> equals <span class="code_in_text">MAXLEDS-1</span>, or 5.&#160; This is an excellent way to adjust the operation within a loop based on how many times the loop has executed.</p>
+                <p class="PlainText"><a name="kanchor254"></a>The next line, <span class="code_in_text">if not LED[Index].Active</span>, is a conditional statement that executes the indented code below it if the <span class="code_in_text">LED</span> object at <span class="code_in_text">Index</span> is “not active.”&#160; Since the inner loop changes the value of <span class="code_in_text">Index</span> from 0 through 5 as it executes, this conditional statement calls the <span class="code_in_text">Active</span> method of each of our <span class="code_in_text">LED</span> objects, in order.</p>
+                <p class="PlainText">Once the condition is true (the <span class="code_in_text">LED</span> object at <span class="code_in_text">Index</span> is not active) the next line, <span class="code_in_text">quit</span>, executes.&#160; The <span class="keyword_in_text">QUIT</span> command is a special command for <span class="keyword_in_text">REPEAT </span>loops only; it causes the <span class="keyword_in_text">REPEAT </span>loop it is contained within to terminate immediately.&#160; When this happens, execution continues with the end of the outer <span class="keyword_in_text">REPEAT </span>loop, the “while” condition.</p>
+                <p class="PlainText">If all <span class="code_in_text">LED</span> objects are active, the inner loop will count, with <span class="code_in_text">Index</span>, from 0 to 5, then <span class="code_in_text">Index</span> will be 6 (<span class="code_in_text">MAXLEDS</span>) when it exits, causing the outer loop to iterate again and the whole process starts over.&#160; If, however, an inactive <span class="code_in_text">LED</span> object is found, the <span class="code_in_text">Index</span> value will be less than <span class="code_in_text">MAXLEDS</span>, and the outer loop will terminate, causing the <span class="code_in_text">NextObject</span> method to return the <span class="code_in_text">Index</span> of the available object.&#160; That value is used by <span class="code_in_text">Main</span> to select the right <span class="code_in_text">LED</span> object to start.</p>
+            </div>
+        </div>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3042075405_3" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Behind the Scenes</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3042075405_3" style="display: none;">
+                <p class="PlainText">In the object block, we created an array of six Output objects.&#160; Each object that an application uses needs to be treated as its own individual entity with its critical data kept separate from that of any other object.&#160; So, since we needed the capabilities of six Output objects, we declared the need for six of them in the object block.&#160; </p>
+                <p class="PlainText">After compiling Blinker2, the Object View shows that there are six occurrences of the Output object in our application; the “[6]” that appears to the right of the Output object image.&#160; This is the Object View’s way of illustrating the structure of our application.</p>
+                <div class="ImagePlusCaption">
+                    <p>
+                        <img src="../../Resources/Images/SpinTutorialPictures/Blinker2_114x284.png" style="width: 114;height: 284;" class="FloatCaptionLeft" />
+                    </p>
+                    <p class="PictureCaptionNoNums">Blinker2 Application</p>
+                    <p class="PictureDescription">There are six instances of the Output object.&#160; The application actually uses only one copy of its executable code and six copies of its global variable space.</p>
+                    <p class="clear">&#160;</p>
+                </div>
+                <p class="PlainText"><a name="kanchor255"></a>Does this mean our application grew by the size of the Output object times six?&#160; Fortunately, the answer is no.&#160; The Propeller Tool optimizes the application’s code such that, for every occurrence of an object only one copy of the object’s code is included, but multiple copies of the object’s global variables are created.&#160; This is because the code is considered to be static (unchanging) and exactly the same for each object.&#160; However, the object’s global variables (defined in its <span class="keyword_in_text">VAR</span> block), are not static; each object needs its own variable space in order to work independently without interference from other instances of itself.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <p><a href="Spin7-Intro.htm" title="Go back to Many Objects, Many Cogs" alt="Go back to Many Objects, Many Cogs"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin7-ObjInfoWindow.htm" title="Go on to Object Info Window" alt="Go on to Object Info Window"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <p class="clear">&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

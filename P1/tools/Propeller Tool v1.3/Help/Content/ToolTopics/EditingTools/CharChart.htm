@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Using the Propeller Tool|Editing Tools" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Character Chart</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../UsingPropTool.htm">Using the Propeller Tool</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="EditingTools.htm">Editing Tools</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Character Chart</span>
+        </div>
+        <h1>Character Chart</h1>
+        <p class="PlainText"><a name="kanchor173"></a>The Character Chart window is available from the Help <span class="code_in_text">→</span> View Character Chart… menu item.&#160; It shows the entire character set for the Parallax Font that is used by the Propeller Tool and is also built into the ROM of the Propeller chip.&#160; There are three views in the Character Chart:</p>
+        <ol>
+            <li value="1">Standard Order</li>
+            <li value="2">ROM&#160;Bitmap</li>
+            <li value="3">Symbolic Order</li>
+        </ol>
+        <p class="PlainText">In each of the three views, the mouse, left mouse button, cursor keys and enter button can be used to highlight and select a character.&#160; If clicked (or enter pressed), the highlighted character will be entered into the current edit page at the current cursor location.&#160; As a new character is highlighted, the title bar and info bar of the window updates to show the name, size and address information for that character.&#160; Moving the mouse wheel up or down changes the font size displayed in this window.</p>
+        <h2><a name="Standard"></a>Standard Order</h2>
+        <p class="PlainText"><a name="kanchor174"></a>Standard Order displays the characters in the order that follows that of the ANSI set typically used by modern day computers.&#160; </p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/CharStd.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Parallax Font Character Chart, Standard Order</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText">The Vertical Resistor character (near the lower right of the display) is selected in this example.&#160; The information at the bottom of the window shows the font size, in points, and the character’s location in the character set in decimal, hexadecimal, and Unicode.&#160; Note: The Unicode value is the address of the character in the True Type<sup>®</sup> Font file that is used by the Propeller Tool.&#160; The decimal and hexadecimal values are the logical addresses of the character in the character set within the Propeller chip and correspond to that location in the ANSI character set used by most computers.</p>
+        <h2><a name="ROM"></a>ROM Bitmap</h2>
+        <p class="PlainText"><a name="kanchor175"></a>The ROM Bitmap shows the characters in a way representative of how they are stored in the Propeller chip’s ROM.&#160; This view uses four colors, white, light gray, dark gray, and black, to represent the bit pattern of each font character.&#160; Each character, in the Propeller chip’s ROM, is defined with two bits of color (four colors per row in each character cell). The rows of each pair of adjacent characters are overlapped in memory for the purpose of creating the run-time characters used to draw 3D buttons with hot key and focus indicators; see the <a href="../ShortcutKeys/ShorcutKeyHome.htm" target="" title="" alt="" class="MCXref_0">Shortcut Keys</a>.&#160; The information at the bottom of the window shows the font size, in points, and the selected character’s pixel data address range in the Propeller chip’s&#160;ROM.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/CharRomBitmap.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Parallax Font Character Chart, ROM Bitmap</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <h2><a name="Symbolic"></a>Symbolic Order</h2>
+        <p class="PlainText"><a name="kanchor176"></a>Symbolic Order shows the characters arranged categorically.&#160; This is useful for finding the special characters in the Parallax font for depicting timing diagrams, lines, arrows, and schematics.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/PropellerToolPictures/CharSymbolic.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Parallax Font Character Chart, Symbolic Order</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Questions and Answers" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Variables</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="QnaLocal.htm">Questions and Answers</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Variables</span>
+        </div>
+        <h1>Variables</h1>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2143648656_0" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What type and range of variables are supported?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2143648656_0" style="display: none;">
+                <p>The Propeller P8X32A supports:</p>
+                <ul>
+                    <li value="1">Byte: 8 bits; 0 to 255 (unsigned)</li>
+                    <li value="2">Word: 16 bits; 0 to 65,535 (unsigned)</li>
+                    <li value="3">Long: 32 bits;  -2,147,483,648 to +2,147,483,647 (signed<span style="vertical-align: super; font-size: 70%;">1</span>), or 0 to 4,294,967,295 (unsigned<span style="vertical-align: super; font-size: 70%;">2</span>)</li>
+                </ul>
+                <p class="TableNoteStartNum" MadCap:autonum="Note 1: "><span class="autonumber"><span>Note 1: </span></span>Spin or Propeller Assembly.</p>
+                <p class="TableNoteNextNum" MadCap:autonum="Note 2: "><span class="autonumber"><span>Note 2: </span></span>Propeller Assembly only.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2143648656_1" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Where are variables declared?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2143648656_1" style="display: none;">
+                <p class="PlainText">In Spin there are two types of variables, global and local, and each is defined differently.</p>
+                <p class="PlainText">All global variables are defined in <span class="keyword_in_text">VAR</span> blocks. They can be of type byte, word, or long as shown below.</p>
+                <div class="propcode"><pre class="spin_var1" xml:space="preserve">VAR
+  long  Time, Counter
+  word  Index
+  byte  State</pre>
+                </div>
+                <p>&#160;</p>
+                <p class="PlainText">Local variables are defined in the declaration of the <span class="keyword_in_text">PUB</span> or <span class="keyword_in_text">PRI</span> method that will use them. They are always of type long. X, Y, and Z (below) are local long variables, but so are the parameters Param1 and Param2.</p>
+                <div class="propcode"><pre class="spin_pub1" xml:space="preserve">PUB MethodName(Param1, Param2) | X, Y, Z</pre>
+                </div>
+                <p>&#160;</p>
+                <p class="PlainText">In Propeller Assembly, all variables are global and are usually declared immediately after the assembly code that uses them. They should always be defined as initialized longs or as reserved longs.</p>
+                <div class="propcode"><pre class="spin_dat1" xml:space="preserve">DAT
+  AsmCode  org  0
+           {some more code here}
+
+  Delay    long $80_000_000
+  Address  res  1
+  ID       res  1</pre>
+                </div>
+                <p>&#160;</p>
+                <p>Note that variables (symbols) defined as initialized longs in a <span class="keyword_in_text">DAT</span> block are a special kind of global variable; they are treated differently at compile time in that only one instance exists regardless of the number of instances of that object in the application.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2143648656_2" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What's the difference between global and local variables?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2143648656_2" style="display: none;">
+                <p class="PlainText">Global variables are declared with a <span class="keyword_in_text">VAR</span> declaration, and are available for use by all the methods within that object. Local variables are declared in a <span class="keyword_in_text">PUB</span> or <span class="keyword_in_text">PRI</span> method declaration, must have unique names compared to global variables, and can only be used in the method in which they are defined. All global and local Spin variables exist in <a href="../HardwareTopics/MainMem.htm#MainRam" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Main RAM</a>, not in Cog RAM. </p>
+                <p class="PlainText">Other differences between local and global variables have to do with variable size and initialization:</p>
+                <ul>
+                    <li value="1"> A global variable is declared as a byte (8 bits), word (16 bits), or long (32 bits) with the <span class="keyword_in_text">VAR</span> <![CDATA[ ]]><i>Size</i> parameter, while local variables are declared with the <span class="keyword_in_text">PUB</span> or <span class="keyword_in_text">PRI</span> optional parameter <i>LocalVar</i>, and are always long (32 bits) in size.</li>
+                    <li value="2"> Global variables are initialized to zero upon compilation and will be zero upon every application startup as long as the associated EEPROM memory holding the application is not modified. </li>
+                    <li value="3">Local variables are left uninitialized on each call to the method, so the method must initialize them before use or it will experience unexpected results.  The only exception to this is the built-in <span class="keyword_in_text">RESULT</span> variable; <span class="keyword_in_text">RESULT</span> is initialized to zero upon every call to the method.</li>
+                </ul>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2143648656_3" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Are variables automatically initialized to anything?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2143648656_3" style="display: none;">
+                <p class="PlainText">In Spin, all global variables (those defined in <span class="keyword_in_text">VAR</span> blocks) are initialized to 0. In addition, each time a method is called, its default local variable (<span class="keyword_in_text">result</span>) is initialized to 0. Every other local variable is left uninitialized unless it is part of the parameter list, in which case it is filled by the passed parameter value.</p>
+                <p class="PlainText">In Propeller Assembly, all declared <span class="keyword_in_text">long</span> symbols are initialized to whatever is specified by the declaration. All reserved (<span class="keyword_in_text">res</span>) symbols are left uninitialized.</p>
+                <p class="PlainText">Though it is very rarely implemented, it is possible to update the global variable area of the application image residing in the external EEPROM so that one or more global variables are initialized to a non-zero value upon the next boot up. This can only be done via code that manually interfaces to the EEPROM.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2143648656_4" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Is access time the same for all variables in Spin?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2143648656_4" style="display: none;">
+                <p class="clear"><a name="VariableAccessTime"></a>
+                </p>
+                <p class="PlainText">Access time depends on variable type and order of declaration.</p>
+                <p class="PlainText">For global variables, the first eight long-sized variables are addressed using an optimized encoding scheme. This makes accessing them slightly faster than with the ninth, or later, long variables. Word and byte-sized variables have no optimized encoding; they take the same amount of time as the ninth, or later, global long variables.</p>
+                <p class="PlainText">For local variables, the first eight that make up a method's parameters, its <span class="keyword_in_text">RESULT</span>&#160;variable, and its local variables are addressed using an optimized encoding scheme. This makes accessing them slightly faster than with the ninth, or later, local variables. </p>
+                <p class="PlainText">Access time for elements of an array variable is slightly slower than that of a single-element variable because the element offset is evaluated at run-time.</p>
+                <p class="PlainText">Direct access to main memory with BYTE[], WORD[], and LONG[] is slightly slower than with a defined symbol (ie: a symbol in a DAT block).</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2143648656_5" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How are variables handled with multiple instances of an object?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2143648656_5" style="display: none;">
+                <p class="PlainText">At compile time, a copy of the object's <span class="keyword_in_text">VAR</span> and <span class="keyword_in_text">OBJ</span>&#160;blocks is made for each instance of the object. These copies are inserted into the application image along with all other workspace for global variables and objects. </p>
+                <p class="PlainText">This way, each object instance gets its own  global variable memory and subobjects, yet each always uses the same code and data (<span class="keyword_in_text">PUB</span>, <span class="keyword_in_text">PRI</span>, and <span class="keyword_in_text">DAT</span>), and of course, constants (<span class="keyword_in_text">CON</span>).&#160;</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2143648656_6" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How are symbols in a DAT block related to the object itself and multiple instances of that object?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2143648656_6" style="display: none;">
+                <p class="PlainText">Everything in an object's <span class="keyword_in_text">DAT</span>&#160;blocks is available to the object and every instance of that object. <span class="keyword_in_text">DAT</span>-based symbols behave like global variables except that there is only one instance of them; every instance of an object uses the same instance of <span class="keyword_in_text">DAT</span> symbols. This means that if an instance of an object changes the value in a <span class="keyword_in_text">DAT</span> symbol, that value changes for all other instances of that object as well.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2143648656_7" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How are symbols in a DAT block treated in relation to Spin and Propeller Assembly?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2143648656_7" style="display: none;">
+                <p class="PlainText">The <span class="keyword_in_text">DAT</span> block's primary purpose is to hold fixed data and Propeller Assembly code for the application. Symbolic declarations can be included and used to reference this data and code.</p>
+                <p class="PlainText">There's nothing preventing the contents of <span class="keyword_in_text">DAT</span> from being modified at runtime, however, which naturally leads to its use to hold symbols as "special" variables. Their special attributes relate to how they are stored in the application and how they are treated by Spin and when launching Propeller Assembly code.</p>
+                <p class="PlainText"><span class="keyword_in_text">DAT</span> blocks are stored in the application image in Main RAM. Just like code (<span class="keyword_in_text">PUB</span> and <span class="keyword_in_text">PRI</span>), there is only one instance of each <span class="keyword_in_text">DAT</span> block, regardless of how many instances of the containing object there are. This means that Spin-based references to <span class="keyword_in_text">DAT</span> symbols are accessing the corresponding location and data in Main RAM, and it's the same regardless of which instance of that object is making the reference. This is handy to share memory between multiple instances of an object.</p>
+                <p class="PlainText">When a cog is launched with assembly code, any <span class="keyword_in_text">DAT</span> symbols within 496 longs after the launch point are copied into Cog RAM. Unlike with Spin code, Propeller Assembly code that references those symbols is not accessing the corresponding location and data in Main RAM, but rather it is accessing the corresponding Cog RAM instead; its local copy. In addition, those symbolic references are always to longs of Cog RAM memory, regardless of how the symbol was actually declared. In Propeller Assembly, no Main RAM&#160;references can be made by simply using the declared symbolic name; instead, the address of that symbol must be passed from the Spin object and used along with instructions like <span class="keyword_in_text">RDLONG</span> and <span class="keyword_in_text">WRLONG</span>.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_2143648656_8" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Does the Propeller use a call stack?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_2143648656_8" style="display: none;">
+                <p class="PlainText">Yes (in Spin) and No (in Propeller Assembly).</p>
+                <p class="PlainText">The Spin Interpreter implements a call stack to facilitate Spin method calling, parameter passing, and expression evaluation.  The Propeller Application's stack is located in <a href="../HardwareTopics/MainMem.htm#MainRam" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Main RAM</a> immediately following the application's global variable memory.  It expands and collapses as needed; growing towards higher addresses and shrinking towards lower addresses.  Spin methods that are manually launched into other cogs store their stack starting at the <i>StackPointer </i>address given by the <span class="keyword_in_text">COGNEW</span> or <span class="keyword_in_text">COGINIT</span> command that launched them.  Their stacks expand and contract in the same manner as with the Propeller Application stack.  In both cases, the capacity of the stack (method nesting-depth, parameter list length, and expression complexity) is limited only by the amount of free memory available (for the application) or memory provided (by the developer).</p>
+                <p class="PlainText">Propeller Assembly language does not implement a call stack since doing so would unnecessarily consume valuable memory and impose undue limitations on applications.  Instead, Propeller Assembly provides a different mechanism through the <span class="keyword_in_text">JMPRET</span> instruction (and also <span class="keyword_in_text">CALL</span>, <span class="keyword_in_text">JMP</span>, and <span class="keyword_in_text">RET</span>) to maintain nested call history.  This method requires more developer influence but allows the memory to be used more efficiently (optimizing for the specific application) and has a distinct advantage allowing the implementation of simple task-switching code in real-time systems using <span class="keyword_in_text">JMPRET</span>.</p>
+                <p class="PlainText">To determine the amount of space required by your object, see <a href="../CodeTeqTopics/StackSpace.htm" target="" title="" alt="" class="MCXref_0">Stack Space</a>.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

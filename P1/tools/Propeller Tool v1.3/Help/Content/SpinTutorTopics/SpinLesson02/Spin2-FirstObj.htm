@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Spin Programming Tutorial|Spin Lesson 2" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Our First Object</title>
+        <link href="../../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="../SpinTutorial.htm">Spin Programming Tutorial</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbsSelf">Spin Lesson 2</span><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Our First Object</span>
+        </div>
+        <p><a href="Spin2-Intro.htm" title="Go back to A Simple Application" alt="Go back to A Simple Application"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin2-Download.htm" title="Go on to Downloading to RAM vs. EEPROM" alt="Go on to Downloading to RAM vs. EEPROM"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <h1>Our First Object</h1>
+        <h2>Spin Exercise 2-1: Output.spin</h2>
+        <p class="PlainText">The following is a simple object, written in Spin, that will toggle an I/O pin high and low repeatedly.&#160; </p>
+        <ul>
+            <li class="Checklist" value="1">Make sure your Propeller Demo Board or <a href="../TutorSchem.htm">equivalent circuits</a> are set up and ready to use.</li>
+            <li class="Checklist" value="2">Start the Propeller Tool software and enter the program shown below into the editor.&#160; We’ll explain how it works in a moment.&#160; </li>
+            <li class="Checklist" value="3">Make sure the “<span class="keyword_in_text">PUB</span>” line begins in column 1 (the leftmost edge of the edit pane) and pay very close attention to each line’s indention; it’s important for proper operation.</li>
+        </ul>
+        <p class="PlainText">(Remember, you can click the <img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" /> icon to open the example program in the Propeller Tool.)</p>
+        <div class="propcode"><a href="../../../../Examples/Help/Spin Tutorial/Exercise 02-1/Output.spin"><img src="../../Resources/Images/BulletsIconsLogos/Hat 16sq.bmp" title="Open example in Propeller Tool" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" /></a><pre xml:space="preserve" class="spin_pub1">PUB Toggle
+  dira[16]~~
+  repeat
+    !outa[16]
+    waitcnt(3_000_000 + cnt)
+</pre>
+        </div>
+        <p class="PlainText">&#160;</p>
+        <p class="PlainText"><a name="kanchor199"></a>While indentation is critical, capitalization is not.&#160; Propeller code is not case-sensitive.&#160; However, throughout this tutorial, reserved words appear in bold capital letters, except in code snippets and excerpts, to help you become familiar with them.&#160; </p>
+        <ul>
+            <li class="Checklist" value="1">Ensure that your Propeller is <a href="Spin2-Connect.htm">powered and properly connected</a> to your computer.</li>
+            <li class="Checklist" value="2"><a name="kanchor200"></a>Press the F10 key (or select Run <span class="code_in_text">→</span> Compile Current <span class="code_in_text">→</span> Load RAM from the menu) to compile and download our example program.&#160; </li>
+        </ul>
+        <p class="PlainText">If the program you entered is syntactically correct and the Propeller chip is properly powered and connected to the PC, you should see the Propeller Communication dialog appear momentarily on the screen, and now the LED on I/O pin 16 of the Propeller chip should be blinking about twice per second.&#160; </p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../../Resources/Images/SpinTutorialPictures/Propeller Comm.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Propeller Communication Dialog</p>
+            <p class="clear">&#160;</p>
+        </div>
+        <p class="PlainText">What really happened was probably too fast to see because the example program we entered is so small.&#160; When you pressed F10  the Propeller Tool compiled the source code you entered and turned it into a Propeller Application.&#160; The Propeller Tool then searched for a Propeller chip connected to the PC and downloaded the application into the chip's RAM.&#160; Finally, the Propeller started running the application from RAM, blinking the LED on I/O pin 16.</p>
+        <p><a href="Spin2-Intro.htm" title="Go back to A Simple Application" alt="Go back to A Simple Application"><img src="../../Resources/Images/BulletsIconsLogos/Prev_81x26.png" style="width: 81;height: 26;" /></a><a href="Spin2-Download.htm" title="Go on to Downloading to RAM vs. EEPROM" alt="Go on to Downloading to RAM vs. EEPROM"><img src="../../Resources/Images/BulletsIconsLogos/Next_80x26.png" style="width: 80;height: 26;" /></a>
+        </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

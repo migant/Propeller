@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Questions and Answers" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Methods</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="QnaLocal.htm">Questions and Answers</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Methods</span>
+        </div>
+        <h1>Methods</h1>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3003875950_0" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is a Method?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3003875950_0" style="display: none;">
+                <p class="PlainText">A method is similar to a subroutine in other languages. A method is a section of source code that accepts parameters as input, performs a specific function, and then returns a result value. Methods in Spin are declared with <span class="keyword_in_text">PUB</span>, for public methods, and <span class="keyword_in_text">PRI</span>, for private methods. There must be at least one public method in every Spin object.  Propeller Application execution begins with the first public method in the application’s top object.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3003875950_1" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How do Spin methods compare to subroutines in other languages?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3003875950_1" style="display: none;">
+                <p class="PlainText">Spin methods are like subroutines in that they contain the instructions to perform a specific process, and can be used over and over again as needed. Unlike subroutines in languages like PBASIC, methods can be passed parameters; that is, a set of temporary values that are used in the execution of that instance of the subroutine, without having to define variables or constants globally in the program.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3003875950_2" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What's the difference between public and private methods?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3003875950_2" style="display: none;">
+                <p>Private methods (declared with <span class="keyword_in_text">PRI</span>) can only be accessed from inside of the object where they are defined.  Public (<span class="keyword_in_text">PUB</span>) methods can be accessed from inside and outside the defining object, and are used to create interfaces between objects. From inside an object, it's public and private methods can be accessed, or "called," by simply referencing the method's name.  From outside an object, to call its public methods, the calling object must first symbolically declare the target object in an <span class="keyword_in_text">OBJ</span> block.</p>
+                <p>&#160;</p>
+                <div class="propcode"><pre class="spin_obj1" xml:space="preserve">OBJ
+  Clk : "Clock" </pre>
+                </div>
+                <p>&#160;</p>
+                <p class="PlainText">In this case, <span class="code_in_text">Clk</span> is the symbolic nickname this object will use when referring to the Clock object.  Then, the desired public method can be accessed by name, in the form <i>Object.Method </i>where <i>Object</i> is the symbolic nickname given in the declaration and <i>Method </i>is one of the object's public methods.</p>
+                <div class="propcode"><pre class="spin_pub1" xml:space="preserve">PUB Main&#160;&#160;
+&#160;&#160;Clk.PauseMSec(100)       'Pause form 100 milliseconds</pre>
+                </div>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3003875950_3" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Do I&#160;have to indent the lines under PUB&#160;or PRI, for those lines to be part of the method?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3003875950_3" style="display: none;">
+                <p class="PlainText">No. Indenting the lines that are part of the method just makes it easier to read. Indenting IS necessary to define other types of code blocks, such as <span class="keyword_in_text">REPEAT</span> and <span class="keyword_in_text">IF</span>. </p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3003875950_4" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is the first method executed in an object?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3003875950_4" style="display: none;">
+                <p class="PlainText">It depends on what type of object it is. </p>
+                <p class="PlainText">Most objects are building block objects, so there is no designated method that is executed first, automatically. Instead, the calling object chooses any of the available public methods to execute first.</p>
+                <p class="PlainText">A top object is different; the very first public method in a top object will automatically be executed by the application upon start up. This becomes the application's initial entry point. It doesn't matter what that method is called, but developers often call it "main."</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3003875950_5" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How do I&#160;indicate the end of a method?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3003875950_5" style="display: none;">
+                <p class="PlainText">This happens naturally, you do not have to end a method with any specific command or with a blank line. The compiler knows that a method is complete when it finds the beginning of the next block declaration (<span class="keyword_in_text">CON</span>, <span class="keyword_in_text">DAT</span>, <span class="keyword_in_text">OBJ</span>, <span class="keyword_in_text">PRI</span>, <span class="keyword_in_text">PUB</span>, or <span class="keyword_in_text">VAR</span>) or when it reaches the end of the program listing.  The compiler always internally inserts a RETURN command at the end of methods, so there's no need to do so yourself unless you wish to return a value other than what's in the <span class="keyword_in_text">RESULT</span> variable at that point in code.  By convention, it's common to insert one or two blank lines between methods to enhance readability.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3003875950_6" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What happens when code execution reaches the end of a method?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3003875950_6" style="display: none;">
+                <p class="PlainText">The compiler always inserts a <span class="keyword_in_text">RETURN</span> command at the end of methods- so if execution reaches the end of the method, it simply returns to the caller, passing back the current value of the local <span class="keyword_in_text">RESULT</span> variable as it returns.</p>
+                <p class="PlainText">If execution reaches the end of the top object's first method, the return from that method results in the Application Cog (usually Cog 0) terminating. This may or may not equate to the Propeller chip shutting down, as some applications end with the termination of Cog 0 while others carry on through additional cogs that were started as a result of application activity.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3003875950_7" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Are there conventions for naming methods?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3003875950_7" style="display: none;">
+                <p class="PlainText">Method names and the purposes they serve are entirely the choice of the developer, but following certain conventions is recommended for methods that serve the roles of object configuration (Init) and cog management (Start and Stop).</p>
+                <p class="PlainText">These conventions  serve a familiar "getting started" purpose to new users of the object.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3003875950_8" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is an Init Method?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3003875950_8" style="display: none;">
+                <p class="PlainText">By convention developers name a method "Init" (short for "initial" or "initialization") when it serves as the configuration method of a building block object. An object with an Init method may or may not also include Start and Stop methods.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3003875950_9" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What are Start and Stop Methods?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3003875950_9" style="display: none;">
+                <p class="PlainText">By convention, developers name a method "Start" when it serves as the <i>cog launch manager</i> of a building block object. An object with a Start method should also have a Stop method, and occasionally an Init method as well.</p>
+                <p class="PlainText">Similarly, developers name a method "Stop" when it serves as the <i>cog termination manager</i> of a building block object. An object with a Stop method should also have a Start method, and occasionally an Init method as well.</p>
+                <p class="PlainText">Example Start and Stop Methods:</p><pre xml:space="preserve" class="spin_var1">VAR
+  byte   Cog                        'Cog (ID+1) that is started by this object
+
+</pre><pre xml:space="preserve" class="spin_pub1">PUB Start({ParamaterList}): Success
+{Launch another cog for parallel processing}
+  Stop
+  Success := (Cog := cognew({SpinMethodOrAsmAddr}, {StackAddrOrPARValue}) + 1) &gt; 0
+
+</pre><pre xml:space="preserve" class="spin_pub2">PUB Stop
+{Terminate managed cog, if any}
+  if Cog
+    cogstop(Cog~ -1)
+</pre>
+                <p>&#160;</p>
+                <p class="PlainText">In this example, the <span class="code_in_text">Start</span> method calls <span class="code_in_text">Stop</span> to terminate any previously started cog (in case <span class="code_in_text">Start</span> gets called multiple times) and then launches a new cog with <span class="keyword_in_text">COGNEW</span>. It stores the Cog ID returned by <span class="keyword_in_text">COGNEW</span>, plus 1, into the <span class="code_in_text">Cog</span> variable to record the cog-launch status and simplify decision logic in <span class="code_in_text">Stop</span>. It uses a comparison operation (<span class="code_in_text">&gt; 0</span>) to set the <span class="code_in_text">Success</span> result variable to <span class="keyword_in_text">True</span> if a cog was started; <span class="keyword_in_text">False</span> otherwise.</p>
+                <p class="PlainText">The <span class="code_in_text">Stop</span> method checks if the <span class="code_in_text">Cog</span> variable is <span class="keyword_in_text">True</span> (any non-zero value), and if so, terminates the cog that this object had started. The expression <span class="code_in_text">Cog~ -1</span> first subtracts 1 from <span class="code_in_text">Cog</span> (delivering to <span class="keyword_in_text">COGSTOP</span> the exact ID&#160;of the cog that was launched) then clears <span class="code_in_text">Cog</span> to 0 (<span class="keyword_in_text">False</span>) so successive calls to <span class="code_in_text">Stop</span> don't inadvertently terminate innocent cogs.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_3003875950_10" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is the Main Method?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_3003875950_10" style="display: none;">
+                <p class="PlainText">Often developers will name the first method of a top object "Main" because it serves as the <i>application starting point</i> and the highest-level coordinator of application function.</p>
+                <p class="PlainText">Main is not a reserved word in Spin; special status is given only to the first public method in the top object of a Propeller Application.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

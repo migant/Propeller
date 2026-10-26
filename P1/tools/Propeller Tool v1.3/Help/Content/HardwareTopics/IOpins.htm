@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="About the Hardware" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>I/O Pins</title>
+        <link href="../Resources/TableStyles/ParallaxTable.css" rel="stylesheet" />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="AboutHardware.htm">About the Hardware</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">I/O Pins</span>
+        </div>
+        <h1><a name="kanchor65"></a>I/O Pins</h1>
+        <p class="PlainText"><a name="kanchor66"></a>The Propeller has 32 I/O pins, 28 of which are entirely general purpose.&#160; Four I/O pins (28 - 31) have a special purpose during the <a href="BootUp.htm" target="" title="" alt="" class="MCXref_0">Boot Up Procedure</a> and are available for general purpose use afterwards. After boot up, any I/O pins can be used by any cogs at any time since I/O pins are one of the common <a href="SharedRes.htm" target="" title="" alt="" class="MCXref_0">Shared Resources</a>.&#160; It is up to the application developer to ensure that no two cogs try to use the same I/O pin for conflicting purposes during run-time.</p>
+        <p class="PlainText">For details of the I/O hardware, refer to the <a href="BlockDiagP8X32A.htm" target="" title="" alt="" class="MCXref_0">P8X32A Block Diagram</a> while reading the following explanation.&#160; </p>
+        <p class="PlainText">Each cog has its own 32-bit I/O Direction Register (DIRA) and 32-bit I/O Output Register (OUTA) to influence the directions and output states of the Propeller chip’s corresponding 32 I/O pins.&#160; A cog's desired I/O directions and output states is communicated through the entire cog collective to ultimately become what is called "Pin Directions" and "Pin Outputs" in the upper right corner of the <a href="BlockDiagP8X32A.htm" target="" title="" alt="" class="MCXref_0">P8X32A Block Diagram</a>.</p>
+        <p class="PlainText">The cog collective determines Pin Directions and Pin Outputs as follows:</p>
+        <ol>
+            <li value="1">Pin Directions are the result of OR'ing the Direction Registers of the cogs together.</li>
+            <li value="2">Pin Outputs are the result of OR'ing the output states of the cogs together.&#160; A cog's output state consists of the bits of its I/O modules (the Counters, the Video Generator, and the I/O Output Register) OR'd together then AND'd with the bits of its Direction Register.</li>
+        </ol>
+        <p class="PlainText">In essence, each I/O pin’s direction and output state is the “wired-OR” of the entire cog collective.&#160; This allows the cogs to access and influence the I/O pins simultaneously without the need for any resource arbiter and without any possibility of electrical contention between the cogs.</p>
+        <p class="PlainText">The result of this I/O pin wiring configuration can easily be described in the following simple rules:</p>
+        <ol style="list-style-type: upper-alpha;">
+            <li value="1">A pin is an input only if no active cog sets it to an output.</li>
+            <li value="2">A pin outputs low only if all active cogs that set it to output also set it to low.</li>
+            <li value="3">A pin outputs high if any active cog sets it to an output and also sets it high.</li>
+        </ol>
+        <p class="PlainText">This table demonstrates a few possible combinations of the collective cogs’ influence on a particular I/O pin, P12 in this example.&#160; For simplification, these examples assume that bit 12 of each cog’s I/O hardware, other than its I/O Output Register, is cleared to zero&#160;(0).</p>
+        <table style="caption-side: top;mc-table-style: url('../Resources/TableStyles/ParallaxTable.css');width: 600px;" class="TableStyle_ParallaxTable" cellspacing="0">
+            <col />
+            <col style="width: 155px;" />
+            <col style="width: 155px;" />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th class="TableStyle_ParallaxTable_Head_0_0_ColSep" colspan="5"><a name="kanchor67"></a>I/O Sharing Examples</th>
+                </tr>
+            </thead>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;font-weight: normal;text-align: center;">
+                    <p class="TableText">Bit 12 of Cog’s...</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #eeeeee;text-align: center;">
+                    <p class="TableText" style="text-align: center;"> I/O Direction Register<sup>1</sup></p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #eeeeee;text-align: center;">
+                    <p class="TableText">I/O Output Register</p>
+                </td>
+                <td rowspan="2" class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;text-align: center;">
+                    <p class="TableText">State of I/O&#160; Pin P12</p>
+                </td>
+                <td rowspan="2" class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="background-color: #cccccc;text-align: center;">
+                    <p class="TableText">Rule Followed</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;font-weight: normal;text-align: center;">
+                    <p class="TableText">Cog ID</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #eeeeee;text-align: center;"><span class="code_in_text">0 1 2 3 4 5 6 7</span>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #eeeeee;text-align: center;"><span class="code_in_text">0 1 2 3 4 5 6 7</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                    <p class="TableText">Example 1</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="code_in_text">0 0 0 0 0 0 0 0</span>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="code_in_text">0 0 0 0 0 0 0 0</span>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                    <p class="TableText">Input</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                    <p class="TableText">A</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                    <p class="TableText">Example 2</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="code_in_text">1 0 0 0 0 0 0 0</span>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="code_in_text">0 0 0 0 0 0 0 0</span>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                    <p class="TableText">Output Low</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                    <p class="TableText">B</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                    <p class="TableText">Example 3</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="code_in_text">1 0 0 0 0 0 0 0</span>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="code_in_text">1 0 0 0 0 0 0 0</span>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                    <p class="TableText">Output High</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                    <p class="TableText">C</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                    <p class="TableText">Example 4</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="code_in_text">1 0 0 0 0 0 0 0</span>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="code_in_text">0 1 0 0 0 0 0 0</span>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                    <p class="TableText">Output Low</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                    <p class="TableText">B</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                    <p class="TableText">Example 5</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="code_in_text">1 1 0 0 0 0 0 0</span>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="code_in_text">0 1 0 0 0 0 0 0</span>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                    <p class="TableText">Output High</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                    <p class="TableText">C</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                    <p class="TableText">Example 6</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="code_in_text">1 1 1 1 1 1 1 1</span>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="code_in_text">0 1 0 1 0 0 0 0</span>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                    <p class="TableText">Output High</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                    <p class="TableText">C</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                    <p class="TableText">Example 7</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="code_in_text">1 1 1 1 1 1 1 1</span>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="code_in_text">0 0 0 1 0 0 0 0</span>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                    <p class="TableText">Output High</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                    <p class="TableText">C</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                    <p class="TableText">Example 8</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="code_in_text">1 1 1 0 1 1 1 1</span>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="code_in_text">0 0 0 1 0 0 0 0</span>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                    <p class="TableText">Output Low</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                    <p class="TableText">B</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;" colspan="5">
+                    <p class="TableNoteNextNum" style="text-align: left;" MadCap:autonum="Note 1: "><span class="autonumber"><span>Note 1: </span></span>For the I/O Direction Register, a 1 in a bit location sets the corresponding I/O pin to the output direction while a 0 sets it to an input direction.</p>
+                </td>
+            </tr>
+        </table>
+        <p>&#160;</p>
+        <p class="PlainText">Any cog that is shut down has its Direction Register and output states cleared to zero, effectively removing it from influencing the final state of the I/O pins that the remaining active cogs are controlling. </p>
+        <p class="PlainText">Each cog also has its own 32-bit Input Register.&#160; This input register is really a pseudo-register; every time it is read, the actual states of the I/O pins are read, regardless of their input or output direction.&#160; </p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Questions and Answers" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Cogs</title>
+        <link href="../Resources/TableStyles/ParallaxTable.css" rel="stylesheet" />
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="QnaLocal.htm">Questions and Answers</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Cogs</span>
+        </div>
+        <h1>Cogs</h1>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1592828136_0" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is a cog?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1592828136_0" style="display: none;">
+                <p class="PlainText">In the Propeller chip, a cog is a processor; the Propeller P8X32A has eight of them.  </p>
+                <p class="PlainText">Each cog is identical (except for their unique numerical IDs) and runs independently, so it is possible to have eight different processes executing simultaneously. Each cog has its own internal memory, its own configurable counter module hardware, its own video generation hardware, access to all the <a href="../HardwareTopics/IOpins.htm" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">I/O Pins</a> and the <a href="../HardwareTopics/SysClock.htm" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">System Clock</a>, and shared access to main memory (RAM and ROM). The cogs can communicate with each other through <a href="../HardwareTopics/MainMem.htm" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Main Memory</a>, can synchronize with each other through the System Clock and Locks (Semaphores), and can even silently monitor each other through the I/O Pins if necessary.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1592828136_1" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is Cog RAM?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1592828136_1" style="display: none;">
+                <p class="PlainText">Cog RAM is a block of 512 longs (32-bits) of read/write memory inside the cog itself; it is used to hold Propeller Assembly programs and related data for exclusive use by that cog.</p>
+                <p class="PlainText"> Cog RAM is divided into two sections: general purpose registers and special purpose registers. Each location within Cog RAM&#160;is long-addressable only and is usually referred to as a "register." </p>
+                <p class="PlainText">General purpose registers make up the first 496 longs (32-bits each) of Cog RAM. To execute Propeller Assembly code, the general purpose registers are first loaded with code and data from main memory, then execution starts at register 0. When executing Spin code, this portion of Cog RAM is first loaded with a copy of the Spin Interpreter. </p>
+                <p class="PlainText">Special purpose registers live in the last 16 longs of Cog RAM. The first four of them are read-only and return the values of the boot parameter, system counter, and input states for the I/O pins. The remaining 12 registers facilitate output state, pin direction, and interaction with the cog's counter modules, and video generator hardware.</p>
+                <p class="PlainText">
+                    <img src="../Resources/Images/HardwarePics/CogRAM.png" />
+                </p>
+                <p class="PlainText"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HardwareTopics/CogRAMfull.htm" onclick="FMCPopup( event, this ); return false;" MadCap:width="auto" MadCap:height="auto" class="MCPopupSpot_Popup_0" alt="Open in new window" title="Open in new window">See the Cog RAM Special Purpose Registers</a></span>
+                </p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1592828136_2" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is the Application Cog?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1592828136_2" style="display: none;">
+                <p class="PlainText">Cog 0 is sometimes called the Application Cog because it's the one that starts the Propeller Application and often manages the application during its lifetime. Depending on how the application is written, the actual cog performing the role of the Application Cog can change over time, thus the term "Application Cog" more specifically means that which is managing the overall application.
+</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1592828136_3" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is special about Cog 0?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1592828136_3" style="display: none;">
+                <p class="PlainText">Not much, all cogs are physically identical.  Cog 0 just happens to be the first cog started when the Propeller chip boots up.  For this reason, it is sometimes called the "Application Cog." All applications begin with Cog 0 executing the first public method in the top object. After that, the programmer can determine which cog will execute which portions of the application.
+</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1592828136_4" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can Cog 0 be shut down?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1592828136_4" style="display: none;">
+                <p class="PlainText">Yes, Cog 0 can stop (terminate) itself or can be stopped by another cog.  At startup, Cog 0 is the only cog that is running until the Propeller Application (which the cog is executing) starts other cogs.  If Cog 0 runs out of code to execute (in the top object's first public method, for example) or it executes a <span class="code_in_text">COGSTOP(0)</span> command, then Cog 0 will terminate.  While shutting down Cog 0 may seem like it would stop the Propeller Application, that's not necessarily the case since the application may have already started other cogs to carry out application tasks. 
+</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1592828136_5" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can any cog start or stop any other cog?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1592828136_5" style="display: none;">
+                <p class="PlainText">Yes.  A cog can <i>start</i> any other cog using the <span class="keyword_in_text">COGNEW</span> or <span class="keyword_in_text">COGINIT</span> command, and can <i>stop</i> or <i>restart</i> any cog (including itself) using the <span class="keyword_in_text">COGSTOP</span> or <span class="keyword_in_text">COGINIT</span> command.<span class="keyword_in_text">  COGNEW</span> starts a new cog, if one is available; the lowest-numbered cog that is not running.  <span class="keyword_in_text">COGINIT</span> starts, or restarts, a specific cog by ID number. <span class="keyword_in_text">COGSTOP</span> stops a specific cog by ID number.  A common strategy when starting another cog is to use <span class="keyword_in_text">COGNEW</span> and store the returned ID (the ID of the cog that actually started) for use in a future <span class="keyword_in_text">COGSTOP</span> command when it is time to stop it.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1592828136_6" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What's the difference between starting and launching a cog?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1592828136_6" style="display: none;">
+                <p class="PlainText">The terms "starting" and "launching" are often used interchangeably but starting is more general in context, referring just to a cog, whereas launching usually refers to specific code being started in a cog. 
+</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1592828136_7" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can you start a new cog from a Spin program?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1592828136_7" style="display: none;">
+                <p class="PlainText">Yes, using the <span class="keyword_in_text">COGNEW</span> or <span class="keyword_in_text">COGINIT</span> command. This is the most practical and recommended way to start a cog.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1592828136_8" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can you start a new cog from a Propeller Assembly program?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1592828136_8" style="display: none;">
+                <p class="PlainText">Yes, using the assembly version of <span class="keyword_in_text">COGINIT</span> and specifying a <a href="../HardwareTopics/MainMem.htm#MainRam" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Main RAM</a> target address of the code to launch.  You can optionally specify a target cog by ID, or use the lowest-numbered available cog by default.  The most practical and recommended way to start a cog is through Spin, however.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1592828136_9" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How long does it take to start a cog?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1592828136_9" style="display: none;">
+                <p class="PlainText">It depends on the type of code that is starting the cog and what type of code it is launching into the cog.  By nature of design, the most common case is running Spin code that launches other Spin or Assembly code.</p>
+                <table style="caption-side: top;mc-table-style: url('../Resources/TableStyles/ParallaxTable.css');" class="TableStyle_ParallaxTable" cellspacing="0">
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th class="TableStyle_ParallaxTable_Head_0_0_ColSep" colspan="4"><a name="kanchor373"></a>Cog Start Time</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;text-align: center;">
+                            <p class="TableText">Running Code</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;text-align: center;">
+                            <p class="TableText">Launching Code</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;text-align: center;">
+                            <p class="TableText">Clock Cycles<sup>1</sup></p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="background-color: #cccccc;text-align: center;">
+                            <p class="TableText">Time @ 80 MHz </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">Spin</td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">Spin</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">24,992<sup>2</sup></p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                            <p class="TableText">≈ 300 µs</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">Spin</td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">Assembly</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">8,918<sup>2</sup></p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                            <p class="TableText">≈ 100 µs</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">Assembly</td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">Spin</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">8,400 <sup>3</sup></p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">≈ 100 µs</td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">Assembly</td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p>Assembly</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;">
+                            <p class="TableText">8,196<sup>4</sup></p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">≈ 100 µs</td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" colspan="4">
+                            <p colspan="4" class="TableNoteNextNum" MadCap:autonum="Note 1: "><span class="autonumber"><span>Note 1: </span></span>Includes <span class="code_add_mod">COGNEW</span>/<span class="code_add_mod">COGINIT</span>&#160;overhead.</p>
+                            <p colspan="4" class="TableNoteNextNum" MadCap:autonum="Note 2: "><span class="autonumber"><span>Note 2: </span></span>Minimum cycles in Spin; increases with inclusion of parameters and complexity of expressions and constant values.</p>
+                            <p colspan="4" class="TableNoteNextNum" MadCap:autonum="Note 3: "><span class="autonumber"><span>Note 3: </span></span>This is an estimate; launching Spin from Assembly can be tedious and is not recommended.</p>
+                            <p colspan="4" class="TableNoteNextNum" MadCap:autonum="Note 4: "><span class="autonumber"><span>Note 4: </span></span>Minimum cycles in Assembly; increases by up to 29 cycles for hub sync of both calling cog and new cog (to execute <span class="code_add_mod">COGINIT</span> and read first long of code from Main RAM).</p>
+                        </td>
+                    </tr>
+                </table>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1592828136_10" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can a cog shut itself down?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1592828136_10" style="display: none;">
+                <p>Yes. In Spin, any cog can simply use the statement <span class="code_in_text">COGSTOP(COGID)</span> <![CDATA[ ]]>in a method.</p>
+                <p>&#160;</p>
+                <p class="PlainText">In Assembly, it may look something like this (assuming <span class="code_in_text">MyID</span> is an available register):</p>
+                <div class="propcode"><pre xml:space="preserve" class="spin_dat1">        cogid    MyID    'get the ID&#160;of the cog I'm running in	
+        cogstop  MyID    'use the ID&#160;to terminate myself</pre>
+                </div>
+                <p class="PlainText">&#160;</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1592828136_11" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />The Propeller has eight cogs, so does this mean an application is limited to eight object files?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1592828136_11" style="display: none;">
+                <p class="PlainText">No. There is no direct relationship between objects and cogs.  Applications are limited by the size of the Propeller chip’s      <![CDATA[ ]]><a href="../HardwareTopics/MainMem.htm#MainRam" target="" title="" alt="" MadCap:excludeAction="unbind" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" class="MCXref_0">Main RAM</a>, which is 32 KB (kilobytes) and not by the number of object files that make up the application.  An application may consist of a single object, or many objects, as long as the total size of the application is less than 32 KB.  An application, whether made from one object or many objects, may execute with one, two, or up to eight cogs depending only on the collective objects' "requests" to launch cogs.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1592828136_12" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How does starting and stopping cogs relate to objects?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1592828136_12" style="display: none;">
+                <p class="PlainText">Objects describe how to get tasks done and cogs perform those tasks. Since an object encapsulates all the knowledge necessary to achieve the given task, it is up to the object to decide when and how many other cogs should perform the task. In this way, objects are the natural manager of their own cogs, starting and stopping one or more other cogs as necessary for the given task. </p>
+                <p class="PlainText">It is possible for any cog to start and stop any other cog, but in practice it is not done outside of the logical object except in extreme cases.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1592828136_13" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can a cog launch Spin code into itself?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1592828136_13" style="display: none;">
+                <p class="PlainText">Yes, the <span class="keyword_in_text">COGINIT</span> command is used to do this (and <span class="keyword_in_text">COGID</span> can be used first to identify the cog if it's ID is unknown).  Note that care must be taken to provide unique stack space for the new Spin code; stack space that is not currently in use by any currently running Spin code.  Failure to provide dormant stack space for the new Spin code will likely cause the new stack frame image to be clobbered before the cog is restarted.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1592828136_14" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can a cog launch Propeller Assembly code into itself?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1592828136_14" style="display: none;">
+                <p class="PlainText">Yes, using the <span class="keyword_in_text">COGINIT</span> command and the current cog ID (or the <span class="keyword_in_text">COGID</span> command to identify itself). If the cog was initially running Spin code, the <a href="../HardwareTopics/BootLoader.htm#SpinInterpreter" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Spin&#160;Interpreter</a> in <a href="../HardwareTopics/Cogs.htm" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind">Cog RAM</a> will be overwritten with 496 longs from <a href="../HardwareTopics/MainMem.htm" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Main Memory</a>, starting with the address where the desired assembly code begins.
+</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1592828136_15" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can a cog sleep?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1592828136_15" style="display: none;">
+                <p class="PlainText">Yes, but on the Propeller it is called <i>waiting </i>and it functions differently than sleep does on most other devices.  An active cog is always in one of two states: executing or waiting.   The waiting mechanism is an integral feature of the Propeller design; it puts the cog into a very-low-power state while it waits for a specific synchronous or asynchronous event.  When the event occurs, the cog can "wake up" in less the 10 millionths of a second to respond to it.  The commands <span class="keyword_in_text">WAITPEQ</span>, <span class="keyword_in_text">WAITPNE</span>, <span class="keyword_in_text">WAITCNT</span>, and <span class="keyword_in_text">WAITVID</span> trigger a cog's waiting state until an event with the <a href="../HardwareTopics/IOpins.htm" target="" title="" alt="" class="MCXref_0">I/O Pins</a>, <a href="../HardwareTopics/SysCounter.htm" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">System Counter</a>, or Video Generator occurs.</p>
+                <table style="caption-side: top;mc-table-style: url('../Resources/TableStyles/ParallaxTable.css');" class="TableStyle_ParallaxTable" cellspacing="0">
+                    <col />
+                    <col />
+                    <thead>
+                        <tr>
+                            <th class="TableStyle_ParallaxTable_Head_0_0_ColSep" colspan="2"><a name="kanchor374"></a>WAIT Instruction Effect</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;text-align: center;">
+                            <p class="TableText">WAIT Instruction</p>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="background-color: #cccccc;text-align: center;">
+                            <p>Pauses cog execution until...</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="Keyword_In_Text">WAITCNT</span>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                            <p class="TableText">System Counter = Target Value</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="Keyword_In_Text">WAITPEQ</span>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                            <p class="TableText">I/O AND'ed with Mask = State</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="Keyword_In_Text">WAITPNE</span>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                            <p class="TableText">I/O AND'ed with Mask &lt;&gt; State</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="text-align: center;"><span class="Keyword_In_Text">WAITVID</span>
+                        </td>
+                        <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="text-align: center;">
+                            <p>Video Generator Ready</p>
+                        </td>
+                    </tr>
+                </table><a name="kanchor375"></a>
+                <p>&#160;</p>
+                <p>In Propeller Assembly, once a WAIT&#160;instruction's condition is met, the instruction following it is completely processed 6 cycles later (if it's not a Hub or WAIT instruction).</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1592828136_16" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What happens if code tries to launch a cog when they are all in use?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1592828136_16" style="display: none;">
+                <p class="PlainText">It really depends on which launch command is used, <span class="keyword_in_text">COGNEW</span> or <span class="keyword_in_text">COGINIT</span>.</p>
+                <p class="PlainText"> In Spin, the <span class="keyword_in_text">COGNEW</span> command will simply return -1 if no cogs are available; otherwise, it would actually launch a cog and return its ID&#160;number.  In contrast, Spin's <span class="keyword_in_text">COGINIT</span> command targets a specific cog by its ID; it will stop the indicated cog if it was currently executing and re-launch it with the new code.</p>
+                <p class="PlainText">In Propeller Assembly,<span class="keyword_in_text"> COGINIT</span> does the combined job of Spin's <span class="keyword_in_text">COGNEW</span> and <span class="keyword_in_text">COGINIT</span> commands. It can also be configured to indicate which cog was launched, if any.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_1592828136_17" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How can I&#160;make code execution pause until there is a cog available to launch?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_1592828136_17" style="display: none;">
+                <p class="PlainText">Use a loop that continues to call <span class="keyword_in_text">COGNEW</span> until it returns a value other than -1. </p>
+                <p class="PlainText">In Spin, it would look something like this:</p><pre class="spin_pub1" xml:space="preserve">    repeat while cognew(method_or_asm, @address) == -1    </pre>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

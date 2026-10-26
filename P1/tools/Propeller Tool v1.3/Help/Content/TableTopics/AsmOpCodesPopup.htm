@@ -1,0 +1,1481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="47" MadCap:lastWidth="579" MadCap:disableMasterStylesheet="true" MadCap:tocPath="" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" class="TopicPopup" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Propeller Assembly Instruction Master Table</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/TableStyles/ParallaxTable.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <h1>Propeller Assembly Instruction Master Table</h1>
+        <p class="PlainText">In this table, D and S refer to the instructions’ destination and source fields, also known as d-field and s-field, respectively. Be sure to read the notes at the end of the table.</p>
+        <table style="caption-side: top;mc-table-style: url('../Resources/TableStyles/ParallaxTable.css');" class="TableStyle_ParallaxTable" cellspacing="0">
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th class="TableStyle_ParallaxTable_Head_0_0_ColSep" colspan="6" style="text-align: center;">Propeller Assembly Instruction Master Table</th>
+                </tr>
+            </thead>
+            <tr>
+                <th class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;">
+                    <p class="TableText" style="text-align: left;">Instruction</p>
+                </th>
+                <th class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;">
+                    <p class="TableText">-INSTR--ZCRI--CON--DEST----SRC-----</p>
+                </th>
+                <th class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;">
+                    <p class="TableText" style="text-align: left;">Z Result</p>
+                </th>
+                <th class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;">
+                    <p class="TableText" style="text-align: left;">C Result</p>
+                </th>
+                <th class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" style="background-color: #cccccc;">
+                    <p class="TableText" style="text-align: left;">Result</p>
+                </th>
+                <th class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd" style="background-color: #cccccc;">
+                    <p class="TableText" style="text-align: left;">Clocks</p>
+                </th>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">ABS      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">101010 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">S[31]</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">ABSNEG   D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">101011 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">S[31]</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">ADD      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">100000 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D + S = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Unsigned Carry</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">ADDABS   D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">100010 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D + |S| = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Unsigned Carry <sup>3</sup></p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">ADDS     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">110100 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D + S = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Signed Overflow</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">ADDSX    D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">110110 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Z &amp; (D+S+C = 0)</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Signed Overflow</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">ADDX     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">110010 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Z &amp; (D+S+C = 0)</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Unsigned Carry</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">AND      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">011000 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Parity of Result</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">ANDN     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">011001 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Parity of Result</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">CALL       #S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">010111 0011 1111 ????????? sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">CLKSET   D</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">000011 0001 1111 ddddddddd ------000</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">8..23    <![CDATA[ ]]><sup>1</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">CMP      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">100001 000i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D = S</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Unsigned (D &lt; S)</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">CMPS     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">110000 000i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D = S</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Signed (D &lt; S)</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">CMPSUB   D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">111000 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D = S</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Unsigned (D =&gt; S)</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">CMPSX    D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">110001 000i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Z &amp; (D = S+C)</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Signed (D &lt; S+C) </p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">CMPX     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">110011 000i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Z &amp; (D = S+C)</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Unsigned (D &lt; S+C)</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">COGID    D</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">000011 0011 1111 ddddddddd ------001</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">ID = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">8..23    <![CDATA[ ]]><sup>1</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">COGINIT  D</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">000011 0001 1111 ddddddddd ------010</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">ID = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">No Cog Free</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">8..23    <![CDATA[ ]]><sup>1</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">COGSTOP  D</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">000011 0001 1111 ddddddddd ------011</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Stopped ID = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">No Cog Free</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">8..23    <![CDATA[ ]]><sup>1</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">DJNZ     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">111001 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Unsigned Borrow</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4 or 8 <sup>2</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">HUBOP    D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">000011 000i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">8..23    <![CDATA[ ]]><sup>1</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">JMP      S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">010111 000i 1111 --------- sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">JMPRET   D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">010111 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">LOCKCLR  D</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">000011 0001 1111 ddddddddd ------111</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">ID = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Prior Lock State</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">8..23    <![CDATA[ ]]><sup>1</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">LOCKNEW  D</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">000011 0011 1111 ddddddddd ------100</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">ID = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">No Lock Free</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">8..23    <![CDATA[ ]]><sup>1</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">LOCKRET  D</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">000011 0001 1111 ddddddddd ------101</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">ID = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">No Lock Free</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">8..23    <![CDATA[ ]]><sup>1</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">LOCKSET  D</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">000011 0001 1111 ddddddddd ------110</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">ID = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Prior Lock State</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">8..23    <![CDATA[ ]]><sup>1</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">MAX      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">010011 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">S = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Unsigned (D &lt; S)</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">MAXS     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">010001 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">S = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Signed (D &lt; S)</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">MIN      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">010010 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">S = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Unsigned (D &lt; S)</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">MINS     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">010000 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">S = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Signed (D &lt; S)</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">MOV      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">101000 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">S[31]</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">MOVD     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">010101 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">MOVI     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">010110 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">MOVS     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">010100 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">MUXC     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">011100 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Parity of Result</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">MUXNC    D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">011101 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Parity of Result</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">MUXNZ    D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">011111 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Parity of Result</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">MUXZ     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">011110 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Parity of Result</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">NEG      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">101001 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">S[31]</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">NEGC     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">101100 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">S[31]</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">NEGNC    D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">101101 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">S[31]</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">NEGNZ    D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">101111 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">S[31]</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">NEGZ     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">101110 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">S[31]</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">NOP</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">------ ---- 0000 --------- ---------</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">OR       D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">011010 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Parity of Result</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">RCL      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">001101 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D[31]</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">RCR      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">001100 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D[0]</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">RDBYTE   D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">000000 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">8..23    <![CDATA[ ]]><sup>1</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">RDLONG   D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">000010 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">8..23    <![CDATA[ ]]><sup>1</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">RDWORD   D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">000001 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">8..23    <![CDATA[ ]]><sup>1</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">RET</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">010111 0001 1111 --------- ---------</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">REV      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">001111 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D[0]</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">ROL      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">001001 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D[31]</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">ROR      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">001000 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D[0]</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">SAR      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">001110 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D[0]</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">SHL      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">001011 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D[31]</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">SHR      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">001010 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D[0]</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">SUB      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">100001 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D - S = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Unsigned Borrow</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">SUBABS   D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">100011 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D - |S| = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Unsigned Borrow 4</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">SUBS     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">110101 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D - S = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Signed Overflow</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">SUBSX    D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">110111 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Z &amp; (D-(S+C) = 0)</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Signed Overflow</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">SUBX     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">110011 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Z &amp; (D-(S+C) = 0)</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Unsigned Borrow</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">SUMC     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">100100 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D ± S = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Signed Overflow</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">SUMNC    D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">100101 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D ± S = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Signed Overflow</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">SUMNZ    D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">100111 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D ± S = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Signed Overflow</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">SUMZ     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">100110 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D ± S = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Signed Overflow</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">TEST     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">011000 000i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Parity of Result</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">TESTN    D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">011001 000i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Parity of Result</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">TJNZ     D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">111010 000i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4 or 8 <sup>2</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">TJZ      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">111011 000i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">D = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4 or 8 <sup>2</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">WAITCNT  D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">111110 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Unsigned Carry</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">6+</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">WAITPEQ  D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">111100 000i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">6+</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">WAITPNE  D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">111101 000i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">6+</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">WAITVID  D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">111111 000i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4+<sup>5</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">WRBYTE   D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">000000 000i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">8..23    <![CDATA[ ]]><sup>1</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">WRLONG   D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">000010 000i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">8..23    <![CDATA[ ]]><sup>1</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">WRWORD   D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">000001 000i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">---</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Not Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">8..23    <![CDATA[ ]]><sup>1</sup></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">XOR      D, S</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep"><pre xml:space="preserve">011011 001i 1111 ddddddddd sssssssss</pre>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Result = 0</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Parity of Result</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep">
+                    <p class="TableText">Written</p>
+                </td>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColEnd">
+                    <p class="TableText">4</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="TableStyle_ParallaxTable_Body_0_0_RowSep_ColSep" colspan="6">
+                    <p class="TableNoteStartNum" MadCap:autonum="Note 1: "><span class="autonumber"><span>Note 1: </span></span>Clock Cycles for Hub Instructions: Hub instructions require 8 to 23 clock cycles to execute depending on the relation between the cog’s hub access window and the instruction’s moment of execution. The Hub provides a hub access window to each cog every 16 clocks. Because each cog runs independently of the Hub, it must sync to the Hub when executing a hub instruction. The first hub instruction in a sequence will take from 0 to 15 clocks to sync up to the hub access window, and 8 clocks afterwards to execute; thus the 8 to 23 (15 + 8) clock cycles to execute. After the first hub instruction, there will be 8 (16 – 8) free clocks before a subsequent hub access window arrives for that cog; enough time to execute two 4-clock instructions without missing the next hub access window.  To minimize clock waste, you can insert two normal instructions between any two otherwise-contiguous hub instructions without any increase in execution time.  Beware that hub instructions can cause execution timing to appear indeterminate; particularly the first hub instruction in a sequence.</p>
+                    <p class="TableNoteNextNum" MadCap:autonum="Note 2: "><span class="autonumber"><span>Note 2: </span></span>Clock Cycles for Modify-Branch Instructions: Instructions that modify a value and possibly jump, based on the result, require a different amount of clock cycles depending on whether or not a jump is required. These instructions take 4 clock cycles if a jump is required and 8 clock cycles if no jump is required. Since loops utilizing these instructions typically need to be fast, they are optimized in this way for speed.</p>
+                    <p class="TableNoteNextNum" MadCap:autonum="Note 3: "><span class="autonumber"><span>Note 3: </span></span><span class="code_in_text">ADDABS</span> C out: If S is negative, C = the inverse of unsigned borrow (for D-S).</p>
+                    <p class="TableNoteNextNum" MadCap:autonum="Note 4: "><span class="autonumber"><span>Note 4: </span></span><span class="code_in_text">SUBABS</span> C out: If S is negative, C = the inverse of unsigned carry (for D+S).</p>
+                    <p class="TableNoteNextNum" MadCap:autonum="Note 5: "><span class="autonumber"><span>Note 5: </span></span><span class="code_in_text">WAITVID</span> consumes 4 clocks itself; however, complete data handoff requires 7 clocks (6 at some frequencies) between frames.  The combination of <span class="code_in_text">CTRA</span> PLL frequency and <span class="code_in_text">VSCL</span> FrameClocks must provide an effective 7 (or 6) system clocks.</p>
+                </td>
+            </tr>
+        </table>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

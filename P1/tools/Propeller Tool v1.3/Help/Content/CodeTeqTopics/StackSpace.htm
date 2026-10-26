@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Coding Techniques" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Stack Space</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="CodeTechsHome.htm">Coding Techniques</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Stack Space</span>
+        </div>
+        <h1>Stack Space</h1>
+        <p class="PlainText">A "stack," or stack space, is a block of memory used to store temporary data needed for proper program execution. The Propeller automatically handles the stack for the application cog, but launching additional cogs may require extra stack space allocated by the developer.</p>
+        <p class="PlainText">The following information demonstrates the need for stack space and describes the use of the Stack Length object to calculate the amount needed for a given process in a cog. The Stack Length object is included in the Propeller Tool Library.</p>
+        <h2>The Need for Stack Space </h2>
+        <p class="PlainText">Does the Propeller use a call stack? The answer is yes and no.</p>
+        <h3>Spin Uses a Call Stack </h3>
+        <p class="PlainText">The Spin Interpreter implements a call stack to facilitate Spin method calling, parameter passing, and expression evaluation.  The Propeller Application's stack is located in <a href="../HardwareTopics/MainMem.htm#MainRam" target="" title="" alt="" MadCap:conditions="PropellerHelpConditionTags.RemoveLink" MadCap:excludeAction="unbind" class="MCXref_0">Main RAM</a> immediately following the application's global variable memory.  It expands and collapses as needed; growing towards higher addresses and shrinking towards lower addresses.  Spin methods that are manually launched into other cogs store their stack starting at the <i>StackPointer </i>address given by the <span class="keyword_in_text">COGNEW</span> or <span class="keyword_in_text">COGINIT</span> command that launched them.  Their stacks expand and contract in the same manner as with the Propeller Application stack.  In both cases, the capacity of the stack (method nesting-depth, parameter list length, and expression complexity) is limited only by the amount of free memory available (for the application) or memory provided (by the developer).</p>
+        <h3>Propeller Assembly Does Not Use a Call Stack<br /></h3>
+        <p class="PlainText">Propeller Assembly language does not implement a call stack since doing so would unnecessarily consume valuable memory and impose undue limitations on applications.  Instead, Propeller Assembly provides a different mechanism through the <span class="keyword_in_text">JMPRET</span> instruction (and also <span class="keyword_in_text">CALL</span>, <span class="keyword_in_text">JMP</span>, and <span class="keyword_in_text">RET</span>) to maintain nested call history.  This method requires more developer influence but allows the memory to be used more efficiently (optimizing for the specific application) and has a distinct advantage allowing the implementation of simple task-switching code in real-time systems using <span class="keyword_in_text">JMPRET</span>.</p>
+        <h2>When do you need to provide stack space?</h2>
+        <p>You need to  provide memory for stack space any time you execute a <span class="keyword_in_text">COGNEW</span> or <span class="keyword_in_text">COGINIT</span> command that launches Spin code (as opposed to Propeller Assembly code). The act of doing this is not difficult (see <span class="keyword_in_text">COGNEW</span> and <span class="keyword_in_text">COGINIT</span> documentation for examples), but determining the amount of space needed is a bit challenging. </p>
+        <h3>Sizing the Stack</h3>
+        <p class="PlainText">While developing an object that allocates a stack, it is good practice to make the stack larger than necessary, then optimize it after all development is done. This practice helps avoid strange behaviors that can easily be misinterpreted as a bug in the code when, in fact, the process simply has too small a stack for its purposes.</p>
+        <p class="PlainText"> A very safe "initial" size is 128 longs of stack space for each cog launched.  When you have made all your final code tweaks and are completely finished with your object, only then is it time to optimize the stack space. Often it can be optimized to as low as 9 or 10 longs.</p>
+        <p>Why bother optimizing stack space at all? Doing so will save valuable memory and perhaps development time in the long run. Your un-optimized object may be fine for its initial intended use, but without optimization it may not be ready for future applications where memory might be more scarce. </p>
+        <h2>Performing the Stack Length Test</h2>
+        <p class="PlainText">Once development is done and it's time to optimize stack space, you can use the Stack Length object to determine the appropriate size. </p>
+        <p class="PlainText">The Stack Length object makes testing easy:</p>
+        <ul style="list-style-type: circle;">
+            <li value="1">Just insert a small portion of test code into your object,</li>
+            <li value="2">Adjust the test code to watch the desired stack and call the object's starting method,</li>
+            <li value="3">Then exercise the object and get the resulting stack usage value.</li>
+        </ul>
+        <p> The Stack Length test code transmits the result (the actual stack space required) as a serial string on the transmit pin (typically P30). The serial string is easily viewed with the  Parallax Serial Terminal included with the Propeller Tool. </p>
+        <p class="PlainText">Let's take a look at an example. The excerpt below is from Stack Length Demo.spin, which is included in the Propeller Tool Library Demos. </p>
+        <p class="PlainText">The top section is temporary code to be inserted above the object code to be tested. In this case, the code to be tested begins at the <span class="keyword_in_text">VAR</span> block. </p>
+        <p class="PlainText">There are three places in the <span class="code_in_text">TestStack</span> method that must be adjusted to work with the object being tested and the serial display option being used:</p>
+        <ol>
+            <li value="1"><span class="code_in_text">Stk.Init(@Stack, 32)</span>. Here, <span class="code_in_text">(@Stack, 32)</span> <![CDATA[ ]]>was modified to match the name and size of the stack; <span class="code_in_text">long Stack[32]</span> in the <span class="keyword_in_text">VAR</span> block of the object being tested.</li>
+            <li value="2"><span class="code_in_text">Start(16, 500, 0)</span> is the code which calls test object's "starting" method and passes valid parameters.</li>
+            <li value="3"><span class="code_in_text">Stk.GetLength(30, 115200)</span> outputs the test results on P30 at 115,200 baud. </li>
+        </ol><pre xml:space="preserve" class="spin_con1">
+{••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••}
+{•••••••••••••••••••••••••••••••••  Temporary Code to Test Stack Usage  •••••••••••••••••••••••••••••••••}
+{••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••}
+
+</pre><pre xml:space="preserve" class="spin_con2">CON
+  _clkmode      = xtal1 + pll16x         'Use crystal * 16 for fast serial               
+  _xinfreq      = 5_000_000              'External 5 MHz crystal on XI &amp; XO
+
+</pre><pre xml:space="preserve" class="spin_obj1">OBJ
+  Stk   :       "Stack Length"           'Include Stack Length Object
+
+</pre><pre xml:space="preserve" class="spin_pub1">PUB TestStack
+  Stk.Init(<span class="code_add_mod">@Stack, 32</span>)                  'Initialize reserved Stack space (reserved below)
+  <span class="code_add_mod">Start(16, 500, 0)</span>                    'Exercise code/object under test
+  waitcnt(clkfreq * 2 + cnt)            <sup><![CDATA[ ]]></sup> 'Wait ample time for max stack usage
+  Stk.GetLength(30, <span class="code_add_mod">115200</span>)            <sup><![CDATA[ ]]>    <![CDATA[ ]]></sup>'Transmit results serially out P30 at 115,200 baud
+
+
+
+{••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••}
+{••••••••••••••••••••••••••••••  Code/Object Being Tested for Stack Usage  ••••••••••••••••••••••••••••••}
+{••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••}
+
+</pre><pre xml:space="preserve" class="spin_var1">VAR
+  long  <span class="code_add_mod">Stack[32]</span>                                       'Stack space for new cog
+  
+</pre><pre xml:space="preserve" class="spin_pub1">PUB <span class="code_add_mod">Start(Pin, DelayMS, Count)</span>
+{{Start new toggling process in a new cog.}}
+
+  cognew(Toggle(Pin, DelayMS, Count), @Stack)
+  
+</pre><pre xml:space="preserve" class="spin_pub2">PUB Toggle(Pin, DelayMS, Count)
+{{Toggle Pin, Count times with DelayMS milliseconds in between.
+  If Count = 0, toggle Pin forever.}}
+
+  dira[Pin]~~                                           'Set I/O Pin to output direction
+  repeat                                                'Repeat the following
+    !outa[Pin]                                          '  Toggle I/O Pin
+    waitcnt(clkfreq / 1000 * DelayMS + cnt)             '  Wait for DelayMS milliseconds
+  while Count := --Count #&gt; -1                          'While Count-1 is not 0 (limit minimum to -1)
+
+</pre>
+        <p>&#160;</p>
+        <h3>Try the Stack Length Demo</h3>
+        <p class="PlainText">Here are the steps to follow for this demo with your Propeller Demo Board, PE Kit Platform, or any Propeller development system using a 5 MHz external crystal.</p>
+        <ul>
+            <li class="Checklist" value="1">Select File &gt; Open From &gt; Library Demos and open the Stack Length Demo object.</li>
+            <li class="Checklist" value="2">Run the Parallax Serial Terminal software. You may have an icon for it on your desktop; if not, open it from your computer's Start &gt; All Programs &gt; Parallax Inc &gt; Propeller Tool menu.</li>
+            <li class="Checklist" value="3">In the Parallax Serial Terminal, set the COM&#160;port the your Propeller chip's programming port. If you don't know it, go back to the Propeller Tool and choose Run &gt; Identify (F7).</li>
+            <li class="Checklist" value="4">In the Parallax Serial Terminal, set the Baud  Rate field to 115200.</li>
+            <li class="Checklist" value="5">Position the Propeller Tool and Parallax Serial Terminal windows so they are not overlapping.</li>
+            <li class="Checklist" value="6">In the Propeller Tool, download the application to the Propeller; Run &gt; Compile Current &gt; Load EEPROM (F11).</li>
+            <li class="Checklist" value="7">Immediately click the blinking Enable button in the Parallax Serial Terminal. </li>
+        </ul>
+        <p class="PlainText">A countdown message may appear until the Propeller Tool releases the serial port. Then, the stack usage message is displayed with the test results.</p>
+        <div class="ImagePlusCaption">
+            <p>
+                <img src="../Resources/Images/QnaCodeTechPics/StackTestPST.png" class="FloatCaptionLeft" />
+            </p>
+            <p class="PictureCaptionNoNums">Test results for the Stack Length Demo displayed in the Parallax Serial Terminal</p>
+        </div>
+        <p class="clear">&#160;</p>
+        <p class="PlainText">This means the object being tested only used 9 longs of space in the array variable <span class="code_in_text">Stack</span>. The test code can now be removed and the <span class="code_in_text">Stack</span> array variable can safely be updated to be only 9 longs in length.</p>
+        <h2>Use the Temporary Code to Test your own Objects</h2>
+        <p class="PlainText">You can copy the temporary code out of the Stack Length Demo  for testing your own objects; here are some things you should do:</p>
+        <ul>
+            <li class="Checklist" value="1">If your object provides stacks for more than one launched cog (running Spin code), test each stack individually using the test code and the following tips, below.</li>
+            <li class="Checklist" value="2">Update the <span class="code_in_text">Stk.Init</span> method call with the stack space name and size you used in your object's <span class="keyword_in_text">VAR</span> block.</li>
+            <li class="Checklist" value="3">Update the call to <span class="code_in_text">Start</span> with valid parameters for your object, or replace the whole call as needed if your object doesn't use a method named <span class="code_in_text">Start</span>.</li>
+            <li class="Checklist" value="4">Update the <span class="code_in_text">Stk.GetLength</span> call as needed for your application's serial transmit pin (tx) and serial terminal baud rate– or adjust your serial terminal to match.</li>
+            <li class="Checklist" value="5">The baud rate used must be supported by the frequency at which you are running your Propeller application. In this example, the system clock was set in the temporary code's <span class="keyword_in_text">CON</span> section (5&#160;MHz external crystal with 16x PLL, for 80 MHz operation). If your development board and application are using a different system clock configuration, change it here. Remember that serial communication requires an external crystal for timing accuracy. </li>
+            <li class="Checklist" value="6">Make sure to fully exercise the object under test. In the above example, this is done simply by waiting long enough with the <span class="code_in_text">waitcnt(clkfreq * 2 + cnt)</span> statement. In your application it may be required that you provide specific inputs via user controls or other devices attached. Failure to fully exercise the object before the test code calls <span class="code_in_text">Stk.GetLength</span> may result in erroneous results as certain method and expressions will utilize the stack space more than others.</li>
+            <li class="Checklist" value="7">After performing your test, remember to reduce the stack space allotment in your object to the indicated amount in order to optimize your memory usage!</li>
+        </ul>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>

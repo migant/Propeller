@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="94" MadCap:lastWidth="849" MadCap:disableMasterStylesheet="true" MadCap:tocPath="Questions and Answers" MadCap:InPreviewMode="false" MadCap:PreloadImages="false" MadCap:RuntimeFileType="Topic" MadCap:TargetType="WebHelp" lang="en-us" xml:lang="en-us" MadCap:PathToHelpSystem="../../" MadCap:HelpSystemFileName="Default.xml" MadCap:SearchType="Stem">
+    <head><title>Counters</title>
+        <link href="../SkinSupport/MadCap.css" rel="stylesheet" />
+        <link href="../Resources/Stylesheets/PropellerHelpPSQNA.css" rel="stylesheet" />
+        <script src="../SkinSupport/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">You are here: </span><a class="MCBreadcrumbsLink" href="QnaLocal.htm">Questions and Answers</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Counters</span>
+        </div>
+        <h1>Counter Modules</h1>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_590031776_0" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What is a Counter Module?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_590031776_0" style="display: none;">
+                <p class="PlainText">A Counter Module (also known as a Counter) is a cog's configurable state machine for generating or sensing repetitive signals. Each cog has two independent counter modules, Counter "A" and Counter "B." </p>
+                <p class="PlainText">The counter modules provide simple, flexible subsystems for each cog to perform repetitive tasks on potentially every clock cycle; they can often take the place of dedicated peripheral driver hardware, reducing component count in an application.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_590031776_1" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What can you do with counters?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_590031776_1" style="display: none;">
+                <p class="PlainText">Counters can provide a cog with a variety of services. These can be used to:</p>
+                <ul>
+                    <li value="1">Generate numerically-controlled oscillator (NCO) signals, like square waves</li>
+                    <li value="2">Measure pulse and decay durations  for variable-resistance or variable-capacitance sensors</li>
+                    <li value="3">Count signal cycles and measure its frequency</li>
+                    <li value="4">Detect signal edge or level</li>
+                    <li value="5">Perform digital to analog (D/A) conversion</li>
+                    <li value="6">Perform analog to digital (A/D) conversion</li>
+                    <li value="7">Provide internal signals for timing and video generation</li>
+                </ul>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_590031776_2" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />How do counters work?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_590031776_2" style="display: none;">
+                <p class="PlainText">The counter modules are just adders that are activated on potentially every clock cycle when a certain condition is true. The result of the addition can affect the state of one or two I/O pins, and both the result and the I/O pin reaction can optionally be monitored by the program running in the cog.   <![CDATA[ ]]></p>
+                <p class="PlainText">Each counter module (A or B) is configured through a its Counter Control Register (<span class="keyword_in_text">CTRA</span> or <span class="keyword_in_text">CTRB</span>) to set its operating mode, optional time divisor, and I/O pin usage. Afterwards, the counter module hardware runs automatically, adding the value from its Frequency Register (<span class="keyword_in_text">FRQA</span> or <span class="keyword_in_text">FRQB</span>) to its Phase Register (<span class="keyword_in_text">PHSA</span> or <span class="keyword_in_text">PHSB</span>) on every clock cycle when its mode-defined condition is true.</p>
+                <p class="PlainText">The counter can be left to run autonomously, or can be monitored and adjusted by the cog's running program to achieve advanced effects.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_590031776_3" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />What are the different counter modes?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_590031776_3" style="display: none;">
+                <p class="PlainText">There are 32 counter modes, including "off" (disabled). The 31 active counter modes are grouped into six categories, each accumulates (from <span class="keyword_in_text">FRQ</span> to <span class="keyword_in_text">PHS</span>) whenever the designated condition is true.</p>
+                <ul>
+                    <li value="1">PLL&#160;modes (3 options): <ul><li value="1">PLL Internal mode provides a timing reference for video generation or code synchronization.</li><li value="2">Single-ended PLL&#160;mode generates a square wave on the designated I/O pin at a frequency determined by the cog's PLL&#160;circuit and the value of the <span class="keyword_in_text">FRQ</span> register.</li><li value="3">Differential PLL&#160;mode is like single-ended mode but with the addition of an inverted signal output on a second I/O pin.</li><li value="4">PLL output signals can range from 500 kHz to 128 MHz.</li></ul></li>
+                    <li value="2">NCO modes (2 options):<ul><li value="1">Single-ended NCO mode will send a square wave on the designated pin at a frequency determined by the <span class="keyword_in_text">FRQ</span> register, and with the phase determined by the <span class="keyword_in_text">PHS</span>&#160;register. </li><li value="2">Differential NCO mode is like single-ended NCO mode but with the addition of an inverted signal on a second I/O pin.</li><li value="3"> NCO can generate signals up to <span class="keyword_in_text">CLKFREQ</span>/2 Hz.</li></ul></li>
+                    <li value="3">DUTY modes (2 options):<ul><li value="1"> Single-ended DUTY mode will rapidly switch the designated I/O pin between high and low with the average high time determined by the <span class="keyword_in_text">FRQ</span>-to-2<sup>32</sup> ratio.</li><li value="2">Differential DUTY&#160;mode is like single-ended mode but with the addition of an inverted signal on a second I/O pin.</li></ul></li>
+                    <li value="4">POS modes (4 options):<ul><li value="1">POS Detector mode accumulates&#160;for every clock tick in which the monitored pin is high.</li><li value="2">POSEDGE Detector mode accumulates only when a transition from low to high is detected on the monitored pin.</li><li value="3">Both modes have a Feedback option that outputs the opposite of the monitored signal onto another I/O pin.</li></ul></li>
+                    <li value="5">NEG modes (4 options):<ul><li value="1">NEG Detector mode accumulates&#160;for every clock tick in which the monitored pin is low.</li><li value="2">NEGEDGE Detector mode accumulates only when a transition from high to low is detected on the monitored pin.</li><li value="3">Both modes have a Feedback option that outputs the opposite of the monitored signal onto another I/O pin.</li></ul></li>
+                    <li value="6">LOGIC&#160;modes (16 options):<ul><li value="1"> The Logic modes accumulate for every clock tick in which the monitored pin (or pins) meets a certain condition.</li><li value="2">This includes logic conditions such as: never, always, A, B, A&amp;B, A|B, A==B, A&lt;&gt;B, A&amp;!B, !A&amp;B, etc.</li></ul></li>
+                </ul>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_590031776_4" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Does the cog keep processing code while its counters are operating?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_590031776_4" style="display: none;">
+                <p class="PlainText">Yes! Once configured by program code, the counter modules operate independently while the cog performs other tasks. The program code can monitor the work of the counter module at any time without interrupting it by reading the appropriate special purpose register in its Cog RAM.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_590031776_5" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can code in one cog control the counter modules in another cog?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_590031776_5" style="display: none;">
+                <p class="PlainText">No. A cog's counter modules can only interact with the code being executed by that specific cog. Likewise, the cog's special purpose registers can only be read by code being executed within that cog. </p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_590031776_6" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Can a counter be reconfigured from one use to another use during program run time?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_590031776_6" style="display: none;">
+                <p class="PlainText">Yes! That is one of the benefits of the software-reconfigurable counter modules. Instead of requiring a dedicated internal or external hardware device, an application can use a counter module to perform a temporary task, then release those resources for another use later, or shut them down to save power.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="MCDropDown">
+            <div class="MCDropDownHead_0"><a class="MCDropDownHotSpot_0" href="javascript:void(0);" id="MCDropDownHotSpot_590031776_7" onclick="FMCDropDown( this ); return false;"><img style="border: none;margin-right: 5px;" src="../SkinSupport/DropDownClosed.gif" MadCap:altsrc="../SkinSupport/DropDownOpen.gif" onload="if ( typeof( FMCPreloadImage ) == 'function' ) { FMCPreloadImage( '../SkinSupport/DropDownOpen.gif' ); }" class="MCDropDownIcon" />Does video generation require the use of the cog's counters?</a>
+            </div>
+            <div class="MCDropDownBody" id="MCDropDownBody_590031776_7" style="display: none;">
+                <p class="PlainText">Yes. Video generation requires the use of the cog's Video Generator and the Counter A module; the Counter B module is still available for use.</p>
+            </div>
+        </div>
+        <p>&#160;</p>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p><a href="../HomeTopics/HomePage.htm">Go to Welcome page</a>
+                </p>
+                <p>&#160;</p>
+            </div>
+        </div>
+        <div class="Col2">
+            <div class="MasterFoot">
+                <p style="text-align: right;"><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoProjectName">Propeller Help</span> <![CDATA[ ]]><span MadCap:conditions="PropellerHelpConditionTags.PropellerHelp" class="ContactInfoVersion#">Version 1.2</span></p>
+                <p style="text-align: right;">Copyright ©&#160;<span class="ContactInfoCompanyName">Parallax Inc.</span>, dba <span class="ContactInfodbaName">Parallax Semiconductor</span></p>
+                <p style="text-align: right;">
+                </p>
+                <p style="text-align: right;"><span class="SystemShortDate">6/17/2011</span>
+                </p>
+                <p style="text-align: right;"><span class="MCPopup"><a href="javascript:void(0);" MadCap:src="../HomeTopics/TermsOfUse.htm" onclick="FMCPopup( event, this ); return false;" class="MCXref_0" alt="" title="" xrefformat="{paratext}" xrefhref="../../HomeTopics/TermsOfUse.htm">Terms of Use</a></span>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript">/* <![CDATA[ */
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-285614-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		/* ]]> */</script>
+        <script type="text/javascript" src="../SkinSupport/MadCapBodyEnd.js">
+        </script>
+    </body>
+</html>
